@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'core.Licence',
     'core.Fridge',
     'core.ShoppingList',
+    'core.Currency',
 ]
 
 AUTH_USER_MODEL = 'User.User'
