@@ -8,7 +8,7 @@ class UserFactory(factory.DjangoModelFactory):
     email = FuzzyEmail()
     first_name = faker.Faker('first_name')
     last_name = faker.Faker('last_name')
-    phone = FuzzyPhone()
+    # phone = FuzzyPhone()
 
     is_active = True
     is_staff = False

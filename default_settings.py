@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'mptt',
     'core.Utils',
     'core.User',
+    'core.Licence',
 ]
 
 AUTH_USER_MODEL = 'User.User'
@@ -145,7 +146,10 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 # folders
+USER_PHOTO = 'user_photo'
 CONTACT_ICONS_FOLDER = 'contact_icons'
+PRIVACY_POLICY_FILEPATH = 'privacy_policy'
+TERMS_OF_USE_FILEPATH = 'terms_of_use'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
