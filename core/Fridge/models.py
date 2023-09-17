@@ -1,3 +1,6 @@
+"""
+This code defines three models: FridgeType, Fridge, and FridgeProduct.
+"""
 from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
@@ -5,6 +8,10 @@ from core.Utils.Mixins.models import CrmMixin, UUIDPrimaryKeyMixin, SlugifyMixin
 
 
 class FridgeType(CrmMixin, SlugifyMixin):
+    """
+`   The FridgeType model represents the type of fridge and has a name field.
+It inherits from the CrmMixin and SlugifyMixin classes, which provide additional functionality.
+    """
     SLUGIFY_FIELD = 'name'
     name = models.CharField(max_length=64, db_index=True)
 
@@ -13,6 +20,9 @@ class FridgeType(CrmMixin, SlugifyMixin):
 
 
 class Fridge(CrmMixin, UUIDPrimaryKeyMixin):
+    """
+    The Fridge model represents a fridge and has a name field, a foreign key to the User model, and a foreign key to the FridgeType model.
+    """
     name = models.CharField(max_length=64)
     user = models.ForeignKey('User.User', on_delete=models.PROTECT)
     fridge_type = models.ForeignKey(FridgeType, on_delete=models.PROTECT)
@@ -22,6 +32,13 @@ class Fridge(CrmMixin, UUIDPrimaryKeyMixin):
 
 
 class FridgeProduct(CrmMixin, UUIDPrimaryKeyMixin):
+    """
+    The FridgeProduct model represents a product stored in a fridge. It has a name field, a foreign key to the
+    Fridge model, an amount field to represent the quantity of the product, a units field to specify the units
+    of the quantity, manufacture_date and shelf_life_date fields to store the dates related to the product,
+    a notes field for additional information, an image field to store an image of the product, and a barcode field.
+    """
+
     class FridgeProductUnits(models.TextChoices):
         GRAMM = 'gramm', _('Gr')
         KILOGRAM = 'kilogram', _('KG')

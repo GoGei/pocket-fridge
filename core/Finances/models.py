@@ -1,3 +1,8 @@
+"""
+The code provided is a Django model implementation for handling finance integrations.
+It includes several models such as Product, Price, Subscription, Invoice, and Payment,
+all of which inherit from the FinanceIntegrationsMixin.
+"""
 from django.core.validators import MinValueValidator
 from django.db import models
 from core.Utils.Mixins.models import CrmMixin, UUIDPrimaryKeyMixin, ActiveQuerySet
@@ -13,6 +18,10 @@ class FinanceIntegrationsQuerySet(ActiveQuerySet):
 
 
 class FinanceIntegrationsMixin(CrmMixin, UUIDPrimaryKeyMixin):
+    """
+    The FinanceIntegrationsMixin includes a field called external_id, which is used to store an external identifier
+    for each instance. It also provides methods for checking if an instance is integrated or not.
+    """
     external_id = models.CharField(max_length=32, unique=True, db_index=True, null=True)
     objects = FinanceIntegrationsQuerySet.as_manager()
 
@@ -29,6 +38,9 @@ class FinanceIntegrationsMixin(CrmMixin, UUIDPrimaryKeyMixin):
 
 
 class Product(FinanceIntegrationsMixin):
+    """
+    The Product model represents a product of a subscription.
+    """
     name = models.CharField(max_length=64, db_index=True)
     description = models.CharField(max_length=2048)
     is_published = models.BooleanField(default=True)
@@ -39,6 +51,9 @@ class Product(FinanceIntegrationsMixin):
 
 
 class Price(FinanceIntegrationsMixin):
+    """
+    The Price model represents the pricing information for a product.
+    """
     class PriceIntervalChoices(models.TextChoices):
         DAY = 'day', _('Day')
         # WEEK = 'week', 'W_(eek')
@@ -66,6 +81,9 @@ class Price(FinanceIntegrationsMixin):
 
 
 class Subscription(FinanceIntegrationsMixin):
+    """
+    The Subscription model represents a subscription for a user to a product.
+    """
     class SubscriptionCollectionMethodsChoices(models.TextChoices):
         CHARGE_AUTOMATICALLY = 'charge_automatically', _('Charge automatically')
         SEND_INVOICE = 'send_invoice', _('Send invoice')
@@ -99,6 +117,9 @@ class Subscription(FinanceIntegrationsMixin):
 
 
 class Invoice(FinanceIntegrationsMixin):
+    """
+    The Invoice model represents an invoice for a user's subscription.
+    """
     class SubscriptionCollectionMethodsChoices(models.TextChoices):
         CHARGE_AUTOMATICALLY = 'charge_automatically', _('Charge automatically')
         SEND_INVOICE = 'send_invoice', _('Send invoice')
@@ -128,6 +149,9 @@ class Invoice(FinanceIntegrationsMixin):
 
 
 class Payment(FinanceIntegrationsMixin):
+    """
+    The Payment model represents a payment made for an invoice.
+    """
     class PaymentIntentStatusChoices(models.TextChoices):
         REQUIRES_PAYMENT_METHOD = 'requires_payment_method', _('Requires payment method')
         REQUIRES_CONFIRMATION = 'requires_confirmation', _('Requires confirmation')

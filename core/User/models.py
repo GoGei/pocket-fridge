@@ -47,6 +47,20 @@ class UserManager(BaseUserManager):
 
 
 class User(CrmMixin, AbstractBaseUser):
+    """
+    This is a User model class that inherits from CrmMixin and AbstractBaseUser.
+    It represents a user in the system and has the following fields:
+
+    - email: An email field that is unique and indexed in the database.
+    - first_name: A character field for the user's first name.
+    - last_name: A character field for the user's last name.
+    - username: A character field for the user's username, which is unique and indexed in the database.
+    - photo: An image field for the user's photo, which is uploaded to the specified directory.
+    - is_active: A boolean field indicating whether the user is active or not.
+    - is_staff: A boolean field indicating whether the user is a staff member or not.
+    - is_superuser: A boolean field indicating whether the user is a superuser or not.
+    - external_id: A character field for an external ID, which is unique and indexed in the database.
+    """
     email = models.EmailField(max_length=255, unique=True, db_index=True)
     first_name = models.CharField(max_length=50, null=True)
     last_name = models.CharField(max_length=50, null=True)
