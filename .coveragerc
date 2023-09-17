@@ -1,0 +1,7 @@
+[run]
+omit = */tests/*, */migrations/*, */urls.py, */settings/*, */wsgi.py, */Utils/*, manage.py, factories.py, fabfile.py
+source = .
+
+[report]
+show_missing = true
+omit = */tests/*, */migrations/*, */urls.py, */settings/*, */wsgi.py, */Utils/*, manage.py, factories.py, fabfile.py
