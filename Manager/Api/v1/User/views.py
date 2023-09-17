@@ -6,7 +6,6 @@ from core.User.models import User
 from .serializers import UserSerializer
 
 
-
 class UserViewSet(BaseAdminViewSet):
     queryset = User.objects.all().order_by('email', 'first_name', 'last_name')
     serializer_class = UserSerializer

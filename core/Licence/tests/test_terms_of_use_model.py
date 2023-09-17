@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 from ..models import TermsOfUse
-from ..factories import TermsOfUseFactory
+from ..factories import TermsOfUseFactory, LicenceVersionFactory
 
 
 class TermsOfUseTests(TestCase):
@@ -17,3 +17,17 @@ class TermsOfUseTests(TestCase):
 
         qs = TermsOfUse.objects.filter(pk=obj.pk)
         self.assertFalse(qs.exists())
+
+    def test_set_default(self):
+        version = LicenceVersionFactory.create()
+        obj = TermsOfUseFactory.create(is_default=False, version=version)
+        prev_default = TermsOfUseFactory.create(is_default=True, version=version)
+        another = TermsOfUseFactory.create(is_default=False, version=version)
+
+        obj.set_default()
+        obj.refresh_from_db()
+        prev_default.refresh_from_db()
+        another.refresh_from_db()
+        self.assertTrue(obj.is_default)
+        self.assertFalse(prev_default.is_default)
+        self.assertFalse(another.is_default)

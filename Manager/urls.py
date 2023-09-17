@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^users/', include('Manager.Users.urls')),
     url(r'^admins/', include('Manager.Admins.urls')),
     url(r'^fridge-type/', include('Manager.FridgeType.urls')),
+    url(r'^licence-version/', include('Manager.LicenceVersion.urls')),
 
     url(r'^api/', include((api_urls, 'manager-api-v1'), namespace='manager-api-v1')),
 ]

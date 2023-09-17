@@ -1,7 +1,8 @@
 from django.test import TestCase
 
 from ..models import Licence
-from ..factories import LicenceFactory
+from ..factories import LicenceFactory, DefaultLicenceVersionFactory
+from core.User.factories import UserFactory
 
 
 class LicenceTests(TestCase):
@@ -17,3 +18,10 @@ class LicenceTests(TestCase):
 
         qs = Licence.objects.filter(pk=obj.pk)
         self.assertFalse(qs.exists())
+
+    def test_sign_licence_agreement(self):
+        user = UserFactory.create()
+        DefaultLicenceVersionFactory.create()
+        self.assertFalse(user.licence_is_signed)
+        Licence.sign_licence_agreement(user)
+        self.assertTrue(user.licence_is_signed)
