@@ -21,8 +21,8 @@ class AdminFilterForm(django_filters.FilterSet):
                                          method='is_email_filled_filter')
     is_name_filled = IsFilledFilterForm(label=_('Is name filled'),
                                         method='is_name_filled_filter')
-    is_phone_filled = IsFilledFilterForm(label=_('Is phone filled'),
-                                         method='is_phone_filled_filter')
+    # is_phone_filled = IsFilledFilterForm(label=_('Is phone filled'),
+    #                                      method='is_phone_filled_filter')
     admin_status = django_filters.ChoiceFilter(label=_('Admin status'), method='admin_status_filter',
                                                choices=StatusChoices.choices,
                                                empty_label=_('Please, select value')
@@ -34,7 +34,7 @@ class AdminFilterForm(django_filters.FilterSet):
 
     def search_qs(self, queryset, name, value):
         return SearchFilterField.search_qs(queryset, name, value,
-                                           search_fields=('first_name', 'last_name', 'email', 'phone'))
+                                           search_fields=('first_name', 'last_name', 'email'))
 
     def is_email_filled_filter(self, queryset, name, value):
         return IsFilledFilterForm.is_filled_filter(queryset, name, value,
@@ -44,9 +44,9 @@ class AdminFilterForm(django_filters.FilterSet):
         return IsFilledFilterForm.is_filled_filter(queryset, name, value,
                                                    fields=('first_name', 'last_name'))
 
-    def is_phone_filled_filter(self, queryset, name, value):
-        return IsFilledFilterForm.is_filled_filter(queryset, name, value,
-                                                   fields='phone')
+    # def is_phone_filled_filter(self, queryset, name, value):
+    #     return IsFilledFilterForm.is_filled_filter(queryset, name, value,
+    #                                                fields='phone')
 
     def admin_status_filter(self, queryset, name, value):
         if value:
@@ -62,7 +62,7 @@ class AdminForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email', 'phone',
+        fields = ('first_name', 'last_name', 'email',
                   'is_active', 'status')
         exclude = ('is_staff', 'is_superuser')
 

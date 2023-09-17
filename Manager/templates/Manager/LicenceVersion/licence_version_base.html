@@ -1,0 +1,17 @@
+{% extends 'Manager/base_index.html' %}
+{% load i18n %}
+
+{% block pagetitle %}
+  {% trans 'Licence versions' %}
+{% endblock %}
+
+ {% block settings-sidebar-menu %} active {% endblock %}
+ {% block settings-sidebar-menu-dropdown %} show {% endblock %}
+{% block licence-version-sidebar-menu %} active {% endblock %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  <li class="breadcrumb-item" aria-current="page">
+    <a href="{% url 'manager-licence-version-list' %}">{% trans 'Licence versions' %}</a>
+  </li>
+{% endblock %}

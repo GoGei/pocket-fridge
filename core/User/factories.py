@@ -1,7 +1,7 @@
 import factory
 from factory import faker
 from .models import User
-from core.Utils.Tests.fuzzy_fields import FuzzyEmail, FuzzyPhone
+from core.Utils.Tests.fuzzy_fields import FuzzyEmail
 
 
 class UserFactory(factory.DjangoModelFactory):

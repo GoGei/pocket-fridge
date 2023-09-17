@@ -17,3 +17,8 @@ class FridgeTypeTests(TestCase):
 
         qs = FridgeType.objects.filter(pk=obj.pk)
         self.assertFalse(qs.exists())
+
+    def test_str(self):
+        obj = FridgeTypeFactory.create()
+        self.assertEqual(str(obj), obj.name)
+        self.assertEqual(obj.label, obj.name)
