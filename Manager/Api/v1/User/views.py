@@ -12,6 +12,6 @@ class UserViewSet(BaseAdminViewSet):
     serializer_class = UserSerializer
 
     filter_backends = (filters.SearchFilter, filters.OrderingFilter, DjangoFilterBackend)
-    search_fields = ('email', 'first_name', 'last_name', 'phone')
+    search_fields = ('email', 'first_name', 'last_name')
     ordering_fields = ('email', 'last_name')
     filterset_fields = ('is_active', 'is_staff', 'is_superuser')

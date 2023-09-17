@@ -7,9 +7,17 @@ from core.Utils.Mixins.models import CrmMixin, UUIDPrimaryKeyMixin, SlugifyMixin
 class FridgeType(CrmMixin, SlugifyMixin):
     SLUGIFY_FIELD = 'name'
     name = models.CharField(max_length=64, db_index=True)
+    create_on_user_creation = models.BooleanField(default=False)
 
     class Meta:
         db_table = 'fridge_type'
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def label(self):
+        return str(self)
 
 
 class Fridge(CrmMixin, UUIDPrimaryKeyMixin):
@@ -19,6 +27,20 @@ class Fridge(CrmMixin, UUIDPrimaryKeyMixin):
 
     class Meta:
         db_table = 'fridge'
+
+    @classmethod
+    def create_fridges_for_user(cls, user):
+        qs = cls.objects.select_related('user').filter(user=user).active()
+        if qs.exists():
+            raise ValueError(_(f'Fridges for user {user.email} already exists'))
+
+        to_create = FridgeType.objects.active().filter(create_on_user_creation=True)
+        instances = set()
+        for fridge_type in to_create:
+            instance = cls(user=user, fridge_type=fridge_type, name=fridge_type.name)
+            instance.save()
+            instances.add(instance.id)
+        return cls.objects.filter(id__in=instances)
 
 
 class FridgeProduct(CrmMixin, UUIDPrimaryKeyMixin):

@@ -1,7 +1,8 @@
 from django.test import TestCase
 
 from ..models import Fridge
-from ..factories import FridgeFactory
+from ..factories import FridgeFactory, FridgeTypeFactory
+from ...User.factories import UserFactory
 
 
 class FridgeTests(TestCase):
@@ -17,3 +18,15 @@ class FridgeTests(TestCase):
 
         qs = Fridge.objects.filter(pk=obj.pk)
         self.assertFalse(qs.exists())
+
+    def test_create_fridges_for_user(self):
+        to_create = FridgeTypeFactory.create(create_on_user_creation=True)
+        not_to_create = FridgeTypeFactory.create(create_on_user_creation=False)
+
+        user = UserFactory.create()
+        instances = Fridge.create_fridges_for_user(user)
+        names = instances.values_list('name', flat=True)
+        self.assertIn(to_create.name, names)
+        self.assertNotIn(not_to_create.name, names)
+
+        self.assertRaises(ValueError, Fridge.create_fridges_for_user, user=user)

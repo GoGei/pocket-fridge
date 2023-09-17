@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Fridge",
+    "slug": "fridge"
+  },
+  {
+    "name": "Freezer",
+    "slug": "freezer"
+  },
+  {
+    "name": "Pantry",
+    "slug": "pantry"
+  },
+  {
+    "name": "Default",
+    "slug": "default"
+  },
+  {
+    "name": "Not slugified yet"
+  }
+]

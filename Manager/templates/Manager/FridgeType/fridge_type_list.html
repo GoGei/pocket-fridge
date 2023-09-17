@@ -1,0 +1,28 @@
+{% extends 'Manager/FridgeType/fridge_type_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+{% endblock %}
+
+{% block action-area %}
+  <a type="button" class="btn btn-success btn-md" href="{% url 'manager-fridge-type-add' %}">{% trans 'Add' %}</a>
+  <a type="button" class="btn btn-info btn-md"
+     href="{% url 'manager-fridge-type-view-fixture' %}">{% trans 'View fixture' %}</a>
+{% endblock %}
+
+{% block content %}
+  <div class="grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-description">
+          <div class="row">
+            <div class="col">
+              {% include 'smartadmin/tables/table.html' with table=table %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
