@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'core.Utils',
     'core.User',
     'core.Licence',
+    'core.Fridge',
 ]
 
 AUTH_USER_MODEL = 'User.User'
@@ -150,6 +151,7 @@ USER_PHOTO = 'user_photo'
 CONTACT_ICONS_FOLDER = 'contact_icons'
 PRIVACY_POLICY_FILEPATH = 'privacy_policy'
 TERMS_OF_USE_FILEPATH = 'terms_of_use'
+FRIDGE_PRODUCTS_FILEPATH = 'fridge_products'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
