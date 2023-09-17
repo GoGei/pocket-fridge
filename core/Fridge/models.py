@@ -31,7 +31,7 @@ class FridgeProduct(CrmMixin, UUIDPrimaryKeyMixin):
 
     name = models.CharField(max_length=64, db_index=True)
     storage = models.ForeignKey(Fridge, on_delete=models.PROTECT)
-    amount = models.IntegerField(default=1)
+    amount = models.DecimalField(default=1, max_digits=8, decimal_places=2)
     units = models.CharField(max_length=16, db_index=True, choices=FridgeProductUnits.choices)
     manufacture_date = models.DateField(db_index=True)
     shelf_life_date = models.DateField(db_index=True)
