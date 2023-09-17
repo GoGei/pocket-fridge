@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'core.Fridge',
     'core.ShoppingList',
     'core.Currency',
+    'core.Finances',
 ]
 
 AUTH_USER_MODEL = 'User.User'
@@ -242,3 +243,7 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+DEFAULT_CURRENCY_CODE = 'UAH'
+DEFAULT_CURRENCY_NAME = 'Hryvnia'
+DEFAULT_CURRENCY_NUMBER = '980'

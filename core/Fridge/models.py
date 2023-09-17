@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.utils.translation import gettext_lazy as _
 from core.Utils.Mixins.models import CrmMixin, UUIDPrimaryKeyMixin, SlugifyMixin
 
 
@@ -22,11 +23,11 @@ class Fridge(CrmMixin, UUIDPrimaryKeyMixin):
 
 class FridgeProduct(CrmMixin, UUIDPrimaryKeyMixin):
     class FridgeProductUnits(models.TextChoices):
-        GRAMM = 'gramm', 'Gr'
-        KILOGRAM = 'kilogram', 'KG'
-        MILLITER = 'milliter', 'ML'
-        LITER = 'liter', 'L'
-        ITEMS = 'items', 'Items'
+        GRAMM = 'gramm', _('Gr')
+        KILOGRAM = 'kilogram', _('KG')
+        MILLITER = 'milliter', _('ML')
+        LITER = 'liter', _('L')
+        ITEMS = 'items', _('Items')
 
     name = models.CharField(max_length=64, db_index=True)
     storage = models.ForeignKey(Fridge, on_delete=models.PROTECT)

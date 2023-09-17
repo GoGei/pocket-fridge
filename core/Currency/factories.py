@@ -1,8 +1,7 @@
-from factory import django, fuzzy, SubFactory
+from factory import django, fuzzy
 
 from django.conf import settings
-from django.utils import timezone
-from core.Currency.models import Currency, CurrencyExchange
+from core.Currency.models import Currency
 
 
 class CurrencyFactory(django.DjangoModelFactory):
@@ -16,15 +15,6 @@ class CurrencyFactory(django.DjangoModelFactory):
 
 
 class CurrencyDefaultFactory(CurrencyFactory):
-    code = settings.DEFAULT_CURRENCY
-    name = 'US Dollar'
-
-
-class CurrencyExchangeFactory(django.DjangoModelFactory):
-    class Meta:
-        model = CurrencyExchange
-
-    source_currency = SubFactory(CurrencyFactory)
-    target_currency = SubFactory(CurrencyFactory)
-    start_date = fuzzy.FuzzyDate(timezone.now().date())
-    rate = fuzzy.FuzzyDecimal(low=0.0, high=999999.9999)
+    code = settings.DEFAULT_CURRENCY_CODE
+    name = settings.DEFAULT_CURRENCY_NAME
+    number = settings.DEFAULT_CURRENCY_NUMBER
