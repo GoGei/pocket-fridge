@@ -51,6 +51,11 @@ INSTALLED_APPS = [
     'mptt',
     'core.Utils',
     'core.User',
+    'core.Licence',
+    'core.Fridge',
+    'core.ShoppingList',
+    'core.Currency',
+    'core.Finances',
 ]
 
 AUTH_USER_MODEL = 'User.User'
@@ -145,7 +150,11 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 # folders
+USER_PHOTO = 'user_photo'
 CONTACT_ICONS_FOLDER = 'contact_icons'
+PRIVACY_POLICY_FILEPATH = 'privacy_policy'
+TERMS_OF_USE_FILEPATH = 'terms_of_use'
+FRIDGE_PRODUCTS_FILEPATH = 'fridge_products'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
@@ -234,3 +243,7 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+DEFAULT_CURRENCY_CODE = 'UAH'
+DEFAULT_CURRENCY_NAME = 'Hryvnia'
+DEFAULT_CURRENCY_NUMBER = '980'
