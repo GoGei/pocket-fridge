@@ -1,0 +1,59 @@
+{% load i18n filters_form %}
+
+{% search_fields request as to_search %}
+
+<form action="{{ filter.action|default:"#" }}" method="get" novalidate class="filter-form">
+  {% include 'base_non_field_error_block.html' %}
+  {% with filter.body.form as form %}
+    <div class="row d-flex align-items-center">
+      <!-- shown fields -->
+      <div class="col-5">
+        {% for field in form %}
+          {% if field.name in to_search %}
+            {% include 'base_form_field.html' with field=field %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Button trigger modal -->
+      <div class="col-1 d-flex justify-content-center">
+        <button type="button" class="btn btn-info btn-rounded btn-sm btn-icon" data-toggle="modal"
+                data-target="#filterForm">
+          <i class="mdi mdi-filter"></i>
+        </button>
+      </div>
+
+      <div class="col-6 d-flex justify-content-end btn-wrapper">
+        <a href="#" class="btn btn-sm btn-otline-dark"><i class="icon-share"></i> {% trans 'Share' %}</a>
+        <a href="#" class="btn btn-sm btn-otline-dark"><i class="icon-printer"></i> {% trans 'Print' %}</a>
+        <a href="#" class="btn btn-sm btn-primary"><i class="icon-download"></i> {% trans 'Export' %}</a>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="filterForm" tabindex="-1" role="dialog" aria-labelledby="filterFormLabel"
+         aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="filterFormLabel">{{ filter.title }}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            {% for field in form %}
+              {% if field.name not in to_search %}
+                {% include 'base_form_field.html' with field=field %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans 'Close' %}</button>
+            <button type="submit" class="btn btn-success">{% trans 'Submit' %}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endwith %}
+</form>

@@ -1,0 +1,15 @@
+{% load widget_tweaks %}
+
+{% if field.field.widget.input_type == 'checkbox' %}
+  {% include 'smartadmin/forms/checkbox_field.html' %}
+{% else %}
+  <div class="form-group {% if horizontal %}row{% endif %} {% if field.errors %}has-error{% endif %} {% if field.is_hidden %}d-none{% endif %}">
+    {% include 'smartadmin/forms/form_label.html' %}
+
+    <div class="{% if horizontal %}col-sm-9{% endif %}">
+      {% include 'smartadmin/forms/form_render_field.html' %}
+    </div>
+
+    {% include 'smartadmin/forms/field_error_block.html' %}
+  </div>
+{% endif %}

@@ -1,0 +1,7 @@
+{% load i18n %}
+
+{% if record.phone %}
+  <a href="tel:{{ record.phone }}">{{ record.phone }}</a>
+{% else %}
+  {% trans 'No phone' %}
+{% endif %}

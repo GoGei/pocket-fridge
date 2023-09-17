@@ -1,0 +1,19 @@
+/* Remove underline from the links */
+.breadcrumb-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Remove border from the breadcrumb items */
+.breadcrumb {
+    border: none;
+}
+
+.breadcrumb-last-item {
+    font-weight: bold; /* Emulate "strong" font weight */
+    color: #333; /* Emulate strong color */
+}
+
+.password-toggle {
+    cursor: pointer;
+}

@@ -1,0 +1,9 @@
+{% load i18n %}
+
+{% if record.is_superuser %}
+  {% trans 'Superuser' %}
+{% elif record.is_staff %}
+  {% trans 'Staff' %}
+{% else %}
+  {% trans 'Other' %}
+{% endif %}

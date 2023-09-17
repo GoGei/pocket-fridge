@@ -1,0 +1,18 @@
+{% if form.title %}
+  <h4 class="card-title">{{ form.title }}</h4>
+{% endif %}
+
+{% if form.description %}
+  <p class="card-description">{{ form.description }}</p>
+{% endif %}
+
+<form action="{{ form.action_url }}" method="{{ form.method|default:'post' }}" novalidate class="forms-sample"
+      enctype="multipart/form-data">
+  {% csrf_token %}
+  {% include 'smartadmin/forms/non_field_error_block.html' with form=form.body %}
+  {{ form.body.media }}
+  {% for field in form.body %}
+    {% include 'smartadmin/forms/form_field.html' with field=field horizontal=horizontal %}
+  {% endfor %}
+  {% include 'smartadmin/forms/form_buttons.html' with buttons=form.buttons %}
+</form>

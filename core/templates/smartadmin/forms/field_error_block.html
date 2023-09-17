@@ -1,0 +1,7 @@
+{% if field.errors %}
+  {% for item in field.errors %}
+    {% if item %}
+      <p class="error-message text-right text-danger">{{ item }}</p>
+    {% endif %}
+  {% endfor %}
+{% endif %}

@@ -1,0 +1,27 @@
+{% extends 'Manager/Admins/admins_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  <li class="breadcrumb-item" aria-current="page">
+    <a href="{% url 'manager-admins-list' %}">
+      {% trans 'Add' %}
+    </a>
+  </li>
+{% endblock %}
+
+{% block action-area %}
+  <a type="button" class="btn btn-success btn-md" href="{% url 'manager-admins-list' %}">
+    {% trans 'Back to list' %}
+  </a>
+{% endblock %}
+
+{% block content %}
+  <div class="grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        {% include 'smartadmin/forms/form.html' with form=form %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

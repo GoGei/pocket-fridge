@@ -1,0 +1,24 @@
+{% load django_tables2 i18n filters %}
+
+{% url_clean_get request as params %}
+{% with data=table.body.data %}
+  {% if data or params %}
+
+    {% if table.filter %}
+      {% include 'smartadmin/tables/table_filter.html' with filter=table.filter %}
+    {% endif %}
+
+    {% if data %}
+      <div class="table-responsive">
+        {% render_table table.body %}
+      </div>
+    {% else %}
+      {% include 'smartadmin/tables/table_empty.html' %}
+    {% endif %}
+
+  {% else %}
+    {% if not table.skips.table_no_data %}
+      {% include 'smartadmin/tables/table_no_data.html' %}
+    {% endif %}
+  {% endif %}
+{% endwith %}

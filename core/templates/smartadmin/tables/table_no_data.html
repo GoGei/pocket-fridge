@@ -1,0 +1,20 @@
+{% load i18n %}
+
+<div class="stretch-card">
+  <div class="card card-rounded">
+    <div class="card-body">
+      <div class="container">
+        <div class="col align-items-center">
+          <div class="row text-center">
+            <h2 class="text-dark">
+              {% trans 'There is no data in the table' %}!
+            </h2>
+          </div>
+          <div class="row">
+            <a href="{% url 'manager-index' %}" class="btn btn-info upgrade-btn">{% trans 'Go to home' %}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

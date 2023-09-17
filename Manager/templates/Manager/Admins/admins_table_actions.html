@@ -1,0 +1,18 @@
+{% load i18n %}
+
+<div>
+  <a type="button" class="btn btn-primary btn-rounded btn-icon btn-sm" title="{% trans 'Edit' %}"
+     href="{% url "manager-admins-edit" record.id %}">
+    <i class="mdi mdi-pencil"></i>
+  </a>
+  <a type="button" class="btn btn-info btn-rounded btn-icon btn-sm" title="{% trans 'View' %}"
+     href="{% url "manager-admins-view" record.id %}">
+    <i class="mdi mdi-eye"></i>
+  </a>
+  {% if request.user.is_superuser %}
+    <a type="button" class="btn btn-warning btn-rounded btn-icon btn-sm" title="{% trans 'Set password' %}"
+       href="{% url "manager-admins-set-password" record.id %}">
+      <i class="mdi mdi-key"></i>
+    </a>
+  {% endif %}
+</div>

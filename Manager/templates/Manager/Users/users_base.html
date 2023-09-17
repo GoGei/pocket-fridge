@@ -1,0 +1,15 @@
+{% extends 'Manager/base_index.html' %}
+{% load i18n %}
+
+{% block pagetitle %}
+  {% trans 'Users' %}
+{% endblock %}
+
+{% block user-sidebar-menu %} active {% endblock %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  <li class="breadcrumb-item" aria-current="page">
+    <a href="{% url 'manager-users-list' %}">{% trans 'Users' %}</a>
+  </li>
+{% endblock %}

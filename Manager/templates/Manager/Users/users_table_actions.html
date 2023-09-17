@@ -1,0 +1,8 @@
+{% load i18n %}
+
+<div>
+  <a type="button" class="btn btn-info btn-rounded btn-icon btn-sm" title="{% trans 'View' %}"
+     href="{% url "manager-users-view" record.id %}">
+    <i class="mdi mdi-eye"></i>
+  </a>
+</div>

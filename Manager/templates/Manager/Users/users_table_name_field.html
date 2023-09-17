@@ -1,0 +1,8 @@
+{% load i18n %}
+{% with first_name=record.first_name last_name=record.last_name %}
+  {% if not first_name and not last_name %}
+    {% trans 'Not provided' %}
+  {% else %}
+    {{ first_name|default:'' }} {{ last_name|default:'' }}
+  {% endif %}
+{% endwith %}
