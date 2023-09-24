@@ -47,7 +47,7 @@ class Licence(CrmMixin, UUIDPrimaryKeyMixin):
     """
     The Licence model represents a license.
     """
-    name = models.CharField(max_length=128)
+    name = models.CharField(max_length=128, default='Licence name')
     user = models.ForeignKey('User.User', on_delete=models.PROTECT)
     version = models.ForeignKey(LicenceVersion, on_delete=models.PROTECT)
     signed_stamp = models.DateTimeField(default=timezone.now, db_index=True)

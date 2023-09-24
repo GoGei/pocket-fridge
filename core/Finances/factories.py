@@ -61,7 +61,7 @@ class InvoiceFactory(django.DjangoModelFactory):
 
     external_id = fuzzy.FuzzyText(length=32)
     number = fuzzy.FuzzyText(length=64)
-    collection_method = fuzzy.FuzzyChoice(choices=dict(Invoice.SubscriptionCollectionMethodsChoices.choices).keys())
+    collection_method = fuzzy.FuzzyChoice(choices=dict(Invoice.InvoiceStatusChoices.choices).keys())
     currency = SubFactory(CurrencyDefaultFactory)
     user = SubFactory(UserFactory)
     subscription = SubFactory(SubscriptionFactory)

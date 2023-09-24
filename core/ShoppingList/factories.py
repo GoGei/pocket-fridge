@@ -1,5 +1,6 @@
 from factory import fuzzy, SubFactory, DjangoModelFactory
 from core.User.factories import UserFactory
+from core.Fridge.models import FridgeProduct
 from core.Fridge.factories import FridgeProductFactory, FridgeFactory
 from core.Utils.Tests.fuzzy_fields import FuzzyParagraph
 from .models import ShoppingList, ShoppingListProduct
@@ -19,7 +20,7 @@ class ShoppingListProductFactory(DjangoModelFactory):
     fridge = SubFactory(FridgeFactory)
     name = FuzzyParagraph(length=64)
     amount = fuzzy.FuzzyInteger(1, 100)
-    units = fuzzy.FuzzyChoice(dict(ShoppingListProduct.ShoppingListProductUnits.choices).keys())
+    units = fuzzy.FuzzyChoice(dict(FridgeProduct.FridgeProductUnits.choices).keys())
 
     class Meta:
         model = ShoppingListProduct
