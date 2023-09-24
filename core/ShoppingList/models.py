@@ -26,6 +26,7 @@ class ShoppingListProduct(CrmMixin, UUIDPrimaryKeyMixin):
     The ShoppingListProduct model represents a product that is added to a shopping list.
     """
     shopping_list = models.ForeignKey(ShoppingList, on_delete=models.PROTECT)
+    user = models.ForeignKey('User.User', on_delete=models.PROTECT)
     product = models.ForeignKey('Fridge.FridgeProduct', on_delete=models.PROTECT, null=True)
     fridge = models.ForeignKey('Fridge.Fridge', on_delete=models.PROTECT, null=True)
     name = models.CharField(max_length=64, db_index=True)
