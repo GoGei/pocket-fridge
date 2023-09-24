@@ -9,6 +9,7 @@ from .models import FridgeType, Fridge, FridgeProduct
 class FridgeTypeFactory(DjangoModelFactory):
     name = FuzzyParagraph(length=64)
     slug = Faker('slug')
+    create_on_user_creation = True
 
     class Meta:
         model = FridgeType

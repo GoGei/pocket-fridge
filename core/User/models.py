@@ -97,3 +97,9 @@ class User(CrmMixin, AbstractBaseUser):
     @property
     def is_manager(self):
         return self.is_staff or self.is_superuser
+
+    @property
+    def licence_is_signed(self):
+        from core.Licence.models import Licence, LicenceVersion
+        version = LicenceVersion.get_default()
+        return Licence.objects.select_related('user', 'version').active().filter(user=self, version=version).exists()

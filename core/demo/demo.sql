@@ -26,11 +26,11 @@ FROM users
 WHERE email = 'rich.290401@gmail.com';
 
 -- Fridge type interactions
-INSERT INTO fridge_type (name, slug, created_stamp, modified_stamp)
-VALUES ('Fridge', 'fridge', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       ('Freezer', 'freezer', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       ('Pantry', 'pantry', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       ('Some long name', 'some-long-name', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO fridge_type (name, slug, created_stamp, modified_stamp, create_on_user_creation)
+VALUES ('Fridge', 'fridge', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, true),
+       ('Freezer', 'freezer', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, true),
+       ('Pantry', 'pantry', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, true),
+       ('Some long name', 'some-long-name', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, true);
 
 -- Fridge type check
 SELECT id, name, slug
@@ -42,8 +42,8 @@ $$
         my_fridge_type_id INT;
         my_storage_id     UUID;
     BEGIN
-        INSERT INTO fridge_type (name, slug, created_stamp, modified_stamp)
-        VALUES ('Test', 'test', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+        INSERT INTO fridge_type (name, slug, created_stamp, modified_stamp, create_on_user_creation)
+        VALUES ('Test', 'test', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, true)
         ON CONFLICT (slug) DO UPDATE
             SET slug = excluded.slug
         RETURNING id INTO my_fridge_type_id;

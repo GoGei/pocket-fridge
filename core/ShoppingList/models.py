@@ -2,6 +2,8 @@
 The above code defines two models, ShoppingList and ShoppingListProduct, for a shopping list application.
 """
 from django.db import models
+
+from core.Fridge.models import FridgeProduct
 from core.Utils.Mixins.models import CrmMixin, UUIDPrimaryKeyMixin
 from core.Fridge.models import FridgeProduct
 

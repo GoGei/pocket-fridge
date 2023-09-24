@@ -1,0 +1,83 @@
+{% extends 'Manager/FridgeType/fridge_type_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  <li class="breadcrumb-item" aria-current="page">
+    <a href="{% url 'manager-fridge-type-view-fixture' %}">{% trans 'View fixture' %}</a>
+  </li>
+{% endblock %}
+
+{% block action-area %}
+  {% if request.user.is_superuser %}
+    <a type="button" class="btn btn-primary btn-md"
+       href="{% url 'manager-fridge-type-load-fixture' %}">{% trans 'Load fixture' %}</a>
+    <a type="button" class="btn btn-warning btn-md"
+       href="{% url 'manager-fridge-type-load-default-fixture' %}">{% trans 'Load default fixture' %}</a>
+  {% endif %}
+  <a type="button" class="btn btn-dark btn-md"
+     href="{% url 'manager-fridge-type-export-to-fixture' %}">{% trans 'Export to fixture' %}</a>
+  <a type="button" class="btn btn-success btn-md"
+     href="{% url 'manager-fridge-type-list' %}">{% trans 'Back to list' %}</a>
+{% endblock %}
+
+{% block content %}
+  <div class="grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <p>
+            <a class="btn btn-secondary" data-toggle="collapse" href="#rawData" role="button"
+               aria-expanded="false" aria-controls="rawData">{% trans 'Show raw data' %}</a>
+            <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#humanReadableData"
+                    aria-expanded="false" aria-controls="humanReadableData">{% trans 'Show human readable data' %}
+            </button>
+            <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target=".multi-collapse"
+                    aria-expanded="false" aria-controls="rawData humanReadableData">{% trans 'Show both data' %}
+            </button>
+          </p>
+          <div class="row">
+            <div class="col">
+              <div class="collapse multi-collapse" id="rawData">
+                <div class="card card-body">
+                  <pre id="json-data">{{ data|json_script:"json-data-template" }}</pre>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="collapse multi-collapse" id="humanReadableData">
+                <div class="card card-body">
+                  <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                      <th>{% trans 'Name' %}</th>
+                      <th>{% trans 'Slug' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in data %}
+                      <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.slug }}</td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extrajs %}
+  <script>
+      $(document).ready(function () {
+          let jsonData = JSON.parse(document.getElementById('json-data-template').textContent);
+          document.getElementById('json-data').textContent = JSON.stringify(jsonData, null, 2);
+      });
+  </script>
+{% endblock %}
