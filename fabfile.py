@@ -74,7 +74,7 @@ def check(c):
     with c.prefix(VIRTUAL_ENV_ACTIVATE):
         # c.run('python manage.py test')
         c.run('python manage.py check')
-        c.run('time flake8 ./Api ./core ./Manager ./Public')
+        c.run('time flake8 ./Api ./core ./Manager ./Public ./My')
 
 
 @task
@@ -90,3 +90,10 @@ def creategraphmodels(c, *args):
         with c.cd(PROJECT_ROOT):
             c.run('mkdir -p graphs')
             c.run(f'./manage.py graph_models -a {models} -o {dot_file_name}')
+
+
+@task
+def celeryd(c):
+    with c.prefix(VIRTUAL_ENV_ACTIVATE):
+        with c.cd(PROJECT_ROOT):
+            c.run('celery -A celery_run worker -l DEBUG -c 8 -Q celery', pty=True)

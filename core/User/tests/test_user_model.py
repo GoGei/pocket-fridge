@@ -100,3 +100,9 @@ class UserTests(TestCase):
         password = str(uuid.uuid4())
         self.assertRaises(ValueError, User.objects.create_user, email=None, password=password)
         self.assertRaises(ValueError, User.objects.create_superuser, email=None, password=password)
+
+    def test_user_access_key(self):
+        user = UserFactory.create()
+        key = user.generate_registration_key()
+        receive = User.get_by_registration_key(key)
+        self.assertEqual(user, receive)

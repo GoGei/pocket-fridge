@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+from mongoengine import register_connection
 from django.contrib.messages import constants as messages
 from django.utils.translation import ugettext_lazy as _
 
@@ -56,6 +57,7 @@ INSTALLED_APPS = [
     'core.ShoppingList',
     'core.Currency',
     'core.Finances',
+    'core.Notifications',
 ]
 
 AUTH_USER_MODEL = 'User.User'
@@ -247,3 +249,23 @@ MESSAGE_TAGS = {
 DEFAULT_CURRENCY_CODE = 'UAH'
 DEFAULT_CURRENCY_NAME = 'Hryvnia'
 DEFAULT_CURRENCY_NUMBER = '980'
+
+DEFAULT_FROM_EMAIL = None
+EMAIL_BASE_SITE = "%s://%s.%s" % (SITE_SCHEME, DEFAULT_HOST, SITE_URL)
+
+CELERY_BROKER_URL = ''
+CELERY_RESULT_BACKEND = 'rpc'
+CELERY_ACCEPT_CONTENT = ['pickle', 'json']
+CELERY_TASK_SERIALIZER = 'pickle'
+CELERY_RESULT_SERIALIZER = 'pickle'
+CELERY_TASK_RESULT_EXPIRES = 60
+
+CELERY_QUEUES = {
+    'celery': {'exchange': 'celery',
+               'exchange_type': 'direct',
+               'durable': True},
+}
+
+register_connection(alias='notification',
+                    host='mongodb://127.0.0.1:27017/pocketfridge_notification',
+                    w=0)

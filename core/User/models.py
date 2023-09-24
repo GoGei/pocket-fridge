@@ -1,7 +1,18 @@
+from __future__ import annotations
+import time
+from typing import Optional
+
+import redis
+import hashlib
+
 from django.db import models
 from django.db.models import Q
 from django.conf import settings
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django_hosts.resolvers import reverse
+
+from core.Fridge.models import Fridge
+from core.Notifications.models import Notification
 from core.Utils.Mixins.models import CrmMixin
 
 
@@ -76,6 +87,9 @@ class User(CrmMixin, AbstractBaseUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
+    USER_REGISTRATION_ACCESS_KEY = 'user:registration:access-key:%s'
+    USER_REGISTRATION_ACCESS_TTL = 60 * 60  # 1h
+
     objects = UserManager()
 
     class Meta:
@@ -103,3 +117,55 @@ class User(CrmMixin, AbstractBaseUser):
         from core.Licence.models import Licence, LicenceVersion
         version = LicenceVersion.get_default()
         return Licence.objects.select_related('user', 'version').active().filter(user=self, version=version).exists()
+
+    def generate_registration_key(self) -> str:
+        """
+        Generate key for instance to register and put it to redis
+        """
+        key = hashlib.sha256(str(self.id).encode() + str(time.time()).encode()).hexdigest()
+        redis_key = self.USER_REGISTRATION_ACCESS_KEY % key
+        ttl = self.USER_REGISTRATION_ACCESS_TTL
+        with redis.Redis() as r:
+            r.setex(redis_key, ttl, self.id)
+        return key
+
+    def send_registration_email(self):
+        key = self.generate_registration_key()
+        url = reverse('api-v1:register-activate', host='api')
+        schema = settings.SITE_SCHEME
+        url = f'{schema}:{url}?key={key}'
+        context = {
+            'url': url,
+            'key': key,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'email': self.email,
+        }
+        notification = Notification.get_by_slug('registration-activate-email')
+        notification.send(self, context)
+        return notification
+
+    @property
+    def notify_by_email(self):
+        return self.email
+
+    @classmethod
+    def get_by_registration_key(cls, key) -> Optional[User]:
+        with redis.Redis() as r:
+            redis_key = cls.USER_REGISTRATION_ACCESS_KEY % key
+            user_id = r.get(redis_key)
+
+        if not user_id:
+            return None
+        return cls.objects.filter(id=user_id).first()
+
+    def activate(self):
+        self.is_active = True
+        self.save(update_fields=['is_active'])
+        Fridge.create_fridges_for_user(self)
+        return self
+
+    @classmethod
+    def clear_registration_keys(cls, key):
+        with redis.Redis() as r:
+            r.delete(cls.USER_REGISTRATION_ACCESS_KEY % key)

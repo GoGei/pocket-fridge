@@ -20,12 +20,24 @@ class SerializerMapBaseView(viewsets.GenericViewSet):
 
     serializer_map = dict()
     empty_serializer_actions = set()
+    serializer_return_map = dict()
     serializer_return_class = None
 
     def get_serializer_class(self):
         if self.action in self.empty_serializer_actions:
             return EmptySerializer
         return self.serializer_map.get(self.action, self.serializer_class)
+
+    def get_serializer_return_class(self):
+        serializer_from_map = self.serializer_return_map.get(self.action)
+        if serializer_from_map:
+            return serializer_from_map
+        return self.serializer_return_class or self.serializer_class
+
+    def prepare_response(self, instance, many=False):
+        serializer_class = self.get_serializer_return_class()
+        response = serializer_class(instance=instance, many=many).data
+        return response
 
 
 class CrmMixinView(SerializerMapBaseView):
