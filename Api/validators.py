@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
 
-class LengthValidator(object):
+class MinLengthValidator(object):
     __slots__ = ()
     message = _("The password must contain at least 8 symbols.")
 
@@ -68,20 +68,20 @@ class HasOnlyASCIISymbolValidator(object):
 
 
 password_validators = (
-    LengthValidator,
-    MaxLengthValidator,
+    # MinLengthValidator,
+    # MaxLengthValidator,
     # HasUpperCaseValidator,
     # HasLowerCaseValidator,
     # HasNumberValidator,
     # HasSymbolValidator,
-    HasOnlyASCIISymbolValidator
+    HasOnlyASCIISymbolValidator,
 )
 
 user_password_validators = (
-    LengthValidator,
-    MaxLengthValidator,
+    # MinLengthValidator,
+    # MaxLengthValidator,
     # HasUpperCaseValidator,
     # HasLowerCaseValidator,
     # HasNumberValidator,
-    HasOnlyASCIISymbolValidator
+    HasOnlyASCIISymbolValidator,
 )

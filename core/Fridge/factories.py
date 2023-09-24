@@ -1,5 +1,5 @@
 from django.utils import timezone
-from factory import fuzzy, SubFactory, DjangoModelFactory
+from factory import fuzzy, SubFactory, DjangoModelFactory, LazyAttribute
 from factory.faker import Faker
 from core.User.factories import UserFactory
 from core.Utils.Tests.fuzzy_fields import FuzzyParagraph, FuzzyImage
@@ -27,7 +27,8 @@ class FridgeFactory(DjangoModelFactory):
 
 class FridgeProductFactory(DjangoModelFactory):
     name = FuzzyParagraph(length=64)
-    storage = SubFactory(FridgeFactory)
+    fridge = SubFactory(FridgeFactory)
+    user = LazyAttribute(lambda e: e.fridge.user)
     amount = fuzzy.FuzzyInteger(1, 100)
     units = fuzzy.FuzzyChoice(dict(FridgeProduct.FridgeProductUnits.choices).keys())
     manufacture_date = fuzzy.FuzzyDate(start_date=timezone.now().date())

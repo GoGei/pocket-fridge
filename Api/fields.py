@@ -18,3 +18,23 @@ class UserPasswordField(serializers.CharField):
         data = data.replace(' ', '')
         data = super(UserPasswordField, self).to_internal_value(data)
         return data
+
+
+class ActivePrimaryKeyRelatedField(serializers.PrimaryKeyRelatedField):
+    def get_queryset(self):
+        return super().get_queryset().active()
+
+
+class FridgePrimaryKeyRelatedField(ActivePrimaryKeyRelatedField):
+    def __init__(self, **kwargs):
+        self.filter_field = kwargs.pop('filter_field', 'fridge')
+        super().__init__(**kwargs)
+
+    def get_fridge(self):
+        return self.context.get('fridge')
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        _filter = {self.filter_field: self.get_fridge()}
+        queryset = queryset.filter(**_filter)
+        return queryset
