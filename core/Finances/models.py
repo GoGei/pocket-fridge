@@ -99,10 +99,6 @@ class Subscription(FinanceIntegrationsMixin):
 
 
 class Invoice(FinanceIntegrationsMixin):
-    class SubscriptionCollectionMethodsChoices(models.TextChoices):
-        CHARGE_AUTOMATICALLY = 'charge_automatically', _('Charge automatically')
-        SEND_INVOICE = 'send_invoice', _('Send invoice')
-
     class InvoiceStatusChoices(models.TextChoices):
         DRAFT = 'draft', _('Draft')
         OPEN = 'open', _('Open')
@@ -111,8 +107,8 @@ class Invoice(FinanceIntegrationsMixin):
         UNCOLLECTIBLE = 'uncollectible', _('Uncollectible')
 
     number = models.CharField(max_length=64, unique=True, db_index=True, null=True)
-    collection_method = models.CharField(choices=SubscriptionCollectionMethodsChoices.choices,
-                                         default=SubscriptionCollectionMethodsChoices.CHARGE_AUTOMATICALLY,
+    collection_method = models.CharField(choices=Subscription.SubscriptionCollectionMethodsChoices.choices,
+                                         default=Subscription.SubscriptionCollectionMethodsChoices.CHARGE_AUTOMATICALLY,
                                          max_length=24)
     currency = models.ForeignKey('Currency.Currency', on_delete=models.PROTECT)
     user = models.ForeignKey('User.User', on_delete=models.PROTECT, db_index=True)
