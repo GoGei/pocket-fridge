@@ -25,6 +25,21 @@ class ActivePrimaryKeyRelatedField(serializers.PrimaryKeyRelatedField):
         return super().get_queryset().active()
 
 
+class UserPrimaryKeyRelatedField(ActivePrimaryKeyRelatedField):
+    def __init__(self, **kwargs):
+        self.filter_field = kwargs.pop('filter_field', 'user')
+        super().__init__(**kwargs)
+
+    def get_user(self):
+        return self.context.get('user')
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        _filter = {self.filter_field: self.get_user()}
+        queryset = queryset.filter(**_filter)
+        return queryset
+
+
 class FridgePrimaryKeyRelatedField(ActivePrimaryKeyRelatedField):
     def __init__(self, **kwargs):
         self.filter_field = kwargs.pop('filter_field', 'fridge')
