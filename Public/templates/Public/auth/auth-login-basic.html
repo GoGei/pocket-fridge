@@ -1,0 +1,64 @@
+{% extends 'Public/auth/auth-base.html' %}
+{% load static i18n %}
+
+{% block title %}
+  {% trans 'Pocket fridge' %} - {% trans 'Login' %}
+{% endblock %}
+
+{% block header %}
+  <h4 class="mb-2">{% trans 'Welcome to Pocket fridge!' %} 👋</h4>
+  <p class="mb-4">{% trans 'Please sign-in to your account and start the adventure' %}</p>
+{% endblock %}
+
+{% block content %}
+  <form id="formAuthentication" class="mb-3" method="POST" novalidate>
+    {% csrf_token %}
+    {% include 'Public/base/base_non_field_error_block.html' with form=form %}
+    {% with form.email as field %}
+      <div class="mb-3 {% if field.errors %}has-error{% endif %}">
+        <label for="id_email" class="form-label">{{ field.label }}</label>
+        {{ field }}
+        {% include 'Public/base/base_field_error_block.html' %}
+      </div>
+    {% endwith %}
+
+    {% with form.password as field %}
+      <div class="mb-3 form-password-toggle {% if field.errors %}has-error{% endif %}">
+        <div class="d-flex justify-content-between">
+          <label class="form-label" for="password">{{ field.label }}</label>
+          <a href="{% url 'forgot-password' %}">
+            <small>{% trans 'Forgot Password?' %}</small>
+          </a>
+        </div>
+        <div class="input-group input-group-merge">
+          {{ field }}
+          <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+        </div>
+        {% include 'Public/base/base_field_error_block.html' %}
+      </div>
+    {% endwith %}
+
+    {% with form.remember_me as field %}
+      <div class="mb-3">
+        <div class="form-check {% if field.errors %}has-error{% endif %}">
+          {{ field }}
+          <label class="form-check-label" for="terms-conditions">
+            {{ field.label }}
+          </label>
+        </div>
+        {% include 'Public/base/base_field_error_block.html' %}
+      </div>
+    {% endwith %}
+    <div class="mb-3">
+      <button class="btn btn-primary d-grid w-100" type="submit">{% trans 'Sign in' %}</button>
+    </div>
+  </form>
+{% endblock %}
+{% block footer %}
+  <p class="text-center">
+    <span>{% trans 'New on our platform?' %}</span>
+    <a href="{% url 'register' %}">
+      <span>{% trans 'Create an account' %}</span>
+    </a>
+  </p>
+{% endblock %}
