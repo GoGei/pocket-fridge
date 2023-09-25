@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django_hosts import reverse
 
+from .forms import UserRegistrationForm
 from core.Licence.models import LicenceVersion, TermsOfUse, PrivacyPolicy
 
 
@@ -8,7 +10,16 @@ def home_index(request):
 
 
 def register(request):
-    return render(request, 'Public/auth-register-basic.html')
+    form = UserRegistrationForm(request.POST or None)
+    if form.is_valid():
+        user = form.save()
+        user.send_registration_email()
+        return redirect(reverse('register-success', host='public'))
+    return render(request, 'Public/auth-register-basic.html', {'form': form})
+
+
+def register_success(request):
+    return render(request, 'Public/auth-register-success.html')
 
 
 def login(request):

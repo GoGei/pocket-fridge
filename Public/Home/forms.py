@@ -1,0 +1,81 @@
+from django import forms
+from django.utils.translation import gettext_lazy as _
+from core.User.models import User
+from core.Utils.fields import PasswordField
+
+
+class UserRegistrationForm(forms.ModelForm):
+    email = forms.EmailField(required=True,
+                             max_length=255,
+                             label=_('Email'),
+                             widget=forms.EmailInput(
+                                 attrs={'class': 'form-control',
+                                        'autofocus': 'autofocus',
+                                        'placeholder': _('Enter your email')})
+                             )
+    first_name = forms.CharField(required=True,
+                                 max_length=50,
+                                 label=_('First name'),
+                                 widget=forms.TextInput(
+                                     attrs={'class': 'form-control',
+                                            'placeholder': _('Enter your first name')})
+                                 )
+    last_name = forms.CharField(required=True,
+                                max_length=50,
+                                label=_('Last name'),
+                                widget=forms.TextInput(
+                                    attrs={'class': 'form-control',
+                                           'placeholder': _('Enter your last name')})
+                                )
+    password = PasswordField(required=True,
+                             label=_('Password'),
+                             widget=forms.PasswordInput(
+                                 attrs={'class': 'form-control',
+                                        'placeholder': _('Password')})
+                             )
+    confirm_password = PasswordField(required=True,
+                                     label=_('Confirm password'),
+                                     widget=forms.PasswordInput(
+                                         attrs={'class': 'form-control',
+                                                'placeholder': _('Confirm password')})
+                                     )
+    agree_checkbox = forms.BooleanField(required=True,
+                                        widget=forms.CheckboxInput(
+                                            attrs={'class': 'form-check-input'}
+                                        ))
+
+    class Meta:
+        model = User
+        fields = (
+            'email',
+            'first_name',
+            'last_name',
+            'password',
+            'confirm_password',
+            'agree_checkbox',
+        )
+
+    def clean(self):
+        data = super().clean()
+
+        password = data.get('password')
+        confirm_password = data.get('confirm_password')
+        if password != confirm_password:
+            msg = _('Passwords do not match')
+            self.add_error('password', msg)
+            self.add_error('confirm_password', msg)
+
+        return data
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+
+        user.is_active = False
+        user.is_staff = False
+        user.is_superuser = False
+        user.external_id = None
+
+        user.set_password(self.cleaned_data['password'])
+        if commit:
+            user.save()
+        return user
