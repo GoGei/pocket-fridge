@@ -20,6 +20,7 @@ def register(request):
     form = UserRegistrationForm(request.POST or None)
     if form.is_valid():
         user = form.save()
+        user.sign_licence()
         user.send_registration_email()
         return redirect(reverse('register-success', host='public'))
     return render(request, 'Public/auth/auth-register.html', {'form': form})
