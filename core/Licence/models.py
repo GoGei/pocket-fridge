@@ -80,6 +80,10 @@ class PrivacyPolicy(CrmMixin, SlugifyMixin):
         self.save()
         return self
 
+    @classmethod
+    def get_default(cls, version: LicenceVersion):
+        return cls.objects.active().filter(version=version, is_default=True).first()
+
 
 class TermsOfUse(CrmMixin, SlugifyMixin):
     """
@@ -99,3 +103,7 @@ class TermsOfUse(CrmMixin, SlugifyMixin):
         self.is_default = True
         self.save()
         return self
+
+    @classmethod
+    def get_default(cls, version: LicenceVersion):
+        return cls.objects.active().filter(version=version, is_default=True).first()

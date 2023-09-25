@@ -4,7 +4,9 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
 from Api.base_views import SerializerMapBaseView
-from .serializers import RegisterSerializer, RegistrationActivateSerializer, RegisterReturnSerializer, UserRegisterSerializer
+from .serializers import (
+    RegisterSerializer, RegistrationActivateSerializer, RegisterReturnSerializer, UserRegisterSerializer
+)
 
 
 class UserRegistrationAPIView(SerializerMapBaseView):
