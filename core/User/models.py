@@ -140,6 +140,11 @@ class User(CrmMixin, AbstractBaseUser):
         url = reverse('api-v1:register-activate', host='api')
         schema = settings.SITE_SCHEME
         url = f'{schema}:{url}?key={key}'
+
+        # url = reverse('register-activate', args=[key], host='public')
+        # schema = settings.SITE_SCHEME
+        # url = f'{schema}:{url}'
+
         context = {
             'url': url,
             'key': key,

@@ -29,6 +29,20 @@ def register_success(request):
     return render(request, 'Public/auth/auth-register-success.html')
 
 
+def register_activate(request, key):
+    user = User.get_by_registration_key(key)
+
+    if not user:
+        messages.warning(request, _('For this key user not found'))
+        User.clear_registration_keys(key)
+        return redirect(reverse('home-index', host='public'))
+
+    user.activate()
+    User.clear_forgot_password_keys(key)
+    login(request, user)
+    return redirect(reverse('home-index', host='public'))
+
+
 def login_view(request):
     next_page = request.GET.get('next')
     user = request.user
