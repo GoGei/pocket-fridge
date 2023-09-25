@@ -28,7 +28,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
   />
 
-  <title>{% trans 'Pocket fridge' %} - {% trans 'Registration' %}</title>
+  <title>{% block title %}{% endblock %}</title>
 
   <meta name="description" content=""/>
 
@@ -143,75 +143,12 @@
             </a>
           </div>
           <!-- /Logo -->
-          <h4 class="mb-2">{% trans 'Adventure starts here' %} 🚀</h4>
-          <p class="mb-4">{% trans 'Make your fridge management easy and fun!' %}</p>
-
-          <form id="formAuthentication" class="mb-3" method="POST" novalidate>
-            {% csrf_token %}
-            {% include 'base_non_field_error_block.html' with form=form %}
-            {% with form.email as field %}
-              <div class="mb-3 {% if field.errors %}has-error{% endif %}">
-                <label for="id_email" class="form-label">{{ field.label }}</label>
-                {{ field }}
-                {% include 'Public/base/base_field_error_block.html' %}
-              </div>
-            {% endwith %}
-            {% with form.first_name as field %}
-              <div class="mb-3 {% if field.errors %}has-error{% endif %}">
-                <label for="id_first_name" class="form-label">{{ field.label }}</label>
-                {{ field }}
-                {% include 'Public/base/base_field_error_block.html' %}
-              </div>
-            {% endwith %}
-            {% with form.last_name as field %}
-              <div class="mb-3 {% if field.errors %}has-error{% endif %}">
-                <label for="id_last_name" class="form-label">{{ field.label }}</label>
-                {{ field }}
-                {% include 'Public/base/base_field_error_block.html' %}
-              </div>
-            {% endwith %}
-            {% with form.password as field %}
-              <div class="mb-3 form-password-toggle {% if field.errors %}has-error{% endif %}">
-                <label class="form-label" for="password">{{ field.label }}</label>
-                <div class="input-group input-group-merge">
-                  {{ field }}
-                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                </div>
-                {% include 'Public/base/base_field_error_block.html' %}
-              </div>
-            {% endwith %}
-            {% with form.confirm_password as field %}
-              <div class="mb-3 form-password-toggle {% if field.errors %}has-error{% endif %}">
-                <label class="form-label" for="password">{{ field.label }}</label>
-                <div class="input-group input-group-merge">
-                  {{ field }}
-                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                </div>
-                {% include 'Public/base/base_field_error_block.html' %}
-              </div>
-            {% endwith %}
-
-            <div class="mb-3">
-              {% with form.agree_checkbox as field %}
-                <div class="form-check {% if field.errors %}has-error{% endif %}">
-                  {{ field }}
-                  <label class="form-check-label" for="terms-conditions">
-                    {% trans 'I agree to' %}
-                    <a href="{% url 'licences' %}" target="_blank">{% trans 'privacy policy & terms' %}</a>
-                  </label>
-                </div>
-                {% include 'Public/base/base_field_error_block.html' %}
-              {% endwith %}
-            </div>
-            <button class="btn btn-primary d-grid w-100">{% trans 'Sign up' %}</button>
-          </form>
-
-          <p class="text-center">
-            <span>{% trans 'Already have an account?' %}</span>
-            <a href="{% url 'login' %}">
-              <span>{% trans 'Sign in instead' %}</span>
-            </a>
-          </p>
+          {% block header %}
+          {% endblock %}
+          {% block content %}
+          {% endblock %}
+          {% block footer %}
+          {% endblock %}
 
           <div class="text-center">
             <a href="{% url 'home-index' %}" class="d-flex align-items-center justify-content-center">

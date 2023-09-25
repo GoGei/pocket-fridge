@@ -79,3 +79,23 @@ class UserRegistrationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class UserLoginForm(forms.Form):
+    email = forms.EmailField(label=_('Email address'),
+                             widget=forms.TextInput({'autofocus': 'autofocus',
+                                                     'class': 'form-control',
+                                                     'placeholder': _('Email address')}))
+    password = forms.CharField(label='Password',
+                               widget=forms.PasswordInput({'class': 'form-control',
+                                                           'placeholder': _('Password')}))
+    remember_me = forms.BooleanField(required=True,
+                                     label=_('Remember me'),
+                                     widget=forms.CheckboxInput(
+                                         attrs={'class': 'form-check-input'}
+                                     ))
+
+    def clean_email(self):
+        data = self.cleaned_data
+        email = data.get('email', '')
+        return email.lower()

@@ -62,7 +62,13 @@
           <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium" href="#faq">FAQ</a></li>
         </ul>
         <form class="ps-lg-5">
-          <a class="btn btn-lg btn-primary rounded-pill order-0" type="submit" href="{% url 'register' %}">Register</a>
+          {% if request.user.is_authenticated %}
+            <a class="btn btn-lg btn-primary rounded-pill order-0" type="submit"
+               href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+          {% else %}
+            <a class="btn btn-lg btn-primary rounded-pill order-0" type="submit"
+               href="{% url 'register' %}">{% trans 'Register' %}</a>
+          {% endif %}
         </form>
       </div>
     </div>
