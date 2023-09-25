@@ -13,7 +13,7 @@
 {% block content %}
   <form id="formAuthentication" class="mb-3" method="POST" novalidate>
     {% csrf_token %}
-
+    {% include 'Public/base/base_non_field_error_block.html' with form=form %}
     {% with form.email as field %}
       <div class="mb-3 {% if field.errors %}has-error{% endif %}">
         <label for="id_email" class="form-label">{{ field.label }}</label>

@@ -1,12 +1,14 @@
 from django_hosts import reverse
 from django.conf import settings
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.utils.http import is_safe_url
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import logout, login, authenticate
 
-from .forms import UserRegistrationForm, UserLoginForm
+from core.User.models import User
+from .forms import UserRegistrationForm, UserLoginForm, UserForgotPasswordForm, UserResetPasswordForm
 from core.Licence.models import LicenceVersion, TermsOfUse, PrivacyPolicy
 
 
@@ -58,7 +60,6 @@ def login_view(request):
                 response = HttpResponseRedirect(redirect_url)
                 response.set_cookie('email', user.email)
                 return response
-
             else:
                 form.add_error(None, _('User is not active! Please, contact a manager'))
         else:
@@ -73,7 +74,37 @@ def logout_view(request):
 
 
 def forgot_password(request):
-    return render(request, 'Public/auth/auth-forgot-password-basic.html')
+    form = UserForgotPasswordForm(request.POST or None)
+    if form.is_valid():
+        user = form.cleaned_data.get('user')
+        user.send_forgot_password_email()
+        return redirect(reverse('forgot-password-success', host='public'))
+    return render(request, 'Public/auth/auth-forgot-password.html', {'form': form})
+
+
+def forgot_password_success(request):
+    return render(request, 'Public/auth/auth-forgot-password-success.html')
+
+
+def forgot_password_reset(request, key):
+    user = User.get_by_forgot_password_key(key)
+
+    form = UserResetPasswordForm(request.POST or None)
+
+    if not user:
+        messages.warning(request, _('For this key user not found'))
+        User.clear_forgot_password_keys(key)
+        return redirect(reverse('home-index', host='public'))
+
+    if form.is_valid():
+        password = form.cleaned_data.get('password')
+        user.set_password(password)
+        user.save()
+        User.clear_forgot_password_keys(key)
+        login(request, user)
+        return redirect(reverse('home-index', host='public'))
+
+    return render(request, 'Public/auth/auth-forgot-password-reset.html', {'form': form})
 
 
 def licences(request):

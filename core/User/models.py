@@ -89,6 +89,8 @@ class User(CrmMixin, AbstractBaseUser):
 
     USER_REGISTRATION_ACCESS_KEY = 'user:registration:access-key:%s'
     USER_REGISTRATION_ACCESS_TTL = 60 * 60  # 1h
+    USER_FORGOT_PASSWORD_KEY = 'user:forgot-password:key:%s'
+    USER_FORGOT_PASSWORD_KEY_TTL = 24 * 60 * 60  # 24h
 
     objects = UserManager()
 
@@ -111,6 +113,10 @@ class User(CrmMixin, AbstractBaseUser):
     @property
     def is_manager(self):
         return self.is_staff or self.is_superuser
+
+    @property
+    def notify_by_email(self):
+        return self.email
 
     @property
     def licence_is_signed(self):
@@ -145,10 +151,6 @@ class User(CrmMixin, AbstractBaseUser):
         notification.send(self, context)
         return notification
 
-    @property
-    def notify_by_email(self):
-        return self.email
-
     @classmethod
     def get_by_registration_key(cls, key) -> Optional[User]:
         with redis.Redis() as r:
@@ -169,3 +171,42 @@ class User(CrmMixin, AbstractBaseUser):
     def clear_registration_keys(cls, key):
         with redis.Redis() as r:
             r.delete(cls.USER_REGISTRATION_ACCESS_KEY % key)
+
+    def generate_forgot_password_key(self) -> str:
+        key = hashlib.sha256(str(self.id).encode() + str(time.time()).encode()).hexdigest()
+        redis_key = self.USER_FORGOT_PASSWORD_KEY % key
+        ttl = self.USER_FORGOT_PASSWORD_KEY_TTL
+        with redis.Redis() as r:
+            r.setex(redis_key, ttl, self.id)
+        return key
+
+    def send_forgot_password_email(self):
+        key = self.generate_forgot_password_key()
+        url = reverse('forgot-password-reset', args=[key], host='public')
+        schema = settings.SITE_SCHEME
+        url = f'{schema}:{url}'
+        context = {
+            'url': url,
+            'key': key,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'email': self.email,
+        }
+        notification = Notification.get_by_slug('forgot-password-reset-email')
+        notification.send(self, context)
+        return notification
+
+    @classmethod
+    def get_by_forgot_password_key(cls, key) -> Optional[User]:
+        with redis.Redis() as r:
+            redis_key = cls.USER_FORGOT_PASSWORD_KEY % key
+            user_id = r.get(redis_key)
+
+        if not user_id:
+            return None
+        return cls.objects.filter(id=user_id).first()
+
+    @classmethod
+    def clear_forgot_password_keys(cls, key):
+        with redis.Redis() as r:
+            r.delete(cls.USER_FORGOT_PASSWORD_KEY % key)

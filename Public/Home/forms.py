@@ -89,7 +89,7 @@ class UserLoginForm(forms.Form):
     password = forms.CharField(label='Password',
                                widget=forms.PasswordInput({'class': 'form-control',
                                                            'placeholder': _('Password')}))
-    remember_me = forms.BooleanField(required=True,
+    remember_me = forms.BooleanField(required=False,
                                      label=_('Remember me'),
                                      widget=forms.CheckboxInput(
                                          attrs={'class': 'form-check-input'}
@@ -99,3 +99,56 @@ class UserLoginForm(forms.Form):
         data = self.cleaned_data
         email = data.get('email', '')
         return email.lower()
+
+
+class UserForgotPasswordForm(forms.Form):
+    email = forms.EmailField(label=_('Email address'),
+                             widget=forms.TextInput({'autofocus': 'autofocus',
+                                                     'class': 'form-control',
+                                                     'placeholder': _('Email address')}))
+
+    def clean(self):
+        data = self.cleaned_data
+        email = data.get('email', '')
+        email = email.lower()
+
+        try:
+            user = User.objects.get(email__iexact=email)
+            data.update({'user': user})
+        except User.DoesNotExist:
+            self.add_error('email', _('User with this email not found'))
+        return data
+
+
+class UserResetPasswordForm(forms.Form):
+    password = PasswordField(required=True,
+                             label=_('Password'),
+                             widget=forms.PasswordInput(
+                                 attrs={'class': 'form-control',
+                                        'placeholder': _('Password')})
+                             )
+    confirm_password = PasswordField(required=True,
+                                     label=_('Confirm password'),
+                                     widget=forms.PasswordInput(
+                                         attrs={'class': 'form-control',
+                                                'placeholder': _('Confirm password')})
+                                     )
+
+    class Meta:
+        model = User
+        fields = (
+            'password',
+            'confirm_password',
+        )
+
+    def clean(self):
+        data = super().clean()
+
+        password = data.get('password')
+        confirm_password = data.get('confirm_password')
+        if password != confirm_password:
+            msg = _('Passwords do not match')
+            self.add_error('password', msg)
+            self.add_error('confirm_password', msg)
+
+        return data
