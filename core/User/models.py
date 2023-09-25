@@ -118,6 +118,10 @@ class User(CrmMixin, AbstractBaseUser):
     def notify_by_email(self):
         return self.email
 
+    def sign_licence(self):
+        from core.Licence.models import Licence
+        return Licence.sign_licence_agreement(self)
+
     @property
     def licence_is_signed(self):
         from core.Licence.models import Licence, LicenceVersion
