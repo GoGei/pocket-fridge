@@ -20,7 +20,7 @@ def register(request):
         user = form.save()
         user.send_registration_email()
         return redirect(reverse('register-success', host='public'))
-    return render(request, 'Public/auth/auth-register-basic.html', {'form': form})
+    return render(request, 'Public/auth/auth-register.html', {'form': form})
 
 
 def register_success(request):
