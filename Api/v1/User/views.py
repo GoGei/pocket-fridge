@@ -5,6 +5,6 @@ from core.User.models import User
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = User.objects.users()
+    queryset = User.objects.users().filter(is_active=True)
     serializer_class = UserSerializer
     permission_classes = (IsAdminPermission,)

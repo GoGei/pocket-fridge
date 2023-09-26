@@ -12,7 +12,7 @@ from Api.v1.ShoppingList.routers import url_patterns as shopping_list_urls
 router_v1 = routers.DefaultRouter()
 router_v1.register('currencies', CurrencyViewSet, basename='currencies'),
 router_v1.register('users', UserViewSet, basename='users'),
-router_v1.register('fridge-type', FridgeTypeViewSet, basename='users'),
+router_v1.register('fridge-type', FridgeTypeViewSet, basename='fridge-type'),
 router_v1.register('register', UserRegistrationAPIView, basename='register'),
 urlpatterns = router_v1.urls
 

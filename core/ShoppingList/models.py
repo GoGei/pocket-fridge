@@ -30,7 +30,7 @@ class ShoppingListProduct(CrmMixin, UUIDPrimaryKeyMixin):
     product = models.ForeignKey('Fridge.FridgeProduct', on_delete=models.PROTECT, null=True)
     fridge = models.ForeignKey('Fridge.Fridge', on_delete=models.PROTECT, null=True)
     name = models.CharField(max_length=64, db_index=True)
-    amount = models.IntegerField(default=1)
+    amount = models.DecimalField(default=1, max_digits=8, decimal_places=2)
     units = models.CharField(max_length=16, db_index=True, choices=FridgeProduct.FridgeProductUnits.choices)
 
     class Meta:

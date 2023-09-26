@@ -6,6 +6,7 @@ class FridgeTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = FridgeType
         fields = (
+            'id',
             'name',
             'slug',
         )
