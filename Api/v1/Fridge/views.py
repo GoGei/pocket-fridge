@@ -1,7 +1,6 @@
 from rest_framework import viewsets
 
 from Api.base_views import CrmMixinView
-from Api.permissions import IsStaffPermission
 from Api.v1.base_views import UserRelatedView, FridgeRelatedView
 from .serializers import (
     FridgeTypeSerializer, FridgeSerializer, FridgeViewSerializer, FridgeProductSerializer, FridgeProductViewSerializer
@@ -12,7 +11,6 @@ from core.Fridge.models import FridgeType, Fridge, FridgeProduct
 class FridgeTypeViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = FridgeType.objects.active().order_by('-name')
     serializer_class = FridgeTypeSerializer
-    permission_classes = (IsStaffPermission,)
 
 
 class FridgeViewSet(CrmMixinView, UserRelatedView, viewsets.ModelViewSet):

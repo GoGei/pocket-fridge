@@ -37,3 +37,8 @@ class Currency(models.Model):
 
     class Meta:
         db_table = 'currency'
+
+    def archive(self):
+        self.is_active = False
+        self.save()
+        return self

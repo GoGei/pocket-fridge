@@ -16,6 +16,7 @@ class ShoppingListFactory(DjangoModelFactory):
 
 class ShoppingListProductFactory(DjangoModelFactory):
     shopping_list = SubFactory(ShoppingListFactory)
+    user = SubFactory(UserFactory)
     product = SubFactory(FridgeProductFactory)
     fridge = SubFactory(FridgeFactory)
     name = FuzzyParagraph(length=64)
