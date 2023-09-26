@@ -22,7 +22,7 @@ class BaseTestCase(object):
         DETAIL = 'detail'
 
     def setUp(self) -> None:
-        self.user = self.setup_user()
+        self.setup_user()
 
         self.ver = 'v1'
         self.base_url = f'api-{self.ver}:%s-%s'
