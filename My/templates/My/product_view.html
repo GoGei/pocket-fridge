@@ -1,0 +1,20 @@
+{% extends 'My/my_base.html' %}
+{% load hosts %}
+
+{% block content %}
+  <br>
+  {% with product.fridge.id as fridge_id %}
+    <a href="{% host_url 'fridge-view' fridge_id host 'my' %}">Go to fridge</a>
+    <a href="{% host_url 'product-edit' fridge_id product.id host 'my' %}">Edit</a> <br>
+  {% endwith %}
+  <br>
+  <div id="product">
+    name: {{ product.name }}<br>
+    fridge.name: {{ product.fridge.name }}<br>
+    amount: {{ product.amount }}<br>
+    units: {{ product.units }}<br>
+    manufacture_date: {{ product.manufacture_date }}<br>
+    shelf_life_date: {{ product.shelf_life_date }}<br>
+    notes: {{ product.notes }}<br>
+  </div>
+{% endblock %}

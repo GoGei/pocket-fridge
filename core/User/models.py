@@ -13,6 +13,7 @@ from django_hosts.resolvers import reverse
 
 from core.Fridge.models import Fridge
 from core.Notifications.models import Notification
+from core.ShoppingList.models import ShoppingList
 from core.Utils.Mixins.models import CrmMixin
 
 
@@ -174,6 +175,7 @@ class User(CrmMixin, AbstractBaseUser):
         self.is_active = True
         self.save(update_fields=['is_active'])
         Fridge.create_fridges_for_user(self)
+        ShoppingList.create_shopping_list_for_user(self)
         return self
 
     @classmethod

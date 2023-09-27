@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-My part
-</body>
-</html>
+{% extends 'My/my_base.html' %}
+{% load hosts %}
+
+{% block content %}
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-12 blog-main">
+        {% include 'My/fridges_template.html' %}
+      </div>
+    </div>
+  </main>
+{% endblock %}

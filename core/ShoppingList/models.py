@@ -2,6 +2,7 @@
 The above code defines two models, ShoppingList and ShoppingListProduct, for a shopping list application.
 """
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from core.Fridge.models import FridgeProduct
 from core.Utils.Mixins.models import CrmMixin, UUIDPrimaryKeyMixin
@@ -19,6 +20,20 @@ class ShoppingList(CrmMixin, UUIDPrimaryKeyMixin):
 
     class Meta:
         db_table = 'shopping_list'
+
+    def get_products(self):
+        qs = ShoppingListProduct.objects.select_related('shopping_list', 'user', 'product', 'fridge')
+        return qs.active().filter(shopping_list=self).order_by('name')
+
+    @classmethod
+    def create_shopping_list_for_user(cls, user):
+        if cls.objects.select_related('user').active().filter(user=user).exists():
+            raise ValueError(_(f'Shopping list for user {user.email} already exists'))
+        return ShoppingList.objects.create(name='Shopping list', user=user)
+
+    @classmethod
+    def get_shopping_list(cls, user):
+        return cls.objects.select_related('user').active().filter(user=user).order_by('-created_stamp').first()
 
 
 class ShoppingListProduct(CrmMixin, UUIDPrimaryKeyMixin):

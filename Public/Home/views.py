@@ -50,7 +50,7 @@ def login_view(request):
     if user.is_authenticated:
         if next_page:
             return HttpResponseRedirect(next_page)
-        return redirect(reverse('home-index', host='public'))
+        return redirect(reverse('home-index', host='my'))
 
     initial = {'email': request.COOKIES.get('email', '')}
     form = UserLoginForm(request.POST or None, initial=initial)
@@ -71,7 +71,7 @@ def login_view(request):
                 if next_page and is_safe_url(next_page, allowed_hosts=settings.ALLOWED_HOSTS):
                     redirect_url = next_page
                 else:
-                    redirect_url = reverse('home-index', host='public')
+                    redirect_url = reverse('home-index', host='my')
                 response = HttpResponseRedirect(redirect_url)
                 response.set_cookie('email', user.email)
                 return response

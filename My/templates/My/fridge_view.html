@@ -1,0 +1,22 @@
+{% extends 'My/my_base.html' %}
+{% load hosts %}
+
+{% block content %}
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-12 blog-main">
+        <div class="blog-post">
+          {% include 'My/fridges_template.html' %}
+
+          <div>
+            {% for product in products %}
+              {{ product.name }} - {{ product.amount }} ({{ product.units }}) - {{ product.shelf_life_date }} -
+              <a href="{% host_url 'product-view' fridge_id product.id host 'my' %}">View</a>
+              <a href="{% host_url 'product-edit' fridge_id product.id host 'my' %}">Edit</a> <br>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
