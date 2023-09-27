@@ -19,7 +19,9 @@ class FridgeSerializer(serializers.ModelSerializer):
             'id',
             'name',
             'fridge_type',
+            'label',
         )
+        read_only_fields = ('id', 'label')
 
     def save(self, **kwargs):
         user = self.context.get('user')
