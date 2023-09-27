@@ -47,6 +47,7 @@ class ShoppingListProduct(CrmMixin, UUIDPrimaryKeyMixin):
     name = models.CharField(max_length=64, db_index=True)
     amount = models.DecimalField(default=1, max_digits=8, decimal_places=2)
     units = models.CharField(max_length=16, db_index=True, choices=FridgeProduct.FridgeProductUnits.choices)
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         db_table = 'shopping_list_product'

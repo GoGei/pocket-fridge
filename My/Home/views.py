@@ -70,7 +70,7 @@ def product_edit(request, fridge_id, product_id):
     if form_body.is_valid():
         product = form_body.save()
         messages.success(request, _(f'Product {product.label} was successfully edited'))
-        return redirect(reverse('product-view', kwargs={'fridge_id': fridge_id, 'product_id': product_id}, host='my'))
+        return redirect(reverse('product-view', kwargs={'fridge_id': product.fridge.id, 'product_id': product_id}, host='my'))
 
     form = {
         'body': form_body,
