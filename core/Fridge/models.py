@@ -52,6 +52,9 @@ class Fridge(CrmMixin, UUIDPrimaryKeyMixin):
             instances.add(instance.id)
         return cls.objects.filter(id__in=instances)
 
+    def get_products(self):
+        return FridgeProduct.objects.select_related('user', 'fridge').active().filter(fridge=self).order_by('name')
+
 
 class FridgeProduct(CrmMixin, UUIDPrimaryKeyMixin):
     """
@@ -81,3 +84,10 @@ class FridgeProduct(CrmMixin, UUIDPrimaryKeyMixin):
 
     class Meta:
         db_table = 'fridge_product'
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def label(self):
+        return str(self)

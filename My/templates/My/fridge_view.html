@@ -1,0 +1,26 @@
+{% extends 'My/my_base.html' %}
+{% load hosts %}
+
+{% block content %}
+  <br>
+  Fridges:
+  {% for fridge in fridge_qs %}
+    <div class="fridge-card" data-fridge-id="{{ fridge.id }}">
+      <a href="{% host_url 'fridge-view' fridge.id host 'my' %}">
+        {% if fridge_id == fridge.id %}
+          Active -
+        {% endif %}
+        {{ fridge.name }}
+      </a>
+    </div>
+  {% endfor %}
+
+  <div>
+  Products: <br>
+    {% for product in products %}
+      {{ product.name }} - {{ product.amount }} ({{ product.units }}) - {{ product.shelf_life_date }} -
+      <a href="{% host_url 'product-view' fridge_id product.id host 'my' %}">View</a> <br>
+      <a href="{% host_url 'product-edit' fridge_id product.id host 'my' %}">Edit</a> <br>
+    {% endfor %}
+  </div>
+{% endblock %}

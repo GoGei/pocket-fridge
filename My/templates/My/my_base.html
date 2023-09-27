@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static i18n hosts %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% trans 'Pocket fridge' %}</title>
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/font-awesome/css/all.css' %}">
+  <link rel="stylesheet" href="{% static 'css/font-awesome/css/fontawesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/select2.css' %}">
+
+  {% block extracss %}
+  {% endblock %}
+
+</head>
+<body>
+My part
+<a href="{% host_url 'logout' host 'my' %}">Logout</a>
+<a href="{% host_url 'home-index' host 'my' %}">Go home</a>
+<a href="{% host_url 'profile' host 'my' %}">Profile</a>
+<a href="{% host_url 'shopping-list' host 'my' %}">Shopping list</a>
+<a href="{% host_url 'fridge-add' host 'my' %}">Add product</a>
+{% block content %}
+{% endblock %}
+
+
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'js/jquery.cookie.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/select2.js' %}"></script>
+<script src="{% static 'js/holder.min.js' %}"></script>
+<script src="{% static 'js/jquery.inputmask.min.js' %}"></script>
+
+{% block extrajs %}
+{% endblock %}
+</body>
+</html>

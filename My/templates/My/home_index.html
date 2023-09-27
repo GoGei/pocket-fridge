@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-My part
-</body>
-</html>
+{% extends 'My/my_base.html' %}
+{% load hosts %}
+
+{% block content %}
+  <br>
+  Fridges:
+  {% for fridge in fridge_qs %}
+    <div>
+      <a href="{% host_url 'fridge-view' fridge.id host 'my' %}">{{ fridge.name }}</a>
+    </div>
+  {% endfor %}
+{% endblock %}
