@@ -2,11 +2,11 @@
 {% load hosts %}
 
 {% block content %}
-  <br>
-  Fridges:
-  {% for fridge in fridge_qs %}
-    <div>
-      <a href="{% host_url 'fridge-view' fridge.id host 'my' %}">{{ fridge.name }}</a>
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-12 blog-main">
+        {% include 'My/fridges_template.html' %}
+      </div>
     </div>
-  {% endfor %}
+  </main>
 {% endblock %}

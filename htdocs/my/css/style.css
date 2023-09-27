@@ -1,0 +1,10 @@
+.link-color-grey {
+    color: grey !important;
+}
+
+.home-footer {
+    bottom: 0;
+    width: 100%;
+    background: #212529;
+    color: grey;
+}
