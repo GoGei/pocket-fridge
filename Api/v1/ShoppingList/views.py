@@ -10,7 +10,7 @@ from .serializers import (
 from core.ShoppingList.models import ShoppingList, ShoppingListProduct
 
 
-class ShoppingListViewSet(CrmMixinView, UserRelatedView, viewsets.ModelViewSet):
+class ShoppingListViewSet(UserRelatedView, viewsets.ReadOnlyModelViewSet):
     queryset = ShoppingList.objects.select_related('user').active()
     serializer_class = ShoppingListSerializer
 

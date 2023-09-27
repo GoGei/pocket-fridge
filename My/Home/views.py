@@ -65,6 +65,7 @@ def product_edit(request, fridge_id, product_id):
 
     product = get_object_or_404(utils.get_fridge_products(request.user, fridge_id), id=product_id)
     form_body = FridgeProductFormEdit(request.POST or None,
+                                      user=request.user,
                                       instance=product)
     if form_body.is_valid():
         product = form_body.save()
@@ -75,7 +76,7 @@ def product_edit(request, fridge_id, product_id):
         'body': form_body,
         'buttons': {'save': True, 'cancel': True},
     }
-    return render(request, 'My/fridge_add.html', {'form': form})
+    return render(request, 'My/product_edit.html', {'form': form})
 
 
 @login_required

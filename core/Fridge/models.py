@@ -38,6 +38,13 @@ class Fridge(CrmMixin, UUIDPrimaryKeyMixin):
     class Meta:
         db_table = 'fridge'
 
+    def __str__(self):
+        return self.name
+
+    @property
+    def label(self):
+        return str(self)
+
     @classmethod
     def create_fridges_for_user(cls, user):
         qs = cls.objects.select_related('user').filter(user=user).active()
