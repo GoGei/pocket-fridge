@@ -1,13 +1,10 @@
-from django.contrib import messages
 from django.contrib.auth import logout
-from django.utils.translation import ugettext as _
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django_hosts import reverse
 
-from core.ShoppingList.models import ShoppingList
 from . import utils
-from .forms import FridgeProductFormAdd, FridgeProductFormEdit
+from .forms import FridgeProductFormAdd, FridgeProductFormEdit, ShoppingListProductFormAdd, ShoppingListProductFormEdit
 
 
 @login_required
@@ -32,7 +29,6 @@ def fridge_add(request):
                                      user=request.user)
     if form_body.is_valid():
         product = form_body.save()
-        messages.success(request, _(f'Product {product.label} was successfully added'))
         return redirect(reverse('fridge-view', kwargs={'fridge_id': product.fridge_id}, host='my'))
 
     form = {
@@ -69,8 +65,8 @@ def product_edit(request, fridge_id, product_id):
                                       instance=product)
     if form_body.is_valid():
         product = form_body.save()
-        messages.success(request, _(f'Product {product.label} was successfully edited'))
-        return redirect(reverse('product-view', kwargs={'fridge_id': product.fridge.id, 'product_id': product_id}, host='my'))
+        return redirect(
+            reverse('product-view', kwargs={'fridge_id': product.fridge.id, 'product_id': product_id}, host='my'))
 
     form = {
         'body': form_body,
@@ -80,11 +76,80 @@ def product_edit(request, fridge_id, product_id):
 
 
 @login_required
-def shopping_list(request):
-    shopping_list = ShoppingList.get_shopping_list(request.user)
+def product_delete(request, fridge_id, product_id):
+    product = get_object_or_404(utils.get_fridge_products(request.user, fridge_id), id=product_id)
+    product.get_related_shopping_list_products().update(product=None)
+    product.delete()
+    return redirect(
+        reverse('fridge-view', kwargs={'fridge_id': product.fridge.id}, host='my'))
+
+
+@login_required
+def shopping_list_view(request):
+    shopping_list = utils.get_shopping_list(request.user)
     products = utils.get_shopping_list_products(request.user, shopping_list.id)
     return render(request, 'My/shopping_list.html',
                   {'shopping_list': shopping_list, 'products': products})
+
+
+@login_required
+def shopping_list_add_product(request):
+    if '_cancel' in request.POST:
+        return redirect(reverse('shopping-list', host='my'))
+
+    form_body = ShoppingListProductFormAdd(request.POST or None,
+                                           user=request.user)
+    if form_body.is_valid():
+        form_body.save()
+        return redirect(reverse('shopping-list', host='my'))
+
+    form = {
+        'body': form_body,
+        'buttons': {'save': True, 'cancel': True},
+    }
+    return render(request, 'My/shopping_list_product_add.html', {'form': form})
+
+
+@login_required
+def shopping_list_edit_product(request, product_id):
+    if '_cancel' in request.POST:
+        return redirect(reverse('shopping-list', host='my'))
+
+    user = request.user
+    product = utils.get_shopping_list_product(user, product_id=product_id)
+    form_body = ShoppingListProductFormEdit(request.POST or None,
+                                            user=user,
+                                            instance=product)
+    if form_body.is_valid():
+        form_body.save()
+        return redirect(reverse('shopping-list', host='my'))
+
+    form = {
+        'body': form_body,
+        'buttons': {'save': True, 'cancel': True},
+    }
+    return render(request, 'My/shopping_list_product_edit.html', {'form': form})
+
+
+@login_required
+def shopping_list_check_product(request, product_id):
+    product = utils.get_shopping_list_product(request.user, product_id=product_id)
+    product.check_product()
+    return redirect(reverse('shopping-list', host='my'))
+
+
+@login_required
+def shopping_list_uncheck_product(request, product_id):
+    product = utils.get_shopping_list_product(request.user, product_id=product_id)
+    product.uncheck_product()
+    return redirect(reverse('shopping-list', host='my'))
+
+
+@login_required
+def shopping_list_delete_product(request, product_id):
+    product = utils.get_shopping_list_product(request.user, product_id=product_id)
+    product.delete()
+    return redirect(reverse('shopping-list', host='my'))
 
 
 def logout_view(request):

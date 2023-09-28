@@ -131,3 +131,7 @@ def licences(request):
         'privacy_policy': privacy_policy,
         'terms_of_use': terms_of_use
     })
+
+
+def go_to_fridge_view(request):
+    return redirect(reverse('home-index', host='my'))

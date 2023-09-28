@@ -64,7 +64,7 @@
         <form class="ps-lg-5">
           {% if request.user.is_authenticated %}
             <a class="btn btn-lg btn-primary rounded-pill order-0" type="submit"
-               href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+               href="{% url 'go-to-fridge' %}">{% trans 'Go to fridge' %}</a>
           {% else %}
             <a class="btn btn-lg btn-primary rounded-pill order-0" type="submit"
                href="{% url 'register' %}">{% trans 'Register' %}</a>

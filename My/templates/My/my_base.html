@@ -51,7 +51,9 @@
     </ul>
   </div>
 </nav>
-
+<div>
+  {% include 'base_messages.html' with messages=messages %}
+</div>
 {% block content %}
 {% endblock %}
 

@@ -4,10 +4,17 @@
 {% block content %}
   <br>
   Shopping list: {{ shopping_list.name }}
+  <a href="{% host_url 'shopping-list-add-product' host 'my' %}">Add</a>
   <div>
     Products: <br>
     {% for product in products %}
-      {{ product.name }} - {{ product.amount }} ({{ product.units }})
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+               {% if product.is_checked %}checked{% endif %}>
+      </div>
+      <a href="{% host_url 'shopping-list-edit-product' product.id host 'my' %}">
+        {{ product.name }} - {{ product.amount }} ({{ product.units }})
+      </a>
     {% endfor %}
   </div>
 {% endblock %}

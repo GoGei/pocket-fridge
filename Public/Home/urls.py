@@ -16,4 +16,5 @@ urlpatterns = [
 
     url(r'login/$', views.login_view, name='login'),
     url(r'logout/$', views.logout_view, name='logout'),
+    url(r'go-to-fridge/$', views.go_to_fridge_view, name='go-to-fridge'),
 ]
