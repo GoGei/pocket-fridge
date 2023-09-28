@@ -6,6 +6,7 @@
   {% with product.fridge.id as fridge_id %}
     <a href="{% host_url 'fridge-view' fridge_id host 'my' %}">Go to fridge</a>
     <a href="{% host_url 'product-edit' fridge_id product.id host 'my' %}">Edit</a> <br>
+    <a href="{% host_url 'product-delete' fridge_id product.id host 'my' %}">Delete</a> <br>
   {% endwith %}
   <br>
   <div id="product">

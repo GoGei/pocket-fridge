@@ -1,0 +1,14 @@
+{% extends 'My/my_base.html' %}
+{% load hosts %}
+
+{% block content %}
+  {% include 'base_form.html' with form=form %}
+{% endblock %}
+
+{% block extrajs %}
+  <script>
+    $(document).ready(function () {
+      select2RenderField($('#id_product'));
+    });
+  </script>
+{% endblock %}

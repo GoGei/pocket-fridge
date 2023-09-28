@@ -11,8 +11,9 @@
           <div>
             {% for product in products %}
               {{ product.name }} - {{ product.amount }} ({{ product.units }}) - {{ product.shelf_life_date }} -
-              <a href="{% host_url 'product-view' fridge_id product.id host 'my' %}">View</a>
-              <a href="{% host_url 'product-edit' fridge_id product.id host 'my' %}">Edit</a> <br>
+              <a href="{% host_url 'product-view' product.fridge.id product.id host 'my' %}">View</a>
+              <a href="{% host_url 'product-edit' product.fridge.id product.id host 'my' %}">Edit</a>
+              <a href="{% host_url 'product-delete' product.fridge.id product.id host 'my' %}">Delete</a> <br>
             {% endfor %}
           </div>
         </div>

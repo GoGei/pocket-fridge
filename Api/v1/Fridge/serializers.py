@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from Api.fields import UserPrimaryKeyRelatedField
 from core.Fridge.models import FridgeType, Fridge, FridgeProduct
 
 
@@ -47,7 +48,9 @@ class FridgeProductSerializer(serializers.ModelSerializer):
             'manufacture_date',
             'shelf_life_date',
             'notes',
+            'label',
         )
+        read_only_fields = ('id', 'label')
 
     def save(self, **kwargs):
         context = self.context
@@ -58,15 +61,36 @@ class FridgeProductSerializer(serializers.ModelSerializer):
         return super().save(**kwargs)
 
 
-class FridgeProductViewSerializer(serializers.ModelSerializer):
+class FridgeProductViewSerializer(FridgeProductSerializer):
+    class Meta(FridgeProductSerializer.Meta):
+        fields = read_only_fields = FridgeProductSerializer.Meta.fields
+
+
+class ProductSerializer(FridgeProductSerializer):
+    fridge = UserPrimaryKeyRelatedField(queryset=Fridge.objects.select_related('user').all())
+
     class Meta:
         model = FridgeProduct
-        fields = read_only_fields = (
+        fields = (
             'id',
+            'fridge',
             'name',
             'amount',
             'units',
             'manufacture_date',
             'shelf_life_date',
             'notes',
+            'label',
         )
+        read_only_fields = ('id', 'label')
+
+    def save(self, **kwargs):
+        context = self.context
+        user = context.get('user')
+        kwargs.update({'user': user})
+        return super().save(**kwargs)
+
+
+class ProductViewSerializer(ProductSerializer):
+    class Meta(ProductSerializer.Meta):
+        fields = read_only_fields = ProductSerializer.Meta.fields

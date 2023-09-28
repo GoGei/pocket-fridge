@@ -4,6 +4,7 @@ This code defines three models: FridgeType, Fridge, and FridgeProduct.
 from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
+
 from core.Utils.Mixins.models import CrmMixin, UUIDPrimaryKeyMixin, SlugifyMixin
 
 
@@ -98,3 +99,7 @@ class FridgeProduct(CrmMixin, UUIDPrimaryKeyMixin):
     @property
     def label(self):
         return str(self)
+
+    def get_related_shopping_list_products(self):
+        from core.ShoppingList.models import ShoppingListProduct
+        return ShoppingListProduct.objects.select_related('product').filter(product=self)
