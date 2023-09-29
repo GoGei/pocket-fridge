@@ -3,8 +3,15 @@
 
 {% block content %}
   <div>
- {{ user.email }}
- {{ user.first_name }}
- {{ user.last_name }}
+    {{ user.email }} <br>
+    {{ user.first_name }} <br>
+    {{ user.last_name }} <br>
   </div>
+
+  <a href="{{ user_guide_url }}" type="button" target="_blank" class="btn btn-primary">User guide</a>
+  <a href="{{ licences_url }}" type="button" target="_blank" class="btn btn-success">Licences</a>
+  <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Data export will be provided later">
+  <a href="#" type="button" class="btn btn-secondary" disabled="">Data export</a>
+  </span>
+  <a href="{{ report_error_url }}" type="button" target="_blank" class="btn btn-warning">Report error</a>
 {% endblock %}

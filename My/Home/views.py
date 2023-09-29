@@ -1,6 +1,7 @@
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.conf import settings
 from django_hosts import reverse
 
 from . import utils
@@ -17,7 +18,14 @@ def home_index(request):
 
 @login_required
 def profile(request):
-    return render(request, 'My/profile.html')
+    user_guide_url = settings.USER_GUIDE_URL
+    licences_url = settings.LICENCES_URL
+    report_error_url = settings.REPORT_ERROR_URL
+    return render(request, 'My/profile.html', {
+        'user_guide_url': user_guide_url,
+        'licences_url': licences_url,
+        'report_error_url': report_error_url,
+    })
 
 
 @login_required
