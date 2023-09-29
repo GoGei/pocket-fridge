@@ -35,7 +35,7 @@ def runserver(c):
 def dumpdb(c, user='postgres'):
     db_name = dj_settings.DATABASES['default']['NAME']
 
-    date = datetime.now().strftime("%Y-%m-%d_%H%M")
+    date = datetime.now().strftime("%Y-%m-%d_%H%M%S")
     dump_name = f'dumps/{db_name}_{date}.sql'
 
     with c.prefix(VIRTUAL_ENV_ACTIVATE):
@@ -51,8 +51,8 @@ def restoredb(c):
 
     with c.prefix(VIRTUAL_ENV_ACTIVATE):
         with c.cd(PROJECT_ROOT):
-            with c.lcd('dumps'):
-                last_dump = 'dumps/' + c.run('ls -1tr', capture=True).stdout.strip().split('\n')[-1]
+            with c.cd('dumps'):
+                last_dump = 'dumps/' + c.run('ls -1tr').stdout.strip().split('\n')[-1]
             c.run(f'sudo psql -U {db_user} -d {db_name} < {last_dump}')
 
 

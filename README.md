@@ -44,3 +44,30 @@ Copy settings
 ```bash
 cp config/settings_example.py config/settings.py
 ```
+
+## Useful commands
+
+### Launch server
+```bash
+fab runserver
+```
+
+### Run async tasks
+```bash
+fab celeryd
+```
+
+### Create class diagram of DB
+```bash
+fab creategraphmodels
+```
+
+### Check with flake8
+```bash
+fab check
+```
+
+### Deploy local
+```bash
+fab deploylocal
+```

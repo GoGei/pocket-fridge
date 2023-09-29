@@ -6,7 +6,6 @@ from django.utils.translation import gettext_lazy as _
 
 from core.Fridge.models import FridgeProduct
 from core.Utils.Mixins.models import CrmMixin, UUIDPrimaryKeyMixin
-from core.Fridge.models import FridgeProduct
 
 
 class ShoppingList(CrmMixin, UUIDPrimaryKeyMixin):

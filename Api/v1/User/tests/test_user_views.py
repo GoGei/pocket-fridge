@@ -1,5 +1,4 @@
 from django.test import TestCase
-from rest_framework import status
 
 from core.User.factories import UserFactory
 from Api.v1.tests.base_test_case import ReadOnlyViewSetMixinTestCase

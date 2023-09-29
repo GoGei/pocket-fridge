@@ -30,7 +30,8 @@ It inherits from the CrmMixin and SlugifyMixin classes, which provide additional
 
 class Fridge(CrmMixin, UUIDPrimaryKeyMixin):
     """
-    The Fridge model represents a fridge and has a name field, a foreign key to the User model, and a foreign key to the FridgeType model.
+    The Fridge model represents a fridge and has a name field, a foreign key to the User model, and a
+    foreign key to the FridgeType model.
     """
     name = models.CharField(max_length=64)
     user = models.ForeignKey('User.User', on_delete=models.PROTECT)

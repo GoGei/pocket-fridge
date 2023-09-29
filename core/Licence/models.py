@@ -14,8 +14,8 @@ class LicenceVersion(CrmMixin, SlugifyMixin):
     The LicenceVersion model represents a version of a license.
     """
     SLUGIFY_FIELD = 'name'
-    name = models.CharField(max_length=8, db_index=True)
-    is_default = models.BooleanField(default=True, db_index=True)
+    name = models.CharField(max_length=32, db_index=True)
+    is_default = models.BooleanField(default=False, db_index=True)
 
     class Meta:
         db_table = 'licence_version'

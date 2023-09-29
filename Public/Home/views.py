@@ -117,7 +117,7 @@ def forgot_password_reset(request, key):
         user.save()
         User.clear_forgot_password_keys(key)
         login(request, user)
-        return redirect(reverse('home-index', host='public'))
+        return redirect(reverse('home-index', host='my'))
 
     return render(request, 'Public/auth/auth-forgot-password-reset.html', {'form': form})
 
