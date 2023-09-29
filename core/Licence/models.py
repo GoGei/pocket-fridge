@@ -58,6 +58,8 @@ class Licence(CrmMixin, UUIDPrimaryKeyMixin):
     @classmethod
     def sign_licence_agreement(cls, user):
         version = LicenceVersion.get_default()
+        if not version:
+            return None
         return cls(user=user, version=version, signed_stamp=timezone.now()).save()
 
 

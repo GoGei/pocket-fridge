@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static i18n hosts %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% trans 'Pocket fridge' %}</title>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <meta name="description" content=""/>
+  <meta name="author" content=""/>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+  <link rel="stylesheet" href="{% static 'css/font-awesome/css/all.css' %}">
+  <link rel="stylesheet" href="{% static 'css/select2.css' %}">
+  <link rel="stylesheet" href="{% static 'my/css/style.css' %}">
+
+  {% block extracss %}
+  {% endblock %}
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="{% static 'images/brand_image.png' %}" width="40" height="40" alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% host_url 'logout' host 'my' %}">Logout</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% host_url 'home-index' host 'my' %}">Go home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% host_url 'profile' host 'my' %}">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% host_url 'shopping-list' host 'my' %}">Shopping list</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% host_url 'fridge-add' host 'my' %}">Add product</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div>
+  {% include 'base_messages.html' with messages=messages %}
+</div>
+MY TESTS
+{% block content %}
+{% endblock %}
+
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'js/jquery.cookie.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'js/select2.js' %}"></script>
+<script src="{% static 'js/holder.min.js' %}"></script>
+<script src="{% static 'js/jquery.inputmask.min.js' %}"></script>
+
+<script src="{% static 'my/js/my.js' %}"></script>
+<script src="{% static 'my/js/select2-render-field.js' %}"></script>
+
+{% block extrajs %}
+{% endblock %}
+</body>
+</html>
