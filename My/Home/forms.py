@@ -121,7 +121,9 @@ class ShoppingListProductFormAdd(ShoppingListProductForm):
         widget=forms.Select(
             attrs={'class': 'form-control select2',
                    'placeholder': _('Select a product'),
-                   'data-ajax-url': reverse('api-v1:product-list', host='api')}
+                   'data-ajax-url': reverse('api-v1:product-list', host='api'),
+                   'data-base-url': reverse('api-v1:product-list', host='api'),  # base URL to get detail view
+                   }
         ))
 
     def __init__(self, *args, **kwargs):

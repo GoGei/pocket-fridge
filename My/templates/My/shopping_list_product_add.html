@@ -9,7 +9,24 @@
   <script>
     $(document).ready(function () {
       select2RenderField($('#id_product'));
-      // TODO on select product load data of form
+    });
+
+    $('#id_product').on('select2:select', function (e) {
+      let selectedValue = e.params.data.id;
+
+      let url = `${$(this).data('base-url')}${selectedValue}/`
+      $.ajax({
+        url: url,
+        type: 'GET',
+        success: function (data) {
+          $('#id_name').val(data.name);
+          $('#id_amount').val(data.amount);
+          $('#id_units').val(data.units);
+        },
+        error: function (xhr, status, error) {
+          console.error(error);
+        }
+      });
     });
   </script>
 {% endblock %}
