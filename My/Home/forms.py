@@ -28,8 +28,9 @@ class FridgeProductForm(forms.ModelForm, BaseProductValidationForm):
                    'placeholder': _('Select a fridge'),
                    'data-ajax-url': reverse('api-v1:fridge-list', host='api')}
         ))
-    notes = forms.CharField(widget=forms.Textarea(
-        attrs={'class': 'form-control', 'placeholder': _('Notes'), 'rows': 3, 'cols': 50}))
+    notes = forms.CharField(required=False,
+                            widget=forms.Textarea(
+                                attrs={'class': 'form-control', 'placeholder': _('Notes'), 'rows': 3, 'cols': 50}))
 
     manufacture_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     shelf_life_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
@@ -121,7 +122,9 @@ class ShoppingListProductFormAdd(ShoppingListProductForm):
         widget=forms.Select(
             attrs={'class': 'form-control select2',
                    'placeholder': _('Select a product'),
-                   'data-ajax-url': reverse('api-v1:product-list', host='api')}
+                   'data-ajax-url': reverse('api-v1:product-list', host='api'),
+                   'data-base-url': reverse('api-v1:product-list', host='api'),  # base URL to get detail view
+                   }
         ))
 
     def __init__(self, *args, **kwargs):

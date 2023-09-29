@@ -23,7 +23,7 @@ class ShoppingList(CrmMixin, UUIDPrimaryKeyMixin):
 
     def get_products(self):
         qs = ShoppingListProduct.objects.select_related('shopping_list', 'user', 'product', 'fridge')
-        return qs.active().filter(shopping_list=self).order_by('is_checked', 'name')
+        return qs.active().filter(shopping_list=self).order_by('-is_checked', 'name')
 
     @classmethod
     def create_shopping_list_for_user(cls, user):

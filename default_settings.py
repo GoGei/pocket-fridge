@@ -270,3 +270,7 @@ CELERY_QUEUES = {
 register_connection(alias='notification',
                     host='mongodb://127.0.0.1:27017/pocketfridge_notification',
                     w=0)
+
+USER_GUIDE_URL = 'https://example.com/'
+LICENCES_URL = 'https://example.com/'
+REPORT_ERROR_URL = 'https://example.com/'
