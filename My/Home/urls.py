@@ -23,4 +23,6 @@ urlpatterns = [
          name='shopping-list-uncheck-product'),
     path(r'shopping-list/<uuid:product_id>/delete/', views.shopping_list_delete_product,
          name='shopping-list-delete-product'),
+
+    url(r'test/$', views.test_view, name='home-test-me'),
 ]

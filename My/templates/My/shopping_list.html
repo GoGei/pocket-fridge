@@ -9,6 +9,7 @@
     Products: <br>
     {% for product in products %}
       <div class="form-check">
+        <!-- TODO on check-uncheck make AJAX request -->
         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
                {% if product.is_checked %}checked{% endif %}>
       </div>
