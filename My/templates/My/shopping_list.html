@@ -32,6 +32,9 @@
         <a href="{% host_url 'shopping-list-edit-product' product.id host 'my' %}">
           <p class="product-name" data-is-checked="{% if product.is_checked %}checked{% endif %}">{{ product.name }}</p>
           - {{ product.amount }} ({{ product.units }})
+          <a href="{% host_url 'shopping-list-delete-product' product.id host 'my' %}"
+             class="product-delete"
+             {% if product.is_checked %}hidden{% endif %}>Remove</a>
         </a>
       </div>
 
@@ -44,6 +47,13 @@
   <script>
     $('.product-selected').on('click', function (e) {
       let url = $(this).data('action-url');
+
+      let productRemoveButton = $(this).closest('.form-check').find('.product-delete');
+      if ($(this).is(':checked')) {
+        productRemoveButton.attr('hidden', 'hidden');
+      } else {
+        productRemoveButton.removeAttr('hidden');
+      }
 
       $.ajax({
         url: url,
