@@ -69,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -129,8 +130,17 @@ LANGUAGE_FALLBACK_CODE = 'en-es'
 
 LANGUAGES = (
     ('en', _('English')),
-    ('ru', _('Russian')),
+    # ('ru', _('Russian')),
     ('uk', _('Ukrainian')),
+)
+LOCALE_PATHS = (
+    # os.path.join(BASE_DIR, 'locale'),
+
+    os.path.join(BASE_DIR, 'Api/locale'),
+    os.path.join(BASE_DIR, 'Manager/locale'),
+    os.path.join(BASE_DIR, 'core/locale'),
+    os.path.join(BASE_DIR, 'My/locale'),
+    os.path.join(BASE_DIR, 'Public/locale'),
 )
 DEFAULT_LANGUAGE = 'en'
 

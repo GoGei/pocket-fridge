@@ -1,12 +1,11 @@
 <form action="{{ form.action_url }}" method="{{ form.method|default:'post' }}" novalidate class="{{ form.form_class }}">
-    {% csrf_token %}
-    {% include 'base_non_field_error_block.html' with form=form.body %}
-    {{ form.body.media }}
-    {% for field in form.body %}
-        {% include 'base_form_field.html' with field=field inline_form=inline_form %}
-    {% endfor %}
-    <div class="form_buttons">
-        {% include 'base_buttons.html' with buttons=form.buttons %}
-    </div>
-    
+  {% csrf_token %}
+  {% include 'base_non_field_error_block.html' with form=form.body %}
+  {{ form.body.media }}
+  {% for field in form.body %}
+    {% include 'base_form_field.html' with field=field inline_form=inline_form %}
+  {% endfor %}
+  <div class="form_buttons">
+    {% include 'base_buttons.html' with buttons=form.buttons %}
+  </div>
 </form>

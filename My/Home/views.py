@@ -30,8 +30,3 @@ def profile(request):
 def logout_view(request):
     logout(request)
     return redirect(reverse('login', host='public'))
-
-
-@login_required
-def test_view(request):
-    return render(request, 'My/test_test.html')

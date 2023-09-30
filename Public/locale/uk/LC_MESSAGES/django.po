@@ -1,0 +1,188 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-30 14:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+msgid "Email"
+msgstr "Електронна пошта"
+
+msgid "Enter your email"
+msgstr "Введіть свою електронну пошту"
+
+msgid "First name"
+msgstr "Ім'я"
+
+msgid "Enter your first name"
+msgstr "Введіть своє ім'я"
+
+msgid "Last name"
+msgstr "Прізвище"
+
+msgid "Enter your last name"
+msgstr "Введіть своє прізвище"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Confirm password"
+msgstr "Підтвердіть пароль"
+
+msgid "Passwords do not match"
+msgstr "Паролі не співпадають"
+
+msgid "Email address"
+msgstr "Адреса електронної пошти"
+
+msgid "Remember me"
+msgstr "Запам'ятати мене"
+
+msgid "User with this email not found"
+msgstr "Користувача з цією адресою електронної пошти не знайдено"
+
+msgid "For this key user not found"
+msgstr "Користувача з цим ключем не знайдено"
+
+msgid "User is not active! Please, contact a manager"
+msgstr "Користувач не активний! Будь ласка, зв'яжіться з менеджером"
+
+msgid "User with this email and password not found"
+msgstr "Користувача з цією адресою електронної пошти та паролем не знайдено"
+
+msgid "Pocket fridge"
+msgstr "Кишеньковий холодильник"
+
+msgid "Back to home"
+msgstr "Повернутися на головну"
+
+msgid "Reset password"
+msgstr "Скинути пароль"
+
+msgid "Forgot password success"
+msgstr "Успішно забули пароль"
+
+#, fuzzy
+#| msgid "Keep in touch with us!"
+msgid "keep in touch with us!"
+msgstr "Залишайтесь з нами на зв'язку!"
+
+#, fuzzy
+#| msgid ""
+#| "Activation link was sent to your email. Please, follow this letter to "
+#| "reset password of your account"
+msgid ""
+"Activation link was send to your email. Please, follow this letter to reset "
+"password of your account"
+msgstr ""
+"Посилання на активацію було надіслано на вашу електронну пошту. Будь ласка, "
+"слідуйте за цим листом, щоб скинути пароль вашого облікового запису"
+
+msgid "Forgot password"
+msgstr "Забули пароль"
+
+msgid "Forgot Password?"
+msgstr "Забули пароль?"
+
+msgid "Enter your email and we'll send you instructions to reset your password"
+msgstr ""
+"Введіть свою електронну пошту, і ми надішлемо вам інструкції щодо скидання "
+"пароля"
+
+msgid "Send Reset Link"
+msgstr "Надіслати посилання на скидання"
+
+msgid "Already have an account?"
+msgstr "Вже є обліковий запис?"
+
+msgid "Sign in instead"
+msgstr "Увійти замість цього"
+
+msgid "Login"
+msgstr "Увійти"
+
+msgid "Welcome to Pocket fridge!"
+msgstr "Ласкаво просимо до Кишенькового холодильника!"
+
+msgid "Please sign-in to your account and start the adventure"
+msgstr "Будь ласка, увійдіть до свого облікового запису та розпочніть пригоду"
+
+msgid "Sign in"
+msgstr "Увійти"
+
+msgid "New on our platform?"
+msgstr "Новий на нашій платформі?"
+
+msgid "Create an account"
+msgstr "Створити обліковий запис"
+
+msgid "Registration success"
+msgstr "Успішна реєстрація"
+
+msgid "Thanks for registration!"
+msgstr "Дякуємо за реєстрацію!"
+
+#, fuzzy
+#| msgid ""
+#| "Activation link was sent to your email. Please, follow this letter to "
+#| "activate your account"
+msgid ""
+"Activation link was send to your email. Please, follow this letter to "
+"activate your account"
+msgstr ""
+"Посилання на активацію було надіслано на вашу електронну пошту. Будь ласка, "
+"слідуйте за цим листом, щоб активувати свій обліковий запис"
+
+msgid "Registration"
+msgstr "Реєстрація"
+
+msgid "Adventure starts here"
+msgstr "Пригода починається тут"
+
+msgid "Make your fridge management easy and fun!"
+msgstr "Зробіть управління вашим холодильником легким і веселим!"
+
+msgid "I agree to"
+msgstr "Я погоджуюся з"
+
+#, fuzzy
+#| msgid "Privacy policy & terms"
+msgid "privacy policy & terms"
+msgstr "Політикою конфіденційності та умовами"
+
+msgid "Sign up"
+msgstr "Зареєструватися"
+
+msgid "Go to fridge"
+msgstr "Перейти до холодильника"
+
+msgid "Register"
+msgstr "Зареєструватися"
+
+msgid "Privacy policy & Terms"
+msgstr "Політика конфіденційності та Умови використання"
+
+msgid "Privacy policy"
+msgstr "Політика конфіденційності"
+
+msgid "Not provided yet"
+msgstr "Поки не надано"
+
+msgid "Terms of use"
+msgstr "Умови використання"

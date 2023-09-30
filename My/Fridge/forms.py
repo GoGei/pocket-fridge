@@ -8,18 +8,25 @@ from My.forms import BaseProductValidationForm
 
 class FridgeProductForm(forms.ModelForm, BaseProductValidationForm):
     fridge = forms.ModelChoiceField(
+        label=_('Fridge'),
         queryset=Fridge.objects.select_related('user').active(),
         widget=forms.Select(
             attrs={'class': 'form-control select2',
                    'placeholder': _('Select a fridge'),
                    'data-ajax-url': reverse('api-v1:fridge-list', host='api')}
         ))
-    notes = forms.CharField(required=False,
-                            widget=forms.Textarea(
-                                attrs={'class': 'form-control', 'placeholder': _('Notes'), 'rows': 3, 'cols': 50}))
+    notes = forms.CharField(
+        label=_('Notes'),
+        required=False,
+        widget=forms.Textarea(
+            attrs={'class': 'form-control', 'placeholder': _('Leave your notes'), 'rows': 3, 'cols': 50}))
 
-    manufacture_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    shelf_life_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    manufacture_date = forms.DateField(
+        label=_('Manufacture date'),
+        widget=forms.DateInput(attrs={'type': 'date'}))
+    shelf_life_date = forms.DateField(
+        label=_('Shelf life date'),
+        widget=forms.DateInput(attrs={'type': 'date'}))
 
     class Meta:
         model = FridgeProduct
@@ -37,6 +44,10 @@ class FridgeProductForm(forms.ModelForm, BaseProductValidationForm):
         self.user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
         self.fields['fridge'].queryset = Fridge.objects.select_related('user').active().filter(user=self.user)
+
+        self.fields['name'].label = _('Product name')
+        self.fields['amount'].label = _('Amount')
+        self.fields['units'].label = _('Units')
 
     def clean_notes(self):
         data = self.cleaned_data

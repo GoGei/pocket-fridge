@@ -24,3 +24,13 @@ $(document).ready(function () {
 });
 
 const DEFAULT_PAGE_SIZE = 15;
+
+$('.language-selector').on('click', function (e) {
+    e.preventDefault(); // Prevent the default link behavior
+    let languageCode = $(this).data('lang');
+    $('#select-language').append($('<input>').attr({
+        type: 'hidden',
+        name: 'language',
+        value: languageCode
+    })).submit();
+});
