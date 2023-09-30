@@ -28,6 +28,7 @@ def shopping_list_add_product(request):
     form = {
         'body': form_body,
         'buttons': {'save': True, 'cancel': True},
+        'form_class': 'shopping_list_add_product',
     }
     return render(request, 'My/ShoppingList/shopping_list_product_add.html', {'form': form})
 

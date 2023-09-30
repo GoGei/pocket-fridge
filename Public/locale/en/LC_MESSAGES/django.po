@@ -1,0 +1,167 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-30 14:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Email"
+msgstr ""
+
+msgid "Enter your email"
+msgstr ""
+
+msgid "First name"
+msgstr ""
+
+msgid "Enter your first name"
+msgstr ""
+
+msgid "Last name"
+msgstr ""
+
+msgid "Enter your last name"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Confirm password"
+msgstr ""
+
+msgid "Passwords do not match"
+msgstr ""
+
+msgid "Email address"
+msgstr ""
+
+msgid "Remember me"
+msgstr ""
+
+msgid "User with this email not found"
+msgstr ""
+
+msgid "For this key user not found"
+msgstr ""
+
+msgid "User is not active! Please, contact a manager"
+msgstr ""
+
+msgid "User with this email and password not found"
+msgstr ""
+
+msgid "Pocket fridge"
+msgstr ""
+
+msgid "Back to home"
+msgstr ""
+
+msgid "Reset password"
+msgstr ""
+
+msgid "Forgot password success"
+msgstr ""
+
+msgid "keep in touch with us!"
+msgstr ""
+
+msgid ""
+"Activation link was send to your email. Please, follow this letter to reset "
+"password of your account"
+msgstr ""
+
+msgid "Forgot password"
+msgstr ""
+
+msgid "Forgot Password?"
+msgstr ""
+
+msgid "Enter your email and we'll send you instructions to reset your password"
+msgstr ""
+
+msgid "Send Reset Link"
+msgstr ""
+
+msgid "Already have an account?"
+msgstr ""
+
+msgid "Sign in instead"
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "Welcome to Pocket fridge!"
+msgstr ""
+
+msgid "Please sign-in to your account and start the adventure"
+msgstr ""
+
+msgid "Sign in"
+msgstr ""
+
+msgid "New on our platform?"
+msgstr ""
+
+msgid "Create an account"
+msgstr ""
+
+msgid "Registration success"
+msgstr ""
+
+msgid "Thanks for registration!"
+msgstr ""
+
+msgid ""
+"Activation link was send to your email. Please, follow this letter to "
+"activate your account"
+msgstr ""
+
+msgid "Registration"
+msgstr ""
+
+msgid "Adventure starts here"
+msgstr ""
+
+msgid "Make your fridge management easy and fun!"
+msgstr ""
+
+msgid "I agree to"
+msgstr ""
+
+msgid "privacy policy & terms"
+msgstr ""
+
+msgid "Sign up"
+msgstr ""
+
+msgid "Go to fridge"
+msgstr ""
+
+msgid "Register"
+msgstr ""
+
+msgid "Privacy policy & Terms"
+msgstr ""
+
+msgid "Privacy policy"
+msgstr ""
+
+msgid "Not provided yet"
+msgstr ""
+
+msgid "Terms of use"
+msgstr ""

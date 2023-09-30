@@ -67,6 +67,7 @@ def deploylocal(c, branch=None):
         c.run('pip3 install -r requirements.txt')
         c.run('./manage.py migrate')
         c.run('./manage.py collectstatic --noinput')
+        c.run('./manage.py compilemessages')
 
 
 @task
@@ -97,3 +98,28 @@ def celeryd(c):
     with c.prefix(VIRTUAL_ENV_ACTIVATE):
         with c.cd(PROJECT_ROOT):
             c.run('celery -A celery_run worker -l DEBUG -c 8 -Q celery', pty=True)
+
+
+@task
+def compilemessages(c):
+    with c.prefix(VIRTUAL_ENV_ACTIVATE):
+        # c.run('./manage.py compilemessages --ignore=env')
+        c.run('./manage.py compilemessages')
+
+
+@task
+def makemessages(c, folder=None):
+    with c.prefix(VIRTUAL_ENV_ACTIVATE):
+        if folder:
+            command = '../manage.py makemessages --no-location --ignore env'
+            for lang in dj_settings.LANGUAGES:
+                command = '%s -l %s' % (command, lang[0])
+            with c.cd(folder):
+                c.run('pwd')
+                c.run(command)
+        else:
+            for locale_path in dj_settings.LOCALE_PATHS:
+                _PATH = os.path.join(locale_path, '..')
+                with c.cd(_PATH):
+                    c.run('pwd')
+                    c.run('../manage.py makemessages --no-location -a')

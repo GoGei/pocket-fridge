@@ -1,0 +1,191 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-30 14:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+msgid "Name"
+msgstr "Назва"
+
+msgid "Code"
+msgstr "Код"
+
+msgid "Number"
+msgstr "Номер"
+
+msgid "Day"
+msgstr "День"
+
+msgid "Month"
+msgstr "Місяць"
+
+msgid "Year"
+msgstr "Рік"
+
+msgid "Licensed"
+msgstr "Ліцензовано"
+
+msgid "Charge automatically"
+msgstr "Автоматичне нарахування плати"
+
+msgid "Send invoice"
+msgstr "Надіслати рахунок"
+
+msgid "Incomplete"
+msgstr "Незавершений"
+
+msgid "Incomplete expired"
+msgstr "Незавершений (закінчився строк)"
+
+msgid "Trialing"
+msgstr "Тестовий період"
+
+msgid "Active"
+msgstr "Активний"
+
+msgid "Past due"
+msgstr "Прострочений"
+
+msgid "Canceled"
+msgstr "Скасований"
+
+msgid "Unpaid"
+msgstr "Не оплачений"
+
+msgid "Draft"
+msgstr "Чернетка"
+
+msgid "Open"
+msgstr "Відкрито"
+
+msgid "Paid"
+msgstr "Оплачено"
+
+msgid "Void"
+msgstr "Скасовано"
+
+msgid "Uncollectible"
+msgstr "Незібрана сума"
+
+msgid "Requires payment method"
+msgstr "Потрібний спосіб оплати"
+
+msgid "Requires confirmation"
+msgstr "Потрібне підтвердження"
+
+msgid "Requires action"
+msgstr "Потрібна дія"
+
+msgid "Processing"
+msgstr "Обробка"
+
+msgid "Requires capture"
+msgstr "Потрібен захоплення"
+
+msgid "Succeeded"
+msgstr "Успішно"
+
+#, python-brace-format
+msgid "Fridges for user {user.email} already exists"
+msgstr ""
+
+msgid "Gr"
+msgstr "гр."
+
+msgid "KG"
+msgstr "кг"
+
+msgid "ML"
+msgstr "мл"
+
+msgid "L"
+msgstr "л"
+
+msgid "Items"
+msgstr "Предмети"
+
+msgid "Licence {self.name}"
+msgstr "Ліцензія {self.name}"
+
+msgid "Shopping list for user {user.email} already exists"
+msgstr ""
+
+msgid "Search"
+msgstr "Пошук"
+
+msgid "Is active"
+msgstr "Активний"
+
+msgid "Select"
+msgstr "Вибрати"
+
+msgid "Not active"
+msgstr "Не активний"
+
+msgid "Is filled"
+msgstr "Заповнений"
+
+msgid "Filled"
+msgstr "Заповнено"
+
+msgid "Not filled"
+msgstr "Не заповнено"
+
+msgid "Value does not contains uppercase letters"
+msgstr "Значення не містить великих літер"
+
+msgid "Value does not contains lowercase letters"
+msgstr "Значення не містить маленьких літер"
+
+msgid "Value does not contains special characters"
+msgstr "Значення не містить спеціальних символів"
+
+msgid "Value does not contains digits"
+msgstr "Значення не містить цифр"
+
+msgid "Save"
+msgstr "Сохранити"
+
+msgid "Cancel"
+msgstr "Скасований"
+
+msgid "Close"
+msgstr "Закрити"
+
+msgid "Submit"
+msgstr "Відправити"
+
+msgid "Data with such filters not found!"
+msgstr "Дані з такими фільтрами не знайдено!"
+
+msgid "Share"
+msgstr "Поділитися"
+
+msgid "Print"
+msgstr "Друк"
+
+msgid "Export"
+msgstr "Експорт"
+
+msgid "There is no data in the table"
+msgstr "У таблиці немає даних"
+
+msgid "Go to home"
+msgstr "Перейти на головну"

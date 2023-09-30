@@ -1,45 +1,74 @@
 {% extends 'My/my_base.html' %}
-{% load hosts %}
+{% load hosts i18n %}
 
 {% block content %}
-  <br>
-  Shopping list: {{ shopping_list.name }}
-  <a href="{% host_url 'shopping-list-add-product' host 'my' %}">Add</a>
 
-  <div class="input-group">
-    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-           aria-describedby="search-addon" id="searchTextInput"/>
-    <select class="form-select" id="filterIsActive">
-      <option selected>Filter</option>
-      <option value="checked">Need to by</option>
-      <option value="not-checked">Bought</option>
-    </select>
-  </div>
-
-  <div class="products-div">
-    Products: <br>
-    {% for product in products %}
-      <div class="form-check product-div">
-        <div>
-          <input class="form-check-input product-selected" type="checkbox"
-                 data-action-url="{% if product.is_checked %}
-                                      {% host_url 'shopping-list-uncheck-product' product.id host 'my' %}
-                                      {% else %}
-                                      {% host_url 'shopping-list-check-product' product.id host 'my' %}
-                                      {% endif %}"
-                 {% if product.is_checked %}checked{% endif %}>
+  <section class="section-shopping_list">
+    <div class="row">
+      <div class="container-shopping_list">
+        <div class="shopping_list-title">
+          <h3>
+            {% trans 'Shopping list' %}: {{ shopping_list.name }}
+          </h3>
         </div>
-        <a href="{% host_url 'shopping-list-edit-product' product.id host 'my' %}">
-          <p class="product-name" data-is-checked="{% if product.is_checked %}checked{% endif %}">{{ product.name }}</p>
-          - {{ product.amount }} ({{ product.units }})
-          <a href="{% host_url 'shopping-list-delete-product' product.id host 'my' %}"
-             class="product-delete"
-             {% if product.is_checked %}hidden{% endif %}>Remove</a>
-        </a>
-      </div>
+        <button class="shopping_list-add">
+          <a href="{% host_url 'shopping-list-add-product' host 'my' %}">{% trans 'Add new product' %}</a>
+        </button>
+        <div class="input-group">
+          <input type="search" class="form-control rounded" placeholder="{% trans 'Search' %}" aria-label="Search"
+                 aria-describedby="search-addon" id="searchTextInput"/>
+          <select class="form-select" id="filterIsActive">
+            <option selected>{% trans 'Filter' %}</option>
+            <option value="checked">{% trans 'Need to by' %}</option>
+            <option value="not-checked">{% trans 'Bought' %}</option>
+          </select>
+        </div>
 
-    {% endfor %}
-  </div>
+
+        <div class="products-div">
+          {% for product in products %}
+            <div class="form-check product-div">
+              <input class="form-check-input product-selected" type="checkbox"
+                     data-action-url="{% if product.is_checked %}
+                                            {% host_url 'shopping-list-uncheck-product' product.id host 'my' %}
+                                            {% else %}
+                                            {% host_url 'shopping-list-check-product' product.id host 'my' %}
+                                            {% endif %}"
+                     {% if product.is_checked %}checked{% endif %}>
+              <a href="{% host_url 'shopping-list-edit-product' product.id host 'my' %}" class="product_name">
+                <span
+                    class="product-name product-name-label {% if not product.is_checked %}product-name-crossed{% endif %}"
+                    data-is-checked="{% if product.is_checked %}checked{% else %}unchecked{% endif %}">
+                  {{ product.name }}
+                </span>
+                <span class="product-name-label {% if not product.is_checked %}product-name-crossed{% endif %}">
+                  {{ product.amount }} {{ product.get_units_display }}
+                </span>
+                <a href="{% host_url 'shopping-list-delete-product' product.id host 'my' %}"
+                   class="product-delete"
+                   {% if product.is_checked %}hidden{% endif %}>
+
+                  <svg width="25" height="25" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 21C16.5 21 21 16.5 21 11C21 5.5 16.5 1 11 1C5.5 1 1 5.5 1 11C1 16.5 5.5 21 11 21Z"
+                          stroke="#B6E0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8.16992 13.8299L13.8299 8.16992" stroke="#B6E0FF" stroke-width="3" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M13.8299 13.8299L8.16992 8.16992" stroke="#B6E0FF" stroke-width="3" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                  </svg>
+
+                </a>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
 {% endblock %}
 
 
@@ -48,11 +77,19 @@
     $('.product-selected').on('click', function (e) {
       let url = $(this).data('action-url');
 
-      let productRemoveButton = $(this).closest('.form-check').find('.product-delete');
+      let $productRemoveButton = $(this).closest('.form-check').find('.product-delete');
+      let $productNames = $(this).closest('.form-check').find('.product-name-label');
+      console.log('$productName', $productNames)
       if ($(this).is(':checked')) {
-        productRemoveButton.attr('hidden', 'hidden');
+        $productRemoveButton.attr('hidden', 'hidden');
+        $productNames.each(function () {
+          $(this).removeClass('product-name-crossed');
+        });
       } else {
-        productRemoveButton.removeAttr('hidden');
+        $productRemoveButton.removeAttr('hidden');
+        $productNames.each(function () {
+          $(this).addClass('product-name-crossed');
+        });
       }
 
       $.ajax({
@@ -78,19 +115,18 @@
     $('#filterIsActive').on('change', function (e) {
       e.preventDefault();
       let value = $(this).val();
-      console.log('value', value)
       $('.product-name').each(function (idx, item) {
         let productDiv = $(item).closest('.product-div');
         let isChecked = $(item).data('is-checked');
 
         if (value === 'checked') {
-          if (isChecked) {
+          if (isChecked === 'checked') {
             $(productDiv).show();
           } else {
             $(productDiv).hide();
           }
         } else if (value === 'not-checked') {
-          if (isChecked) {
+          if (isChecked === 'checked') {
             $(productDiv).hide();
           } else {
             $(productDiv).show();

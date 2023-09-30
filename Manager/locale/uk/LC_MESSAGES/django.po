@@ -1,0 +1,360 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-30 14:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+msgid "Staff"
+msgstr "Співробітник"
+
+msgid "Superuser"
+msgstr "Суперкористувач"
+
+msgid "Is email filled"
+msgstr "Заповнено електронну пошту"
+
+msgid "Is name filled"
+msgstr "Заповнено ім'я"
+
+msgid "Admin status"
+msgstr "Статус адміністратора"
+
+msgid "Please, select value"
+msgstr "Будь ласка, виберіть значення"
+
+msgid "Invalid status"
+msgstr "Недійсний статус"
+
+msgid "Passwords do not match"
+msgstr "Паролі не співпадають"
+
+msgid "Current password is incorrect"
+msgstr "Поточний пароль невірний"
+
+msgid "Current password is the same as new password"
+msgstr "Поточний пароль співпадає з новим паролем"
+
+msgid "Admin filter"
+msgstr "Фільтр адміністратора"
+
+#, python-brace-format
+msgid "Admin {admin.email} was successfully created"
+msgstr "Адміністратор {admin.email} успішно створений"
+
+msgid "Add admin"
+msgstr "Додати адміністратора"
+
+msgid "Please, fill in the form below to add an admin"
+msgstr "Будь ласка, заповніть форму нижче, щоб додати адміністратора"
+
+msgid "Your password was successfully set"
+msgstr "Ваш пароль успішно встановлено"
+
+msgid "Reset password"
+msgstr "Скинути пароль"
+
+#, fuzzy
+#| msgid "Please, fill in the form below to set a new password"
+msgid "Please, fill in the form below to set new password"
+msgstr "Будь ласка, заповніть форму нижче, щоб встановити новий пароль"
+
+#, python-brace-format
+msgid "Admin {admin.email} was successfully edited"
+msgstr "Адміністратор {admin.email} успішно відредагований"
+
+msgid "Edit admin"
+msgstr "Редагувати адміністратора"
+
+msgid "Please, fill in the form below to edit an admin"
+msgstr "Будь ласка, заповніть форму нижче, щоб відредагувати адміністратора"
+
+#, python-brace-format
+msgid "Admin {admin.email}'s password was successfully set"
+msgstr "Пароль адміністратора {admin.email} успішно встановлено"
+
+msgid "Set admin password"
+msgstr "Встановити пароль адміністратора"
+
+#, fuzzy
+#| msgid "Please, fill in the form below to set a password for an admin"
+msgid "Please, fill in the form below to set password for an admin"
+msgstr ""
+"Будь ласка, заповніть форму нижче, щоб встановити пароль для адміністратора"
+
+#, python-brace-format
+msgid "Fridge type with \"{slug}\" already exists"
+msgstr "Тип холодильника з \"{slug}\" вже існує"
+
+msgid "File fixture"
+msgstr "Фікстура файлу"
+
+msgid "File is not encoded with UTF-8"
+msgstr "Файл не закодований у форматі UTF-8"
+
+msgid "File is not valid JSON"
+msgstr "Файл не є дійсним JSON"
+
+msgid "Fridge type filter"
+msgstr "Фільтр типу холодильника"
+
+#, python-brace-format
+msgid "Fridge type {fridge_type.label} was successfully created"
+msgstr "Тип холодильника {fridge_type.label} успішно створений"
+
+msgid "Add fridge type"
+msgstr "Додати тип холодильника"
+
+#, fuzzy
+#| msgid "Please, fill in the form below to add a fridge type"
+msgid "Please, fill in the form below to add fridge type"
+msgstr "Будь ласка, заповніть форму нижче, щоб додати тип холодильника"
+
+#, python-brace-format
+msgid "Fridge type {fridge_type.label} was successfully edited"
+msgstr "Тип холодильника {fridge_type.label} успішно відредагований"
+
+msgid "Edit Fridge type"
+msgstr "Редагувати тип холодильника"
+
+msgid "Please, fill in the form below to edit a fridge type"
+msgstr "Будь ласка, заповніть форму нижче, щоб відредагувати тип холодильника"
+
+#, python-format
+msgid "This fridge type is used in fridge %s time!"
+msgid_plural "This fridge type is used in fridges %s times!"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#, python-brace-format
+msgid "Fridge type {fridge_type.label} was successfully archived"
+msgstr "Тип холодильника {fridge_type.label} успішно заархівований"
+
+#, python-brace-format
+msgid "Fridge type {fridge_type.label} was successfully restored"
+msgstr "Тип холодильника {fridge_type.label} успішно відновлений"
+
+#, python-brace-format
+msgid "Fridge type {created_count} was successfully created"
+msgstr "Тип холодильника {created_count} успішно створений"
+
+msgid "Fridge type {len(items)} was successfully updated"
+msgstr "Тип холодильника {len(items)} успішно оновлено"
+
+msgid "Load fridge type"
+msgstr "Завантажити тип холодильника"
+
+msgid "Fridge type default fixture was successfully loaded"
+msgstr "Фікстура типу холодильника була успішно завантажена"
+
+#, python-brace-format
+msgid "Licence version with \"{slug}\" already exists"
+msgstr "Версія ліцензії з \"{slug}\" вже існує"
+
+msgid "Licence version filter"
+msgstr "Фільтр версії ліцензії"
+
+#, python-brace-format
+msgid "Licence version {licence_version.label} was successfully created"
+msgstr "Версія ліцензії {licence_version.label} успішно створена"
+
+msgid "Add Licence version"
+msgstr "Додати версію ліцензії"
+
+msgid "Please, fill in the form below to add Licence version"
+msgstr "Будь ласка, заповніть форму нижче, щоб додати версію ліцензії"
+
+#, python-brace-format
+msgid "Licence version {licence_version.label} was successfully edited"
+msgstr "Версія ліцензії {licence_version.label} успішно відредагована"
+
+msgid "Edit Licence version"
+msgstr "Редагувати версію ліцензії"
+
+msgid "Please, fill in the form below to edit a Licence version"
+msgstr "Будь ласка, заповніть форму нижче, щоб відредагувати версію ліцензії"
+
+#, python-brace-format
+msgid "Licence version {licence_version.label} was successfully archived"
+msgstr "Версія ліцензії {licence_version.label} успішно заархівована"
+
+#, python-brace-format
+msgid "Licence version {licence_version.label} was successfully restored"
+msgstr "Версія ліцензії {licence_version.label} успішно відновлена"
+
+#, python-brace-format
+msgid "Licence version {licence_version.label} was successfully set as default"
+msgstr ""
+"Версію ліцензії {licence_version.label} успішно встановлено як за "
+"замовчуванням"
+
+msgid "Email address"
+msgstr "Електронна адреса"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "User is not manager! You are not allowed to access this page"
+msgstr ""
+"Користувач не є менеджером! Вам не дозволено отримати доступ до цієї сторінки"
+
+msgid "User is not active! Please, contact a manager"
+msgstr "Користувач не активний! Будь ласка, зв'яжіться з менеджером"
+
+msgid "User with this email and password not found"
+msgstr "Користувач з цією електронною адресою та паролем не знайдений"
+
+msgid "User filter"
+msgstr "Фільтр користувача"
+
+msgid "Add"
+msgstr "Додати"
+
+msgid "Back to list"
+msgstr "Повернутися до списку"
+
+msgid "Admins"
+msgstr "Адміністратори"
+
+msgid "Edit"
+msgstr "Редагувати"
+
+msgid "View"
+msgstr "Перегляд"
+
+msgid "Reset your password"
+msgstr "Скинути ваш пароль"
+
+msgid "Set password"
+msgstr "Встановити пароль"
+
+msgid "Other"
+msgstr "Інше"
+
+msgid "No phone"
+msgstr "Немає телефону"
+
+msgid "ID"
+msgstr "Ідентифікатор"
+
+msgid "Email"
+msgstr "Електронна пошта"
+
+msgid "First name"
+msgstr "Ім'я"
+
+msgid "Last name"
+msgstr "Прізвище"
+
+msgid "Is active"
+msgstr "Активний"
+
+msgid "Is staff"
+msgstr "Співробітник"
+
+msgid "Is superuser"
+msgstr "Суперкористувач"
+
+msgid "Fridge types"
+msgstr "Типи холодильників"
+
+msgid "View fixture"
+msgstr "Переглянути фікстуру"
+
+msgid "Load fixture"
+msgstr "Завантажити фікстуру"
+
+msgid "Archive"
+msgstr "Архівувати"
+
+msgid "Restore"
+msgstr "Відновити"
+
+msgid "Name"
+msgstr "Назва"
+
+msgid "Slug"
+msgstr "Slug (URL)"
+
+msgid "Fridge type created on user's creation"
+msgstr "Тип холодильника створений при створенні користувача"
+
+msgid "Load default fixture"
+msgstr "Завантажити фікстуру за замовчуванням"
+
+msgid "Export to fixture"
+msgstr "Експортувати в фікстуру"
+
+msgid "Show raw data"
+msgstr "Показати необроблені дані"
+
+#, fuzzy
+#| msgid "Show human-readable data"
+msgid "Show human readable data"
+msgstr "Показати зрозумілі дані"
+
+msgid "Show both data"
+msgstr "Показати обидві версії даних"
+
+msgid "Licence versions"
+msgstr "Версії ліцензій"
+
+msgid "Set default"
+msgstr "Встановити за замовчуванням"
+
+msgid "Is default"
+msgstr "За замовчуванням"
+
+msgid "Pocket fridge Manager"
+msgstr "Менеджер Pocket Fridge"
+
+msgid "Hello! let's get started"
+msgstr "Привіт! Почнемо"
+
+msgid "Sign in to continue"
+msgstr "Увійдіть, щоб продовжити"
+
+msgid "SIGN IN"
+msgstr "УВІЙТИ"
+
+msgid "Users"
+msgstr "Користувачі"
+
+msgid "Not provided"
+msgstr "Не вказано"
+
+msgid "Good Morning"
+msgstr "Доброго ранку"
+
+msgid "My Profile"
+msgstr "Мій профіль"
+
+msgid "Sign Out"
+msgstr "Вийти"
+
+msgid "Home"
+msgstr "Головна"
+
+msgid "Settings"
+msgstr "Налаштування"
+
+msgid "Licence version"
+msgstr "Версія ліцензії"
