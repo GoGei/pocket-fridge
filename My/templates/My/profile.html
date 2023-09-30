@@ -2,16 +2,64 @@
 {% load hosts %}
 
 {% block content %}
-  <div>
-    {{ user.email }} <br>
-    {{ user.first_name }} <br>
-    {{ user.last_name }} <br>
-  </div>
 
-  <a href="{{ user_guide_url }}" type="button" target="_blank" class="btn btn-primary">User guide</a>
-  <a href="{{ licences_url }}" type="button" target="_blank" class="btn btn-success">Licences</a>
-  <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Data export will be provided later">
-  <a href="#" type="button" class="btn btn-secondary" disabled="">Data export</a>
-  </span>
-  <a href="{{ report_error_url }}" type="button" target="_blank" class="btn btn-warning">Report error</a>
+<section class="section-profile">
+  <div class="row">
+    <div class="container-profile">
+      <div class="profile_info">
+        <div class="profile_info-name">
+          <span>Name: </span>
+          <strong>{{ user.first_name }} {{ user.last_name }} </strong>
+        </div>
+        <div class="profile_info-email">
+          <span>Email: </span>
+          <strong>
+            {{ user.email }} 
+          </strong>
+        </div>
+        <div class="profile_info-reg_date">
+          <span>Date of registration: </span>
+          <strong>
+          29.09.2023
+          </strong>
+        </div>
+        <div class="profile_info-premium">
+          <span>Premium: </span>
+          <strong>
+            None
+          </strong>
+          <a href="#">Buy premium</a>
+        </div>
+      </div>
+
+      <div class="profile_buttons">
+        <button class="profile_buttons-guide">
+          <a href="{{ user_guide_url }}" type="button" target="_blank" class="bold">User guide</a>
+        </button>
+        <button class="profile_buttons-license">
+          <a href="{{ licences_url }}" type="button" target="_blank" class="bold">Licences</a>
+        </button>
+        <button class="profile_buttons-dataexport">
+          <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Data export will be provided later">
+            <a href="#" type="button" disabled="" class="bold">Data export</a>
+            </span>
+        </button>
+        <button class="profile_buttons-report">
+            <a href="{{ report_error_url }}" type="button" target="_blank" class="bold">Report error</a>
+        </button>
+        <button class="profile_buttons-logout">
+          <a href="{% host_url 'logout' host 'my' %}" class="bold">Logout</a>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+  
+
+
+
+  
+
+
+
 {% endblock %}

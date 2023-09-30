@@ -2,44 +2,70 @@
 {% load hosts %}
 
 {% block content %}
-  <br>
-  Shopping list: {{ shopping_list.name }}
-  <a href="{% host_url 'shopping-list-add-product' host 'my' %}">Add</a>
 
-  <div class="input-group">
-    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-           aria-describedby="search-addon" id="searchTextInput"/>
-    <select class="form-select" id="filterIsActive">
-      <option selected>Filter</option>
-      <option value="checked">Need to by</option>
-      <option value="not-checked">Bought</option>
-    </select>
-  </div>
-
-  <div class="products-div">
-    Products: <br>
-    {% for product in products %}
-      <div class="form-check product-div">
-        <div>
-          <input class="form-check-input product-selected" type="checkbox"
-                 data-action-url="{% if product.is_checked %}
-                                      {% host_url 'shopping-list-uncheck-product' product.id host 'my' %}
-                                      {% else %}
-                                      {% host_url 'shopping-list-check-product' product.id host 'my' %}
-                                      {% endif %}"
-                 {% if product.is_checked %}checked{% endif %}>
+<section class="section-shopping_list">
+  <div class="row">
+      <div class="container-shopping_list">
+        <div class="shopping_list-title">
+          <h3>
+            Shopping list: {{ shopping_list.name }}
+          </h3>
         </div>
-        <a href="{% host_url 'shopping-list-edit-product' product.id host 'my' %}">
-          <p class="product-name" data-is-checked="{% if product.is_checked %}checked{% endif %}">{{ product.name }}</p>
-          - {{ product.amount }} ({{ product.units }})
-          <a href="{% host_url 'shopping-list-delete-product' product.id host 'my' %}"
-             class="product-delete"
-             {% if product.is_checked %}hidden{% endif %}>Remove</a>
-        </a>
-      </div>
+        <button class="shopping_list-add">
+          <a href="{% host_url 'shopping-list-add-product' host 'my' %}">Add new product</a>
+        </button>
+        <div class="input-group">
+          <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                 aria-describedby="search-addon" id="searchTextInput"/>
+          <select class="form-select" id="filterIsActive">
+            <option selected>Filter</option>
+            <option value="checked">Need to by</option>
+            <option value="not-checked">Bought</option>
+          </select>
+        </div>
 
-    {% endfor %}
-  </div>
+  
+
+        <div class="products-div">
+          {% for product in products %}
+            <div class="form-check product-div">
+                <input class="form-check-input product-selected" type="checkbox"
+                       data-action-url="{% if product.is_checked %}
+                                            {% host_url 'shopping-list-uncheck-product' product.id host 'my' %}
+                                            {% else %}
+                                            {% host_url 'shopping-list-check-product' product.id host 'my' %}
+                                            {% endif %}"
+                       {% if product.is_checked %}checked{% endif %}>
+              <a href="{% host_url 'shopping-list-edit-product' product.id host 'my' %}" class="product_name">
+                <span class="product-name" data-is-checked="{% if product.is_checked %}checked{% endif %}">
+                  {{ product.name }}
+                </span>
+                <span>
+                  {{ product.amount }} {{ product.units }}
+                </span>
+              <a href="{% host_url 'shopping-list-delete-product' product.id host 'my' %}"
+                   class="product-delete"
+                   {% if product.is_checked %}hidden{% endif %}> 
+
+                   <svg width="25" height="25" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 21C16.5 21 21 16.5 21 11C21 5.5 16.5 1 11 1C5.5 1 1 5.5 1 11C1 16.5 5.5 21 11 21Z" stroke="#B6E0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8.16992 13.8299L13.8299 8.16992" stroke="#B6E0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M13.8299 13.8299L8.16992 8.16992" stroke="#B6E0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                 
+                  </a>
+              </a>
+            </div>
+      
+          {% endfor %}
+        </div>
+        
+      </div>
+    </div>
+</section>
+
+
+  
 {% endblock %}
 
 

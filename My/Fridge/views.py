@@ -20,6 +20,7 @@ def fridge_add(request):
     form = {
         'body': form_body,
         'buttons': {'save': True, 'cancel': True},
+        'form_class': 'fridge_add',
     }
     return render(request, 'My/Fridge/fridge_add.html', {'form': form})
 
