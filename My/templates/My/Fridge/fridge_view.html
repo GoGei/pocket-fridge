@@ -1,5 +1,5 @@
 {% extends 'My/my_base.html' %}
-{% load hosts %}
+{% load hosts i18n %}
 
 {% block content %}
   <main role="main" class="container">
@@ -16,6 +16,9 @@
               </a>
               <a href="{% host_url 'product-edit' product.fridge.id product.id host 'my' %}">Edit</a>
               <a href="{% host_url 'product-delete' product.fridge.id product.id host 'my' %}">Delete</a> <br>
+            {% empty %}
+              <p>{% trans 'There is no products!' %}</p>
+              <a href="{% host_url 'fridge-add' host 'my' %}">{% trans 'Add product' %}</a>
             {% endfor %}
           </div>
         </div>
