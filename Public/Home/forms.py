@@ -113,7 +113,7 @@ class UserForgotPasswordForm(forms.Form):
         email = email.lower()
 
         try:
-            user = User.objects.get(email__iexact=email)
+            user = User.objects.active().get(email__iexact=email)
             data.update({'user': user})
         except User.DoesNotExist:
             self.add_error('email', _('User with this email not found'))

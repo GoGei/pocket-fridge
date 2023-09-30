@@ -2,23 +2,19 @@ from django.test import TestCase
 from factory import fuzzy
 from rest_framework import status
 
-from Api.v1.tests.base_test_case import ModelViewSetTestCase
+from Api.v1.tests.base_test_case import ModelViewSetTestCase, ReadOnlyViewSetMixinTestCase
 from core.Fridge.factories import FridgeProductFactory
 from core.Fridge.models import FridgeProduct
 
-from core.ShoppingList.models import ShoppingList, ShoppingListProduct
+from core.ShoppingList.models import ShoppingListProduct
 from core.ShoppingList.factories import ShoppingListFactory, ShoppingListProductFactory
 
 
-class ShoppingListTestCase(ModelViewSetTestCase, TestCase):
+class ShoppingListTestCase(ReadOnlyViewSetMixinTestCase, TestCase):
     def setUp(self) -> None:
         super().setUp()
         self.base_route = 'shopping-list'
         self.instance = ShoppingListFactory.create(user=self.user)
-        self.data = {
-            'name': fuzzy.FuzzyText(length=64).fuzz(),
-        }
-        self.model = ShoppingList
 
 
 class ShoppingListProductTestCase(ModelViewSetTestCase, TestCase):

@@ -1,5 +1,6 @@
 from django.test import TestCase
 
+from core.ShoppingList.factories import ShoppingListProductFactory
 from ..models import FridgeProduct
 from ..factories import FridgeProductFactory
 
@@ -17,3 +18,10 @@ class FridgeProductTests(TestCase):
 
         qs = FridgeProduct.objects.filter(pk=obj.pk)
         self.assertFalse(qs.exists())
+
+    def test_get_products(self):
+        fridge_product = FridgeProductFactory.create()
+        product = ShoppingListProductFactory.create(product=fridge_product)
+        qs = fridge_product.get_related_shopping_list_products()
+        self.assertTrue(qs.exists())
+        self.assertIn(product, qs)

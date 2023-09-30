@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 from ..models import Fridge
-from ..factories import FridgeFactory, FridgeTypeFactory
+from ..factories import FridgeFactory, FridgeTypeFactory, FridgeProductFactory
 from ...User.factories import UserFactory
 
 
@@ -30,3 +30,10 @@ class FridgeTests(TestCase):
         self.assertNotIn(not_to_create.name, names)
 
         self.assertRaises(ValueError, Fridge.create_fridges_for_user, user=user)
+
+    def test_get_products(self):
+        fridge = FridgeFactory.create()
+        fridge_product = FridgeProductFactory.create(fridge=fridge)
+        qs = fridge.get_products()
+        self.assertTrue(qs.exists())
+        self.assertIn(fridge_product, qs)

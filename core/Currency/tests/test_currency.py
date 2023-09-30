@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from core.Currency.factories import CurrencyFactory
+from core.Currency.factories import CurrencyFactory, CurrencyDefaultFactory
 from core.Currency.models import Currency
 
 
@@ -17,3 +17,8 @@ class CurrencyTests(TestCase):
 
         qs = Currency.objects.filter(pk=obj.pk)
         self.assertFalse(qs.exists())
+
+    def test_get_default(self):
+        obj = CurrencyDefaultFactory.create()
+        default = Currency.objects.get_default()
+        self.assertEqual(obj, default)
