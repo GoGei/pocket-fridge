@@ -71,3 +71,8 @@ fab check
 ```bash
 fab deploylocal
 ```
+
+### Translations
+```bash
+fab compilemessages
+```
