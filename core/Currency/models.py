@@ -15,7 +15,7 @@ class CurrencyManager(models.QuerySet):
         The "get_default()" method retrieves the default currency based on the value
         of the "DEFAULT_CURRENCY" setting in the Django project's settings.
         """
-        return self.get(code=settings.DEFAULT_CURRENCY)
+        return self.get(code=settings.DEFAULT_CURRENCY_CODE)
 
     def active(self):
         """

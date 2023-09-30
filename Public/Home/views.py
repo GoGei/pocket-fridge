@@ -103,14 +103,12 @@ def forgot_password_success(request):
 
 def forgot_password_reset(request, key):
     user = User.get_by_forgot_password_key(key)
-
-    form = UserResetPasswordForm(request.POST or None)
-
     if not user:
         messages.warning(request, _('For this key user not found'))
         User.clear_forgot_password_keys(key)
         return redirect(reverse('home-index', host='public'))
 
+    form = UserResetPasswordForm(request.POST or None)
     if form.is_valid():
         password = form.cleaned_data.get('password')
         user.set_password(password)
