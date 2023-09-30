@@ -10,7 +10,7 @@
 
           <div>
             {% for product in products %}
-              {{ product.name }} - {{ product.amount }} ({{ product.units }}) - {{ product.shelf_life_date }} -
+              {{ product.name }} - {{ product.amount }} ({{ product.get_units_display }}) - {{ product.shelf_life_date|date:"d M Y" }} -
               <a href="{% host_url 'product-view' product.fridge.id product.id host 'my' %}">View</a>
               <a href="{% host_url 'product-edit' product.fridge.id product.id host 'my' %}">Edit</a>
               <a href="{% host_url 'product-delete' product.fridge.id product.id host 'my' %}">Delete</a> <br>
