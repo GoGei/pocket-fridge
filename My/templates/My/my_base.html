@@ -22,15 +22,37 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
   <section class="section-desctop">
-    <span>application is only available on mobile devices</span>
+    <span>{% trans 'Application is only available on mobile devices' %}</span>
   </section>
   <main>
   <header>
     <div class="header_item row">
       <div class="profile_info-name">
-        <h2>{{ user.first_name }}’ Fridge</h2>
+        <h2>{{ user.first_name }}’ {% trans 'Fridge' %}</h2>
       </div>
       <div>
+
+        <div class="dropdown-multilevel dropdown-multilevel-left">
+          <div class="dropdown-item">
+            {% trans 'Language' %}
+          </div>
+          <div class="dropdown-menu">
+            <form id="select-language" action="{% url 'set-language' %}" method="POST">
+              {% csrf_token %}
+              {% get_current_language as LANGUAGE_CODE %}
+              {% get_available_languages as LANGUAGES %}
+              {% get_language_info_list for LANGUAGES as languages %}
+              {% for language in languages %}
+                <a href="#"
+                   class="language-selector dropdown-item {% if language.code == LANGUAGE_CODE %}active{% endif %}"
+                   data-action="lang" data-lang="{{ language.code }}">
+                  {{ language.name }}
+                </a>
+              {% endfor %}
+            </form>
+          </div>
+        </div>
+
         <a href="{% host_url 'profile' host 'my' %}">
           <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
             <path d="M25.25 26.6248C25.084 26.604 24.9161 26.604 24.75 26.6248C22.9833 26.5654 21.3088 25.8215 20.0803 24.5503C18.8519 23.2791 18.1657 21.5801 18.1667 19.8123C18.1667 16.0415 21.2084 12.979 25 12.979C26.7905 12.9759 28.5106 13.6765 29.7893 14.9299C31.068 16.1832 31.8029 17.8888 31.8357 19.679C31.8685 21.4692 31.1965 23.2006 29.9646 24.4999C28.7326 25.7992 27.0395 26.5624 25.25 26.6248V26.6248ZM39.0417 40.3748C35.2131 43.8937 30.2001 45.8424 25 45.8332C19.5834 45.8332 14.6667 43.7707 10.9584 40.3748C11.1667 38.4165 12.4167 36.4998 14.6459 34.9998C20.3542 31.2082 29.6875 31.2082 35.3542 34.9998C37.5834 36.4998 38.8334 38.4165 39.0417 40.3748V40.3748Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -87,7 +109,7 @@
           <path d="M2.17481 20.4H39.5869M15.16 52.8H26.44C35.84 52.8 39.6 48 39.6 36V21.6C39.6 9.60005 35.84 4.80005 26.44 4.80005H15.16C5.76 4.80005 2 9.60005 2 21.6V36C2 48 5.76 52.8 15.16 52.8Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           <line x1="34.8999" y1="30.3999" x2="34.8999" y2="35.1999" stroke="black"/>
         </svg>
-        <span>Fridge</span>
+        <span>{% trans 'Fridge' %}</span>
       </a>
     </div>
     <div class="footer-item add_product">
@@ -104,7 +126,7 @@
           <path d="M26.8958 16.3334L16.0833 27.1459C15.6667 27.5626 15.2708 28.3751 15.1875 28.9584L14.6042 33.0834C14.3958 34.5834 15.4375 35.6251 16.9375 35.4167L21.0625 34.8334C21.6458 34.7501 22.4583 34.3542 22.875 33.9376L33.6875 23.1251C35.5417 21.2709 36.4375 19.1042 33.6875 16.3542C30.9375 13.5834 28.7708 14.4584 26.8958 16.3334V16.3334Z" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M25.3541 17.875C25.8064 19.49 26.667 20.9612 27.8528 22.1471C29.0387 23.333 30.51 24.1935 32.125 24.6458" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <span>Shopping</span>
+        <span>{% trans 'Shopping' %}</span>
       </a>
     </div>
   </div>

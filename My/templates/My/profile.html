@@ -1,65 +1,56 @@
 {% extends 'My/my_base.html' %}
-{% load hosts %}
+{% load hosts i18n %}
 
 {% block content %}
+  <section class="section-profile">
+    <div class="row">
+      <div class="container-profile">
+        <div class="profile_info">
+          <div class="profile_info-name">
+            <span>{% trans 'Name' %}: </span>
+            <strong>{{ user.first_name }} {{ user.last_name }} </strong>
+          </div>
+          <div class="profile_info-email">
+            <span>{% trans 'Email' %}: </span>
+            <strong>
+              {{ user.email }}
+            </strong>
+          </div>
+          <div class="profile_info-reg_date">
+            <span>{% trans 'Date of registration' %}: </span>
+            <strong>
+              {{ user.created_stamp|date:"d M Y" }}
+            </strong>
+          </div>
+          <div class="profile_info-premium">
+            <span>{% trans 'Premium' %}: </span>
+            <strong>
+              {% trans 'None' %}
+            </strong>
+            <a href="#">{% trans 'Buy premium' %}</a>
+          </div>
+        </div>
 
-<section class="section-profile">
-  <div class="row">
-    <div class="container-profile">
-      <div class="profile_info">
-        <div class="profile_info-name">
-          <span>Name: </span>
-          <strong>{{ user.first_name }} {{ user.last_name }} </strong>
-        </div>
-        <div class="profile_info-email">
-          <span>Email: </span>
-          <strong>
-            {{ user.email }} 
-          </strong>
-        </div>
-        <div class="profile_info-reg_date">
-          <span>Date of registration: </span>
-          <strong>
-          29.09.2023
-          </strong>
-        </div>
-        <div class="profile_info-premium">
-          <span>Premium: </span>
-          <strong>
-            None
-          </strong>
-          <a href="#">Buy premium</a>
-        </div>
-      </div>
-
-      <div class="profile_buttons">
-        <button class="profile_buttons-guide">
-          <a href="{{ user_guide_url }}" type="button" target="_blank" class="bold">User guide</a>
-        </button>
-        <button class="profile_buttons-license">
-          <a href="{{ licences_url }}" type="button" target="_blank" class="bold">Licences</a>
-        </button>
-        <button class="profile_buttons-dataexport">
+        <div class="profile_buttons">
+          <button class="profile_buttons-guide">
+            <a href="{{ user_guide_url }}" type="button" target="_blank" class="bold">{% trans 'User guide' %}</a>
+          </button>
+          <button class="profile_buttons-license">
+            <a href="{{ licences_url }}" type="button" target="_blank" class="bold">{% trans 'Licences' %}</a>
+          </button>
+          <button class="profile_buttons-dataexport">
           <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Data export will be provided later">
-            <a href="#" type="button" disabled="" class="bold">Data export</a>
+            <a href="#" type="button" disabled="" class="bold">{% trans 'Data export' %}</a>
             </span>
-        </button>
-        <button class="profile_buttons-report">
-            <a href="{{ report_error_url }}" type="button" target="_blank" class="bold">Report error</a>
-        </button>
-        <button class="profile_buttons-logout">
-          <a href="{% host_url 'logout' host 'my' %}" class="bold">Logout</a>
-        </button>
+          </button>
+          <button class="profile_buttons-report">
+            <a href="{{ report_error_url }}" type="button" target="_blank" class="bold">{% trans 'Report error' %}</a>
+          </button>
+          <button class="profile_buttons-logout">
+            <a href="{% host_url 'logout' host 'my' %}" class="bold">{% trans 'Logout' %}</a>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-  
-
-
-
-  
-
-
-
+  </section>
 {% endblock %}

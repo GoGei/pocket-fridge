@@ -1,0 +1,190 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-30 14:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Name"
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid "Number"
+msgstr ""
+
+msgid "Day"
+msgstr ""
+
+msgid "Month"
+msgstr ""
+
+msgid "Year"
+msgstr ""
+
+msgid "Licensed"
+msgstr ""
+
+msgid "Charge automatically"
+msgstr ""
+
+msgid "Send invoice"
+msgstr ""
+
+msgid "Incomplete"
+msgstr ""
+
+msgid "Incomplete expired"
+msgstr ""
+
+msgid "Trialing"
+msgstr ""
+
+msgid "Active"
+msgstr ""
+
+msgid "Past due"
+msgstr ""
+
+msgid "Canceled"
+msgstr ""
+
+msgid "Unpaid"
+msgstr ""
+
+msgid "Draft"
+msgstr ""
+
+msgid "Open"
+msgstr ""
+
+msgid "Paid"
+msgstr ""
+
+msgid "Void"
+msgstr ""
+
+msgid "Uncollectible"
+msgstr ""
+
+msgid "Requires payment method"
+msgstr ""
+
+msgid "Requires confirmation"
+msgstr ""
+
+msgid "Requires action"
+msgstr ""
+
+msgid "Processing"
+msgstr ""
+
+msgid "Requires capture"
+msgstr ""
+
+msgid "Succeeded"
+msgstr ""
+
+#, python-brace-format
+msgid "Fridges for user {user.email} already exists"
+msgstr ""
+
+msgid "Gr"
+msgstr ""
+
+msgid "KG"
+msgstr ""
+
+msgid "ML"
+msgstr ""
+
+msgid "L"
+msgstr ""
+
+msgid "Items"
+msgstr ""
+
+#, python-brace-format
+msgid "Licence {self.name}"
+msgstr ""
+
+#, python-brace-format
+msgid "Shopping list for user {user.email} already exists"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Is active"
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Not active"
+msgstr ""
+
+msgid "Is filled"
+msgstr ""
+
+msgid "Filled"
+msgstr ""
+
+msgid "Not filled"
+msgstr ""
+
+msgid "Value does not contains uppercase letters"
+msgstr ""
+
+msgid "Value does not contains lowercase letters"
+msgstr ""
+
+msgid "Value does not contains special characters"
+msgstr ""
+
+msgid "Value does not contains digits"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Submit"
+msgstr ""
+
+msgid "Data with such filters not found!"
+msgstr ""
+
+msgid "Share"
+msgstr ""
+
+msgid "Print"
+msgstr ""
+
+msgid "Export"
+msgstr ""
+
+msgid "There is no data in the table"
+msgstr ""
+
+msgid "Go to home"
+msgstr ""

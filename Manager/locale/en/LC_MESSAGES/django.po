@@ -1,0 +1,343 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-30 14:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Staff"
+msgstr ""
+
+msgid "Superuser"
+msgstr ""
+
+msgid "Is email filled"
+msgstr ""
+
+msgid "Is name filled"
+msgstr ""
+
+msgid "Admin status"
+msgstr ""
+
+msgid "Please, select value"
+msgstr ""
+
+msgid "Invalid status"
+msgstr ""
+
+msgid "Passwords do not match"
+msgstr ""
+
+msgid "Current password is incorrect"
+msgstr ""
+
+msgid "Current password is the same as new password"
+msgstr ""
+
+msgid "Admin filter"
+msgstr ""
+
+#, python-brace-format
+msgid "Admin {admin.email} was successfully created"
+msgstr ""
+
+msgid "Add admin"
+msgstr ""
+
+msgid "Please, fill in the form below to add an admin"
+msgstr ""
+
+msgid "Your password was successfully set"
+msgstr ""
+
+msgid "Reset password"
+msgstr ""
+
+msgid "Please, fill in the form below to set new password"
+msgstr ""
+
+#, python-brace-format
+msgid "Admin {admin.email} was successfully edited"
+msgstr ""
+
+msgid "Edit admin"
+msgstr ""
+
+msgid "Please, fill in the form below to edit an admin"
+msgstr ""
+
+#, python-brace-format
+msgid "Admin {admin.email}'s password was successfully set"
+msgstr ""
+
+msgid "Set admin password"
+msgstr ""
+
+msgid "Please, fill in the form below to set password for an admin"
+msgstr ""
+
+#, python-brace-format
+msgid "Fridge type with \"{slug}\" already exists"
+msgstr ""
+
+msgid "File fixture"
+msgstr ""
+
+msgid "File is not encoded with UTF-8"
+msgstr ""
+
+msgid "File is not valid JSON"
+msgstr ""
+
+msgid "Fridge type filter"
+msgstr ""
+
+#, python-brace-format
+msgid "Fridge type {fridge_type.label} was successfully created"
+msgstr ""
+
+msgid "Add fridge type"
+msgstr ""
+
+msgid "Please, fill in the form below to add fridge type"
+msgstr ""
+
+#, python-brace-format
+msgid "Fridge type {fridge_type.label} was successfully edited"
+msgstr ""
+
+msgid "Edit Fridge type"
+msgstr ""
+
+msgid "Please, fill in the form below to edit a fridge type"
+msgstr ""
+
+#, python-format
+msgid "This fridge type is used in fridge %s time!"
+msgid_plural "This fridge type is used in fridges %s times!"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-brace-format
+msgid "Fridge type {fridge_type.label} was successfully archived"
+msgstr ""
+
+#, python-brace-format
+msgid "Fridge type {fridge_type.label} was successfully restored"
+msgstr ""
+
+#, python-brace-format
+msgid "Fridge type {created_count} was successfully created"
+msgstr ""
+
+msgid "Fridge type {len(items)} was successfully updated"
+msgstr ""
+
+msgid "Load fridge type"
+msgstr ""
+
+msgid "Fridge type default fixture was successfully loaded"
+msgstr ""
+
+#, python-brace-format
+msgid "Licence version with \"{slug}\" already exists"
+msgstr ""
+
+msgid "Licence version filter"
+msgstr ""
+
+#, python-brace-format
+msgid "Licence version {licence_version.label} was successfully created"
+msgstr ""
+
+msgid "Add Licence version"
+msgstr ""
+
+msgid "Please, fill in the form below to add Licence version"
+msgstr ""
+
+#, python-brace-format
+msgid "Licence version {licence_version.label} was successfully edited"
+msgstr ""
+
+msgid "Edit Licence version"
+msgstr ""
+
+msgid "Please, fill in the form below to edit a Licence version"
+msgstr ""
+
+#, python-brace-format
+msgid "Licence version {licence_version.label} was successfully archived"
+msgstr ""
+
+#, python-brace-format
+msgid "Licence version {licence_version.label} was successfully restored"
+msgstr ""
+
+#, python-brace-format
+msgid "Licence version {licence_version.label} was successfully set as default"
+msgstr ""
+
+msgid "Email address"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "User is not manager! You are not allowed to access this page"
+msgstr ""
+
+msgid "User is not active! Please, contact a manager"
+msgstr ""
+
+msgid "User with this email and password not found"
+msgstr ""
+
+msgid "User filter"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Back to list"
+msgstr ""
+
+msgid "Admins"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "Reset your password"
+msgstr ""
+
+msgid "Set password"
+msgstr ""
+
+msgid "Other"
+msgstr ""
+
+msgid "No phone"
+msgstr ""
+
+msgid "ID"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "First name"
+msgstr ""
+
+msgid "Last name"
+msgstr ""
+
+msgid "Is active"
+msgstr ""
+
+msgid "Is staff"
+msgstr ""
+
+msgid "Is superuser"
+msgstr ""
+
+msgid "Fridge types"
+msgstr ""
+
+msgid "View fixture"
+msgstr ""
+
+msgid "Load fixture"
+msgstr ""
+
+msgid "Archive"
+msgstr ""
+
+msgid "Restore"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Slug"
+msgstr ""
+
+msgid "Fridge type created on user's creation"
+msgstr ""
+
+msgid "Load default fixture"
+msgstr ""
+
+msgid "Export to fixture"
+msgstr ""
+
+msgid "Show raw data"
+msgstr ""
+
+msgid "Show human readable data"
+msgstr ""
+
+msgid "Show both data"
+msgstr ""
+
+msgid "Licence versions"
+msgstr ""
+
+msgid "Set default"
+msgstr ""
+
+msgid "Is default"
+msgstr ""
+
+msgid "Pocket fridge Manager"
+msgstr ""
+
+msgid "Hello! let's get started"
+msgstr ""
+
+msgid "Sign in to continue"
+msgstr ""
+
+msgid "SIGN IN"
+msgstr ""
+
+msgid "Users"
+msgstr ""
+
+msgid "Not provided"
+msgstr ""
+
+msgid "Good Morning"
+msgstr ""
+
+msgid "My Profile"
+msgstr ""
+
+msgid "Sign Out"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Licence version"
+msgstr ""
