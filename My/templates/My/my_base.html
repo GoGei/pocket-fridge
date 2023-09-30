@@ -21,49 +21,31 @@
 
 </head>
 <body class="d-flex flex-column min-vh-100">
-  <section class="section-desctop">
-    <span>{% trans 'Application is only available on mobile devices' %}</span>
-  </section>
-  <main>
+<section class="section-desctop">
+  <span>{% trans 'Application is only available on mobile devices' %}</span>
+</section>
+<main>
   <header>
     <div class="header_item row">
       <div class="profile_info-name">
         <h2>{{ user.first_name }}’ {% trans 'Fridge' %}</h2>
       </div>
       <div>
-
-        <div class="dropdown-multilevel dropdown-multilevel-left">
-          <div class="dropdown-item">
-            {% trans 'Language' %}
-          </div>
-          <div class="dropdown-menu">
-            <form id="select-language" action="{% url 'set-language' %}" method="POST">
-              {% csrf_token %}
-              {% get_current_language as LANGUAGE_CODE %}
-              {% get_available_languages as LANGUAGES %}
-              {% get_language_info_list for LANGUAGES as languages %}
-              {% for language in languages %}
-                <a href="#"
-                   class="language-selector dropdown-item {% if language.code == LANGUAGE_CODE %}active{% endif %}"
-                   data-action="lang" data-lang="{{ language.code }}">
-                  {{ language.name }}
-                </a>
-              {% endfor %}
-            </form>
-          </div>
-        </div>
-
         <a href="{% host_url 'profile' host 'my' %}">
           <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
-            <path d="M25.25 26.6248C25.084 26.604 24.9161 26.604 24.75 26.6248C22.9833 26.5654 21.3088 25.8215 20.0803 24.5503C18.8519 23.2791 18.1657 21.5801 18.1667 19.8123C18.1667 16.0415 21.2084 12.979 25 12.979C26.7905 12.9759 28.5106 13.6765 29.7893 14.9299C31.068 16.1832 31.8029 17.8888 31.8357 19.679C31.8685 21.4692 31.1965 23.2006 29.9646 24.4999C28.7326 25.7992 27.0395 26.5624 25.25 26.6248V26.6248ZM39.0417 40.3748C35.2131 43.8937 30.2001 45.8424 25 45.8332C19.5834 45.8332 14.6667 43.7707 10.9584 40.3748C11.1667 38.4165 12.4167 36.4998 14.6459 34.9998C20.3542 31.2082 29.6875 31.2082 35.3542 34.9998C37.5834 36.4998 38.8334 38.4165 39.0417 40.3748V40.3748Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M25 45.8332C36.5062 45.8332 45.8333 36.5061 45.8333 24.9998C45.8333 13.4936 36.5062 4.1665 25 4.1665C13.4937 4.1665 4.16663 13.4936 4.16663 24.9998C4.16663 36.5061 13.4937 45.8332 25 45.8332Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path
+                d="M25.25 26.6248C25.084 26.604 24.9161 26.604 24.75 26.6248C22.9833 26.5654 21.3088 25.8215 20.0803 24.5503C18.8519 23.2791 18.1657 21.5801 18.1667 19.8123C18.1667 16.0415 21.2084 12.979 25 12.979C26.7905 12.9759 28.5106 13.6765 29.7893 14.9299C31.068 16.1832 31.8029 17.8888 31.8357 19.679C31.8685 21.4692 31.1965 23.2006 29.9646 24.4999C28.7326 25.7992 27.0395 26.5624 25.25 26.6248V26.6248ZM39.0417 40.3748C35.2131 43.8937 30.2001 45.8424 25 45.8332C19.5834 45.8332 14.6667 43.7707 10.9584 40.3748C11.1667 38.4165 12.4167 36.4998 14.6459 34.9998C20.3542 31.2082 29.6875 31.2082 35.3542 34.9998C37.5834 36.4998 38.8334 38.4165 39.0417 40.3748V40.3748Z"
+                stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path
+                d="M25 45.8332C36.5062 45.8332 45.8333 36.5061 45.8333 24.9998C45.8333 13.4936 36.5062 4.1665 25 4.1665C13.4937 4.1665 4.16663 13.4936 4.16663 24.9998C4.16663 36.5061 13.4937 45.8332 25 45.8332Z"
+                stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
       </div>
     </div>
   </header>
 
-<!-- <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <!-- <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">
     <img src="{% static 'images/brand_image.png' %}" width="40" height="40" alt="">
   </a>
@@ -92,45 +74,57 @@
     </ul>
   </div>
 </nav> -->
-<div>
-  {% include 'base_messages.html' with messages=messages %}
-</div>
-
-
-{% block content %}
-{% endblock %}
-
-
-<footer>
-  <div class="section_footer row">
-    <div class="footer-item my_fridge">
-      <a href="{% host_url 'home-index' host 'my' %}  ">
-        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 40 56" fill="none">
-          <path d="M2.17481 20.4H39.5869M15.16 52.8H26.44C35.84 52.8 39.6 48 39.6 36V21.6C39.6 9.60005 35.84 4.80005 26.44 4.80005H15.16C5.76 4.80005 2 9.60005 2 21.6V36C2 48 5.76 52.8 15.16 52.8Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <line x1="34.8999" y1="30.3999" x2="34.8999" y2="35.1999" stroke="black"/>
-        </svg>
-        <span>{% trans 'Fridge' %}</span>
-      </a>
-    </div>
-    <div class="footer-item add_product">
-      <a href="{% host_url 'fridge-add' host 'my' %}">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="#B6E0FF">
-          <path d="M33.3333 49.9999H66.6666M49.9999 66.6666V33.3333M49.9999 91.6666C72.9166 91.6666 91.6666 72.9166 91.6666 49.9999C91.6666 27.0833 72.9166 8.33325 49.9999 8.33325C27.0833 8.33325 8.33325 27.0833 8.33325 49.9999C8.33325 72.9166 27.0833 91.6666 49.9999 91.6666Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-    </div>
-    <div class="footer-item shopping_list">
-      <a href="{% host_url 'shopping-list' host 'my' %}">
-        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
-          <path d="M33.3333 4.16675H16.6666C8.33329 4.16675 4.16663 8.33342 4.16663 16.6667V43.7501C4.16663 44.8959 5.10413 45.8334 6.24996 45.8334H33.3333C41.6666 45.8334 45.8333 41.6668 45.8333 33.3334V16.6667C45.8333 8.33342 41.6666 4.16675 33.3333 4.16675Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M26.8958 16.3334L16.0833 27.1459C15.6667 27.5626 15.2708 28.3751 15.1875 28.9584L14.6042 33.0834C14.3958 34.5834 15.4375 35.6251 16.9375 35.4167L21.0625 34.8334C21.6458 34.7501 22.4583 34.3542 22.875 33.9376L33.6875 23.1251C35.5417 21.2709 36.4375 19.1042 33.6875 16.3542C30.9375 13.5834 28.7708 14.4584 26.8958 16.3334V16.3334Z" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M25.3541 17.875C25.8064 19.49 26.667 20.9612 27.8528 22.1471C29.0387 23.333 30.51 24.1935 32.125 24.6458" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>{% trans 'Shopping' %}</span>
-      </a>
-    </div>
+  <div>
+    {% include 'base_messages.html' with messages=messages %}
   </div>
-</footer>
+
+
+  {% block content %}
+  {% endblock %}
+
+
+  <footer>
+    <div class="section_footer row">
+      <div class="footer-item my_fridge">
+        <a href="{% host_url 'home-index' host 'my' %}  ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 40 56" fill="none">
+            <path
+                d="M2.17481 20.4H39.5869M15.16 52.8H26.44C35.84 52.8 39.6 48 39.6 36V21.6C39.6 9.60005 35.84 4.80005 26.44 4.80005H15.16C5.76 4.80005 2 9.60005 2 21.6V36C2 48 5.76 52.8 15.16 52.8Z"
+                stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="34.8999" y1="30.3999" x2="34.8999" y2="35.1999" stroke="black"/>
+          </svg>
+          <span>{% trans 'Fridge' %}</span>
+        </a>
+      </div>
+      <div class="footer-item add_product">
+        <a href="{% host_url 'fridge-add' host 'my' %}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="#B6E0FF">
+            <path
+                d="M33.3333 49.9999H66.6666M49.9999 66.6666V33.3333M49.9999 91.6666C72.9166 91.6666 91.6666 72.9166 91.6666 49.9999C91.6666 27.0833 72.9166 8.33325 49.9999 8.33325C27.0833 8.33325 8.33325 27.0833 8.33325 49.9999C8.33325 72.9166 27.0833 91.6666 49.9999 91.6666Z"
+                stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+      <div class="footer-item shopping_list">
+        <a href="{% host_url 'shopping-list' host 'my' %}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+            <path
+                d="M33.3333 4.16675H16.6666C8.33329 4.16675 4.16663 8.33342 4.16663 16.6667V43.7501C4.16663 44.8959 5.10413 45.8334 6.24996 45.8334H33.3333C41.6666 45.8334 45.8333 41.6668 45.8333 33.3334V16.6667C45.8333 8.33342 41.6666 4.16675 33.3333 4.16675Z"
+                stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path
+                d="M26.8958 16.3334L16.0833 27.1459C15.6667 27.5626 15.2708 28.3751 15.1875 28.9584L14.6042 33.0834C14.3958 34.5834 15.4375 35.6251 16.9375 35.4167L21.0625 34.8334C21.6458 34.7501 22.4583 34.3542 22.875 33.9376L33.6875 23.1251C35.5417 21.2709 36.4375 19.1042 33.6875 16.3542C30.9375 13.5834 28.7708 14.4584 26.8958 16.3334V16.3334Z"
+                stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                stroke-linejoin="round"/>
+            <path
+                d="M25.3541 17.875C25.8064 19.49 26.667 20.9612 27.8528 22.1471C29.0387 23.333 30.51 24.1935 32.125 24.6458"
+                stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                stroke-linejoin="round"/>
+          </svg>
+          <span>{% trans 'Shopping' %}</span>
+        </a>
+      </div>
+    </div>
+  </footer>
 </main>
 
 <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>

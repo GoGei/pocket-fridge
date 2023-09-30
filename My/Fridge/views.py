@@ -1,12 +1,11 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django_hosts import reverse
 
-from My import utils
+from My import utils, decorators
 from .forms import FridgeProductFormAdd, FridgeProductFormEdit
 
 
-@login_required
+@decorators.my_login_required
 def fridge_add(request):
     if '_cancel' in request.POST:
         return redirect(reverse('home-index', host='my'))
@@ -25,7 +24,7 @@ def fridge_add(request):
     return render(request, 'My/Fridge/fridge_add.html', {'form': form})
 
 
-@login_required
+@decorators.my_login_required
 def fridge_view(request, fridge_id):
     fridge_qs = utils.get_fridge_qs(request.user)
     products = utils.get_fridge_products(request.user, fridge_id)
@@ -33,7 +32,7 @@ def fridge_view(request, fridge_id):
                   {'fridge_qs': fridge_qs, 'products': products, 'fridge_id': fridge_id})
 
 
-@login_required
+@decorators.my_login_required
 def product_view(request, fridge_id, product_id):
     products = utils.get_fridge_products(request.user, fridge_id)
     product = get_object_or_404(products, id=product_id)
@@ -41,7 +40,7 @@ def product_view(request, fridge_id, product_id):
                   {'product': product})
 
 
-@login_required
+@decorators.my_login_required
 def product_edit(request, fridge_id, product_id):
     if '_cancel' in request.POST:
         return redirect(reverse('home-index', host='my'))
@@ -62,7 +61,7 @@ def product_edit(request, fridge_id, product_id):
     return render(request, 'My/Fridge/product_edit.html', {'form': form})
 
 
-@login_required
+@decorators.my_login_required
 def product_delete(request, fridge_id, product_id):
     product = get_object_or_404(utils.get_fridge_products(request.user, fridge_id), id=product_id)
     product.get_related_shopping_list_products().update(product=None)

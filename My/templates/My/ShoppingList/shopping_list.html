@@ -7,9 +7,7 @@
     <div class="row">
       <div class="container-shopping_list">
         <div class="shopping_list-title">
-          <h3>
-            {% trans 'Shopping list' %}: {{ shopping_list.name }}
-          </h3>
+          <h3>{{ shopping_list.name }}</h3>
         </div>
         <button class="shopping_list-add">
           <a href="{% host_url 'shopping-list-add-product' host 'my' %}">{% trans 'Add new product' %}</a>

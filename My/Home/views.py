@@ -1,13 +1,12 @@
 from django.contrib.auth import logout
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django_hosts import reverse
 
-from My import utils
+from My import utils, decorators
 
 
-@login_required
+@decorators.my_login_required
 def home_index(request):
     fridge_qs = utils.get_fridge_qs(request.user)
     # return render(request, 'My/home_index.html', {'fridge_qs': fridge_qs})
@@ -15,7 +14,7 @@ def home_index(request):
     return redirect(reverse('fridge-view', kwargs={'fridge_id': default_fridge.id}, host='my'))
 
 
-@login_required
+@decorators.my_login_required
 def profile(request):
     user_guide_url = settings.USER_GUIDE_URL
     licences_url = settings.LICENCES_URL

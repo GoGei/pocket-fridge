@@ -46,6 +46,26 @@
           <button class="profile_buttons-report">
             <a href="{{ report_error_url }}" type="button" target="_blank" class="bold">{% trans 'Report error' %}</a>
           </button>
+          <div class="dropdown-multilevel dropdown-multilevel-left">
+            <div class="dropdown-item">
+              {% trans 'Language' %}
+            </div>
+            <div class="dropdown-menu">
+              <form id="select-language" action="{% url 'set-language' %}" method="POST">
+                {% csrf_token %}
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                  <a href="#"
+                     class="language-selector dropdown-item {% if language.code == LANGUAGE_CODE %}active{% endif %}"
+                     data-action="lang" data-lang="{{ language.code }}">
+                    {{ language.name }}
+                  </a>
+                {% endfor %}
+              </form>
+            </div>
+          </div>
           <button class="profile_buttons-logout">
             <a href="{% host_url 'logout' host 'my' %}" class="bold">{% trans 'Logout' %}</a>
           </button>
