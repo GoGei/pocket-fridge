@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.utils.translation import ugettext_lazy as _
+from django.shortcuts import render, redirect, get_object_or_404
 from django_hosts import reverse
 
 from My import utils, decorators
@@ -30,6 +32,22 @@ def shopping_list_add_product(request):
         'form_class': 'shopping_list_add_product',
     }
     return render(request, 'My/ShoppingList/shopping_list_product_add.html', {'form': form})
+
+
+@decorators.my_login_required
+def add_product_to_shopping_list(request, product_id):
+    products = utils.get_user_products(request.user)
+    product = get_object_or_404(products, id=product_id)
+
+    already_products = utils.get_shopping_list_products(request.user)
+    if product.id in already_products.values_list('product_id', flat=True):
+        messages.error(request, _('Product already in shopping list!'))
+        return redirect(reverse('product-view',
+                                kwargs={'product_id': product_id, 'fridge_id': product.fridge.id}, host='my'))
+
+    shopping_list = utils.get_shopping_list(request.user)
+    shopping_list.add_to_shopping_list(product)
+    return redirect(reverse('shopping-list', host='my'))
 
 
 @decorators.my_login_required
