@@ -35,6 +35,20 @@ class ShoppingList(CrmMixin, UUIDPrimaryKeyMixin):
         qs = cls.objects.select_related('user').active().filter(user=user)
         return qs.order_by('-created_stamp').first()
 
+    def add_to_shopping_list(self, product: FridgeProduct):
+        shopping_list_product = ShoppingListProduct(
+            shopping_list=self,
+            user=product.user,
+            product=product,
+            fridge=product.fridge,
+            name=product.name,
+            amount=product.amount,
+            units=product.units,
+            is_checked=True,
+        )
+        shopping_list_product.save()
+        return shopping_list_product
+
 
 class ShoppingListProduct(CrmMixin, UUIDPrimaryKeyMixin):
     """

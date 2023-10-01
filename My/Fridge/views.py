@@ -6,12 +6,17 @@ from .forms import FridgeProductFormAdd, FridgeProductFormEdit
 
 
 @decorators.my_login_required
-def fridge_add(request):
+def fridge_add(request, fridge_id=None):
     if '_cancel' in request.POST:
         return redirect(reverse('home-index', host='my'))
 
+    if fridge_id:
+        fridge = get_object_or_404(utils.get_fridge_qs(request.user), id=fridge_id)
+    else:
+        fridge = None
+
     form_body = FridgeProductFormAdd(request.POST or None,
-                                     user=request.user)
+                                     user=request.user, fridge=fridge)
     if form_body.is_valid():
         product = form_body.save()
         return redirect(reverse('fridge-view', kwargs={'fridge_id': product.fridge_id}, host='my'))

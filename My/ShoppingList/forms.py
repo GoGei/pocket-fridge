@@ -13,10 +13,6 @@ class ShoppingListProductForm(forms.ModelForm, BaseProductValidationForm):
         self.shopping_list = ShoppingList.get_shopping_list(self.user)
         super().__init__(*args, **kwargs)
 
-        self.fields['name'].label = _('Product name')
-        self.fields['amount'].label = _('Amount')
-        self.fields['units'].label = _('Units')
-
     class Meta:
         model = ShoppingListProduct
         fields = (
@@ -48,7 +44,7 @@ class ShoppingListProductFormAdd(ShoppingListProductForm):
         queryset=FridgeProduct.objects.select_related('user').active(),
         widget=forms.Select(
             attrs={'class': 'form-control select2',
-                   'placeholder': _('Select a product'),
+                   'placeholder': _('Select a product to load data'),
                    'data-ajax-url': reverse('api-v1:product-list', host='api'),
                    'data-base-url': reverse('api-v1:product-list', host='api'),  # base URL to get detail view
                    }

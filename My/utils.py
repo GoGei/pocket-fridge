@@ -19,6 +19,11 @@ def get_fridge_products(user: User, fridge_id: UUID) -> ActiveQuerySet[FridgePro
     return products
 
 
+def get_user_products(user: User) -> ActiveQuerySet[FridgeProduct]:
+    products = FridgeProduct.objects.select_related('user', 'fridge').active().filter(user=user).order_by('name')
+    return products
+
+
 def get_shopping_list_qs(user: User) -> ActiveQuerySet[ShoppingList]:
     shopping_list_qs = ShoppingList.objects.select_related('user').active().filter(user=user).order_by('name')
     return shopping_list_qs

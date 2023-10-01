@@ -78,4 +78,18 @@
 
   </section>
   {% endwith %}
+    <a href="{% host_url 'add-product-to-shopping-list' product.id host 'my' %}">Add to shopping list</a> <br>
+    <a href="{% host_url 'product-edit' fridge_id product.id host 'my' %}">Edit</a> <br>
+    <a href="{% host_url 'product-delete' fridge_id product.id host 'my' %}">Delete</a> <br>
+  {% endwith %}
+  <br>
+  <div id="product">
+    name: {{ product.name }}<br>
+    fridge.name: {{ product.fridge.name }}<br>
+    amount: {{ product.amount }}<br>
+    units: {{ product.units }}<br>
+    manufacture_date: {{ product.manufacture_date|date:"d m y" }}<br>
+    shelf_life_date: {{ product.shelf_life_date|date:"d m y" }}<br>
+    notes: {{ product.notes }}<br>
+  </div>
 {% endblock %}
