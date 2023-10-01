@@ -75,25 +75,29 @@
     $('.product-selected').on('click', function (e) {
       let url = $(this).data('action-url');
 
-      let $productRemoveButton = $(this).closest('.form-check').find('.product-delete');
-      let $productNames = $(this).closest('.form-check').find('.product-name-label');
-      console.log('$productName', $productNames)
+      {% comment %}let $productRemoveButton = $(this).closest('.form-check').find('.product-delete');
+      let $productNameLabels = $(this).closest('.form-check').find('.product-name-label');
+      let $productName = $(this).closest('.form-check').find('.product-name');
+
       if ($(this).is(':checked')) {
         $productRemoveButton.attr('hidden', 'hidden');
-        $productNames.each(function () {
+        $productName.attr('data-is-checked', 'checked');
+        $productNameLabels.each(function () {
           $(this).removeClass('product-name-crossed');
         });
       } else {
         $productRemoveButton.removeAttr('hidden');
-        $productNames.each(function () {
+        $productName.attr('data-is-checked', 'unchecked');
+        $productNameLabels.each(function () {
           $(this).addClass('product-name-crossed');
         });
-      }
+      }{% endcomment %}
 
       $.ajax({
         url: url,
         type: 'GET',
-      })
+      });
+      location.reload();
     });
 
     $('#searchTextInput').on('keyup', function (e) {
