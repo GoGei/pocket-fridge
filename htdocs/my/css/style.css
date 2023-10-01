@@ -180,6 +180,36 @@ footer > div{
     margin: 0;
 }
 
+.dropdown::after {
+    content: "▼"; /* Unicode arrow down character */
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.language-selector {
+    display: block;
+    padding: 5px 15px;
+    text-decoration: none;
+}
+
+.language-selector.active {
+    background-color: #80caff;  
+}
+
+.dropdown-menu{
+    margin-top: 35px;
+    display: none;  
+}
+
+.profile_buttons-language:hover  .dropdown-menu{
+    display: block;
+}
+
+
+/* .dropdown:hover .dropdown-menu {
+    display: block;
+} */
+
 
 /* Profile settings */
 
@@ -450,12 +480,116 @@ input.form-check-input[type="checkbox"]:checked{
     margin-left: 5px;
 }
 
-/* input.form-check-input[type="checkbox"]:checked {
-	background-color: #B6E0FF;
-} */
-
 /* Shopping list */
 
+
+/* Fridge settings */
+.section-fridge_view{
+    margin-top: 10px;
+}
+
+.section-fridge_view .fridges-list{ 
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-fridge_view .fridges-list > .fridge-item  a{
+    color: rgba(0, 0, 0, 0.60);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px; /* 137.5% */
+    letter-spacing: -0.408px;
+    text-decoration: none;
+}
+.section-fridge_view .fridges-list > .fridge-item a > span.fridge-is-active{
+    color: rgba(0, 0, 0, 0.60);
+text-align: center;
+font-size: 20px;
+font-weight: 600;
+line-height: 22px; /* 110% */
+letter-spacing: -0.408px;
+border-bottom: solid 1px #B6E0FF;
+}
+
+.list-empty{
+    margin-left: 50%;
+    margin-top: 25vh;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list-empty > p,
+.list-empty > a
+{
+    color: rgba(0, 0, 0, 0.40);
+    /* text-align: center; */
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 157.143% */
+    letter-spacing: -0.408px;
+}
+
+.products-list{
+    margin-top: 15px;
+}
+.list-hint{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+.list-hint > span { 
+    color: rgba(0, 0, 0, 0.60);
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 220% */
+    letter-spacing: -0.408px;
+    padding: 0 15px;
+}
+.product-item a.product-data{
+    border-radius: 8px;
+    background: #B6E0FF;
+    border: 3px solid #B6E0FF;
+    padding: 3px;
+    display: flex;
+    justify-content: space-between;
+    width: 87%;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+.product-item a{
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px; /* 157.143% */
+    letter-spacing: -0.408px;
+    color: #000 !important;
+}
+
+.select2-selection__clear { 
+    display: none;
+}
+
+.product-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.product-edit{
+    padding-bottom: 3px;
+}
+/* Fridge settings */
 
 
 /* .link-color-grey {
