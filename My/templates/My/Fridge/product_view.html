@@ -4,39 +4,30 @@
 {% block content %}
 
   {% with product.fridge.id as fridge_id %}
-    <a href="{% host_url 'fridge-view' fridge_id host 'my' %}">Go to fridge</a>
-    
+  
  
-
-
-
   <section class="section-product_view">
     <div class="row">
       <div class="product_view-container">
         <div class="product_view-title">
           <h3>{{ product.name }}</h3>
 
-          <a href="{% host_url 'product-edit' fridge_id product.id host 'my' %}"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 22 24" fill="none">
-            <path d="M4.18239 19.9699C3.55675 19.9699 2.97214 19.7544 2.55163 19.3544C2.01829 18.8518 1.76188 18.0929 1.85419 17.2723L2.23368 13.9493C2.30547 13.3236 2.68496 12.4929 3.12598 12.0416L11.5465 3.12881C13.6491 0.903165 15.8439 0.841627 18.0696 2.94419C20.2952 5.04676 20.3568 7.24163 18.2542 9.46727L9.83369 18.38C9.40292 18.8416 8.60291 19.2723 7.97727 19.375L4.6747 19.939C4.50034 19.9493 4.3465 19.9699 4.18239 19.9699ZM14.8388 2.93394C14.0491 2.93394 13.3619 3.42624 12.6645 4.1647L4.24393 13.0878C4.0388 13.3032 3.80291 13.816 3.76188 14.1135L3.38239 17.4364C3.34137 17.7749 3.42342 18.0518 3.60804 18.2262C3.79265 18.4005 4.06957 18.4621 4.40804 18.4108L7.7106 17.8468C8.00804 17.7955 8.50034 17.5288 8.70547 17.3134L17.126 8.4006C18.3978 7.04676 18.8593 5.79547 17.0029 4.05188C16.1824 3.26214 15.4747 2.93394 14.8388 2.93394Z" fill="#B6E0FF" stroke="#B6E0FF"/>
-            <path d="M16.2855 11.1798C16.265 11.1798 16.2342 11.1798 16.2137 11.1798C13.0137 10.8619 10.4393 8.43117 9.94702 5.25168C9.88548 4.83117 10.1727 4.44142 10.5932 4.36963C11.0137 4.30809 11.4034 4.59527 11.4752 5.01578C11.865 7.49783 13.8752 9.40552 16.3778 9.65168C16.7983 9.6927 17.106 10.0722 17.065 10.4927C17.0137 10.8824 16.6752 11.1798 16.2855 11.1798Z" fill="#B6E0FF" stroke="#B6E0FF"/>
-            <path d="M20.0389 23.2826H1.57734C1.15682 23.2826 0.808105 22.9339 0.808105 22.5134C0.808105 22.0929 1.15682 21.7441 1.57734 21.7441H20.0389C20.4594 21.7441 20.8081 22.0929 20.8081 22.5134C20.8081 22.9339 20.4594 23.2826 20.0389 23.2826Z" fill="#B6E0FF" stroke="#B6E0FF"/>
+          <a href="{% host_url 'product-edit' fridge_id product.id host 'my' %}" class="product-edit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M11 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22H15C20 22 22 20 22 15V13" stroke="black" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16.0399 3.01976L8.15988 10.8998C7.85988 11.1998 7.55988 11.7898 7.49988 12.2198L7.06988 15.2298C6.90988 16.3198 7.67988 17.0798 8.76988 16.9298L11.7799 16.4998C12.1999 16.4398 12.7899 16.1398 13.0999 15.8398L20.9799 7.95976C22.3399 6.59976 22.9799 5.01976 20.9799 3.01976C18.9799 1.01976 17.3999 1.65976 16.0399 3.01976V3.01976Z" stroke="black" stroke-opacity="0.6" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14.9099 4.1499C15.2415 5.32737 15.8699 6.39997 16.7349 7.26495C17.5998 8.12993 18.6724 8.75831 19.8499 9.0899" stroke="black" stroke-opacity="0.6" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg></a>
+          <a href="{% host_url 'add-product-to-shopping-list' product.id host 'my' %}" class="add-product-to-shopping-list"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M2 2H3.74C4.82 2 5.67 2.93 5.58 4L4.75 13.96C4.71759 14.3459 4.76569 14.7342 4.89123 15.1005C5.01678 15.4669 5.21705 15.8031 5.47934 16.0879C5.74163 16.3728 6.06023 16.6001 6.41495 16.7553C6.76967 16.9106 7.15278 16.9905 7.54 16.99H18.19C19.63 16.99 20.89 15.81 21 14.38L21.54 6.88C21.66 5.22 20.4 3.87 18.73 3.87H5.82M9 8H21M16.25 22C16.5815 22 16.8995 21.8683 17.1339 21.6339C17.3683 21.3995 17.5 21.0815 17.5 20.75C17.5 20.4185 17.3683 20.1005 17.1339 19.8661C16.8995 19.6317 16.5815 19.5 16.25 19.5C15.9185 19.5 15.6005 19.6317 15.3661 19.8661C15.1317 20.1005 15 20.4185 15 20.75C15 21.0815 15.1317 21.3995 15.3661 21.6339C15.6005 21.8683 15.9185 22 16.25 22ZM8.25 22C8.58152 22 8.89946 21.8683 9.13388 21.6339C9.3683 21.3995 9.5 21.0815 9.5 20.75C9.5 20.4185 9.3683 20.1005 9.13388 19.8661C8.89946 19.6317 8.58152 19.5 8.25 19.5C7.91848 19.5 7.60054 19.6317 7.36612 19.8661C7.1317 20.1005 7 20.4185 7 20.75C7 21.0815 7.1317 21.3995 7.36612 21.6339C7.60054 21.8683 7.91848 22 8.25 22V22Z" stroke="black" stroke-opacity="0.6" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
           </svg></a> 
-    <a href="{% host_url 'product-delete' fridge_id product.id host 'my' %}"><svg width="25" height="25" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M11 21C16.5 21 21 16.5 21 11C21 5.5 16.5 1 11 1C5.5 1 1 5.5 1 11C1 16.5 5.5 21 11 21Z"
-            stroke="#B6E0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M8.16992 13.8299L13.8299 8.16992" stroke="#B6E0FF" stroke-width="3" stroke-linecap="round"
-            stroke-linejoin="round"/>
-      <path d="M13.8299 13.8299L8.16992 8.16992" stroke="#B6E0FF" stroke-width="3" stroke-linecap="round"
-            stroke-linejoin="round"/>
-    </svg>
-  </a> 
+   
         </div>
         <div class="product_view-container">
           <div class="container-item storage">
             <span>
               Storage
             </span>
-            <span>
+            <span class="bold">
               {{ product.fridge.name }}
             </span>
           </div>
@@ -44,7 +35,7 @@
             <span>
               Amount
             </span>
-            <span>
+            <span class="bold">
               {{ product.amount }} {{ product.units }}
             </span>
           </div>
@@ -52,7 +43,7 @@
             <span>
               Date of manufacture
             </span>
-            <span>
+            <span class="bold">
               {{ product.manufacture_date }}
             </span>
           </div>
@@ -60,7 +51,7 @@
             <span>
               Shelf life
             </span>
-            <span>
+            <span class="bold">
               {{ product.shelf_life_date }}
             </span>
           </div>
@@ -68,28 +59,27 @@
             <span>
               Product notes
             </span>
-            <span>
+            <div class="bold">
               {{ product.notes }}
-            </span>
+            </div>
           </div>
+        </div>
+        <div class="product_view-buttons">
+          <button class="go_fridge">
+            <a href="{% host_url 'fridge-view' fridge_id host 'my' %}" class="bold">Back to {{ product.fridge.name }}</a>
+          </button>
+          <button class="product-delete">
+            <a href="{% host_url 'product-delete' fridge_id product.id host 'my' %}" class="bold">Delete product
+            </svg>
+          </a> 
+            
+          </button>
         </div>
       </div>
     </div>
 
   </section>
   {% endwith %}
-    <a href="{% host_url 'add-product-to-shopping-list' product.id host 'my' %}">Add to shopping list</a> <br>
-    <a href="{% host_url 'product-edit' fridge_id product.id host 'my' %}">Edit</a> <br>
-    <a href="{% host_url 'product-delete' fridge_id product.id host 'my' %}">Delete</a> <br>
-  {% endwith %}
-  <br>
-  <div id="product">
-    name: {{ product.name }}<br>
-    fridge.name: {{ product.fridge.name }}<br>
-    amount: {{ product.amount }}<br>
-    units: {{ product.units }}<br>
-    manufacture_date: {{ product.manufacture_date|date:"d m y" }}<br>
-    shelf_life_date: {{ product.shelf_life_date|date:"d m y" }}<br>
-    notes: {{ product.notes }}<br>
-  </div>
+   
+
 {% endblock %}

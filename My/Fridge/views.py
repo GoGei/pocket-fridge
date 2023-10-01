@@ -62,6 +62,8 @@ def product_edit(request, fridge_id, product_id):
     form = {
         'body': form_body,
         'buttons': {'save': True, 'cancel': True},
+        'form_class': 'product_edit',
+
     }
     return render(request, 'My/Fridge/product_edit.html', {'form': form})
 

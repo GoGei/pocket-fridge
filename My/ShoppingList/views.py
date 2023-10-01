@@ -67,6 +67,7 @@ def shopping_list_edit_product(request, product_id):
     form = {
         'body': form_body,
         'buttons': {'save': True, 'cancel': True},
+        'form_class': 'shopping_list_edit_product',
     }
     return render(request, 'My/ShoppingList/shopping_list_product_edit.html', {'form': form})
 
