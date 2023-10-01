@@ -8,6 +8,10 @@
       <div class="container-shopping_list">
         <div class="shopping_list-title">
           <h3>{{ shopping_list.name }}</h3>
+          <button class="shopping_list-add" id="copy-button"
+                  data-copy-url="{% host_url 'api-v1:shopping-list-copy-to-click-board' shopping_list.id host 'api' %}">
+            {% trans 'Copy to click board' %}
+          </button>
         </div>
         <button class="shopping_list-add">
           <a href="{% host_url 'shopping-list-add-product' host 'my' %}">{% trans 'Add new product' %}</a>
@@ -135,6 +139,31 @@
           }
         } else {
           $(productDiv).show();
+        }
+      });
+    });
+
+    $('#copy-button').click(function () {
+      let copyUrl = $(this).data('copy-url');
+
+      $.ajax({
+        url: copyUrl,
+        method: 'GET',
+        success: function (response) {
+          let formattedText = response.replace(/\n/g, '\n');
+
+          let tempTextarea = $('<textarea>');
+          $('body').append(tempTextarea);
+          tempTextarea.val(formattedText).select();
+
+          document.execCommand('copy');
+
+          tempTextarea.remove();
+
+          alert('Text copied to clipboard!');
+        },
+        error: function (xhr, status, error) {
+          console.log('Error:', error);
         }
       });
     });
