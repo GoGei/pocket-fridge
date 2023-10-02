@@ -2,28 +2,54 @@
 {% load hosts i18n %}
 
 {% block content %}
-  <main role="main" class="container">
-    <div class="row">
-      <div class="col-md-12 blog-main">
-        <div class="blog-post">
-          {% include 'My/Fridge/fridges_template.html' %}
 
-          <div>
-            {% for product in products %}
-              <a href="{% host_url 'product-view' product.fridge.id product.id host 'my' %}">
-                {{ product.name }} - {{ product.amount }} ({{ product.get_units_display }})
-                - {{ product.shelf_life_date|date:"d m Y" }}
-              </a>
-              <a href="{% host_url 'product-edit' product.fridge.id product.id host 'my' %}">Edit</a>
-              <a href="{% host_url 'product-delete' product.fridge.id product.id host 'my' %}">Delete</a> <br>
-            {% empty %}
-              <p>{% trans 'There is no products!' %}</p>
-{#              <a href="{% host_url 'fridge-add' host 'my' %}">{% trans 'Add product' %}</a>#}
-              <a href="{% host_url 'fridge-add-for-fridge' fridge_id host 'my' %}">{% trans 'Add product' %}</a>
-            {% endfor %}
+
+
+  <section class="section-fridge_view">
+    <div class="row">
+      <div class="fridge_view-container">
+        <div class="fridges-list">
+          {% include 'My/Fridge/fridges_template.html' with fridge_id=fridge.id %}
+        </div>
+        {% if products %}
+        <div class="products-list">
+          <div class="list-hint">
+            <span>{% trans 'product' %}</span>
+            <span>{% trans 'amount' %}</span>
+            <span>{% trans 'shelf life' %}</span>
           </div>
+        {% endif %}
+
+          {% for product in products %}
+          <div class="product-item">
+            <a href="{% host_url 'product-view' product.fridge_id product.id host 'my' %}" class="product-data">
+              <span class="product-name">
+                {{ product.name }}
+              </span>
+              <span class="product-amount">
+                {{ product.amount}} {{ product.get_units_display }}
+              </span>
+              <span class="product-date">
+                {{ product.shelf_life_date|date:"d.m.Y" }}
+              </span>
+            </a>
+            <a href="{% host_url 'product-delete' product.fridge.id product.id host 'my' %}" class="product-delete"><svg width="25" height="25" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 21C16.5 21 21 16.5 21 11C21 5.5 16.5 1 11 1C5.5 1 1 5.5 1 11C1 16.5 5.5 21 11 21Z"
+                    stroke="#B6E0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8.16992 13.8299L13.8299 8.16992" stroke="#B6E0FF" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round"/>
+              <path d="M13.8299 13.8299L8.16992 8.16992" stroke="#B6E0FF" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg></a>
+          </div>
+          {% empty %}
+            <div class="list-empty">
+              <p>{{ fridge.name }} {% trans 'is empty!' %}</p>
+              <a href="{% host_url 'fridge-add-for-fridge' fridge.id host 'my' %}">{% trans 'Add products' %}</a>
+            </div>
+          {% endfor %}
         </div>
       </div>
     </div>
-  </main>
+  </section>
 {% endblock %}

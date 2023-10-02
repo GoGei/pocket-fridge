@@ -1,10 +1,9 @@
 {% load hosts %}
 {% for fridge in fridge_qs %}
-  <div class="blog-post">
-    <h2 class="blog-post-title">
-      <a href="{% host_url 'fridge-view' fridge.id host 'my' %}">
-        <p class="{% if fridge_id == fridge.id %}fridge-is-active{% endif %}">{{ fridge.name }}</p>
+  <div class="fridge-item">
+      <a href="{% host_url 'fridge-view' fridge.id host 'my' %}" class="fridge-item-title">
+        <span class="{% if fridge_id == fridge.id %}fridge-is-active{% endif %}">{{ fridge.name }}
+        </span>
       </a>
-    </h2>
   </div>
-{% endfor %}
+{% endfor %}  
