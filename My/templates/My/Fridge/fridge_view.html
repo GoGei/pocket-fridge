@@ -9,36 +9,30 @@
     <div class="row">
       <div class="fridge_view-container">
         <div class="fridges-list">
-          {% include 'My/Fridge/fridges_template.html' %}
+          {% include 'My/Fridge/fridges_template.html' with fridge_id=fridge.id %}
         </div>
         {% if products %}
         <div class="products-list">
           <div class="list-hint">
-            <span>product</span>
-            <span>amount</span>
-            <span>shelf life</span>
+            <span>{% trans 'product' %}</span>
+            <span>{% trans 'amount' %}</span>
+            <span>{% trans 'shelf life' %}</span>
           </div>
         {% endif %}
-        
-          {% for product in products %}
 
+          {% for product in products %}
           <div class="product-item">
-            <a href="{% host_url 'product-view' product.fridge.id product.id host 'my' %}" class="product-data">
+            <a href="{% host_url 'product-view' product.fridge_id product.id host 'my' %}" class="product-data">
               <span class="product-name">
-                {{ product.name }} 
+                {{ product.name }}
               </span>
               <span class="product-amount">
                 {{ product.amount}} {{ product.get_units_display }}
               </span>
               <span class="product-date">
-                {{ product.shelf_life_date|date:"d M Y" }}
+                {{ product.shelf_life_date|date:"d.m.Y" }}
               </span>
             </a>
-            <!-- <a href="{% host_url 'product-edit' product.fridge.id product.id host 'my' %}" class="product-edit"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="24" viewBox="0 0 26 28" fill="none">
-              <path d="M4.18239 19.9699C3.55675 19.9699 2.97214 19.7544 2.55163 19.3544C2.01829 18.8518 1.76188 18.0929 1.85419 17.2723L2.23368 13.9493C2.30547 13.3236 2.68496 12.4929 3.12598 12.0416L11.5465 3.12881C13.6491 0.903165 15.8439 0.841627 18.0696 2.94419C20.2952 5.04676 20.3568 7.24163 18.2542 9.46727L9.83369 18.38C9.40292 18.8416 8.60291 19.2723 7.97727 19.375L4.6747 19.939C4.50034 19.9493 4.3465 19.9699 4.18239 19.9699ZM14.8388 2.93394C14.0491 2.93394 13.3619 3.42624 12.6645 4.1647L4.24393 13.0878C4.0388 13.3032 3.80291 13.816 3.76188 14.1135L3.38239 17.4364C3.34137 17.7749 3.42342 18.0518 3.60804 18.2262C3.79265 18.4005 4.06957 18.4621 4.40804 18.4108L7.7106 17.8468C8.00804 17.7955 8.50034 17.5288 8.70547 17.3134L17.126 8.4006C18.3978 7.04676 18.8593 5.79547 17.0029 4.05188C16.1824 3.26214 15.4747 2.93394 14.8388 2.93394Z" fill="#B6E0FF" stroke="#B6E0FF"/>
-              <path d="M16.2855 11.1798C16.265 11.1798 16.2342 11.1798 16.2137 11.1798C13.0137 10.8619 10.4393 8.43117 9.94702 5.25168C9.88548 4.83117 10.1727 4.44142 10.5932 4.36963C11.0137 4.30809 11.4034 4.59527 11.4752 5.01578C11.865 7.49783 13.8752 9.40552 16.3778 9.65168C16.7983 9.6927 17.106 10.0722 17.065 10.4927C17.0137 10.8824 16.6752 11.1798 16.2855 11.1798Z" fill="#B6E0FF" stroke="#B6E0FF"/>
-              <path d="M20.0389 23.2826H1.57734C1.15682 23.2826 0.808105 22.9339 0.808105 22.5134C0.808105 22.0929 1.15682 21.7441 1.57734 21.7441H20.0389C20.4594 21.7441 20.8081 22.0929 20.8081 22.5134C20.8081 22.9339 20.4594 23.2826 20.0389 23.2826Z" fill="#B6E0FF" stroke="#B6E0FF"/>
-            </svg></a> -->
             <a href="{% host_url 'product-delete' product.fridge.id product.id host 'my' %}" class="product-delete"><svg width="25" height="25" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M11 21C16.5 21 21 16.5 21 11C21 5.5 16.5 1 11 1C5.5 1 1 5.5 1 11C1 16.5 5.5 21 11 21Z"
                     stroke="#B6E0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -46,40 +40,16 @@
                     stroke-linejoin="round"/>
               <path d="M13.8299 13.8299L8.16992 8.16992" stroke="#B6E0FF" stroke-width="3" stroke-linecap="round"
                     stroke-linejoin="round"/>
-            </svg></a> 
+            </svg></a>
           </div>
-
           {% empty %}
             <div class="list-empty">
-              <p> {{ fridge.name }}{% trans 'is empty!' %}</p>
-              <a href="{% host_url 'fridge-add' host 'my' %}">{% trans 'Add products' %}</a>
+              <p>{{ fridge.name }} {% trans 'is empty!' %}</p>
+              <a href="{% host_url 'fridge-add-for-fridge' fridge.id host 'my' %}">{% trans 'Add products' %}</a>
             </div>
           {% endfor %}
         </div>
       </div>
     </div>
-
   </section>
- 
 {% endblock %}
-
-{% block extrajs %}
-  <script>
-
-  </script>
-{% endblock %}
-
-<!-- <div>
-            {% for product in products %}
-              <a href="{% host_url 'product-view' product.fridge.id product.id host 'my' %}">
-                {{ product.name }} - {{ product.amount }} ({{ product.get_units_display }})
-                - {{ product.shelf_life_date|date:"d m Y" }}
-              </a>
-              <a href="{% host_url 'product-edit' product.fridge.id product.id host 'my' %}">Edit</a>
-              <a href="{% host_url 'product-delete' product.fridge.id product.id host 'my' %}">Delete</a> <br>
-            {% empty %}
-              <p>{% trans 'There is no products!' %}</p>
-{#              <a href="{% host_url 'fridge-add' host 'my' %}">{% trans 'Add product' %}</a>#}
-              <a href="{% host_url 'fridge-add-for-fridge' fridge_id host 'my' %}">{% trans 'Add product' %}</a>
-            {% endfor %}
-          </div> -->

@@ -33,6 +33,7 @@ class Fridge(CrmMixin, UUIDPrimaryKeyMixin):
     The Fridge model represents a fridge and has a name field, a foreign key to the User model, and a
     foreign key to the FridgeType model.
     """
+    DEFAULT_SLUG_TO_DISPLAY = 'fridge'
     name = models.CharField(max_length=64)
     user = models.ForeignKey('User.User', on_delete=models.PROTECT)
     fridge_type = models.ForeignKey(FridgeType, on_delete=models.PROTECT)
