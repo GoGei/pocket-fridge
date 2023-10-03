@@ -186,3 +186,6 @@ msgstr "Поки не надано"
 
 msgid "Terms of use"
 msgstr "Умови використання"
+
+msgid "Activation link was send to your email. Please, follow this letter to reset password of your account"
+msgstr "Посилання для активації було надіслано на вашу електронну пошту. Будь ласка, перейдіть за цим посиланням, щоб відновити пароль до вашого облікового запису" 

@@ -216,18 +216,11 @@ footer > div{
 
 /* Add product settings */
 
-form > .form_buttons {
-    margin: 0 auto;
-    margin-top: 60px;
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+
 
 form.fridge_add,
 form.shopping_list_add_product {
-    margin-top: 60px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -240,6 +233,16 @@ form.shopping_list_add_product > div{
     flex-direction: row;
     align-items: center;
     margin-bottom: 20px;
+}
+
+form > .form_buttons {
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column !important;
 }
 
 .fridge_add div.form-group:nth-child(3){
@@ -366,7 +369,8 @@ form.shopping_list_add_product{
 }
 
 .form_buttons > input:last-child{
-    margin-left: 20px;
+    /* margin-left: 20px; */
+    margin-top: 10px;
 }
 
 .shopping_list_add_product > div:first-of-type > div{
@@ -693,6 +697,16 @@ background: #d9d9d9;
     margin-bottom: 0;
 } 
 /* Fridge settings */
+
+
+/* Login page */
+
+body.login-page{
+    background: #B6E0FF !important;
+
+}
+
+/* Login page */
 
 
 /* .link-color-grey {

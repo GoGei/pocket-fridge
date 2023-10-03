@@ -79,7 +79,7 @@ class FridgeProduct(CrmMixin, UUIDPrimaryKeyMixin):
         KILOGRAM = 'kilogram', _('KG')
         MILLITER = 'milliter', _('ML')
         LITER = 'liter', _('L')
-        ITEMS = 'items', _('Items')
+        ITEMS = 'Units', _('Units')
 
     name = models.CharField(max_length=64, db_index=True)
     fridge = models.ForeignKey(Fridge, on_delete=models.PROTECT)
