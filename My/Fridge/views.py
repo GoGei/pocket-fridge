@@ -1,3 +1,4 @@
+from django.forms import model_to_dict
 from django.shortcuts import render, redirect, get_object_or_404
 from django_hosts import reverse
 
@@ -15,7 +16,7 @@ def fridge_add(request, fridge_id=None):
     else:
         fridge = None
 
-    form_body = FridgeProductFormAdd(request.POST or None,
+    form_body = FridgeProductFormAdd(request.POST or None, request.FILES or None,
                                      user=request.user, fridge=fridge)
     if form_body.is_valid():
         product = form_body.save()
@@ -52,9 +53,13 @@ def product_edit(request, fridge_id, product_id):
         return redirect(reverse('home-index', host='my'))
 
     product = get_object_or_404(utils.get_fridge_products(request.user, fridge_id), id=product_id)
-    form_body = FridgeProductFormEdit(request.POST or None,
+    initial = model_to_dict(product)
+    initial['manufacture_date'] = product.manufacture_date.isoformat()
+    initial['shelf_life_date'] = product.shelf_life_date.isoformat()
+
+    form_body = FridgeProductFormEdit(request.POST or None, request.FILES or None,
                                       user=request.user,
-                                      instance=product)
+                                      instance=product, initial=initial)
     if form_body.is_valid():
         product = form_body.save()
         return redirect(

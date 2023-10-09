@@ -16,6 +16,11 @@ class ShoppingListTestCase(ReadOnlyViewSetMixinTestCase, TestCase):
         self.base_route = 'shopping-list'
         self.instance = ShoppingListFactory.create(user=self.user)
 
+    def test_copy_to_click_board(self):
+        response = self.client.get(self.get_detail_url(action='copy-to-click-board'), HTTP_HOST='api',
+                                   format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
 
 class ShoppingListProductTestCase(ModelViewSetTestCase, TestCase):
     def setUp(self) -> None:

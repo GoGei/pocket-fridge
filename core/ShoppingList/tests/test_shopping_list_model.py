@@ -31,3 +31,13 @@ class ShoppingListTests(TestCase):
         self.assertRaises(ValueError, ShoppingList.create_shopping_list_for_user, user)
         self.assertEqual(instance.user, user)
         self.assertEqual(instance, ShoppingList.get_shopping_list(user))
+
+    def test_add_to_shopping_list(self):
+        obj = ShoppingListProductFactory.create()
+        ShoppingList.add_to_shopping_list(obj.shopping_list, obj.product)
+        self.assertIn(obj, obj.shopping_list.get_products())
+
+    def test_copy_to_click_board(self):
+        obj = ShoppingListProductFactory.create()
+        result = ShoppingList.copy_to_click_board(obj.shopping_list)
+        self.assertIn(obj.name, result)

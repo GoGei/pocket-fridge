@@ -1,10 +1,11 @@
 from django.contrib import messages
+from django.http import JsonResponse
 from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import render, redirect, get_object_or_404
 from django_hosts import reverse
 
 from My import utils, decorators
-from .forms import ShoppingListProductFormAdd, ShoppingListProductFormEdit
+from .forms import ShoppingListProductFormAdd, ShoppingListProductFormEdit, ShoppingListProductChangeQtyFormEdit
 
 
 @decorators.my_login_required
@@ -91,3 +92,14 @@ def shopping_list_delete_product(request, product_id):
     product = utils.get_shopping_list_product(request.user, product_id=product_id)
     product.delete()
     return redirect(reverse('shopping-list', host='my'))
+
+
+@decorators.my_login_required
+def shopping_list_change_qty_product(request, product_id):
+    product = utils.get_shopping_list_product(request.user, product_id=product_id)
+    form_body = ShoppingListProductChangeQtyFormEdit(request.POST or None,
+                                                     instance=product)
+    if form_body.is_valid():
+        form_body.save()
+        return JsonResponse({'new_qty': form_body.cleaned_data['amount'], 'success': True})
+    return JsonResponse(form_body.errors)

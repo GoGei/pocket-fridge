@@ -12,10 +12,15 @@ class BaseProductValidationForm(forms.Form):
             'no_label': True,
             'placeholder': _('Product name'),
         }
-        self.fields['name'].widget.attrs.update(name_attrs)
-        self.fields['amount'].label = _('Amount')
-        self.fields['units'].label = _('Units')
-        self.fields['units'].initial = FridgeProduct.FridgeProductUnits.choices[0]
+        if self.fields.get('name'):
+            self.fields['name'].widget.attrs.update(name_attrs)
+
+        if self.fields.get('amount'):
+            self.fields['amount'].label = _('Amount')
+
+        if self.fields.get('units'):
+            self.fields['units'].label = _('Units')
+            self.fields['units'].initial = FridgeProduct.FridgeProductUnits.choices[0]
 
     def clean_name(self):
         data = self.cleaned_data

@@ -39,9 +39,7 @@
             <a href="{{ licences_url }}" type="button" target="_blank" class="bold">{% trans 'Licences' %}</a>
           </button>
           <button class="profile_buttons-dataexport">
-          <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Data export will be provided later">
-            <a href="#" type="button" disabled="" class="bold">{% trans 'Data export' %}</a>
-            </span>
+            <a href="{% host_url 'profile-export' host 'my' %}" type="button" class="bold">{% trans 'Data export' %}</a>
           </button>
           <button class="profile_buttons-report">
             <a href="https://forms.gle/4Z7vC1pTPfit6RN76" type="button" target="_blank" class="bold">{% trans 'Report error' %}</a>
