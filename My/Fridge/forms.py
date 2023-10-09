@@ -29,6 +29,11 @@ class FridgeProductForm(forms.ModelForm, BaseProductValidationForm):
         label=_('Shelf life date'),
         widget=forms.DateInput(attrs={'type': 'date'}))
 
+    image = forms.ImageField(label=_('Photo'), required=False,
+                             widget=forms.FileInput(attrs={
+                                 'class': 'form-control',
+                             }))
+
     class Meta:
         model = FridgeProduct
         fields = (
@@ -39,6 +44,7 @@ class FridgeProductForm(forms.ModelForm, BaseProductValidationForm):
             'manufacture_date',
             'shelf_life_date',
             'notes',
+            'image',
         )
 
     def __init__(self, *args, **kwargs):

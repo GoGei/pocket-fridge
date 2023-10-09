@@ -1,4 +1,5 @@
-<form action="{{ form.action_url }}" method="{{ form.method|default:'post' }}" novalidate class="{{ form.form_class }}">
+<form action="{{ form.action_url }}" method="{{ form.method|default:'post' }}" novalidate class="{{ form.form_class }}"
+      enctype="multipart/form-data">
   {% csrf_token %}
   {% include 'base_non_field_error_block.html' with form=form.body %}
   {{ form.body.media }}
