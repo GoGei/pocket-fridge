@@ -13,8 +13,8 @@ from core.Licence.models import LicenceVersion, TermsOfUse, PrivacyPolicy
 
 
 def home_index(request):
-    return redirect(reverse('login', host='public'))
-    # return render(request, 'Public/home_index.html')
+    # return redirect(reverse('login', host='public'))
+    return render(request, 'Public/home_index.html')
 
 
 def register(request):

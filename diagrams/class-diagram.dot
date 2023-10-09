@@ -1,0 +1,76 @@
+digraph "#pocket-fridge" {
+
+splines  = ortho;
+fontname = "Inconsolata";
+
+node [colorscheme = ylgnbu4];
+edge [colorscheme = dark28, dir = both];
+
+"core.Currency.models.Currency"                [shape = record, pos = "-2.771,5.944!"    , label = "{ core.Currency.models.Currency |  }"];
+"core.Finances.models.Invoice"                 [shape = record, pos = "3.860,1.694!"     , label = "{ core.Finances.models.Invoice |  }"];
+"core.Finances.models.Payment"                 [shape = record, pos = "0.976,0.583!"     , label = "{ core.Finances.models.Payment |  }"];
+"core.Finances.models.Price"                   [shape = record, pos = "2.490,4.667!"     , label = "{ core.Finances.models.Price |  }"];
+"core.Finances.models.Product"                 [shape = record, pos = "1.340,5.944!"     , label = "{ core.Finances.models.Product |  }"];
+"core.Finances.models.Subscription"            [shape = record, pos = "1.318,2.972!"     , label = "{ core.Finances.models.Subscription |  }"];
+"core.Fridge.models.Fridge"                    [shape = record, pos = "10.644,2.972!"    , label = "{ core.Fridge.models.Fridge |  }"];
+"core.Fridge.models.FridgeProduct"             [shape = record, pos = "10.753,1.694!"    , label = "{ core.Fridge.models.FridgeProduct |  }"];
+"core.Fridge.models.FridgeType"                [shape = record, pos = "9.363,5.944!"     , label = "{ core.Fridge.models.FridgeType |  }"];
+"core.Licence.models.Licence"                  [shape = record, pos = "19.228,2.972!"    , label = "{ core.Licence.models.Licence |  }"];
+"core.Licence.models.LicenceVersion"           [shape = record, pos = "23.047,4.667!"    , label = "{ core.Licence.models.LicenceVersion |  }"];
+"core.Licence.models.PrivacyPolicy"            [shape = record, pos = "23.476,2.972!"    , label = "{ core.Licence.models.PrivacyPolicy |  }"];
+"core.Licence.models.TermsOfUse"               [shape = record, pos = "27.878,2.972!"    , label = "{ core.Licence.models.TermsOfUse |  }"];
+"core.Notifications.models.Notification"       [shape = record, pos = "32.212,5.944!"    , label = "{ core.Notifications.models.Notification |  }"];
+"core.ShoppingList.models.ShoppingList"        [shape = record, pos = "14.228,2.972!"    , label = "{ core.ShoppingList.models.ShoppingList |  }"];
+"core.ShoppingList.models.ShoppingListProduct" [shape = record, pos = "9.542,0.583!"     , label = "{ core.ShoppingList.models.ShoppingListProduct |  }"];
+"core.User.models.User"                        [shape = record, pos = "7.064,4.667!"     , label = "{ core.User.models.User |  }"];
+str                                            [shape = record, pos = "15.290,7.056!"    , label = "{ str |  }"];
+"typing.Collection"                            [shape = record, pos = "15.814,9.222!"    , label = "{ typing.Collection |  }"];
+"typing.Reversible"                            [shape = record, pos = "13.231,9.222!"    , label = "{ typing.Reversible |  }"];
+"typing.Sequence"                              [shape = record, pos = "14.547,8.139!"    , label = "{ typing.Sequence |  }"];
+
+"core.Finances.models.Invoice"                 -> "core.Currency.models.Currency"                [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Finances.models.Invoice"                 -> "core.Finances.models.Subscription"            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Finances.models.Invoice"                 -> "core.User.models.User"                        [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Finances.models.Invoice"                 -> str                                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Finances.models.Payment"                 -> "core.Currency.models.Currency"                [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Finances.models.Payment"                 -> "core.Finances.models.Invoice"                 [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Finances.models.Payment"                 -> "core.User.models.User"                        [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Finances.models.Payment"                 -> str                                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Finances.models.Price"                   -> "core.Currency.models.Currency"                [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Finances.models.Price"                   -> "core.Finances.models.Product"                 [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Finances.models.Price"                   -> str                                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Finances.models.Product"                 -> str                                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Finances.models.Subscription"            -> "core.Currency.models.Currency"                [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Finances.models.Subscription"            -> "core.Finances.models.Price"                   [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Finances.models.Subscription"            -> "core.Finances.models.Product"                 [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Finances.models.Subscription"            -> "core.User.models.User"                        [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Finances.models.Subscription"            -> str                                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Fridge.models.Fridge"                    -> "core.Fridge.models.FridgeType"                [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Fridge.models.Fridge"                    -> "core.User.models.User"                        [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Fridge.models.Fridge"                    -> str                                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Fridge.models.FridgeProduct"             -> "core.Fridge.models.Fridge"                    [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Fridge.models.FridgeProduct"             -> "core.User.models.User"                        [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Fridge.models.FridgeProduct"             -> str                                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Fridge.models.FridgeType"                -> str                                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Licence.models.Licence"                  -> "core.Licence.models.LicenceVersion"           [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Licence.models.Licence"                  -> "core.User.models.User"                        [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Licence.models.Licence"                  -> str                                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Licence.models.LicenceVersion"           -> str                                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Licence.models.PrivacyPolicy"            -> "core.Licence.models.LicenceVersion"           [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Licence.models.PrivacyPolicy"            -> str                                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Licence.models.TermsOfUse"               -> "core.Licence.models.LicenceVersion"           [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Licence.models.TermsOfUse"               -> str                                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.Notifications.models.Notification"       -> str                                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.ShoppingList.models.ShoppingList"        -> "core.User.models.User"                        [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.ShoppingList.models.ShoppingList"        -> str                                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.ShoppingList.models.ShoppingListProduct" -> "core.Fridge.models.Fridge"                    [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.ShoppingList.models.ShoppingListProduct" -> "core.Fridge.models.FridgeProduct"             [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.ShoppingList.models.ShoppingListProduct" -> "core.ShoppingList.models.ShoppingList"        [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.ShoppingList.models.ShoppingListProduct" -> "core.User.models.User"                        [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.ShoppingList.models.ShoppingListProduct" -> str                                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+"core.User.models.User"                        -> str                                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "0..*", label = "", headlabel = "1"];
+str                                            -> "typing.Sequence"                              [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "1", label = "", headlabel = "1"];
+"typing.Sequence"                              -> "typing.Collection"                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "1", label = "", headlabel = "1"];
+"typing.Sequence"                              -> "typing.Reversible"                            [color = "#595959", style = solid , arrowtail = none    , arrowhead = diamond , taillabel = "1", label = "", headlabel = "1"];
+
+}

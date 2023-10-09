@@ -1,11 +1,12 @@
 """
 The above code defines two models, ShoppingList and ShoppingListProduct, for a shopping list application.
 """
+from __future__ import annotations
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from core.Fridge.models import FridgeProduct
-from core.Utils.Mixins.models import CrmMixin, UUIDPrimaryKeyMixin
+from core.Utils.Mixins.models import CrmMixin, UUIDPrimaryKeyMixin, ActiveQuerySet
 
 
 class ShoppingList(CrmMixin, UUIDPrimaryKeyMixin):
@@ -20,7 +21,7 @@ class ShoppingList(CrmMixin, UUIDPrimaryKeyMixin):
     class Meta:
         db_table = 'shopping_list'
 
-    def get_products(self):
+    def get_products(self) -> ActiveQuerySet[ShoppingListProduct]:
         qs = ShoppingListProduct.objects.select_related('shopping_list', 'user', 'product', 'fridge')
         return qs.active().filter(shopping_list=self).order_by('-is_checked', 'name')
 
@@ -48,6 +49,14 @@ class ShoppingList(CrmMixin, UUIDPrimaryKeyMixin):
         )
         shopping_list_product.save()
         return shopping_list_product
+
+    def copy_to_click_board(self) -> str:
+        products = self.get_products()
+        result = ''
+        for product in products:
+            state = '[ ]' if product.is_checked else '[+]'
+            result += f'{state} {product.name} ({product.amount} {product.get_units_display()})\n'
+        return result
 
 
 class ShoppingListProduct(CrmMixin, UUIDPrimaryKeyMixin):

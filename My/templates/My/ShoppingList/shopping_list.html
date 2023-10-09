@@ -8,6 +8,10 @@
       <div class="container-shopping_list">
         <div class="shopping_list-title">
           <h3>{{ shopping_list.name }}</h3>
+          <button class="shopping_list-add" id="copy-button"
+                  data-copy-url="{% host_url 'api-v1:shopping-list-copy-to-click-board' shopping_list.id host 'api' %}">
+            {% trans 'Copy to click board' %}
+          </button>
         </div>
         <button class="shopping_list-add">
           <a href="{% host_url 'shopping-list-add-product' host 'my' %}">{% trans 'Add new product' %}</a>
@@ -25,7 +29,7 @@
 
         <div class="products-div">
           {% for product in products %}
-            <div class="form-check product-div">
+            <div class="form-check product-div" id="parentBlock-{{ product.id }}">
               <input class="form-check-input product-selected" type="checkbox"
                      data-action-url="{% if product.is_checked %}
                                             {% host_url 'shopping-list-uncheck-product' product.id host 'my' %}
@@ -33,29 +37,31 @@
                                             {% host_url 'shopping-list-check-product' product.id host 'my' %}
                                             {% endif %}"
                      {% if product.is_checked %}checked{% endif %}>
-              <a href="{% host_url 'shopping-list-edit-product' product.id host 'my' %}" class="product_name">
+              <div class="product_name">
+                <a href="{% host_url 'shopping-list-edit-product' product.id host 'my' %}">
                 <span
                     class="product-name product-name-label {% if not product.is_checked %}product-name-crossed{% endif %}"
                     data-is-checked="{% if product.is_checked %}checked{% else %}unchecked{% endif %}">
                   {{ product.name }}
                 </span>
-                <span class="product-name-label {% if not product.is_checked %}product-name-crossed{% endif %}">
+                </a>
+                <span data-item-id="{{ product.id }}"
+                    data-product-qty-change-url='{% host_url 'shopping-list-change-qty-product' product.id host 'my' %}'
+                    class="product-name-label product-name-qty {% if not product.is_checked %}product-name-crossed{% endif %}">
                   {{ product.amount }} {{ product.get_units_display }}
                 </span>
-                <a href="{% host_url 'shopping-list-delete-product' product.id host 'my' %}"
-                   class="product-delete"
-                   {% if product.is_checked %}hidden{% endif %}>
-
-                  <svg width="25" height="25" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11 21C16.5 21 21 16.5 21 11C21 5.5 16.5 1 11 1C5.5 1 1 5.5 1 11C1 16.5 5.5 21 11 21Z"
-                          stroke="#B6E0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M8.16992 13.8299L13.8299 8.16992" stroke="#B6E0FF" stroke-width="3" stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                    <path d="M13.8299 13.8299L8.16992 8.16992" stroke="#B6E0FF" stroke-width="3" stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                  </svg>
-
-                </a>
+              </div>
+              <a href="{% host_url 'shopping-list-delete-product' product.id host 'my' %}"
+                 class="product-delete"
+                 {% if product.is_checked %}hidden{% endif %}>
+                <svg width="25" height="25" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11 21C16.5 21 21 16.5 21 11C21 5.5 16.5 1 11 1C5.5 1 1 5.5 1 11C1 16.5 5.5 21 11 21Z"
+                        stroke="#B6E0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8.16992 13.8299L13.8299 8.16992" stroke="#B6E0FF" stroke-width="3" stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                  <path d="M13.8299 13.8299L8.16992 8.16992" stroke="#B6E0FF" stroke-width="3" stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                </svg>
               </a>
             </div>
           {% endfor %}
@@ -64,8 +70,6 @@
       </div>
     </div>
   </section>
-
-
 
 {% endblock %}
 
@@ -135,6 +139,72 @@
           }
         } else {
           $(productDiv).show();
+        }
+      });
+    });
+
+    $('#copy-button').click(function () {
+      let copyUrl = $(this).data('copy-url');
+
+      $.ajax({
+        url: copyUrl,
+        method: 'GET',
+        success: function (response) {
+          let formattedText = response.replace(/\n/g, '\n');
+
+          let tempTextarea = $('<textarea>');
+          $('body').append(tempTextarea);
+          tempTextarea.val(formattedText).select();
+
+          document.execCommand('copy');
+
+          tempTextarea.remove();
+
+          alert('Text copied to clipboard!');
+        },
+        error: function (xhr, status, error) {
+          console.log('Error:', error);
+        }
+      });
+    });
+
+    $('.product-name-qty').click(function (e) {
+      e.preventDefault();
+      let $this = $(this);
+      let productQtyChangeUrl = $this.data('product-qty-change-url');
+      let currentText = $this.text().trim();
+      let inputElement = $('<input type="number" step="0.01" class="product-name-qty-input">');
+      inputElement.val(currentText);
+      $this.replaceWith(inputElement);
+      inputElement.focus();
+
+      inputElement.keypress(function (event) {
+        if (event.which === 13) {
+          let newQty = parseFloat(inputElement.val());
+          if (!isNaN(newQty)) {
+            $.ajax({
+              url: productQtyChangeUrl,
+              method: 'POST',
+              data: {amount: newQty},
+              success: function (response) {
+                if (response?.success) {
+                  location.reload();
+                } else {
+                  let itemId = $this.data('item-id');
+                  let $parent = $(`#parentBlock-${itemId}`);
+
+                  $('.error-div').remove();
+                  response.amount.forEach(function (element) {
+                    $parent.append($(`<div class="error-div error">${element}</div>`));
+                  });
+                }
+              },
+              error: function (xhr, status, error) {
+                console.log('Error:', error);
+                location.reload();
+              }
+            });
+          }
         }
       });
     });

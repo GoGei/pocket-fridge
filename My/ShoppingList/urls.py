@@ -11,4 +11,7 @@ urlpatterns = [
     path(r'<uuid:product_id>/check/', views.shopping_list_check_product, name='shopping-list-check-product'),
     path(r'<uuid:product_id>/uncheck/', views.shopping_list_uncheck_product, name='shopping-list-uncheck-product'),
     path(r'<uuid:product_id>/delete/', views.shopping_list_delete_product, name='shopping-list-delete-product'),
+    path(r'<uuid:product_id>/change-qty/', views.shopping_list_change_qty_product,
+         name='shopping-list-change-qty-product'),
+
 ]

@@ -1,11 +1,12 @@
 """
 This code defines three models: FridgeType, Fridge, and FridgeProduct.
 """
+from __future__ import annotations
 from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 
-from core.Utils.Mixins.models import CrmMixin, UUIDPrimaryKeyMixin, SlugifyMixin
+from core.Utils.Mixins.models import CrmMixin, UUIDPrimaryKeyMixin, SlugifyMixin, ActiveQuerySet
 
 
 class FridgeType(CrmMixin, SlugifyMixin):
@@ -62,7 +63,7 @@ class Fridge(CrmMixin, UUIDPrimaryKeyMixin):
             instances.add(instance.id)
         return cls.objects.filter(id__in=instances)
 
-    def get_products(self):
+    def get_products(self) -> ActiveQuerySet[FridgeProduct]:
         return FridgeProduct.objects.select_related('user', 'fridge').active().filter(fridge=self).order_by('name')
 
 
