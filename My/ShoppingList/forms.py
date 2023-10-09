@@ -61,3 +61,11 @@ class ShoppingListProductFormAdd(ShoppingListProductForm):
 
 class ShoppingListProductFormEdit(ShoppingListProductForm):
     pass
+
+
+class ShoppingListProductChangeQtyFormEdit(forms.ModelForm, BaseProductValidationForm):
+    class Meta:
+        model = ShoppingListProduct
+        fields = (
+            'amount',
+        )
