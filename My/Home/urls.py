@@ -5,4 +5,5 @@ urlpatterns = [
     url(r'$', views.home_index, name='home-index'),
     url(r'logout/$', views.logout_view, name='logout'),
     url(r'profile/$', views.profile, name='profile'),
+    url(r'profile/export/$', views.profile_export, name='profile-export'),
 ]

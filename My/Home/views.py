@@ -1,9 +1,12 @@
 from django.contrib.auth import logout
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django_hosts import reverse
+from rest_framework.renderers import JSONRenderer
 
 from My import utils, decorators
+from core.User import services
 from core.Fridge.models import Fridge
 
 
@@ -30,6 +33,18 @@ def profile(request):
         'licences_url': licences_url,
         'report_error_url': report_error_url,
     })
+
+
+@decorators.my_login_required
+def profile_export(request):
+    data = services.get_user_fridge_data(request.user)
+    content = JSONRenderer().render(data)
+
+    response = HttpResponse(content, content_type='application/json')
+    filename = 'pocket_fridge.json'
+    response['Content-Disposition'] = 'attachment; filename=%s' % filename
+    response['Cache-Control'] = 'no-cache'
+    return response
 
 
 def logout_view(request):
