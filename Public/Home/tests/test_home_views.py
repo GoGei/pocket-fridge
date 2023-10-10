@@ -52,6 +52,17 @@ class RegisterViewTest(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('register-success', host='public'))
 
+    def test_register_post_errors(self):
+        response = self.client.post(reverse('register', host='public'), data={
+            'first_name': 'John',
+            'last_name': 'Doe',
+            'email': 'johndoe@example.com',
+            'password': 'Test0Metest@',
+            'confirm_password': 'Test0Metest@2',
+            'agree_checkbox': True,
+        })
+        self.assertEqual(response.status_code, 200)
+
     def test_register_post_invalid_form(self):
         response = self.client.post(reverse('register', host='public'), data={})
         self.assertEqual(response.status_code, 200)
@@ -151,6 +162,16 @@ class ForgotPasswordTest(TestCase):
         response = self.client.post(reverse('forgot-password-reset', args=[key], host='public'), data=data)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('home-index', host='my'))
+
+    def test_forgot_password_reset_errors(self):
+        user = UserFactory(is_active=False)
+        key = user.generate_forgot_password_key()
+        data = {
+            'password': 'Test0Metest@',
+            'confirm_password': 'Test0Metest@2',
+        }
+        response = self.client.post(reverse('forgot-password-reset', args=[key], host='public'), data=data)
+        self.assertEqual(response.status_code, 200)
 
     def test_forgot_password_reset_wrong_key(self):
         response = self.client.get(reverse('forgot-password-reset', args=['wrongkey'], host='public'))
