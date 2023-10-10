@@ -8,7 +8,7 @@
 
     <section class="section-product_view">
       <div class="row">
-        <div class="product_view-container">
+        <div class="product_view">
           <div class="product_view-title">
             <h3>{{ product.name }}</h3>
 
@@ -54,6 +54,16 @@
               {{ product.amount }} {{ product.get_units_display }}
             </span>
             </div>
+            <div class="container-item photo">
+              {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{% trans 'Photo not loaded' %}" width="150px">
+              {% else %}
+              <div class="no-photo">
+                <span>{% trans 'No photo' %}</span>
+              </div>
+                <!-- <p>/p> -->
+              {% endif %}
+            </div>
             <div class="container-item manufacture_date">
             <span>
               {% trans 'Date of manufacture' %}
@@ -80,14 +90,9 @@
                 </div>
               </div>
             {% endif %}
+            
           </div>
-          <div>
-            {% if product.image %}
-              <img src="{{ product.image.url }}" alt="{% trans 'Photo not loaded' %}" width="150px">
-            {% else %}
-              <p>{% trans 'No photo' %}</p>
-            {% endif %}
-          </div>
+          
           <div class="product_view-buttons">
             <button class="go_fridge">
               <a href="{% host_url 'fridge-view' fridge_id host 'my' %}"

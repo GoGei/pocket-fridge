@@ -14,6 +14,9 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
 :root {
   --bs-blue: #2500F9;
   --bs-indigo: #727cf5;
@@ -36,8 +39,10 @@
   --bs-danger: #F55767;
   --bs-light: #E2EAED;
   --bs-dark: #1F1534;
-  --bs-font-sans-serif: "Poppins", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --bs-font-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bs-main: #5271FF;
+  --bs-accent: #2B4A9D;
+  --bs-font-sans-serif: Montserrat, "Poppins", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --bs-font-monospace: Montserrat,  "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
 
@@ -56,7 +61,7 @@
 
 body {
   margin: 0;
-  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: Montserrat, "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -85,8 +90,8 @@ hr:not([size]) {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-family: "Poppins", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-weight: 500;
+  font-family: Montserrat, "Poppins", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 600;
   line-height: 1.2;
   color: #242F51;
 }
@@ -3486,15 +3491,16 @@ fieldset:disabled .btn {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #2500F9;
-  border-color: #2500F9;
+  color: #000;
+  background-color: #B6E0FF;
+  border-color: #B6E0FF;
+  font-weight: 600;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #1f00d4;
-  border-color: #1e00c7;
+  background-color: #2B4A9D;
+  border-color: #2B4A9D;
 }
 
 .btn-check:focus + .btn-primary, .btn-primary:focus {
@@ -6534,7 +6540,7 @@ fieldset:disabled .btn {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: Montserrat, "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -6647,7 +6653,7 @@ fieldset:disabled .btn {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: Montserrat, "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -17366,7 +17372,7 @@ label,
 .pagination,
 .valid-feedback,
 .invalid-feedback {
-  font-family: "Poppins", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: Montserrat, "Poppins", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 pre {
@@ -17478,11 +17484,11 @@ label {
 |   Font family
 -----------------------------------------------*/
 .font-sans-serif {
-  font-family: "Poppins", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: Montserrat, "Poppins", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .font-base {
-  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: Montserrat, "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 /*-----------------------------------------------
@@ -17987,7 +17993,7 @@ label {
 .terms-sidebar .nav-link {
   color: #CDCCD1;
   font-weight: 500;
-  font-family: "Poppins", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: Montserrat, "Poppins", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .terms-sidebar .nav-link.active {
@@ -18243,6 +18249,25 @@ label {
 
 /*-----------------------------------------------
 |   User Styles
+
 -----------------------------------------------*/
+
+.text-main{
+  color: #5271FF !important;
+}
+
+.text-accent{
+  color: #2B4A9D !important;
+}
+
+.bd-accent{
+  background-color: #2B4A9D !important;
+
+}
+
+#home > div.container.position-relative > div > div.col-md-5.col-lg-6.order-md-1.text-center.text-md-end > img{
+  border-radius: 9px;
+}
+
 
 /*# sourceMappingURL=theme.css.map */
