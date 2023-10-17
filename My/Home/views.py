@@ -6,6 +6,7 @@ from django_hosts import reverse
 from rest_framework.renderers import JSONRenderer
 
 from My import utils, decorators
+from core.Notifications.models import NotificationMessage
 from core.User import services
 from core.Fridge.models import Fridge
 
@@ -45,6 +46,18 @@ def profile_export(request):
     response['Content-Disposition'] = 'attachment; filename=%s' % filename
     response['Cache-Control'] = 'no-cache'
     return response
+
+
+@decorators.my_login_required
+def notifications(request):
+    notifications_qs = NotificationMessage.objects.filter(recipient=request.user.notify_by_email,
+                                                          notification_slug='fridge').order_by('-stamp')
+    return render(request, 'My/notifications.html', {'notifications': notifications_qs})
+
+
+def notifications_remove(request, notification_id):
+    NotificationMessage.objects.filter(id=notification_id).delete()
+    return redirect(reverse('notifications', host='my'))
 
 
 def logout_view(request):

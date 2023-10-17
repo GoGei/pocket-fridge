@@ -1,0 +1,14 @@
+{% extends 'My/my_base.html' %}
+{% load hosts i18n %}
+
+{% block content %}
+  <section class="section-profile">
+    <div class="row">
+      {% for notification in notifications %}
+        {{ notification.context.first_name }} <a href="{% host_url 'notifications-remove' notification.id host 'my' %}">Remove</a><br>
+      {% empty %}
+        {% trans 'No notifications' %}
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}
