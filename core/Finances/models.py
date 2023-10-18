@@ -3,6 +3,8 @@ The code provided is a Django model implementation for handling finance integrat
 It includes several models such as Product, Price, Subscription, Invoice, and Payment,
 all of which inherit from the FinanceIntegrationsMixin.
 """
+from decimal import Decimal, ROUND_HALF_UP
+
 from django.core.validators import MinValueValidator
 from django.db import models
 from core.Utils.Mixins.models import CrmMixin, UUIDPrimaryKeyMixin, ActiveQuerySet
@@ -43,17 +45,23 @@ class Product(FinanceIntegrationsMixin):
     """
     name = models.CharField(max_length=64, db_index=True)
     description = models.CharField(max_length=2048)
-    is_published = models.BooleanField(default=True)
     is_default = models.BooleanField(default=False)
 
     class Meta:
         db_table = 'product'
+
+    def set_as_default(self):
+        Product.objects.all().update(is_default=False)
+        self.is_default = True
+        self.save()
+        return self
 
 
 class Price(FinanceIntegrationsMixin):
     """
     The Price model represents the pricing information for a product.
     """
+
     class PriceIntervalChoices(models.TextChoices):
         DAY = 'day', _('Day')
         # WEEK = 'week', 'W_(eek')
@@ -73,17 +81,47 @@ class Price(FinanceIntegrationsMixin):
     usage_type = models.CharField(choices=PriceUsageTypeChoices.choices,
                                   default=PriceUsageTypeChoices.LICENSED,
                                   max_length=10)
-    is_published = models.BooleanField(default=True)
     is_default = models.BooleanField(default=False)
 
     class Meta:
         db_table = 'price'
+
+    @property
+    def recurring(self):
+        return {
+            "interval": self.interval,
+            "interval_count": self.interval_count,
+            "usage_type": self.usage_type
+        }
+
+    @property
+    def stripify_price(self):
+        """Transfer float/decimal price from whole part price with coins to coins"""
+        price = Decimal(self.price) * 100
+        price = Decimal(price.quantize(Decimal('.01'), rounding=ROUND_HALF_UP))
+        return price
+
+    @classmethod
+    def unstripify_price(cls, price):
+        """Transfer float/decimal price from coins to whole part price with coins"""
+        price = Decimal(price) / 100
+        price = Decimal(price.quantize(Decimal('.01'), rounding=ROUND_HALF_UP))
+        return price
+
+    def set_as_default(self):
+        Price.objects.select_related('product').filter(product=self.product).update(is_default=False)
+        self.is_default = True
+        self.save()
+        return self
 
 
 class Subscription(FinanceIntegrationsMixin):
     """
     The Subscription model represents a subscription for a user to a product.
     """
+
+    # PAYMENT_BEHAVIOR = 'https://stripe.com/docs/api/subscriptions/create?lang=python#create_subscription-payment_behavior'  # noqa
+
     class SubscriptionCollectionMethodsChoices(models.TextChoices):
         CHARGE_AUTOMATICALLY = 'charge_automatically', _('Charge automatically')
         SEND_INVOICE = 'send_invoice', _('Send invoice')
@@ -135,7 +173,7 @@ class Invoice(FinanceIntegrationsMixin):
     currency = models.ForeignKey('Currency.Currency', on_delete=models.PROTECT)
     user = models.ForeignKey('User.User', on_delete=models.PROTECT, db_index=True)
     customer_internal_id = models.CharField(max_length=32, db_index=True, null=True)
-    subscription = models.ForeignKey(Subscription, on_delete=models.PROTECT)
+    subscription = models.ForeignKey(Subscription, on_delete=models.PROTECT, null=True)
     status = models.CharField(choices=InvoiceStatusChoices.choices,
                               default=InvoiceStatusChoices.DRAFT,
                               max_length=16)
@@ -149,6 +187,7 @@ class Payment(FinanceIntegrationsMixin):
     """
     The Payment model represents a payment made for an invoice.
     """
+
     class PaymentIntentStatusChoices(models.TextChoices):
         REQUIRES_PAYMENT_METHOD = 'requires_payment_method', _('Requires payment method')
         REQUIRES_CONFIRMATION = 'requires_confirmation', _('Requires confirmation')
@@ -159,7 +198,7 @@ class Payment(FinanceIntegrationsMixin):
         SUCCEEDED = 'succeeded', _('Succeeded')
 
     invoice = models.ForeignKey(Invoice, on_delete=models.PROTECT, null=True)
-    user = models.ForeignKey('User.User', on_delete=models.PROTECT)
+    user = models.ForeignKey('User.User', on_delete=models.PROTECT, null=True)
     currency = models.ForeignKey('Currency.Currency', on_delete=models.PROTECT, null=True)
     status = models.CharField(choices=PaymentIntentStatusChoices.choices,
                               default=PaymentIntentStatusChoices.PROCESSING,
