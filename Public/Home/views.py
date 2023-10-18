@@ -24,7 +24,15 @@ def register(request):
         user.sign_licence()
         user.send_registration_email()
         return redirect(reverse('register-success', host='public'))
-    return render(request, 'Public/auth/auth-register.html', {'form': form})
+
+    licence_version = LicenceVersion.get_default()
+    privacy_policy = PrivacyPolicy.get_default(licence_version)
+    terms_of_use = TermsOfUse.get_default(licence_version)
+    return render(request, 'Public/auth/auth-register.html',
+                  {'form': form,
+                   'privacy_policy': privacy_policy,
+                   'terms_of_use': terms_of_use,
+                   })
 
 
 def register_success(request):

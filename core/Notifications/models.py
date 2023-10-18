@@ -43,23 +43,34 @@ class Notification(CrmMixin, SlugifyMixin):
         ctx = Context(context)
         return Template(self.subject).render(ctx)
 
-    def create_message(self, recipient, context):
+    def create_message(self, recipient, context, slug):
         msg = NotificationMessage()
         msg.recipient = recipient
         msg.message = self.prepare_message(context)
         msg.message_html = self.prepare_message_html(context)
         msg.subject = self.prepare_subject(context)
         msg.context = context
+        msg.notification_slug = slug
         msg.save()
         return msg
 
     def send(self, recipient, context):
         from_email = settings.DEFAULT_FROM_EMAIL
         to_email = [recipient.notify_by_email]
-        msg = self.create_message(recipient.notify_by_email, context)
+        msg = self.create_message(recipient.notify_by_email, context, slug='email')
 
         send_email.apply_async(args=[msg.subject, msg.message, msg.message_html,
                                      from_email, to_email])
+        return msg
+
+    def send_with_push(self, recipient, context):
+        from_email = settings.DEFAULT_FROM_EMAIL
+        to_email = [recipient.notify_by_email]
+        msg = self.create_message(recipient.notify_by_email, context, slug='email')
+        send_email.apply_async(args=[msg.subject, msg.message, msg.message_html,
+                                     from_email, to_email])
+
+        self.create_message(recipient.notify_by_email, context, slug='fridge')
         return msg
 
 
@@ -71,6 +82,8 @@ class NotificationMessage(mongoengine.DynamicDocument):
     message = fields.StringField()
     message_html = fields.StringField(null=True)
     context = fields.DictField(null=True)
+    notification_slug = fields.StringField(null=True)
+    is_read = fields.BooleanField(default=False)
 
     meta = {
         'db_alias': 'notification',

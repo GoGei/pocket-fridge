@@ -1,5 +1,7 @@
+from django.db.models import When, Case, IntegerField
 from django.forms import model_to_dict
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils import timezone
 from django_hosts import reverse
 
 from My import utils, decorators
@@ -35,6 +37,7 @@ def fridge_view(request, fridge_id):
     fridge_qs = utils.get_fridge_qs(request.user)
     fridge = get_object_or_404(fridge_qs, id=fridge_id)
     products = utils.get_fridge_products(request.user, fridge_id)
+    products = products.annotate_expire_priority().order_by('shelf_life_date', 'name')
     return render(request, 'My/Fridge/fridge_view.html',
                   {'fridge_qs': fridge_qs, 'products': products, 'fridge': fridge})
 
@@ -62,6 +65,8 @@ def product_edit(request, fridge_id, product_id):
                                       instance=product, initial=initial)
     if form_body.is_valid():
         product = form_body.save()
+        product.notified_as = None
+        product.save()
         return redirect(
             reverse('product-view', kwargs={'fridge_id': product.fridge.id, 'product_id': product_id}, host='my'))
 
