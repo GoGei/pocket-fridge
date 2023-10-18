@@ -14,7 +14,6 @@ class ProductFactory(django.DjangoModelFactory):
     external_id = fuzzy.FuzzyText(length=32)
     name = fuzzy.FuzzyText(length=64)
     description = fuzzy.FuzzyText(length=2000)
-    is_published = fuzzy.FuzzyChoice(choices=[True, False])
     is_default = False
 
 
@@ -29,7 +28,6 @@ class PriceFactory(django.DjangoModelFactory):
     interval = fuzzy.FuzzyChoice(choices=dict(Price.PriceIntervalChoices.choices).keys())
     interval_count = 1
     usage_type = fuzzy.FuzzyChoice(choices=dict(Price.PriceUsageTypeChoices.choices).keys())
-    is_published = fuzzy.FuzzyChoice(choices=[True, False])
     is_default = False
 
 

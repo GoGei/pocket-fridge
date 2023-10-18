@@ -1,0 +1,15 @@
+{% extends 'Manager/Stripe/base.html' %}
+{% load i18n %}
+
+{% block pagetitle %}
+  {{ block.super }} {% trans 'Invoices' %}
+{% endblock %}
+
+{% block stripe-invoice-menu %} active {% endblock %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  <li class="breadcrumb-item" aria-current="page">
+    <a href="{% url 'manager-stripe-invoice-list' %}">{% trans 'Invoices' %}</a>
+  </li>
+{% endblock %}
