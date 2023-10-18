@@ -4,9 +4,26 @@ This code defines three models: FridgeType, Fridge, and FridgeProduct.
 from __future__ import annotations
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from core.Utils.Mixins.models import CrmMixin, UUIDPrimaryKeyMixin, SlugifyMixin, ActiveQuerySet
+
+
+class FridgeProductQuerySet(ActiveQuerySet):
+    def annotate_expire_priority(self):
+        today = timezone.now()
+        return self.annotate(
+            expire_priority=models.Case(
+                models.When(shelf_life_date__lt=today, then=0),
+                models.When(shelf_life_date=today, then=1),
+                models.When(shelf_life_date__lte=today + timezone.timedelta(days=1), then=2),
+                models.When(shelf_life_date__lte=today + timezone.timedelta(days=3), then=3),
+
+                default=999,
+                output_field=models.IntegerField(),
+            )
+        )
 
 
 class FridgeType(CrmMixin, SlugifyMixin):
@@ -92,6 +109,10 @@ class FridgeProduct(CrmMixin, UUIDPrimaryKeyMixin):
     notes = models.CharField(max_length=2048, null=True)
     image = models.ImageField(null=True, upload_to=settings.FRIDGE_PRODUCTS_FILEPATH)
     barcode = models.CharField(max_length=64, null=True, db_index=True)
+
+    notified_as = models.IntegerField(null=True, db_index=True)
+
+    objects = FridgeProductQuerySet.as_manager()
 
     class Meta:
         db_table = 'fridge_product'

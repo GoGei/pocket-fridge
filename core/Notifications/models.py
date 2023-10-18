@@ -63,7 +63,7 @@ class Notification(CrmMixin, SlugifyMixin):
                                      from_email, to_email])
         return msg
 
-    def send_fridge(self, recipient, context):
+    def send_with_push(self, recipient, context):
         from_email = settings.DEFAULT_FROM_EMAIL
         to_email = [recipient.notify_by_email]
         msg = self.create_message(recipient.notify_by_email, context, slug='email')

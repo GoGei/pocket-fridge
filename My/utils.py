@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 
 from core.Utils.Mixins.models import ActiveQuerySet
 from core.User.models import User
-from core.Fridge.models import Fridge, FridgeProduct
+from core.Fridge.models import Fridge, FridgeProduct, FridgeProductQuerySet
 from core.ShoppingList.models import ShoppingList, ShoppingListProduct
 
 
@@ -12,14 +12,14 @@ def get_fridge_qs(user: User) -> ActiveQuerySet[Fridge]:
     return fridge_qs
 
 
-def get_fridge_products(user: User, fridge_id: UUID) -> ActiveQuerySet[FridgeProduct]:
+def get_fridge_products(user: User, fridge_id: UUID) -> FridgeProductQuerySet[FridgeProduct]:
     fridge_qs = get_fridge_qs(user)
     current_fridge = get_object_or_404(fridge_qs, id=fridge_id)
     products = current_fridge.get_products()
     return products
 
 
-def get_user_products(user: User) -> ActiveQuerySet[FridgeProduct]:
+def get_user_products(user: User) -> FridgeProductQuerySet[FridgeProduct]:
     products = FridgeProduct.objects.select_related('user', 'fridge').active().filter(user=user).order_by('name')
     return products
 

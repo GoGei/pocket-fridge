@@ -97,7 +97,15 @@ def creategraphmodels(c, *args):
 def celeryd(c):
     with c.prefix(VIRTUAL_ENV_ACTIVATE):
         with c.cd(PROJECT_ROOT):
+            'celery -A celery_run beat -l INFO'
             c.run('celery -A celery_run worker -l DEBUG -c 8 -Q celery', pty=True)
+
+
+@task
+def celerybeat(c):
+    with c.prefix(VIRTUAL_ENV_ACTIVATE):
+        with c.cd(PROJECT_ROOT):
+            c.run('celery -A celery_run beat -l INFO', pty=True)
 
 
 @task

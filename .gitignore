@@ -18,3 +18,4 @@ config/*
 !config/settings_example.py
 
 .coverage
+celerybeat-schedule

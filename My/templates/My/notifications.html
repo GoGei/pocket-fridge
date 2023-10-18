@@ -2,13 +2,47 @@
 {% load hosts i18n %}
 
 {% block content %}
-  <section class="section-profile">
+  <section class="section-fridge_view">
     <div class="row">
-      {% for notification in notifications %}
-        {{ notification.context.first_name }} <a href="{% host_url 'notifications-remove' notification.id host 'my' %}">Remove</a><br>
-      {% empty %}
-        {% trans 'No notifications' %}
-      {% endfor %}
+      <div class="fridge_view-container">
+        {% if notifications %}
+          <div class="products-list">
+          <div class="list-hint">
+            <span>{% trans 'product' %}</span>
+            <span>{% trans 'amount' %}</span>
+            <span>{% trans 'shelf life till' %}</span>
+          </div>
+        {% endif %}
+
+        {% for notification in notifications %}
+          {% with notification.context as ctx %}
+            <div class="product-item">
+              <span class="product-name">
+                {{ ctx.product_label }}
+              </span>
+              <span class="product-amount">
+                {{ ctx.amount }} {{ ctx.units }}
+              </span>
+              <span class="product-date">
+                {% trans 'till' %} {{ ctx.date_str }}
+              </span>
+              <a href="{% host_url 'notifications-remove' notification.id host 'my' %}" class="product-delete">
+                <svg width="25" height="25" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11 21C16.5 21 21 16.5 21 11C21 5.5 16.5 1 11 1C5.5 1 1 5.5 1 11C1 16.5 5.5 21 11 21Z"
+                        stroke="#B6E0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8.16992 13.8299L13.8299 8.16992" stroke="#B6E0FF" stroke-width="3" stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                  <path d="M13.8299 13.8299L8.16992 8.16992" stroke="#B6E0FF" stroke-width="3" stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          {% endwith %}
+        {% empty %}
+          {% trans 'No notifications' %}
+        {% endfor %}
+        </div>
+      </div>
     </div>
   </section>
 {% endblock %}

@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'core.Currency',
     'core.Finances',
     'core.Notifications',
+    'core.Tasks',
 ]
 
 AUTH_USER_MODEL = 'User.User'
