@@ -1,0 +1,8 @@
+{% load i18n %}
+{% with record.invoice as invoice %}
+  {% if invoice %}
+    <a href="{% url 'manager-stripe-invoice-view' invoice.id %}">{{ invoice.number|default:'' }}</a>
+  {% else %}
+    {% trans 'No related invoice' %}
+  {% endif %}
+{% endwith %}

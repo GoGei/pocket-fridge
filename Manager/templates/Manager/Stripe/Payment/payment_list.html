@@ -1,0 +1,22 @@
+{% extends 'Manager/Stripe/Payment/payment_base.html' %}
+{% load i18n %}
+
+{% block action-area %}
+  <a type="button" class="btn btn-success btn-md">{% trans 'Sync all' %}</a>
+{% endblock %}
+
+{% block content %}
+  <div class="grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-description">
+          <div class="row">
+            <div class="col">
+              {% include 'smartadmin/tables/table.html' with table=table %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
