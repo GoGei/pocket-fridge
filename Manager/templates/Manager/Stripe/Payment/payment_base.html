@@ -1,0 +1,15 @@
+{% extends 'Manager/Stripe/base.html' %}
+{% load i18n %}
+
+{% block pagetitle %}
+  {{ block.super }} {% trans 'Payments' %}
+{% endblock %}
+
+{% block stripe-payment-menu %} active {% endblock %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  <li class="breadcrumb-item" aria-current="page">
+    <a href="{% url 'manager-stripe-payment-list' %}">{% trans 'Payments' %}</a>
+  </li>
+{% endblock %}

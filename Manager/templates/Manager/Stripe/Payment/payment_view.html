@@ -1,0 +1,72 @@
+{% extends 'Manager/Stripe/Payment/payment_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  <li class="breadcrumb-item" aria-current="page">
+    <a href="{% url 'manager-stripe-payment-view' payment.id %}">
+      {% trans 'View' %}: {{ payment.id }}
+    </a>
+  </li>
+{% endblock %}
+
+{% block action-area %}
+  <a type="button" class="btn btn-success btn-md">{% trans 'Sync' %}</a>
+  <a type="button" class="btn btn-success btn-md"
+     href="{% url 'manager-stripe-payment-list' %}">{% trans 'Back to list' %}</a>
+{% endblock %}
+
+{% block content %}
+  <div class="grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'ID' %}</label>
+            <div class="col-sm-10">
+              {{ payment.id|default:'' }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'Stripe ID' %}</label>
+            <div class="col-sm-10">
+              {{ payment.external_id|default:'' }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'Currency' %}</label>
+            <div class="col-sm-10">
+              {{ payment.currency.code|default:'' }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'User' %}</label>
+            <div class="col-sm-10">
+              <a href="{% url 'manager-users-view' payment.user.id %}">
+                {{ payment.user.label|default:'' }}
+              </a>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'Invoice ID' %}</label>
+            <div class="col-sm-10">
+              {{ payment.invoice.id|default:'' }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'Invoice stripe ID' %}</label>
+            <div class="col-sm-10">
+              {{ payment.invoice.external_id|default:'' }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'Status' %}</label>
+            <div class="col-sm-10">
+              {{ payment.get_status_display|default:'' }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

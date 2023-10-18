@@ -1,0 +1,90 @@
+{% extends 'Manager/Stripe/Invoice/invoice_base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  <li class="breadcrumb-item" aria-current="page">
+    <a href="{% url 'manager-stripe-invoice-view' invoice.id %}">
+      {% trans 'View' %}: {{ invoice.id }}
+    </a>
+  </li>
+{% endblock %}
+
+{% block action-area %}
+  <a type="button" class="btn btn-success btn-md">{% trans 'Sync' %}</a>
+  <a type="button" class="btn btn-success btn-md"
+     href="{% url 'manager-stripe-invoice-list' %}">{% trans 'Back to list' %}</a>
+{% endblock %}
+
+{% block content %}
+  <div class="grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'ID' %}</label>
+            <div class="col-sm-10">
+              {{ invoice.id|default:'' }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'Stripe ID' %}</label>
+            <div class="col-sm-10">
+              {{ invoice.external_id|default:'' }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'Number' %}</label>
+            <div class="col-sm-10">
+              {{ invoice.number|default:'' }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'Collection method' %}</label>
+            <div class="col-sm-10">
+              {{ invoice.get_collection_method_display|default:'' }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'Currency' %}</label>
+            <div class="col-sm-10">
+              {{ invoice.currency.code|default:'' }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'User' %}</label>
+            <div class="col-sm-10">
+              <a href="{% url 'manager-users-view' invoice.user.id %}">
+                {{ invoice.user.label|default:'' }}
+              </a>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'Subscription ID' %}</label>
+            <div class="col-sm-10">
+              {{ invoice.subscription.id|default:'' }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'Subscription stripe ID' %}</label>
+            <div class="col-sm-10">
+              {{ invoice.subscription.external_id|default:'' }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'Status' %}</label>
+            <div class="col-sm-10">
+              {{ invoice.get_status_display|default:'' }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2">{% trans 'Total' %}</label>
+            <div class="col-sm-10">
+              {{ invoice.total|default:'' }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
