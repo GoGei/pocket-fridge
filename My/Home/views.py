@@ -9,6 +9,7 @@ from My import utils, decorators
 from core.Notifications.models import NotificationMessage
 from core.User import services
 from core.Fridge.models import Fridge
+from .forms import ProfileImportForm
 
 
 @decorators.my_login_required
@@ -46,6 +47,35 @@ def profile_export(request):
     response['Content-Disposition'] = 'attachment; filename=%s' % filename
     response['Cache-Control'] = 'no-cache'
     return response
+
+
+@decorators.my_login_required
+def profile_import(request):
+    form_body = ProfileImportForm(request.POST or None,
+                                  request.FILES or None,
+                                  user=request.user)
+
+    if '_cancel' in request.POST:
+        return redirect(reverse('profile', host='my'))
+
+    if form_body.is_valid():
+        try:
+            try:
+                form_body.load()
+            except ValueError as e:
+                form_body.add_error('file', str(e))
+
+            return redirect(reverse('profile', host='my'))
+        except ValueError as e:
+            form_body.add_error('file', str(e))
+
+    form = {
+        'body': form_body,
+        'buttons': {'submit': True, 'cancel': True},
+        'form_class': 'shopping_list_add_product',
+    }
+
+    return render(request, 'My/profile_import.html', {'form': form})
 
 
 @decorators.my_login_required

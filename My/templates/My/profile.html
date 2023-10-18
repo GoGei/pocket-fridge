@@ -41,8 +41,12 @@
           <button class="profile_buttons-dataexport">
             <a href="{% host_url 'profile-export' host 'my' %}" type="button" class="bold">{% trans 'Data export' %}</a>
           </button>
+          <button class="profile_buttons-dataexport">
+            <a href="{% host_url 'profile-import' host 'my' %}" type="button" class="bold">{% trans 'Data import' %}</a>
+          </button>
           <button class="profile_buttons-report">
-            <a href="https://forms.gle/4Z7vC1pTPfit6RN76" type="button" target="_blank" class="bold">{% trans 'Report error' %}</a>
+            <a href="https://forms.gle/4Z7vC1pTPfit6RN76" type="button" target="_blank"
+               class="bold">{% trans 'Report error' %}</a>
           </button>
           <button class="profile_buttons-language dropdown-multilevel dropdown-multilevel-left">
             <div class="dropdown dropdown-item bold ">
