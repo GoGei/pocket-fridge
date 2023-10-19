@@ -143,11 +143,11 @@
           </a>
           <div class="collapse {% block stripe-settings-sidebar-menu-dropdown %}{% endblock %}" id="stripeSettings">
             <ul class="nav flex-column sub-menu">
-              {% comment %}<li class="nav-item {% block stripe-product-menu %}{% endblock %}">
+              <li class="nav-item {% block stripe-product-menu %}{% endblock %}">
                 <a class="nav-link" href="{% url 'manager-stripe-product-list' %}">
                   {% trans 'Products' %}
                 </a>
-              </li>{% endcomment %}
+              </li>
               <li class="nav-item {% block stripe-invoice-menu %}{% endblock %}">
                 <a class="nav-link" href="{% url 'manager-stripe-invoice-list' %}">
                   {% trans 'Invoices' %}
