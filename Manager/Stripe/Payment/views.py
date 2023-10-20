@@ -1,9 +1,11 @@
+from django.contrib import messages
 from django_hosts import reverse
 from django.conf import settings
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils.translation import ugettext as _
 
 from core.Finances.models import Payment
+from core.Finances.stripe.tasks import load_payments
 from core.Utils.Access.decorators import manager_required
 from .forms import PaymentFilterForm
 from .tables import PaymentTable
@@ -46,3 +48,10 @@ def payment_sync(request):
                                 'manager-stripe-payment',
                                 'Manager/Stripe/Payment/payment_sync.html',
                                 PaymentHandler)
+
+
+@manager_required
+def payment_sync_all(request):
+    load_payments.apply_async()
+    messages.info(request, _('Try to load payments from stripe'))
+    return redirect(reverse('manager-stripe-payment-list', host='manager'))

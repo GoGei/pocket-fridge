@@ -85,13 +85,13 @@ class StripeMixin:
             raise exceptions.StripeUnhandledException(e.user_message)
 
     @transaction.atomic
-    def get_or_create(self, instance):
+    def get_or_create(self, instance=None, external_id=None):
         # if object can not be get from stripe -> create it in stripe
         try:
-            if not instance.external_id:
+            if instance and not instance.external_id:
                 raise exceptions.StripeObjectIsNotIntegrated(_('Object is not integrated with stripe!'))
 
-            response = self.retrieve(instance.external_id)
+            response = self.retrieve(external_id or instance.external_id)
             created = False
         except (exceptions.StripeObjectNotFound, exceptions.StripeObjectIsNotIntegrated):
             try:
