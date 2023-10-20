@@ -4,11 +4,10 @@ from django.utils.translation import ugettext_lazy as _
 from django_hosts import reverse
 
 from core.Finances.stripe import exceptions
-
 from Manager.Stripe.stripe_integrations.forms import StripeSyncForm
 
 
-def stripe_instance_sync(request, base_url, template, handler):
+def stripe_instance_sync(request, base_url, template, handler, context=None):
     if '_cancel' in request.POST:
         return redirect(reverse(f'{base_url}-list', host='manager'))
 
@@ -26,6 +25,8 @@ def stripe_instance_sync(request, base_url, template, handler):
     form = {'body': form_body,
             'title': _('Load from stripe'),
             'buttons': {'save': True, 'cancel': True}}
+    ctx = {'form': form}
+    ctx.update(context or {})
     return render(request,
                   template,
-                  {'form': form})
+                  ctx)

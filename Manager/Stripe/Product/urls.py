@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from django.conf.urls import url
 
 from . import views
@@ -10,4 +10,6 @@ urlpatterns = [
     path(r'<uuid:product_id>/archive/', views.product_archive, name='manager-stripe-product-archive'),
     path(r'<uuid:product_id>/set-as-default/', views.product_set_as_default,
          name='manager-stripe-product-set-as-default'),
+
+    url(r'prices/', include('Manager.Stripe.Product.Price.urls')),
 ]

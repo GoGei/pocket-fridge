@@ -3,10 +3,12 @@ from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils.translation import ugettext as _
 
-from core.Finances.models import Product
+from core.Finances.models import Product, Price
 from core.Utils.Access.decorators import manager_required
 from .forms import ProductFilterForm
 from .tables import ProductTable
+from .Price.forms import PriceFilterForm
+from .Price.tables import PriceTable
 
 
 @manager_required
@@ -35,7 +37,27 @@ def product_list(request):
 @manager_required
 def product_view(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
-    return render(request, 'Manager/Stripe/Product/product_view.html', {'product': product})
+
+    qs = Price.objects.select_related('product').filter(product=product).order_by('-is_default')
+
+    filter_form = PriceFilterForm(request.GET, queryset=qs, request=request)
+    qs = filter_form.qs
+
+    table_body = PriceTable(qs, request=request)
+    page = request.GET.get("page", 1)
+    table_body.paginate(page=page, per_page=settings.ITEMS_PER_PAGE)
+
+    table = {
+        'body': table_body,
+        'filter': {
+            'title': _('Prices filter'),
+            'body': filter_form,
+            'action': reverse('manager-stripe-product-view', args=[product_id], host='manager')
+        },
+        'skips': {'table_no_data': True}
+    }
+    return render(request, 'Manager/Stripe/Product/product_view.html',
+                  {'product': product, 'table': table})
 
 
 @manager_required
