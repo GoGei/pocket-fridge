@@ -14,6 +14,10 @@ class StripeObjectCreateException(StripeUnhandledException):
     pass
 
 
+class StripeObjectUpdateException(StripeUnhandledException):
+    pass
+
+
 class StripeObjectIsNotIntegrated(StripeUnhandledException):
     pass
 
@@ -39,4 +43,8 @@ class StripeInvalidSearchException(StripeUnhandledException):
 
 
 class StripeUpcomingInvoiceRetrieveException(StripeUnhandledException):
+    pass
+
+
+class StripePaymentMethodSetDefaultException(StripeUnhandledException):
     pass

@@ -2,6 +2,7 @@ from decimal import Decimal
 
 import pytz
 import stripe
+from django.db import transaction
 from stripe import error
 from datetime import datetime
 from django.conf import settings
@@ -257,3 +258,45 @@ class PaymentHandler(StripeMixin):
         instance.collection_method = data['status']
 
         return instance
+
+
+class CustomerHandler(StripeMixin):
+    """
+    https://stripe.com/docs/api/customers
+    """
+    model = stripe.Customer
+
+    def instance_to_stripe(self, instance: User) -> dict:
+        response = {
+            'description': f'Customer instance of user {instance.id}',
+            'name': instance.email,
+        }
+        return response
+
+    def update_instance(self, data, instance: User = None) -> Subscription:
+        try:
+            instance = User.objects.get(external_id=data['id'])
+        except User.DoesNotExist:
+            if instance:
+                instance.external_id = data['id']
+            else:
+                instance = User.objects.get(email__iexact=data['name'])
+
+        instance.external_id = data['id']
+        instance.save()
+
+        return instance
+
+    @transaction.atomic
+    def set_as_default_payment_method(self, payment_method):
+        data = {'invoice_settings': {'default_payment_method': payment_method.external_id}}
+        try:
+            response = self.model.modify(payment_method.clinic.internal_id, **data)
+            payment_method.is_default = True
+            payment_method.save()
+        except error.InvalidRequestError as e:
+            raise exceptions.StripePaymentMethodSetDefaultException(e.user_message)
+        except error.StripeError as e:
+            raise exceptions.StripeUnhandledException(e.user_message)
+
+        return response

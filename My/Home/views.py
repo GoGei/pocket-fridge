@@ -1,15 +1,17 @@
-from django.contrib.auth import logout
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.conf import settings
+from django.contrib.auth import logout
+from django.utils.translation import gettext_lazy as _
 from django_hosts import reverse
 from rest_framework.renderers import JSONRenderer
 
 from My import utils, decorators
+from core.Finances.stripe import exceptions
 from core.Notifications.models import NotificationMessage
 from core.User import services
 from core.Fridge.models import Fridge
-from .forms import ProfileImportForm
+from core.Licence.models import LicenceVersion, TermsOfUse, PrivacyPolicy
+from .forms import ProfileImportForm, ProfileSubscribeForm
 
 
 @decorators.my_login_required
@@ -27,14 +29,11 @@ def home_index(request):
 
 @decorators.my_login_required
 def profile(request):
-    user_guide_url = settings.USER_GUIDE_URL
-    licences_url = settings.LICENCES_URL
-    report_error_url = settings.REPORT_ERROR_URL
-    return render(request, 'My/profile.html', {
-        'user_guide_url': user_guide_url,
-        'licences_url': licences_url,
-        'report_error_url': report_error_url,
-    })
+    licence_version = LicenceVersion.get_default()
+    privacy_policy = PrivacyPolicy.get_default(licence_version)
+    terms_of_use = TermsOfUse.get_default(licence_version)
+    return render(request, 'My/profile.html',
+                  {'privacy_policy': privacy_policy, 'terms_of_use': terms_of_use})
 
 
 @decorators.my_login_required
@@ -85,9 +84,40 @@ def notifications(request):
     return render(request, 'My/notifications.html', {'notifications': notifications_qs})
 
 
+@decorators.my_login_required
 def notifications_remove(request, notification_id):
     NotificationMessage.objects.filter(id=notification_id).delete()
     return redirect(reverse('notifications', host='my'))
+
+
+@decorators.my_login_required
+def profile_subscribe(request):
+    form_body = ProfileSubscribeForm(request.POST or None, user=request.user)
+
+    if '_cancel' in request.POST:
+        return redirect(reverse('profile', host='my'))
+
+    if form_body.is_valid():
+        try:
+            form_body.subscribe()
+        except exceptions.StripeGetOrCreateException:
+            form_body.add_error(None, _('Customer is not created in stripe! Please, contact manager.'))
+        except exceptions.StripeObjectCreateException:
+            form_body.add_error(None, _('Subscription is not created in stripe! Please, contact manager.'))
+        except exceptions.StripeObjectUpdateException:
+            form_body.add_error(None,
+                                _('Subscription is created in stripe, but not syncronized with our service! Please, contact manager.'))  # noqa
+        except ValueError as e:
+            form_body.add_error(None, str(e))
+
+        return redirect(reverse('profile', host='my'))
+
+    form = {
+        'body': form_body,
+        'buttons': {'submit': True, 'cancel': True},
+        'form_class': 'shopping_list_add_product',
+    }
+    return render(request, 'My/profile_subscribe.html', {'form': form})
 
 
 def logout_view(request):
