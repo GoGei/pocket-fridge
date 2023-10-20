@@ -18,7 +18,7 @@ class StripeMixin:
         """Prepare django model to stripe data"""
         raise NotImplementedError
 
-    def update_instance(self, data, instance):
+    def update_instance(self, data, instance=None):
         """Load stripe data to instance from response"""
         raise NotImplementedError
 
@@ -59,7 +59,7 @@ class StripeMixin:
     def create(self, instance):
         stripe_data = self.instance_to_stripe(instance)
         try:
-            if instance.internal_id:
+            if instance.external_id:
                 raise exceptions.StripeObjectIsIntegrated(_('Object already integrated with stripe!'))
 
             response = self.model.create(**stripe_data)
@@ -74,10 +74,10 @@ class StripeMixin:
     @transaction.atomic
     def destroy(self, instance):
         try:
-            if not instance.internal_id:
+            if not instance.external_id:
                 raise exceptions.StripeObjectIsNotIntegrated(_('Object is not integrated with stripe!'))
 
-            response = self.model.delete(instance.internal_id)
+            response = self.model.delete(instance.external_id)
             return response
         except error.InvalidRequestError as e:
             raise exceptions.StripeObjectCannotDeleteException(e.user_message)
@@ -88,7 +88,10 @@ class StripeMixin:
     def get_or_create(self, instance):
         # if object can not be get from stripe -> create it in stripe
         try:
-            response = self.retrieve(instance)
+            if not instance.external_id:
+                raise exceptions.StripeObjectIsNotIntegrated(_('Object is not integrated with stripe!'))
+
+            response = self.retrieve(instance.external_id)
             created = False
         except (exceptions.StripeObjectNotFound, exceptions.StripeObjectIsNotIntegrated):
             try:
@@ -100,13 +103,13 @@ class StripeMixin:
         return response, created
 
     @transaction.atomic
-    def sync_from_stripe(self, instance, internal_id=None, response=None, *args, **kwargs):
+    def sync_from_stripe(self, instance=None, external_id=None, response=None, *args, **kwargs):
         try:
-            if not (internal_id or response):
+            if not (external_id or response):
                 raise ValueError('Please, provide internal ID or response from stripe')
 
-            if internal_id:
-                response = self.model.retrieve(internal_id)
+            if external_id:
+                response = self.model.retrieve(external_id)
 
             instance = self.update_instance(data=response, instance=instance)
             instance.modify()

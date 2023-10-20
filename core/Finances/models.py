@@ -50,6 +50,13 @@ class Product(FinanceIntegrationsMixin):
     class Meta:
         db_table = 'product'
 
+    def __str__(self):
+        return self.name
+
+    @property
+    def label(self):
+        return str(self)
+
     def set_as_default(self):
         Product.objects.all().update(is_default=False)
         self.is_default = True
@@ -85,6 +92,13 @@ class Price(FinanceIntegrationsMixin):
 
     class Meta:
         db_table = 'price'
+
+    def __str__(self):
+        return f'{self.product}: ({self.price}/{self.interval} {self.currency.code})'
+
+    @property
+    def label(self):
+        return str(self)
 
     @property
     def recurring(self):

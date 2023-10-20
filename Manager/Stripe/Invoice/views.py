@@ -36,3 +36,13 @@ def invoice_list(request):
 def invoice_view(request, invoice_id):
     invoice = get_object_or_404(Invoice, pk=invoice_id)
     return render(request, 'Manager/Stripe/Invoice/invoice_view.html', {'invoice': invoice})
+
+
+@manager_required
+def invoice_sync(request):
+    from ..stripe_integrations.views import stripe_instance_sync
+    from core.Finances.stripe.handlers import InvoiceHandler
+    return stripe_instance_sync(request,
+                                'manager-stripe-invoice',
+                                'Manager/Stripe/Invoice/invoice_sync.html',
+                                InvoiceHandler)

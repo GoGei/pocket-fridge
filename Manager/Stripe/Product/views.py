@@ -50,3 +50,13 @@ def product_archive(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     product.archive()
     return redirect(reverse('manager-stripe-product-list', host='manager'))
+
+
+@manager_required
+def product_sync(request):
+    from ..stripe_integrations.views import stripe_instance_sync
+    from core.Finances.stripe.handlers import ProductHandler
+    return stripe_instance_sync(request,
+                                'manager-stripe-product',
+                                'Manager/Stripe/Product/product_sync.html',
+                                ProductHandler)

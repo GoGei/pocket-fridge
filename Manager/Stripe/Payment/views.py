@@ -36,3 +36,13 @@ def payment_list(request):
 def payment_view(request, payment_id):
     payment = get_object_or_404(Payment, pk=payment_id)
     return render(request, 'Manager/Stripe/Payment/payment_view.html', {'payment': payment})
+
+
+@manager_required
+def payment_sync(request):
+    from ..stripe_integrations.views import stripe_instance_sync
+    from core.Finances.stripe.handlers import PaymentHandler
+    return stripe_instance_sync(request,
+                                'manager-stripe-payment',
+                                'Manager/Stripe/Payment/payment_sync.html',
+                                PaymentHandler)

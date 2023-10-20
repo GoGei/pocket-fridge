@@ -2,6 +2,7 @@
 {% load i18n %}
 
 {% block action-area %}
+  <a type="button" class="btn btn-success btn-md" href="{% url 'manager-stripe-invoice-sync' %}">{% trans 'Sync' %}</a>
   <a type="button" class="btn btn-success btn-md">{% trans 'Sync all' %}</a>
 {% endblock %}
 

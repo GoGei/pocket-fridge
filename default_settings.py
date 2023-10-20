@@ -285,3 +285,5 @@ register_connection(alias='notification',
 USER_GUIDE_URL = 'https://example.com/'
 LICENCES_URL = 'https://example.com/'
 REPORT_ERROR_URL = 'https://example.com/'
+
+STRIPE_API_KEY = ''

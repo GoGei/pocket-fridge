@@ -34,7 +34,7 @@ class ProductHandler(StripeMixin):
     def instance_to_stripe(self, instance: Product) -> dict:
         response = {
             'name': instance.name,
-            'active': instance.is_active,
+            'active': instance.is_active(),
             'description': instance.description or '',
             'metadata': {
                 'is_default': instance.is_default,
@@ -42,10 +42,18 @@ class ProductHandler(StripeMixin):
         }
         return response
 
-    def update_instance(self, data, instance: Product) -> Product:
-        instance.external_id = data['id']
+    def update_instance(self, data, instance: Product = None) -> Product:
+        try:
+            instance = Product.objects.get(external_id=data['id'])
+        except Product.DoesNotExist:
+            if instance:
+                instance.external_id = data['id']
+            else:
+                instance = Product(external_id=data['id'])
+
         instance.name = data['name']
         instance.description = data['description']
+        instance.save()
 
         metadata = data.get('metadata', {})
         is_default = metadata.get('is_default', False)
@@ -56,7 +64,7 @@ class ProductHandler(StripeMixin):
         if not active:
             instance.is_published = False
             instance.archive()
-        elif active and not instance.is_active:
+        elif active and not instance.is_active():
             instance.is_published = True
             instance.restore()
 
@@ -73,7 +81,7 @@ class PriceHandler(StripeMixin):
         response = {
             'currency': instance.currency.code,
             'product': instance.product.external_id,
-            'active': instance.is_active,
+            'active': instance.is_active(),
             'recurring': instance.recurring,
             'unit_amount_decimal': instance.stripify_price,
             'metadata': {
@@ -83,11 +91,17 @@ class PriceHandler(StripeMixin):
 
         return response
 
-    def update_instance(self, data, instance: Price) -> Price:
-        instance.external_id = data['id']
+    def update_instance(self, data, instance: Price = None) -> Price:
+        try:
+            instance = Price.objects.get(external_id=data['id'])
+        except Price.DoesNotExist:
+            if instance:
+                instance.external_id = data['id']
+            else:
+                instance = Price(external_id=data['id'])
 
         instance.currency = Currency.objects.get(code__iexact=data['currency'])
-        instance.product = Product.objects.get(internal_id=data['product'])
+        instance.product = Product.objects.get(external_id=data['product'])
         recurring = data['recurring']
         instance.interval = recurring['interval']
         instance.interval_count = recurring['interval_count']
@@ -98,7 +112,7 @@ class PriceHandler(StripeMixin):
         active = data['active']
         if not active:
             instance.archive()
-        elif active and not instance.is_active:
+        elif active and not instance.is_active():
             instance.restore()
 
         metadata = data.get('metadata', {})
@@ -124,19 +138,25 @@ class SubscriptionHandler(StripeMixin):
 
         return response
 
-    def update_instance(self, data, instance: Subscription) -> Subscription:
-        instance.external_id = data['id']
+    def update_instance(self, data, instance: Subscription = None) -> Subscription:
+        try:
+            instance = Subscription.objects.get(external_id=data['id'])
+        except Subscription.DoesNotExist:
+            if instance:
+                instance.external_id = data['id']
+            else:
+                instance = Subscription(external_id=data['id'])
 
         item_data = data['items']['data'][0]
         price_data = item_data['price']
 
         try:
-            instance.product = Product.objects.get(internal_id=price_data['product'])
+            instance.product = Product.objects.get(external_id=price_data['product'])
         except Product.DoesNotExist:
             raise exceptions.StripeObjectNotFound(_('Product not found'))
 
         try:
-            instance.price = Price.objects.get(internal_id=price_data['id'])
+            instance.price = Price.objects.get(external_id=price_data['id'])
         except Price.DoesNotExist:
             raise exceptions.StripeObjectNotFound(_('Price not found'))
 
@@ -177,8 +197,15 @@ class InvoiceHandler(StripeMixin):
     """
     model = stripe.Invoice
 
-    def update_instance(self, data, instance: Invoice) -> Invoice:
-        instance.external_id = data['id']
+    def update_instance(self, data, instance: Invoice = None) -> Invoice:
+        try:
+            instance = Invoice.objects.get(external_id=data['id'])
+        except Invoice.DoesNotExist:
+            if instance:
+                instance.external_id = data['id']
+            else:
+                instance = Invoice(external_id=data['id'])
+
         instance.number = data['number']
         instance.collection_method = data['collection_method']
         instance.currency = Currency.objects.get(code__iexact=data['currency'])
@@ -207,13 +234,19 @@ class PaymentHandler(StripeMixin):
     """
     model = stripe.PaymentIntent
 
-    def update_instance(self, data, instance: Payment) -> Payment:
-        instance.external_id = data['id']
+    def update_instance(self, data, instance: Payment = None) -> Payment:
+        try:
+            instance = Payment.objects.get(external_id=data['id'])
+        except Payment.DoesNotExist:
+            if instance:
+                instance.external_id = data['id']
+            else:
+                instance = Payment(external_id=data['id'])
 
         try:
             instance.invoice = Invoice.objects.get(external_id=data['invoice'])
         except Invoice.DoesNotExist:
-            raise exceptions.StripeObjectNotFound(_('Customer not found'))
+            raise exceptions.StripeObjectNotFound(_('Invoice not found'))
 
         try:
             instance.user = User.objects.get(external_id=data['customer'])
