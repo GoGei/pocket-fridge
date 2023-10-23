@@ -1,6 +1,7 @@
 from django.conf.urls import url, include
 from rest_framework import routers
 
+from Api.v1.Barcode.views import BarcodeAPIView
 from Api.v1.Currency.views import CurrencyViewSet
 from Api.v1.User.views import UserViewSet
 from Api.v1.Fridge.views import FridgeTypeViewSet
@@ -14,6 +15,7 @@ router_v1.register('currencies', CurrencyViewSet, basename='currencies'),
 router_v1.register('users', UserViewSet, basename='users'),
 router_v1.register('fridge-type', FridgeTypeViewSet, basename='fridge-type'),
 router_v1.register('register', UserRegistrationAPIView, basename='register'),
+router_v1.register('barcode', BarcodeAPIView, basename='barcode'),
 urlpatterns = router_v1.urls
 
 urlpatterns += [

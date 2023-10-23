@@ -49,12 +49,16 @@
           <button class="profile_buttons-terms-of-use">
             <a href="{{ terms_of_use.template.url }}" download class="bold">{% trans 'Terms of use' %}</a>
           </button>
-          <button class="profile_buttons-dataexport">
-            <a href="{% host_url 'profile-export' host 'my' %}" type="button" class="bold">{% trans 'Data export' %}</a>
-          </button>
-          <button class="profile_buttons-dataexport">
-            <a href="{% host_url 'profile-import' host 'my' %}" type="button" class="bold">{% trans 'Data import' %}</a>
-          </button>
+          {% if request.user.is_premium %}
+            <button class="profile_buttons-dataexport">
+              <a href="{% host_url 'profile-export' host 'my' %}" type="button"
+                 class="bold">{% trans 'Data export' %}</a>
+            </button>
+            <button class="profile_buttons-dataexport">
+              <a href="{% host_url 'profile-import' host 'my' %}" type="button"
+                 class="bold">{% trans 'Data import' %}</a>
+            </button>
+          {% endif %}
           <button class="profile_buttons-report">
             <a href="https://forms.gle/4Z7vC1pTPfit6RN76" type="button" target="_blank"
                class="bold">{% trans 'Report error' %}</a>
