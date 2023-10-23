@@ -11,7 +11,7 @@ from django.utils.translation import gettext_lazy as _
 from . import exceptions
 from .mixins import StripeMixin
 
-from core.Finances.models import Product, Price, Subscription, Invoice, Payment
+from core.Finances.models import Product, Price, Subscription, Invoice, Payment, PaymentMethod
 from core.Currency.models import Currency
 from core.User.models import User
 
@@ -288,14 +288,72 @@ class CustomerHandler(StripeMixin):
         return instance
 
     @transaction.atomic
-    def set_as_default_payment_method(self, payment_method):
+    def set_as_default_payment_method(self, payment_method: PaymentMethod):
         data = {'invoice_settings': {'default_payment_method': payment_method.external_id}}
         try:
-            response = self.model.modify(payment_method.clinic.internal_id, **data)
+            response = self.model.modify(payment_method.user.external_id, **data)
             payment_method.is_default = True
             payment_method.save()
         except error.InvalidRequestError as e:
             raise exceptions.StripePaymentMethodSetDefaultException(e.user_message)
+        except error.StripeError as e:
+            raise exceptions.StripeUnhandledException(e.user_message)
+
+        return response
+
+
+class PaymentMethodHandler(StripeMixin):
+    model = stripe.PaymentMethod
+
+    def update_instance(self, data, user: User, instance: PaymentMethod = None):
+        try:
+            instance = PaymentMethod.objects.get(external_id=data['id'])
+        except PaymentMethod.DoesNotExist:
+            if instance:
+                instance.external_id = data['id']
+            else:
+                instance = PaymentMethod(external_id=data['id'])
+        instance.user = user
+
+        card_data = data['card']
+        instance.expire_date = PaymentMethod.form_expire_date_to_model(card_data)
+        instance.last_digits_of_card = card_data['last4']
+        instance.card_type = card_data['brand']
+
+        instance.save()
+        return instance
+
+    @transaction.atomic
+    def create(self, card_data, user, instance: PaymentMethod = None):
+        try:
+            response = self.model.create(type='card', card=card_data)
+            instance = self.update_instance(response, user, instance)
+        except error.InvalidRequestError as e:
+            raise exceptions.StripePaymentMethodCreateException(e.user_message)
+        except error.CardError as e:
+            raise exceptions.StripePaymentMethodDataInvalidException(e.user_message)
+        except error.StripeError as e:
+            raise exceptions.StripeUnhandledException(e.user_message)
+
+        return instance
+
+    def attach_to_customer(self, card):
+        try:
+            response = self.model.attach(card.external_id, customer=card.user.external_id)
+        except error.InvalidRequestError as e:
+            raise exceptions.StripePaymentMethodAttachError(e.user_message)
+        except error.CardError as e:
+            raise exceptions.StripePaymentMethodDataInvalidException(e.user_message)
+        except error.StripeError as e:
+            raise exceptions.StripeUnhandledException(e.user_message)
+
+        return response
+
+    def detach_from_customer(self, card):
+        try:
+            response = self.model.detach(card.external_id)
+        except error.InvalidRequestError as e:
+            raise exceptions.StripePaymentMethodDetachError(e.user_message)
         except error.StripeError as e:
             raise exceptions.StripeUnhandledException(e.user_message)
 

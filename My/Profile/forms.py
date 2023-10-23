@@ -4,8 +4,8 @@ from django.utils import timezone
 from django.utils.translation import ugettext as _
 
 from core.Finances.stripe import exceptions
-from core.Finances.stripe.handlers import CustomerHandler, SubscriptionHandler
-from core.Finances.models import Price, Subscription
+from core.Finances.stripe.handlers import CustomerHandler, SubscriptionHandler, PaymentMethodHandler
+from core.Finances.models import Price, Subscription, PaymentMethod
 from core.User.services import load_user_fridge_data
 
 
@@ -40,25 +40,30 @@ class ProfileImportForm(forms.Form):
             raise ValueError(_('Unable to load file. Error: %s') % str(e))
 
 
-class ProfileSubscribeForm(forms.Form):
+class ProfilePaymentMethodForm(forms.ModelForm):
     number = forms.CharField(min_length=14, max_length=16)
     exp_month = forms.IntegerField(min_value=1, max_value=12)
     exp_year = forms.IntegerField()
     cvc = forms.CharField(min_length=3, max_length=4)
-    card_name_holder = forms.CharField(max_length=150)
-    price = forms.ModelChoiceField(queryset=Price.objects.active().integrated())
 
-    def clean_number(self, value):
+    class Meta:
+        model = PaymentMethod
+        fields = ()
+
+    def clean_number(self):
+        value = self.cleaned_data.get('number')
         if not value.isdigit():
             self.add_error('number', _('Only digits allowed'))
         return value
 
-    def clean_cvc(self, value):
+    def clean_cvc(self):
+        value = self.cleaned_data.get('cvc')
         if not value.isdigit():
             self.add_error('cvc', (_('Only digits allowed')))
         return value
 
-    def clean_exp_year(self, value):
+    def clean_exp_year(self):
+        value = self.cleaned_data.get('exp_year')
         if not (0 < value < 99 or 2000 < value < 2099):
             self.add_error('exp_year', (_("Two- or four-digit number representing the card's expiration year.")))
         return value
@@ -91,6 +96,25 @@ class ProfileSubscribeForm(forms.Form):
         self.user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
 
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        if commit:
+            handler = PaymentMethodHandler()
+            instance = handler.create(self.cleaned_data, self.user)
+            handler.attach_to_customer(instance)
+            instance.user = self.user
+            instance.save()
+
+        return instance
+
+
+class ProfileSubscribeForm(forms.Form):
+    price = forms.ModelChoiceField(queryset=Price.objects.active().integrated())
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user')
+        super().__init__(*args, **kwargs)
+
     def subscribe(self):
         user = self.user
         subscription = user.get_subscription()
@@ -110,13 +134,12 @@ class ProfileSubscribeForm(forms.Form):
         start_date = timezone.now().date()
 
         subscription = Subscription(
-            user=user,
-            customer_internal_id=user.internal_id,
             product=product,
             price=price,
+            currency=price.currency,
+            user=user,
             start_date=start_date,
             end_date=None,
-            currency=price.currency,
             quantity=1,
             created_by=user
         )
@@ -124,7 +147,7 @@ class ProfileSubscribeForm(forms.Form):
         subscription_handler = SubscriptionHandler()
 
         try:
-            stripe_data = subscription_handler.create(subscription, charge_immediately=True)
+            stripe_data = subscription_handler.create(subscription)
         except exceptions.StripeException as e:
             raise exceptions.StripeObjectCreateException(e)
 

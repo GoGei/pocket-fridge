@@ -25,9 +25,17 @@
           <div class="profile_info-premium">
             <span>{% trans 'Premium' %}: </span>
             <strong>
-              {% trans 'None' %}
+              {% if subscription.product %}
+                {{ subscription.product.name }}
+              {% else %}
+                {% trans 'None' %}
+              {% endif %}
             </strong>
-            <a href="{% host_url 'profile-subscribe' host 'my' %}">{% trans 'Buy premium' %}</a>
+            {% if subscription %}
+              <a href="{% host_url 'profile-cancel-subscription' host 'my' %}">{% trans 'Cancel premium' %}</a>
+            {% else %}
+              <a href="{% host_url 'profile-subscribe' host 'my' %}">{% trans 'Buy premium' %}</a>
+            {% endif %}
           </div>
         </div>
 

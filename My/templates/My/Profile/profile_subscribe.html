@@ -1,0 +1,10 @@
+{% extends 'My/my_base.html' %}
+{% load hosts i18n %}
+
+{% block content %}
+  <div>
+    !{{ payment_method.last_digits_of_card }}! !{{ payment_method.card_type }}! !{{ payment_method.expire_date }}!
+    <a href="{% host_url 'profile-add-payment-method' host 'my' %}">{% trans 'Change card' %}</a>
+  </div>
+  {% include 'base_form.html' with form=form %}
+{% endblock %}

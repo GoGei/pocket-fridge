@@ -46,5 +46,21 @@ class StripeUpcomingInvoiceRetrieveException(StripeUnhandledException):
     pass
 
 
+class StripePaymentMethodCreateException(StripeUnhandledException):
+    pass
+
+
+class StripePaymentMethodDataInvalidException(StripeUnhandledException):
+    pass
+
+
+class StripePaymentMethodAttachError(StripeUnhandledException):
+    pass
+
+
+class StripePaymentMethodDetachError(StripeUnhandledException):
+    pass
+
+
 class StripePaymentMethodSetDefaultException(StripeUnhandledException):
     pass

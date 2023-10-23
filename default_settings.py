@@ -149,6 +149,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+TIME_ZONE_DEFAULT = 'Europe/Kyiv'
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'

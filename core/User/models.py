@@ -11,6 +11,7 @@ from django.conf import settings
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django_hosts.resolvers import reverse
 
+from core.Finances.models import PaymentMethod, Subscription
 from core.Fridge.models import Fridge
 from core.Notifications.models import Notification
 from core.ShoppingList.models import ShoppingList
@@ -221,3 +222,9 @@ class User(CrmMixin, AbstractBaseUser):
     def clear_forgot_password_keys(cls, key):
         with redis.Redis() as r:
             r.delete(cls.USER_FORGOT_PASSWORD_KEY % key)
+
+    def get_payment_method(self) -> PaymentMethod:
+        return PaymentMethod.objects.select_related('user').filter(user=self, is_default=True).active().first()
+
+    def get_subscription(self) -> Subscription:
+        return Subscription.objects.select_related('user').filter(user=self).active().order_by('-created_stamp').first()
