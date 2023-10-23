@@ -216,6 +216,21 @@ footer > div{
 
 }
 
+.button-holder{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.button-holder > button{
+    width: 48%;
+    border: none;
+    border-radius: 8px;
+    background: #B6E0FF;
+    cursor: pointer;
+    margin-bottom: 20px;
+    padding: 5px 0;
+}
+
 
 /* .dropdown:hover .dropdown-menu {
     display: block;
@@ -369,6 +384,10 @@ form > .form_buttons > input.btn {
 form > .form_buttons > input:last-child {
     background: #d9d9d9;
 
+}
+
+form.product_edit > div:nth-child(9) > label{
+display: none;
 }
 
 /* Add product settings */
@@ -605,7 +624,7 @@ border-bottom: solid 1px #B6E0FF;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
+    width: 90%;
 }
 .list-hint > span { 
     color: rgba(0, 0, 0, 0.60);
@@ -816,14 +835,13 @@ form.add_card div:nth-child(2) #id_number{
     margin-bottom: 15px;
 }
 
-
-form.add_card div:nth-child(3) input{
+input#id_exp_month{
     width: 30px;
 }
 form.add_card div:nth-child(4) label{
 display: none;
 }
-form.add_card div:nth-child(4) input{
+input#id_exp_year{
     width: 60px;
     position: absolute;
     top: 91px;
@@ -838,7 +856,7 @@ body > main > section > div > div > form > div:nth-child(5){
     width: 75px !important;
 }
 
-body > main > section > div > div > form > div:nth-child(5) input{
+input#id_cvc{
     width: 60px;
 }
 
@@ -902,8 +920,8 @@ form.profile_import label {
     border: 3px solid #B6E0FF;
     padding: 3px;
     border-radius: 8px;
-    margin-left: 50%;
-    transform: translate(-50%);
+    /* margin-left: 50%;
+    transform: translate(-50%); */
  }
 .no-photo{
     display: flex;
@@ -980,14 +998,20 @@ letter-spacing: -0.408px;
 }
 
 .class-1 {
-    color: red;
+    background: #f92b2b !important;
+    border: 3px solid #f92b2b !important;
+
 }
 .class-2 {
-    color: orange;
+    background: #e7d837 !important;
+    border: 3px solid #e7d837 !important;
+
 }
 .class-3 {
-    color: green;
+    border: 3px solid green;
+    background: green !important;
 }
 .class-4 {
-    color: grey;
+    background: #B6E0FF;
+    border: 3px solid #B6E0FF;
 }

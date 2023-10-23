@@ -43,12 +43,15 @@
           <button class="profile_buttons-guide">
             <a href="{{ user_guide_url }}" type="button" target="_blank" class="bold">{% trans 'User guide' %}</a>
           </button>
-          <button class="profile_buttons-privacy-policy">
+          <div class="button-holder">
+            <button class="profile_buttons-privacy-policy">
             <a href="{{ privacy_policy.template.url }}" download class="bold">{% trans 'Privacy policy' %}</a>
           </button>
           <button class="profile_buttons-terms-of-use">
             <a href="{{ terms_of_use.template.url }}" download class="bold">{% trans 'Terms of use' %}</a>
           </button>
+          </div>
+          
           {% if request.user.is_premium %}
             <button class="profile_buttons-dataexport">
               <a href="{% host_url 'profile-export' host 'my' %}" type="button"
