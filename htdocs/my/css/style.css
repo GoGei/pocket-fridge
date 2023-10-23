@@ -808,6 +808,14 @@ body.login-page{
 } */
 
 
+
+.section-subscription {
+    margin-top: 30px;
+}
+.container-subscription h3{
+    margin-bottom: 30px;
+}
+
 /* Add  card */
 
 
@@ -1012,6 +1020,6 @@ letter-spacing: -0.408px;
     background: green !important;
 }
 .class-4 {
-    background: #B6E0FF;
+    background: #B6E0FF !important;
     border: 3px solid #B6E0FF;
 }
