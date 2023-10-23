@@ -109,7 +109,10 @@ class ProfilePaymentMethodForm(forms.ModelForm):
 
 
 class ProfileSubscribeForm(forms.Form):
-    price = forms.ModelChoiceField(queryset=Price.objects.active().integrated())
+    price = forms.ModelChoiceField(queryset=Price.objects.active().integrated(),
+                                   widget=forms.Select(attrs={'class': 'form-control select2'}),
+                                   initial=Price.objects.active().integrated().order_by('-created_stamp').first(),
+                                   required=True)
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user')

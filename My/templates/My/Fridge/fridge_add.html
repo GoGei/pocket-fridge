@@ -2,13 +2,39 @@
 {% load hosts %}
 
 {% block content %}
+  <div class="">
+    <input type="file" name="image" class="form-control" accept="image/*" id="id_image_barcode"
+           data-url="{% host_url 'api-v1:barcode-scanner' host 'api' %}">
+  </div>
+
   {% include 'base_form.html' with form=form %}
 {% endblock %}
 
 {% block extrajs %}
   <script>
-      $(document).ready(function () {
-          select2RenderField($('#id_fridge'));
+    $(document).ready(function () {
+      select2RenderField($('#id_fridge'));
+    });
+    $(document).ready(function () {
+      $('#id_image_barcode').change(function () {
+        let file = this.files[0];
+        let endpointUrl = $(this).data('url');
+
+        let formData = new FormData();
+        formData.append('image', file);
+        $.ajax({
+          url: endpointUrl,
+          type: 'POST',
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function (response) {
+            if (response) {
+              $('#id_name').val(response.name);
+            }
+          }
+        });
       });
+    });
   </script>
 {% endblock %}
