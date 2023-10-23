@@ -24,6 +24,9 @@ def profile(request):
 
 @decorators.my_login_required
 def profile_export(request):
+    if not request.user.is_premium:
+        return redirect(reverse('profile', host='my'))
+
     data = services.get_user_fridge_data(request.user)
     content = JSONRenderer().render(data)
 
@@ -36,6 +39,9 @@ def profile_export(request):
 
 @decorators.my_login_required
 def profile_import(request):
+    if not request.user.is_premium:
+        return redirect(reverse('profile', host='my'))
+
     form_body = ProfileImportForm(request.POST or None,
                                   request.FILES or None,
                                   user=request.user)
