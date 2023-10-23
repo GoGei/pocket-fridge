@@ -2,5 +2,13 @@
 {% load hosts %}
 
 {% block content %}
-  {% include 'base_form.html' with form=form %}
+<section class="section-add_credit_card">
+  <div class="row">
+    <div class="container-add_credit_card">
+      <h3>Credit card detail</h3>
+      {% include 'base_form.html' with form=form %}
+    </div>
+  </div>
+</section>
+  
 {% endblock %}

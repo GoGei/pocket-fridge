@@ -57,7 +57,7 @@ def profile_import(request):
     form = {
         'body': form_body,
         'buttons': {'submit': True, 'cancel': True},
-        'form_class': 'shopping_list_add_product',
+        'form_class': 'profile_import',
     }
 
     return render(request, 'My/Profile/profile_import.html', {'form': form})
@@ -93,7 +93,7 @@ def profile_subscribe(request):
     form = {
         'body': form_body,
         'buttons': {'submit': True, 'cancel': True},
-        'form_class': 'shopping_list_add_product',
+        'form_class': 'profile_subscribe',
     }
     return render(request, 'My/Profile/profile_subscribe.html',
                   {'form': form, 'payment_method': payment_method})
@@ -130,7 +130,7 @@ def profile_add_payment_method(request):
     form = {
         'body': form_body,
         'buttons': {'submit': True, 'cancel': True},
-        'form_class': 'shopping_list_add_product',
+        'form_class': 'add_card',
     }
 
     return render(request, 'My/Profile/profile_add_payment_method.html', {'form': form})

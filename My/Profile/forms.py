@@ -41,10 +41,10 @@ class ProfileImportForm(forms.Form):
 
 
 class ProfilePaymentMethodForm(forms.ModelForm):
-    number = forms.CharField(min_length=14, max_length=16)
-    exp_month = forms.IntegerField(min_value=1, max_value=12)
-    exp_year = forms.IntegerField()
-    cvc = forms.CharField(min_length=3, max_length=4)
+    number = forms.CharField(min_length=14, max_length=16, label=_('Card number'))
+    exp_month = forms.IntegerField(min_value=1, max_value=12, label=_('Expire date'))
+    exp_year = forms.IntegerField( label=_(''))
+    cvc = forms.CharField(min_length=3, max_length=4, label=_('CVC/CVV'))
 
     class Meta:
         model = PaymentMethod

@@ -2,5 +2,13 @@
 {% load hosts %}
 
 {% block content %}
-  {% include 'base_form.html' with form=form %}
+<section class="section-import_data">
+  <div class="row">
+    <div class="container-import_data">
+      <h3>Import data</h3>
+      {% include 'base_form.html' with form=form %}
+    </div>
+  </div>
+</section>
+  
 {% endblock %}
