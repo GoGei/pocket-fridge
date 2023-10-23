@@ -28,3 +28,6 @@ django-debug-toolbar==3.2.4
 flake8==4.0.1
 factory_boy==2.12.0
 ipython==8.12.2
+
+pyzbar==0.1.9
+opencv-python==4.8.1.78

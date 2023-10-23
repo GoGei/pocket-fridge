@@ -1,7 +1,7 @@
 from rest_framework import status
+from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
-from rest_framework.response import Response
 
 from Api.base_views import SerializerMapBaseView
 from .serializers import BarcodeScannedPostSerializer
@@ -19,7 +19,5 @@ class BarcodeAPIView(SerializerMapBaseView):
     def scanner(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        response = {
-            'name': 'test me'
-        }
-        return Response(response, status=status.HTTP_200_OK)
+        data = serializer.get_barcode_data()
+        return Response(data, status=status.HTTP_200_OK)

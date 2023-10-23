@@ -31,6 +31,8 @@
           success: function (response) {
             if (response) {
               $('#id_name').val(response.name);
+              $('#id_amount').val(response.qty);
+              $('#id_units').val(response.unit);
             }
           }
         });
