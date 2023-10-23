@@ -149,6 +149,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+TIME_ZONE_DEFAULT = 'Europe/Kyiv'
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
@@ -285,3 +286,5 @@ register_connection(alias='notification',
 USER_GUIDE_URL = 'https://example.com/'
 LICENCES_URL = 'https://example.com/'
 REPORT_ERROR_URL = 'https://example.com/'
+
+STRIPE_API_KEY = ''

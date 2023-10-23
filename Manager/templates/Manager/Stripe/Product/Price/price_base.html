@@ -1,0 +1,15 @@
+{% extends 'Manager/Stripe/base.html' %}
+{% load i18n %}
+
+{% block pagetitle %}
+  {{ block.super }} {% trans 'Prices' %}
+{% endblock %}
+
+{% block stripe-product-menu %} active {% endblock %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  <li class="breadcrumb-item" aria-current="page">
+    <a href="{% url 'manager-stripe-product-view' product_id %}">{% trans 'Prices' %}</a>
+  </li>
+{% endblock %}

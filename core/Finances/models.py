@@ -3,10 +3,13 @@ The code provided is a Django model implementation for handling finance integrat
 It includes several models such as Product, Price, Subscription, Invoice, and Payment,
 all of which inherit from the FinanceIntegrationsMixin.
 """
+import datetime
 from decimal import Decimal, ROUND_HALF_UP
 
-from django.core.validators import MinValueValidator
 from django.db import models
+from django.core.validators import MinValueValidator
+from django.utils import timezone
+
 from core.Utils.Mixins.models import CrmMixin, UUIDPrimaryKeyMixin, ActiveQuerySet
 from django.utils.translation import gettext_lazy as _
 
@@ -50,6 +53,13 @@ class Product(FinanceIntegrationsMixin):
     class Meta:
         db_table = 'product'
 
+    def __str__(self):
+        return self.name
+
+    @property
+    def label(self):
+        return str(self)
+
     def set_as_default(self):
         Product.objects.all().update(is_default=False)
         self.is_default = True
@@ -85,6 +95,13 @@ class Price(FinanceIntegrationsMixin):
 
     class Meta:
         db_table = 'price'
+
+    def __str__(self):
+        return f'{self.product}: ({self.price}/{self.interval} {self.currency.code})'
+
+    @property
+    def label(self):
+        return str(self)
 
     @property
     def recurring(self):
@@ -206,3 +223,46 @@ class Payment(FinanceIntegrationsMixin):
 
     class Meta:
         db_table = 'payment'
+
+
+class PaymentMethod(FinanceIntegrationsMixin):
+    # https://stripe.com/docs/api/payment_methods
+
+    class CardTypeChoices(models.TextChoices):
+        # https://stripe.com/docs/api/payment_methods/object
+        # More attributes -> card -> brand
+        AMERICAN_EXPRESS = 'amex', _('American Express')
+        DINERS_CLUB = 'diners', _('Diners Club')
+        DISCOVER = 'discover', _('Discover')
+        JCB = 'jcb', _('JCB')
+        MASTER_CARD = 'mastercard', _('MasterCard')
+        UNION_PAY = 'unionpay', _('UnionPay')
+        VISA = 'visa', _('Visa')
+        UNKNOWN = 'unknown', _('Unknown')
+
+    user = models.ForeignKey('User.User', on_delete=models.PROTECT, db_index=True)
+    expire_date = models.DateField(db_index=True)
+    last_digits_of_card = models.CharField(max_length=4)
+    card_type = models.CharField(max_length=20, choices=CardTypeChoices.choices)
+    is_default = models.BooleanField(default=False)
+
+    class Meta:
+        db_table = 'clinic_card'
+
+    @classmethod
+    def form_expire_date_to_model(cls, data):
+        exp_month = data['exp_month']
+        exp_year = data['exp_year']
+        if exp_year < 2000:
+            exp_year += 2000
+
+        expire_date = datetime.date(
+            year=exp_year,
+            month=exp_month,
+            day=1)
+        return expire_date
+
+    @property
+    def is_expired(self):
+        this_month_start_date = timezone.now().date().replace(day=1)
+        return this_month_start_date > self.expire_date

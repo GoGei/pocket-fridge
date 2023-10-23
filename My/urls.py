@@ -4,5 +4,6 @@ urlpatterns = [
     url(r'', include('urls')),
     url(r'^', include('My.Home.urls')),
     url(r'^fridge/', include('My.Fridge.urls')),
+    url(r'^profile/', include('My.Profile.urls')),
     url(r'^shopping-list/', include('My.ShoppingList.urls')),
 ]

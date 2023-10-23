@@ -1,9 +1,8 @@
-{% extends 'Manager/Stripe/Invoice/invoice_base.html' %}
+{% extends 'Manager/Stripe/Product/product_base.html' %}
 {% load i18n %}
 
 {% block action-area %}
-  <a type="button" class="btn btn-success btn-md" href="{% url 'manager-stripe-invoice-sync' %}">{% trans 'Sync' %}</a>
-  <a type="button" class="btn btn-success btn-md" href="{% url 'manager-stripe-invoice-sync-all' %}">{% trans 'Sync all' %}</a>
+  <a type="button" class="btn btn-success btn-md" href="{% url 'manager-stripe-product-sync' %}">{% trans 'Sync' %}</a>
 {% endblock %}
 
 {% block content %}

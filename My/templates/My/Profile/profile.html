@@ -25,9 +25,17 @@
           <div class="profile_info-premium">
             <span>{% trans 'Premium' %}: </span>
             <strong>
-              {% trans 'None' %}
+              {% if subscription.product %}
+                {{ subscription.product.name }}
+              {% else %}
+                {% trans 'None' %}
+              {% endif %}
             </strong>
-            <a href="#">{% trans 'Buy premium' %}</a>
+            {% if subscription %}
+              <a href="{% host_url 'profile-cancel-subscription' host 'my' %}">{% trans 'Cancel premium' %}</a>
+            {% else %}
+              <a href="{% host_url 'profile-subscribe' host 'my' %}">{% trans 'Buy premium' %}</a>
+            {% endif %}
           </div>
         </div>
 
@@ -35,8 +43,11 @@
           <button class="profile_buttons-guide">
             <a href="{{ user_guide_url }}" type="button" target="_blank" class="bold">{% trans 'User guide' %}</a>
           </button>
-          <button class="profile_buttons-license">
-            <a href="{{ licences_url }}" type="button" target="_blank" class="bold">{% trans 'Licences' %}</a>
+          <button class="profile_buttons-privacy-policy">
+            <a href="{{ privacy_policy.template.url }}" download class="bold">{% trans 'Privacy policy' %}</a>
+          </button>
+          <button class="profile_buttons-terms-of-use">
+            <a href="{{ terms_of_use.template.url }}" download class="bold">{% trans 'Terms of use' %}</a>
           </button>
           <button class="profile_buttons-dataexport">
             <a href="{% host_url 'profile-export' host 'my' %}" type="button" class="bold">{% trans 'Data export' %}</a>
