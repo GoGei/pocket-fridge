@@ -228,3 +228,7 @@ class User(CrmMixin, AbstractBaseUser):
 
     def get_subscription(self) -> Subscription:
         return Subscription.objects.select_related('user').filter(user=self).active().order_by('-created_stamp').first()
+
+    @property
+    def is_premium(self) -> bool:
+        return self.get_subscription() is not None
