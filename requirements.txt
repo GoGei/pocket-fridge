@@ -31,3 +31,4 @@ ipython==8.12.2
 
 pyzbar==0.1.9
 opencv-python==4.8.1.78
+django-cleanup==8.0.0

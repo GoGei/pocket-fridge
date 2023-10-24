@@ -1,5 +1,6 @@
 import json
 from django import forms
+from django.conf import settings
 from django.utils import timezone
 from django.utils.translation import ugettext as _
 
@@ -41,10 +42,15 @@ class ProfileImportForm(forms.Form):
 
 
 class ProfilePaymentMethodForm(forms.ModelForm):
-    number = forms.CharField(min_length=14, max_length=16, label=_('Card number'))
-    exp_month = forms.IntegerField(min_value=1, max_value=12, label=_('Expire date'))
-    exp_year = forms.IntegerField( label=_(''))
-    cvc = forms.CharField(min_length=3, max_length=4, label=_('CVC/CVV'))
+    number = forms.CharField(min_length=14, max_length=16, label=_('Card number'),
+                             widget=forms.TextInput(
+                                 attrs={'class': 'form-control', 'placeholder': _('**** **** **** ****')}))
+    exp_month = forms.IntegerField(min_value=1, max_value=12, label=_('Expire date'), initial=timezone.now().month)
+    exp_year = forms.IntegerField(initial=timezone.now().year)
+    cvc = forms.CharField(min_length=3, max_length=4, label=_('CVC/CVV'),
+                          widget=forms.TextInput(
+                              attrs={'class': 'form-control', 'placeholder': _('***')}
+                          ))
 
     class Meta:
         model = PaymentMethod
@@ -70,8 +76,11 @@ class ProfilePaymentMethodForm(forms.ModelForm):
 
     @classmethod
     def form_expire_date_to_model(cls, data):
-        exp_month = data['exp_month']
-        exp_year = data['exp_year']
+        exp_month = data.get('exp_month')
+        exp_year = data.get('exp_year')
+        if not (exp_month and exp_year):
+            return None
+
         if exp_year < 2000:
             exp_year += 2000
 
@@ -86,6 +95,9 @@ class ProfilePaymentMethodForm(forms.ModelForm):
         data = super().clean()
         this_month_start_date = timezone.now().date().replace(day=1)
         expire_date = self.form_expire_date_to_model(data)
+        if not expire_date:
+            return data
+
         if this_month_start_date > expire_date:
             msg = _('Expire date can not be in past')
             self.add_error('number', ({'exp_year': msg}))
@@ -99,11 +111,37 @@ class ProfilePaymentMethodForm(forms.ModelForm):
     def save(self, commit=True):
         instance = super().save(commit=False)
         if commit:
+            # import stripe
+            # stripe.api_key = settings.STRIPE_API_KEY
+            #
+            # # response = stripe.Token.create(
+            # #     card=self.cleaned_data,
+            # #     customer=self.user.external_id,
+            # # )
+            # response = stripe.PaymentMethod.create(
+            #     type="card",
+            #     card=self.cleaned_data
+            # )
+            # print('response', response)
+            # card_data = response['card']
+            # instance.external_id = card_data['id']
+            # instance.user = self.user
+            # instance.expire_date = PaymentMethod.form_expire_date_to_model(card_data)
+            # instance.last_digits_of_card = card_data['last4']
+            # instance.card_type = card_data['brand']
+            # instance.save()
+            # instance.set_default(self.user)
+            #
+            # stripe.PaymentMethod.attach(
+            #     instance.external_id,
+            #     customer=self.user.external_id,
+            # )
+            # # PaymentMethodHandler().attach_to_customer(instance)
+
             handler = PaymentMethodHandler()
             instance = handler.create(self.cleaned_data, self.user)
             handler.attach_to_customer(instance)
-            instance.user = self.user
-            instance.save()
+            # handler.create_token(card_data=self.cleaned_data, instance=instance, user=self.user)
 
         return instance
 

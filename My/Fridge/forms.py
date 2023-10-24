@@ -1,5 +1,4 @@
 from django import forms
-from django.utils import timezone
 from django.utils.translation import ugettext as _
 from django_hosts import reverse
 
@@ -30,7 +29,7 @@ class FridgeProductForm(forms.ModelForm, BaseProductValidationForm):
         widget=forms.DateInput(attrs={'type': 'date'}))
 
     image = forms.ImageField(label=_('Photo'), required=False,
-                             widget=forms.FileInput(attrs={
+                             widget=forms.ClearableFileInput(attrs={
                                  'class': 'form-control',
                              }))
 
@@ -78,18 +77,10 @@ class FridgeProductFormAdd(FridgeProductForm):
 
 
 class FridgeProductFormEdit(FridgeProductForm):
-    pass
-    # class Meta(FridgeProductForm.Meta):
-    #     model = FridgeProduct
-    #     fields = (
-    #         'name',
-    #         'amount',
-    #         'units',
-    #         'manufacture_date',
-    #         'shelf_life_date',
-    #         'notes',
-    #     )
-    #
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.fields.pop('fridge')
+    def save(self, commit=True):
+        current_image = self.cleaned_data.get('image')
+        if not current_image:
+            self.cleaned_data.pop('image')
+
+        instance = super().save(commit=commit)
+        return instance

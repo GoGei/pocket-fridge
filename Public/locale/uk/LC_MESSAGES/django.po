@@ -78,15 +78,9 @@ msgstr "Скинути пароль"
 msgid "Forgot password success"
 msgstr "Успішно забули пароль"
 
-#, fuzzy
-#| msgid "Keep in touch with us!"
 msgid "keep in touch with us!"
 msgstr "Залишайтесь з нами на зв'язку!"
 
-#, fuzzy
-#| msgid ""
-#| "Activation link was sent to your email. Please, follow this letter to "
-#| "reset password of your account"
 msgid ""
 "Activation link was send to your email. Please, follow this letter to reset "
 "password of your account"
@@ -138,10 +132,6 @@ msgstr "Успішна реєстрація"
 msgid "Thanks for registration!"
 msgstr "Дякуємо за реєстрацію!"
 
-#, fuzzy
-#| msgid ""
-#| "Activation link was sent to your email. Please, follow this letter to "
-#| "activate your account"
 msgid ""
 "Activation link was send to your email. Please, follow this letter to "
 "activate your account"
@@ -161,8 +151,6 @@ msgstr "Зробіть управління вашим холодильнико�
 msgid "I agree to"
 msgstr "Я погоджуюся з"
 
-#, fuzzy
-#| msgid "Privacy policy & terms"
 msgid "privacy policy & terms"
 msgstr "Політикою конфіденційності та умовами"
 
@@ -186,6 +174,3 @@ msgstr "Поки не надано"
 
 msgid "Terms of use"
 msgstr "Умови використання"
-
-msgid "Activation link was send to your email. Please, follow this letter to reset password of your account"
-msgstr "Посилання для активації було надіслано на вашу електронну пошту. Будь ласка, перейдіть за цим посиланням, щоб відновити пароль до вашого облікового запису" 

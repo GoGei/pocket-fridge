@@ -62,8 +62,16 @@
           {{ field }}
           <label class="form-check-label" for="terms-conditions">
             {% trans 'I agree to' %}
-            <a href="{{ privacy_policy.template.url }}" download>{% trans 'privacy policy' %}</a> &
-            <a href="{{ terms_of_use.template.url }}" download>{% trans 'terms of use' %}</a>
+            {% if privacy_policy.template.url %}
+              <a href="{{ privacy_policy.template.url }}" download>{% trans 'privacy policy' %}</a> &
+            {% else %}
+              <a href="#">{% trans 'privacy policy' %}</a> &
+            {% endif %}
+            {% if terms_of_use.template.url %}
+              <a href="{{ terms_of_use.template.url }}" download>{% trans 'terms of use' %}</a>
+            {% else %}
+              <a href="#">{% trans 'terms of use' %}</a>
+            {% endif %}
           </label>
         </div>
         {% include 'Public/base/base_field_error_block.html' %}

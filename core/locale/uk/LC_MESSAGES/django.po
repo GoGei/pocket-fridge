@@ -102,7 +102,6 @@ msgstr "Потрібен захоплення"
 msgid "Succeeded"
 msgstr "Успішно"
 
-#, python-brace-format
 msgid "Fridges for user {user.email} already exists"
 msgstr ""
 
