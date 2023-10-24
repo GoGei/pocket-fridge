@@ -23,10 +23,10 @@ $(document).ready(function () {
     // $('.select2').select2();
 });
 
-$('.language-selector').off().on('click', function (e) {
-    console.log('there');
+$('.language-selector').on('click', function (e) {
     e.preventDefault(); // Prevent the default link behavior
     let languageCode = $(this).data('lang');
+    $('#select-language input[name="language"]').remove(); // Remove any existing input
     $('#select-language').append($('<input>').attr({
         type: 'hidden',
         name: 'language',

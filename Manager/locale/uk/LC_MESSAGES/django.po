@@ -54,7 +54,6 @@ msgstr "Поточний пароль співпадає з новим паро�
 msgid "Admin filter"
 msgstr "Фільтр адміністратора"
 
-#, python-brace-format
 msgid "Admin {admin.email} was successfully created"
 msgstr "Адміністратор {admin.email} успішно створений"
 
@@ -70,8 +69,6 @@ msgstr "Ваш пароль успішно встановлено"
 msgid "Reset password"
 msgstr "Скинути пароль"
 
-#, fuzzy
-#| msgid "Please, fill in the form below to set a new password"
 msgid "Please, fill in the form below to set new password"
 msgstr "Будь ласка, заповніть форму нижче, щоб встановити новий пароль"
 
@@ -92,8 +89,6 @@ msgstr "Пароль адміністратора {admin.email} успішно �
 msgid "Set admin password"
 msgstr "Встановити пароль адміністратора"
 
-#, fuzzy
-#| msgid "Please, fill in the form below to set a password for an admin"
 msgid "Please, fill in the form below to set password for an admin"
 msgstr ""
 "Будь ласка, заповніть форму нижче, щоб встановити пароль для адміністратора"
@@ -121,8 +116,6 @@ msgstr "Тип холодильника {fridge_type.label} успішно ст�
 msgid "Add fridge type"
 msgstr "Додати тип холодильника"
 
-#, fuzzy
-#| msgid "Please, fill in the form below to add a fridge type"
 msgid "Please, fill in the form below to add fridge type"
 msgstr "Будь ласка, заповніть форму нижче, щоб додати тип холодильника"
 
@@ -306,8 +299,6 @@ msgstr "Експортувати в фікстуру"
 msgid "Show raw data"
 msgstr "Показати необроблені дані"
 
-#, fuzzy
-#| msgid "Show human-readable data"
 msgid "Show human readable data"
 msgstr "Показати зрозумілі дані"
 
