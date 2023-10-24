@@ -18,6 +18,7 @@ class FridgeProductQuerySet(ActiveQuerySet):
                 models.When(shelf_life_date__lt=today, then=0),
                 models.When(shelf_life_date=today, then=1),
                 models.When(shelf_life_date__lte=today + timezone.timedelta(days=1), then=2),
+                models.When(shelf_life_date__lte=today + timezone.timedelta(days=2), then=3),
                 models.When(shelf_life_date__lte=today + timezone.timedelta(days=3), then=3),
 
                 default=999,
