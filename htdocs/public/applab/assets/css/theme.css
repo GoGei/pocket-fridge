@@ -18269,5 +18269,18 @@ label {
   border-radius: 9px;
 }
 
+#select-language > a{
+  font-family: Montserrat, "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 500 !important;
+  color: rgba(0, 0, 0, 0.95);
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.language-changer{
+  padding-left: 48px;
+}
 
 /*# sourceMappingURL=theme.css.map */

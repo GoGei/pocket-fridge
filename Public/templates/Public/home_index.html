@@ -67,41 +67,44 @@
           <!--  <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium"
                                                             href="#testimonial">{% trans 'Testimonial' %}</a></li> -->
           <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium" href="#faq">FAQ</a></li>
-          <li class="nav-item">
-            <form id="select-language" action="{% url 'set-language' %}" method="POST">
-              {% csrf_token %}
-              {% get_current_language as LANGUAGE_CODE %}
-              {% get_available_languages as LANGUAGES %}
-              {% get_language_info_list for LANGUAGES as languages %}
-              {% for language in languages %}
-                <a class="bold language-selector {% if language.code == LANGUAGE_CODE %}active{% endif %}"
-                   data-action="lang" data-lang="{{ language.code }}">
-                  {{ language.name }}
-                </a>
-              {% endfor %}
-            </form>
-            {% comment %}<div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" data-bs-toggle="dropdown"
-                      aria-expanded="false">
-                {% trans 'Language' %}
-              </button>
-              <div class="dropdown-menu">
-                <form id="select-language" action="{% url 'set-language' %}" method="POST">
-                  {% csrf_token %}
-                  {% get_current_language as LANGUAGE_CODE %}
-                  {% get_available_languages as LANGUAGES %}
-                  {% get_language_info_list for LANGUAGES as languages %}
-                  {% for language in languages %}
-                    <a class="bold language-selector dropdown-item {% if language.code == LANGUAGE_CODE %}active{% endif %}"
+        </ul>
+
+        <div class="language-changer">
+          <form id="select-language" action="{% url 'set-language' %}" method="POST">
+            {% csrf_token %}
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+              <a class="bold language-selector {% if language.code == LANGUAGE_CODE %}active{% endif %}"
+                 data-action="lang" data-lang="{{ language.code }}">
+                {{ language.name }}
+              </a>
+            {% endfor %}
+          </form>
+          {% comment %}<div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+              {% trans 'Language' %}
+            </button>
+            <div class="dropdown-menu">
+              <form id="select-language" action="{% url 'set-language' %}" method="POST">
+                {% csrf_token %}
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                  {% if language.code != LANGUAGE_CODE %}
+                    <a class="bold language-selector"
                        data-action="lang" data-lang="{{ language.code }}">
                       {{ language.name }}
                     </a>
-                  {% endfor %}
-                </form>
-              </div>
-            </div>{% endcomment %}
-          </li>
-        </ul>
+                  {% endif %}
+                {% endfor %}
+              </form>
+            </div>
+          </div>{% endcomment %}
+        </div>
         <form class="ps-lg-5">
           {% if request.user.is_authenticated %}
             <a class="btn btn-lg btn-primary rounded-pill order-0" type="submit"
@@ -295,8 +298,7 @@
       <div class="row justify-content-center mb-6">
         <div class="col-lg-6 text-center mx-auto mb-3 mb-md-5 mt-4">
           <h6 class="fw-bold fs-4 display-3 lh-sm">Why you should choose <br/>our app </h6>
-          <p class="mb-0">The rise of mobile devices transforms the way we consume information entirely and the world's
-            most elevant channels such as Facebook.</p>
+          <p class="mb-0">Empowering Your World with Mobile Innovation: Redefining Information Access, One App at a Time.</p>
         </div>
       </div>
       <div class="row">
@@ -304,54 +306,48 @@
           <div class="text-center px-lg-3"><img class="img-fluid mb-3"
                                                 src="{% static 'public/applab/assets/img/illustrations/app.png' %}"
                                                 width="90" alt=""/>
-            <h5 class="fw-bold">App Development</h5>
-            <p class="mb-md-0">Get your blood tests delivered at home collect a sample from the news your blood
-              tests.</p>
+            <h5 class="fw-bold">Innovations on every plate</h5>
+            <p class="mb-md-0">Use our app to make your own meals and save time.</p>
           </div>
         </div>
         <div class="col-md-4 mb-6">
           <div class="text-center px-lg-3"><img class="img-fluid mb-3"
                                                 src="{% static 'public/applab/assets/img/illustrations/time-award.png' %}"
                                                 width="90" alt=""/>
-            <h5 class="fw-bold">10 Times Award</h5>
-            <p class="mb-md-0">Get your blood tests delivered at home collect a sample from the news your blood
-              tests.</p>
+            <h5 class="fw-bold">Forget about expired products</h5>
+            <p class="mb-md-0">We make your lunches safe and delicious.</p>
           </div>
         </div>
         <div class="col-md-4 mb-6">
           <div class="text-center px-lg-3"><img class="img-fluid mb-3"
                                                 src="{% static 'public/applab/assets/img/illustrations/cloud.png' %}"
                                                 width="90" alt=""/>
-            <h5 class="fw-bold">Cloud Storage</h5>
-            <p class="mb-md-0">Get your blood tests delivered at home collect a sample from the news your blood
-              tests.</p>
+            <h5 class="fw-bold">Minimize waste, maximize budget</h5>
+            <p class="mb-md-0">Our app is for those who care about the planet and their wallet.</p>
           </div>
         </div>
         <div class="col-md-4 mb-6">
           <div class="text-center px-lg-3"><img class="img-fluid mb-3"
                                                 src="{% static 'public/applab/assets/img/illustrations/customization.png' %}"
                                                 width="90" alt=""/>
-            <h5 class="fw-bold">Customization</h5>
-            <p class="mb-md-0">Get your blood tests delivered at home collect a sample from the news your blood
-              tests.</p>
+            <h5 class="fw-bold">Delicious food is always at hand</h5>
+            <p class="mb-md-0">We make cooking easier and tastier.</p>
           </div>
         </div>
         <div class="col-md-4 mb-6">
           <div class="text-center px-lg-3"><img class="img-fluid mb-3"
                                                 src="{% static 'public/applab/assets/img/illustrations/ux.png' %}"
                                                 width="90" alt=""/>
-            <h5 class="fw-bold">UX Planning</h5>
-            <p class="mb-md-0">Get your blood tests delivered at home collect a sample from the news your blood
-              tests.</p>
+            <h5 class="fw-bold">Entrust your health and culinary skills to us</h5>
+            <p class="mb-md-0">We are proud to celebrate our achievements and our dream of better nutrition.</p>
           </div>
         </div>
         <div class="col-md-4 mb-6">
           <div class="text-center px-lg-3"><img class="img-fluid mb-3"
                                                 src="{% static 'public/applab/assets/img/illustrations/support.png' %}"
                                                 width="90" alt=""/>
-            <h5 class="fw-bold">Customer Support</h5>
-            <p class="mb-md-0">Get your blood tests delivered at home collect a sample from the news your blood
-              tests.</p>
+            <h5 class="fw-bold">The results are in your hands.</h5>
+            <p class="mb-md-0">Our work will make your life easier and more efficient.</p>
           </div>
         </div>
       </div>
@@ -418,7 +414,7 @@
                 </div>
               </div>
             </div>
-            <a class="btn btn-lg btn-primary rounded-pill hover-top" href="#" role="button">See all</a>
+            <!-- <a class="btn btn-lg btn-primary rounded-pill hover-top" href="#" role="button">See all</a> -->
           </div>
         </div>
       </div>
