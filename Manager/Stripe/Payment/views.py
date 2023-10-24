@@ -9,6 +9,9 @@ from core.Finances.tasks import load_payments_task
 from core.Utils.Access.decorators import manager_required
 from .forms import PaymentFilterForm
 from .tables import PaymentTable
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 @manager_required
@@ -53,5 +56,7 @@ def payment_sync(request):
 @manager_required
 def payment_sync_all(request):
     load_payments_task.apply_async()
-    messages.info(request, _('Try to load payments from stripe'))
+    msg = _('Try to load payments from stripe')
+    messages.info(request, msg)
+    logger.info(msg)
     return redirect(reverse('manager-stripe-payment-list', host='manager'))

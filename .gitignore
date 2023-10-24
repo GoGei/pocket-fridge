@@ -19,3 +19,5 @@ config/*
 
 .coverage
 celerybeat-schedule
+
+*.log
