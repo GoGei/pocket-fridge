@@ -10,6 +10,9 @@ from core.Utils.Access.decorators import manager_required, superuser_required
 from core.User.models import User
 from .forms import AdminFilterForm, AdminFormAdd, AdminFormEdit, AdminSetPasswordForm, AdminResetPasswordForm
 from .tables import AdminTable
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 @manager_required
@@ -50,7 +53,9 @@ def admins_add(request):
 
     if form_body.is_valid():
         admin = form_body.save()
-        messages.success(request, _(f'Admin {admin.email} was successfully created'))
+        msg = _(f'Admin {admin.email} was successfully created')
+        messages.success(request, msg)
+        logger.info(msg)
         # return redirect(reverse('manager-admins-list', host='manager'))
         return redirect(reverse('manager-admins-set-password', args=[admin.id], host='manager'))
     form = {
@@ -99,7 +104,9 @@ def admins_edit(request, admin_id):
     form_body = AdminFormEdit(request.POST or None, instance=admin, initial=initial)
     if form_body.is_valid():
         admin = form_body.save()
+        msg = _(f'Admin {admin.email} was successfully edited')
         messages.success(request, _(f'Admin {admin.email} was successfully edited'))
+        logger.info(msg)
         return redirect(reverse('manager-admins-view', args=[admin_id], host='manager'))
 
     form = {
@@ -123,7 +130,9 @@ def admins_set_password(request, admin_id):
 
     if form_body.is_valid():
         form_body.save()
-        messages.success(request, _(f'Admin {admin.email}\'s password was successfully set'))
+        msg = _(f'Admin {admin.email}\'s password was successfully set')
+        messages.success(request, msg)
+        logger.info(msg)
         return redirect(reverse('manager-admins-list', host='manager'))
 
     form = {
