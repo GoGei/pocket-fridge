@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'core.Finances',
     'core.Notifications',
     'core.Tasks',
+    'django_cleanup.apps.CleanupConfig'
 ]
 
 AUTH_USER_MODEL = 'User.User'
