@@ -9,6 +9,9 @@ from .forms import ProductFilterForm
 from .tables import ProductTable
 from .Price.forms import PriceFilterForm
 from .Price.tables import PriceTable
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 @manager_required
@@ -63,14 +66,18 @@ def product_view(request, product_id):
 @manager_required
 def product_set_as_default(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
+    msg = _(f'Product {product.label} was successfully set as default')
     product.set_as_default()
+    logger.info(msg)
     return redirect(reverse('manager-stripe-product-list', host='manager'))
 
 
 @manager_required
 def product_archive(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
+    msg = _(f'Product {product.label} was successfully archived')
     product.archive()
+    logger.info(msg)
     return redirect(reverse('manager-stripe-product-list', host='manager'))
 
 

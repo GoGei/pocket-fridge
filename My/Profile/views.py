@@ -11,6 +11,10 @@ from core.Finances.stripe.handlers import CustomerHandler, SubscriptionHandler
 from core.Licence.models import LicenceVersion, TermsOfUse, PrivacyPolicy
 from .forms import ProfileImportForm, ProfileSubscribeForm, ProfilePaymentMethodForm
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 @decorators.my_login_required
 def profile(request):
@@ -55,10 +59,12 @@ def profile_import(request):
                 form_body.load()
             except ValueError as e:
                 form_body.add_error('file', str(e))
+                logger.critical(str(e))
 
             return redirect(reverse('profile', host='my'))
         except ValueError as e:
             form_body.add_error('file', str(e))
+            logger.critical(str(e))
 
     form = {
         'body': form_body,
@@ -84,15 +90,19 @@ def profile_subscribe(request):
     if form_body.is_valid():
         try:
             form_body.subscribe()
-        except exceptions.StripeGetOrCreateException:
+        except exceptions.StripeGetOrCreateException as e:
             form_body.add_error(None, _('Customer is not created in stripe! Please, contact manager.'))
-        except exceptions.StripeObjectCreateException:
+            logger.critical(str(e))
+        except exceptions.StripeObjectCreateException as e:
             form_body.add_error(None, _('Subscription is not created in stripe! Please, contact manager.'))
-        except exceptions.StripeObjectUpdateException:
+            logger.critical(str(e))
+        except exceptions.StripeObjectUpdateException as e:
             form_body.add_error(None,
                                 _('Subscription is created in stripe, but not syncronized with our service! Please, contact manager.'))  # noqa
+            logger.critical(str(e))
         except ValueError as e:
             form_body.add_error(None, str(e))
+            logger.critical(str(e))
 
         return redirect(reverse('profile', host='my'))
 
@@ -124,14 +134,18 @@ def profile_add_payment_method(request):
         try:
             form_body.save()
             return redirect(reverse('profile-subscribe', host='my'))
-        except exceptions.StripePaymentMethodCreateException:
+        except exceptions.StripePaymentMethodCreateException as e:
             form_body.add_error(None, _('Card can not be created in stripe! Please, contact manager.'))
-        except exceptions.StripePaymentMethodDataInvalidException:
+            logger.critical(str(e))
+        except exceptions.StripePaymentMethodDataInvalidException as e:
             form_body.add_error(None, _('Card data is invalid! Please, contact manager.'))
-        except exceptions.StripePaymentMethodAttachError:
+            logger.critical(str(e))
+        except exceptions.StripePaymentMethodAttachError as e:
             form_body.add_error(None, _('Can not attach card to customer! Please, contact manager.'))
-        except exceptions.StripeUnhandledException:
+            logger.critical(str(e))
+        except exceptions.StripeUnhandledException as e:
             form_body.add_error(None, _('Some error occurred! Please, contact manager.'))
+            logger.critical(str(e))
 
     form = {
         'body': form_body,
@@ -153,6 +167,6 @@ def profile_cancel_subscription(request):
         subscription.archive(request.user)
         SubscriptionHandler().destroy(subscription)
     except (exceptions.StripeObjectCannotDeleteException, exceptions.StripeUnhandledException) as e:
-        print(str(e))
+        logger.critical(str(e))
 
     return redirect(reverse('profile', host='my'))

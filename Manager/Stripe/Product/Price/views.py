@@ -5,6 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from core.Finances.models import Price
 from core.Utils.Access.decorators import manager_required
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 @manager_required
@@ -17,14 +20,18 @@ def price_view(request, price_id):
 @manager_required
 def price_set_as_default(request, price_id):
     price = get_object_or_404(Price, pk=price_id)
+    msg = _(f'Product price {price.label} was successfully set as default')
     price.set_as_default()
+    logger.info(msg)
     return redirect(reverse('manager-stripe-product-view', args=[price.product.id], host='manager'))
 
 
 @manager_required
 def price_archive(request, price_id):
     price = get_object_or_404(Price, pk=price_id)
+    msg = _(f'Product price {price.label} was successfully archived')
     price.archive()
+    logger.info(msg)
     return redirect(reverse('manager-stripe-product-view', args=[price.product.id], host='manager'))
 
 
@@ -42,10 +49,14 @@ def price_sync(request, product_id):
     if form_body.is_valid():
         try:
             instance = form_body.sync()
-            messages.success(request, _('Instance "%s" tried to load from stripe') % instance.label)
+            msg = _('Instance "%s" tried to load from stripe') % instance.label
+            messages.success(request, msg)
+            logger.info(msg)
             return redirect(reverse('manager-stripe-product-price-view', args=[instance.id], host='manager'))
         except exceptions.StripeException as e:
-            messages.error(request, e)
+            msg = str(e)
+            messages.error(request, msg)
+            logger.info(msg)
             return redirect(reverse('manager-stripe-product-list', args=[product_id], host='manager'))
 
     form = {'body': form_body,

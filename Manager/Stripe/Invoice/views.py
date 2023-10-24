@@ -9,7 +9,9 @@ from core.Finances.tasks import load_invoices_task
 from core.Utils.Access.decorators import manager_required
 from .forms import InvoiceFilterForm
 from .tables import InvoiceTable
+import logging
 
+logger = logging.getLogger(__name__)
 
 @manager_required
 def invoice_list(request):
@@ -53,5 +55,7 @@ def invoice_sync(request):
 @manager_required
 def invoice_sync_all(request):
     load_invoices_task.apply_async()
-    messages.info(request, _('Try to load invoices from stripe'))
+    msg = _('Try to load invoices from stripe')
+    messages.info(request, msg)
+    logger.info(msg)
     return redirect(reverse('manager-stripe-invoice-list', host='manager'))

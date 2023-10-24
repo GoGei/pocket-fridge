@@ -9,6 +9,9 @@ from core.Licence.models import LicenceVersion, PrivacyPolicy, TermsOfUse
 from core.Utils.Access.decorators import manager_required
 from .forms import LicenceVersionFilterForm, LicenceVersionFormAdd, LicenceVersionFormEdit
 from .tables import LicenceVersionTable
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 @manager_required
@@ -55,7 +58,9 @@ def licence_version_add(request):
 
     if form_body.is_valid():
         licence_version = form_body.save()
-        messages.success(request, _(f'Licence version {licence_version.label} was successfully created'))
+        msg = _(f'Licence version {licence_version.label} was successfully created')
+        messages.success(request, msg)
+        logger.info(msg)
         return redirect(reverse('manager-licence-version-list', host='manager'))
     print(form_body.errors)
     form = {
@@ -80,7 +85,9 @@ def licence_version_edit(request, licence_version_id):
                                        instance=licence_version, initial=initial)
     if form_body.is_valid():
         licence_version = form_body.save()
-        messages.success(request, _(f'Licence version {licence_version.label} was successfully edited'))
+        msg = _(f'Licence version {licence_version.label} was successfully edited')
+        messages.success(request, msg)
+        logger.info(msg)
         return redirect(reverse('manager-licence-version-view', args=[licence_version_id], host='manager'))
 
     form = {
@@ -98,7 +105,9 @@ def licence_version_edit(request, licence_version_id):
 def licence_version_archive(request, licence_version_id):
     licence_version = get_object_or_404(LicenceVersion, pk=licence_version_id)
     licence_version.archive(request.user)
-    messages.success(request, _(f'Licence version {licence_version.label} was successfully archived'))
+    msg = _(f'Licence version {licence_version.label} was successfully archived')
+    messages.success(request, msg)
+    logger.info(msg)
     return redirect(reverse('manager-licence-version-list', host='manager'))
 
 
@@ -106,7 +115,9 @@ def licence_version_archive(request, licence_version_id):
 def licence_version_restore(request, licence_version_id):
     licence_version = get_object_or_404(LicenceVersion, pk=licence_version_id)
     licence_version.restore(request.user)
-    messages.success(request, _(f'Licence version {licence_version.label} was successfully restored'))
+    msg = _(f'Licence version {licence_version.label} was successfully restored')
+    messages.success(request, msg)
+    logger.info(msg)
     return redirect(reverse('manager-licence-version-list', host='manager'))
 
 
@@ -115,5 +126,7 @@ def licence_version_set_default(request, licence_version_id):
     licence_version = get_object_or_404(LicenceVersion, pk=licence_version_id)
     licence_version.set_default()
     licence_version.modify(request.user)
-    messages.success(request, _(f'Licence version {licence_version.label} was successfully set as default'))
+    msg = _(f'Licence version {licence_version.label} was successfully set as default')
+    messages.success(request, msg)
+    logger.info(msg)
     return redirect(reverse('manager-licence-version-list', host='manager'))

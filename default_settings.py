@@ -289,3 +289,26 @@ LICENCES_URL = 'https://example.com/'
 REPORT_ERROR_URL = 'https://example.com/'
 
 STRIPE_API_KEY = ''
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',  # You can adjust the log level as needed (INFO, DEBUG, etc.)
+            'class': 'logging.FileHandler',
+            'filename': 'general.log',
+            'formatter': 'verbose',
+        },
+    },
+    'root': {
+        'handlers': ['file'],
+        'level': 'INFO',
+    },
+}
