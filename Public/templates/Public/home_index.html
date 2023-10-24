@@ -138,7 +138,7 @@
           <h1 class="mb-4 display-3 fw-bold lh-sm">Get your groceries <br class="d-block d-lg-none d-xl-block"/>through
             your device</h1>
           <p class="mt-3 mb-4 fs-1">We will save you from unnecessary waste!</p><a
-            class="btn btn-lg btn-primary rounded-pill hover-top" href="#" role="button">Try for free</a>
+            class="btn btn-lg btn-primary rounded-pill hover-top" href="{% url 'register' %}" role="button">Try for free</a>
           <!-- <a class="btn btn-link ps-md-4" href="#" role="button"> Watch demo video</a> -->
         </div>
       </div>
@@ -270,7 +270,7 @@
 
   <!-- ============================================-->
   <!-- <section> begin ============================-->
-  <section class="py-6">
+  <!-- <section class="py-6">
 
     <div class="container">
       <div class="row align-items-center">
@@ -285,9 +285,8 @@
         </div>
       </div>
     </div>
-    <!-- end of .container-->
 
-  </section>
+  </section> -->
   <!-- <section> close ============================-->
   <!-- ============================================-->
 
@@ -373,16 +372,15 @@
                                                                           alt=""/></div>
           <div class="col-md-6 text-center text-md-start">
             <h6 class="fw-bold fs-4 display-3 lh-sm">Ultimate features<br/>that we built</h6>
-            <p class="my-4 pe-xl-5"> The rise of mobile devices transforms the way we consume information entirely.</p>
+            <p class="my-4 pe-xl-5"> The rise of technology - the better result.</p>
             <div class="row">
               <div class="col-md-6">
                 <div class="mb-4">
                   <div class="py-4"><img class="img-fluid"
                                          src="{% static 'public/applab/assets/img/illustrations/app.png' %}" width="90"
                                          alt=""/></div>
-                  <h5 class="fw-bold text-undefined">App Development</h5>
-                  <p class="mt-2 mb-0">Get your blood tests delivered at home collect a sample from the news your blood
-                    tests.</p>
+                  <h5 class="fw-bold text-undefined">Simple management</h5>
+                  <p class="mt-2 mb-0">With our app, you can easily manage the list of products in your fridge, always having your food supply under control.</p>
                 </div>
               </div>
               <div class="col-md-6">
@@ -390,9 +388,8 @@
                   <div class="py-4"><img class="img-fluid"
                                          src="{% static 'public/applab/assets/img/illustrations/ux.png' %}" width="90"
                                          alt=""/></div>
-                  <h5 class="fw-bold text-undefined">UX Planning</h5>
-                  <p class="mt-2 mb-0">Get your blood tests delivered at home collect a sample from the news your blood
-                    tests.</p>
+                  <h5 class="fw-bold text-undefined">Due date notifications</h5>
+                  <p class="mt-2 mb-0">Receive timely and secure alerts when food is approaching its expiration date to avoid throwing it away.</p>
                 </div>
               </div>
               <div class="col-md-6">
@@ -400,9 +397,8 @@
                   <div class="py-4"><img class="img-fluid"
                                          src="{% static 'public/applab/assets/img/illustrations/cloud.png' %}"
                                          width="90" alt=""/></div>
-                  <h5 class="fw-bold text-undefined">Cloud Storage</h5>
-                  <p class="mt-2 mb-0">Get your blood tests delivered at home collect a sample from the news your blood
-                    tests.</p>
+                  <h5 class="fw-bold text-undefined">Shopping lists</h5>
+                  <p class="mt-2 mb-0">With our app, you can easily create grocery lists to buy to plan your purchases efficiently and save time.</p>
                 </div>
               </div>
               <div class="col-md-6">
@@ -410,9 +406,8 @@
                   <div class="py-4"><img class="img-fluid"
                                          src="{% static 'public/applab/assets/img/illustrations/support.png' %}"
                                          width="90" alt=""/></div>
-                  <h5 class="fw-bold text-undefined">Customer support</h5>
-                  <p class="mt-2 mb-0">Get your blood tests delivered at home collect a sample from the news your blood
-                    tests.</p>
+                  <h5 class="fw-bold text-undefined">Quick addition</h5>
+                  <p class="mt-2 mb-0">Adding new food to your fridge is quick and easy, keeping your food stock up to date in real time.</p>
                 </div>
               </div>
             </div>
@@ -672,8 +667,7 @@
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6 text-center mb-3">
           <h6 class="fw-bold fs-4 display-3 lh-sm mb-3">Frequently asked questions</h6>
-          <p class="mb-5">The rise of mobile devices transforms the way we consume information entirely and the world's
-            most elevant channels such as Facebook.</p>
+    
         </div>
       </div>
       <div class="row flex-center">
@@ -683,17 +677,11 @@
               <h2 class="accordion-header" id="heading1">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1"
                         aria-expanded="true" aria-controls="collapse1"><span
-                    class="mb-0 fw-bold text-start fs-1 text-1000">How to contact with riders emergency?</span></button>
+                    class="mb-0 fw-bold text-start fs-1 text-1000">How exactly will this app help me manage my fridge and groceries?</span></button>
               </h2>
               <div class="accordion-collapse collapse show" id="collapse1" aria-labelledby="heading1"
                    data-bs-parent="#accordionExample">
-                <div class="accordion-body bg-100">Leverage agile frameworks to provide a robust synopsis for high level
-                  overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the
-                  overall value proposition. Organically grow the holistic world view of disruptive innovation via
-                  workplace diversity and empowerment.Bring to the table win-win survival strategies to ensure proactive
-                  domination. At the end of the day, going forward, a new normal that has evolved from generation X is
-                  on the runway heading towards a streamlined cloud solution. User generated content in real-time will
-                  have multiple touchpoints for offshoring.
+                <div class="accordion-body bg-100">Our app allows you to conveniently keep track of all your food in the fridge. You can add new products, update and delete them, and create categories for easier sorting. It provides you with comprehensive information about each product, including expiration date, quantity, and other characteristics.
                 </div>
               </div>
             </div>
@@ -701,13 +689,12 @@
               <h2 class="accordion-header" id="heading2">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapse2" aria-expanded="true" aria-controls="collapse2"><span
-                    class="mb-0 fw-bold text-start fs-1 text-1000">App installation failed, how to update system information?</span>
+                    class="mb-0 fw-bold text-start fs-1 text-1000">Is this app safe to store my personal data and grocery lists?</span>
                 </button>
               </h2>
               <div class="accordion-collapse collapse" id="collapse2" aria-labelledby="heading2"
                    data-bs-parent="#accordionExample">
-                <div class="accordion-body bg-100">You can issue either partial or full refunds. There are no fees to
-                  refund a charge, but the fees from the original charge are not returned.
+                <div class="accordion-body bg-100">We take great care to keep your data confidential. All your personal data and product lists are encrypted and stored in a secure environment. We do not share your data with third parties and always comply with the requirements for protecting user privacy.
                 </div>
               </div>
             </div>
@@ -715,13 +702,12 @@
               <h2 class="accordion-header" id="heading3">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapse3" aria-expanded="true" aria-controls="collapse3"><span
-                    class="mb-0 fw-bold text-start fs-1 text-1000">Website reponse taking time, how to improve?</span>
+                    class="mb-0 fw-bold text-start fs-1 text-1000">What are the main notifications and expiration date reminders that this app includes?</span>
                 </button>
               </h2>
               <div class="accordion-collapse collapse" id="collapse3" aria-labelledby="heading3"
                    data-bs-parent="#accordionExample">
-                <div class="accordion-body bg-100">Disputed payments (also known as chargebacks) incur a $15.00 fee. If
-                  the customer’s bank resolves the dispute in your favor, the fee is fully refunded.
+                <div class="accordion-body bg-100">Our app automatically reminds you when foods are approaching their expiration date so you can consume them safely and fresh. You can receive these reminders via email or notifications on your mobile device. This helps you avoid throwing food away and saves money.
                 </div>
               </div>
             </div>
@@ -729,12 +715,11 @@
               <h2 class="accordion-header" id="heading4">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapse4" aria-expanded="true" aria-controls="collapse4"><span
-                    class="mb-0 fw-bold text-start fs-1 text-1000">New update fixed all bug and issues</span></button>
+                    class="mb-0 fw-bold text-start fs-1 text-1000">How quickly can I add new products to my fridge using the app?</span></button>
               </h2>
               <div class="accordion-collapse collapse" id="collapse4" aria-labelledby="heading4"
                    data-bs-parent="#accordionExample">
-                <div class="accordion-body bg-100">There are no additional fees for using our mobile SDKs or to accept
-                  payments using consumer wallets like Apple Pay or Google Pay.
+                <div class="accordion-body bg-100">With our app, adding new products is quick and easy. You can use the search function or scan product barcodes to instantly add them to your list. All this helps to save you time and make food management easy and efficient.
                 </div>
               </div>
             </div>
@@ -742,12 +727,11 @@
               <h2 class="accordion-header" id="heading5">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapse5"><span
-                    class="mb-0 fw-bold text-start fs-1 text-1000">How to contact with riders emergency?</span></button>
+                    class="mb-0 fw-bold text-start fs-1 text-1000">How do I get customer support or contact the development team to solve problems or get answers to questions?</span></button>
               </h2>
               <div class="accordion-collapse collapse" id="collapse5" aria-labelledby="heading5"
                    data-bs-parent="#accordionExample">
-                <div class="accordion-body bg-100">There are no additional fees for using our mobile SDKs or to accept
-                  payments using consumer wallets like Apple Pay or Google Pay.
+                <div class="accordion-body bg-100">We are always ready to help you. You can contact our customer support team via email, chat, or phone. Our development team is also ready to accept your requests and suggestions on how to improve the app. We are always here to provide you with the help you need and answer your questions.
                 </div>
               </div>
             </div>
@@ -801,16 +785,16 @@
             </li>
             <li class="list-inline-item me3 me-sm-4"><a class="text-light text-decoration-none" href="#features">Key
               Features</a></li>
-            <li class="list-inline-item me3 me-sm-4"><a class="text-light text-decoration-none"
+            <!-- <li class="list-inline-item me3 me-sm-4"><a class="text-light text-decoration-none"
                                                         href="#pricing">Pricing</a>
-            </li>
-            <li class="list-inline-item me3 me-sm-4"><a class="text-light text-decoration-none"
-                                                        href="#testimonial">Testimonial</a></li>
+            </li> -->
+            <!-- <li class="list-inline-item me3 me-sm-4"><a class="text-light text-decoration-none"
+                                                        href="#testimonial">Testimonial</a></li> -->
             <li class="list-inline-item me3 me-sm-4"><a class="text-light text-decoration-none" href="#faq">FAQ</a></li>
           </ul>
         </div>
       </div>
-      <div class="row flex-center">
+      <!-- <div class="row flex-center">
         <div class="col-auto mb-5">
           <ul class="list-unstyled list-inline">
             <li class="list-inline-item me-3"><a class="text-decoration-none" href="#!">
@@ -842,7 +826,7 @@
               </svg>
             </a></li>
           </ul>
-        </div>
+        </div> -->
       </div>
       <!-- <div class="row flex-center">
         <div class="col-auto">
