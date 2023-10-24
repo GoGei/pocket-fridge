@@ -27,6 +27,13 @@ def notifications(request):
 
 
 @decorators.my_login_required
+def notifications_clear_all(request):
+    notifications_qs = request.user.get_notifications()
+    notifications_qs.delete()
+    return redirect(reverse('notifications', host='my'))
+
+
+@decorators.my_login_required
 def notifications_remove(request, notification_id):
     NotificationMessage.objects.filter(id=notification_id).delete()
     return redirect(reverse('notifications', host='my'))

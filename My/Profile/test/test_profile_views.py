@@ -16,12 +16,11 @@ class ProfileViewTest(TestCase):
     def test_profile_view(self):
         response = self.client.post(reverse('profile', host='my'), HTTP_HOST='my')
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'My/profile.html')
+        self.assertTemplateUsed(response, 'My/Profile/profile.html')
 
     def test_profile_export(self):
         response = self.client.post(reverse('profile-export', host='my'), HTTP_HOST='my')
-        content = response.json()
-        self.assertTrue(content)
+        self.assertEqual(response.status_code, 302)
 
     def test_logout_view(self):
         response = self.client.post(reverse('logout', host='my'), HTTP_HOST='my')

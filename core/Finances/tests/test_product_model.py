@@ -17,3 +17,8 @@ class ProductTests(TestCase):
 
         qs = Product.objects.filter(pk=obj.pk)
         self.assertFalse(qs.exists())
+
+    def test_set_as_default(self):
+        obj = ProductFactory.create()
+        obj.set_as_default()
+        self.assertTrue(obj.is_default)

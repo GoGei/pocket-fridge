@@ -18,14 +18,14 @@ def price_view(request, price_id):
 def price_set_as_default(request, price_id):
     price = get_object_or_404(Price, pk=price_id)
     price.set_as_default()
-    return redirect(reverse('manager-stripe-price-list', host='manager'))
+    return redirect(reverse('manager-stripe-product-view', args=[price.product.id], host='manager'))
 
 
 @manager_required
 def price_archive(request, price_id):
     price = get_object_or_404(Price, pk=price_id)
     price.archive()
-    return redirect(reverse('manager-stripe-price-list', host='manager'))
+    return redirect(reverse('manager-stripe-product-view', args=[price.product.id], host='manager'))
 
 
 @manager_required

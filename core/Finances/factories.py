@@ -1,10 +1,12 @@
+import string
+
 from factory import django, fuzzy, SubFactory, LazyAttribute
 from django.utils import timezone
 from dateutil.relativedelta import relativedelta
 from core.Currency.factories import CurrencyDefaultFactory
 from core.User.factories import UserFactory
 
-from .models import Product, Price, Subscription, Invoice, Payment
+from .models import Product, Price, Subscription, Invoice, Payment, PaymentMethod
 
 
 class ProductFactory(django.DjangoModelFactory):
@@ -76,3 +78,15 @@ class PaymentFactory(django.DjangoModelFactory):
     user = SubFactory(UserFactory)
     currency = SubFactory(CurrencyDefaultFactory)
     status = fuzzy.FuzzyChoice(choices=dict(Payment.PaymentIntentStatusChoices.choices).keys())
+
+
+class PaymentMethodFactory(django.DjangoModelFactory):
+    class Meta:
+        model = PaymentMethod
+
+    external_id = fuzzy.FuzzyText(length=32)
+    user = SubFactory(UserFactory)
+    expire_date = timezone.now()
+    last_digits_of_card = fuzzy.FuzzyText(length=4, chars=string.digits)
+    card_type = fuzzy.FuzzyChoice(choices=dict(PaymentMethod.CardTypeChoices.choices).keys())
+    is_default = False
