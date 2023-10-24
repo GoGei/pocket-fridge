@@ -132,7 +132,7 @@ def load_user_fridge_data(user: User, data: dict) -> bool:
     for fridge_item in fridge_data:
         __load_fridge(user, fridge_item)
 
-    for shopping_list_item in shopping_list:
-        __load_shopping_list(user, shopping_list_item)
+    # for shopping_list_item in shopping_list:
+    __load_shopping_list(user, shopping_list)
 
     return True

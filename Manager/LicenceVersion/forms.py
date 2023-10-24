@@ -20,12 +20,12 @@ class LicenceVersionFilterForm(django_filters.FilterSet):
 class LicenceVersionForm(forms.ModelForm):
     terms_of_use_template = forms.FileField(
         label=_('Terms of use template'),
-        required=True,
+        required=True, allow_empty_file=True,
         widget=forms.ClearableFileInput(attrs={'accept': '.pdf', 'class': 'form-control file-upload-info'})
     )
     privacy_policy_template = forms.FileField(
         label=_('Privacy policy template'),
-        required=True,
+        required=True, allow_empty_file=True,
         widget=forms.ClearableFileInput(attrs={'accept': '.pdf', 'class': 'form-control file-upload-info'})
     )
 

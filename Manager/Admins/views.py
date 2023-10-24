@@ -53,7 +53,6 @@ def admins_add(request):
         messages.success(request, _(f'Admin {admin.email} was successfully created'))
         # return redirect(reverse('manager-admins-list', host='manager'))
         return redirect(reverse('manager-admins-set-password', args=[admin.id], host='manager'))
-
     form = {
         'body': form_body,
         'buttons': {'save': True, 'cancel': True},
@@ -77,7 +76,6 @@ def admins_reset_password(request):
         messages.success(request, _('Your password was successfully set'))
         login(request, admin)
         return redirect(reverse('manager-index', host='manager'))
-
     form = {
         'body': form_body,
         'buttons': {'save': True, 'cancel': True},

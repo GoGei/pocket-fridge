@@ -57,7 +57,7 @@ def licence_version_add(request):
         licence_version = form_body.save()
         messages.success(request, _(f'Licence version {licence_version.label} was successfully created'))
         return redirect(reverse('manager-licence-version-list', host='manager'))
-
+    print(form_body.errors)
     form = {
         'body': form_body,
         'buttons': {'save': True, 'cancel': True},
@@ -96,7 +96,7 @@ def licence_version_edit(request, licence_version_id):
 
 @manager_required
 def licence_version_archive(request, licence_version_id):
-    licence_version = get_object_or_404(LicenceVersion.objects.prefetch_related('fridge_set'), pk=licence_version_id)
+    licence_version = get_object_or_404(LicenceVersion, pk=licence_version_id)
     licence_version.archive(request.user)
     messages.success(request, _(f'Licence version {licence_version.label} was successfully archived'))
     return redirect(reverse('manager-licence-version-list', host='manager'))
