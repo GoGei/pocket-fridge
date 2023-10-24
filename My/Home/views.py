@@ -22,8 +22,7 @@ def home_index(request):
 
 @decorators.my_login_required
 def notifications(request):
-    notifications_qs = NotificationMessage.objects.filter(recipient=request.user.notify_by_email,
-                                                          notification_slug='fridge').order_by('-stamp')
+    notifications_qs = request.user.get_notifications()
     return render(request, 'My/notifications.html', {'notifications': notifications_qs})
 
 

@@ -229,6 +229,16 @@ class User(CrmMixin, AbstractBaseUser):
     def get_subscription(self) -> Subscription:
         return Subscription.objects.select_related('user').filter(user=self).active().order_by('-created_stamp').first()
 
+    def get_notifications(self):
+        from core.Notifications.models import NotificationMessage
+        notifications_qs = NotificationMessage.objects.filter(recipient=self.notify_by_email,
+                                                              notification_slug='fridge').order_by('-stamp')
+        return notifications_qs
+
+    @property
+    def has_notifications(self) -> bool:
+        return bool(self.get_notifications())
+
     @property
     def is_premium(self) -> bool:
         return self.get_subscription() is not None
