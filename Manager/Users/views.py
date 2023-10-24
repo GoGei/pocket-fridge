@@ -11,7 +11,8 @@ from .tables import UserTable
 
 @manager_required
 def users_list(request):
-    qs = User.objects.users().order_by('is_active', 'id')
+    # qs = User.objects.users().order_by('is_active', 'id')
+    qs = User.objects.all().order_by('is_active', 'id')
 
     filter_form = UserFilterForm(request.GET, queryset=qs, request=request)
     qs = filter_form.qs
@@ -34,5 +35,6 @@ def users_list(request):
 
 @manager_required
 def users_view(request, user_id):
-    user = get_object_or_404(User.objects.users(), pk=user_id)
+    # user = get_object_or_404(User.objects.users(), pk=user_id)
+    user = get_object_or_404(User, pk=user_id)
     return render(request, 'Manager/Users/users_view.html', {'user': user})

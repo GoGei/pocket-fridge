@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils.translation import ugettext as _
 
 from core.Finances.models import Invoice
-from core.Finances.stripe.tasks import load_invoices
+from core.Finances.tasks import load_invoices_task
 from core.Utils.Access.decorators import manager_required
 from .forms import InvoiceFilterForm
 from .tables import InvoiceTable
@@ -52,6 +52,6 @@ def invoice_sync(request):
 
 @manager_required
 def invoice_sync_all(request):
-    load_invoices.apply_async()
+    load_invoices_task.apply_async()
     messages.info(request, _('Try to load invoices from stripe'))
     return redirect(reverse('manager-stripe-invoice-list', host='manager'))

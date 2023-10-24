@@ -17,7 +17,7 @@ def __load_instances(handler, raise_errors=True):
     ids = [item['id'] for item in response['data']]
     for _id in ids:
         try:
-            handler.get_or_create(external_id=_id)
+            handler.sync_from_stripe(external_id=_id)
         except exceptions.StripeException as e:
             if raise_errors:
                 raise exceptions.StripeException(e)

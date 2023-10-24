@@ -76,10 +76,12 @@
             {% get_available_languages as LANGUAGES %}
             {% get_language_info_list for LANGUAGES as languages %}
             {% for language in languages %}
-              <a class="bold language-selector {% if language.code == LANGUAGE_CODE %}active{% endif %}"
-                 data-action="lang" data-lang="{{ language.code }}">
-                {{ language.name }}
-              </a>
+                {% if language.code != LANGUAGE_CODE %}
+                <a class="bold language-selector"
+                   data-action="lang" data-lang="{{ language.code }}">
+                  {{ language.name }}
+                </a>
+                {% endif %}
             {% endfor %}
           </form>
           {% comment %}<div class="dropdown">
