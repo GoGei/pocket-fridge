@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-30 14:30+0000\n"
+"POT-Creation-Date: 2023-10-24 04:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -142,10 +142,28 @@ msgstr ""
 msgid "I agree to"
 msgstr ""
 
-msgid "privacy policy & terms"
+msgid "privacy policy"
+msgstr ""
+
+msgid "terms of use"
 msgstr ""
 
 msgid "Sign up"
+msgstr ""
+
+msgid "Pocket Fridge"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "Key Features"
+msgstr ""
+
+msgid "Pricing"
+msgstr ""
+
+msgid "Testimonial"
 msgstr ""
 
 msgid "Go to fridge"

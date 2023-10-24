@@ -1,6 +1,5 @@
 import json
 from django import forms
-from django.conf import settings
 from django.utils import timezone
 from django.utils.translation import ugettext as _
 
@@ -49,8 +48,7 @@ class ProfilePaymentMethodForm(forms.ModelForm):
     exp_year = forms.IntegerField(initial=timezone.now().year)
     cvc = forms.CharField(min_length=3, max_length=4, label=_('CVC/CVV'),
                           widget=forms.TextInput(
-                              attrs={'class': 'form-control', 'placeholder': _('***')}
-                          ))
+                              attrs={'class': 'form-control', 'placeholder': _('***')}))
 
     class Meta:
         model = PaymentMethod

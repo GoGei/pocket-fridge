@@ -1,7 +1,5 @@
-from django.db.models import When, Case, IntegerField
 from django.forms import model_to_dict
 from django.shortcuts import render, redirect, get_object_or_404
-from django.utils import timezone
 from django_hosts import reverse
 
 from My import utils, decorators

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-30 14:30+0000\n"
+"POT-Creation-Date: 2023-10-24 04:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,6 +54,7 @@ msgstr "Поточний пароль співпадає з новим паро�
 msgid "Admin filter"
 msgstr "Фільтр адміністратора"
 
+#, python-brace-format
 msgid "Admin {admin.email} was successfully created"
 msgstr "Адміністратор {admin.email} успішно створений"
 
@@ -158,6 +159,12 @@ msgstr "Завантажити тип холодильника"
 msgid "Fridge type default fixture was successfully loaded"
 msgstr "Фікстура типу холодильника була успішно завантажена"
 
+msgid "Terms of use template"
+msgstr ""
+
+msgid "Privacy policy template"
+msgstr ""
+
 #, python-brace-format
 msgid "Licence version with \"{slug}\" already exists"
 msgstr "Версія ліцензії з \"{slug}\" вже існує"
@@ -214,6 +221,37 @@ msgstr "Користувач не активний! Будь ласка, зв'я
 
 msgid "User with this email and password not found"
 msgstr "Користувач з цією електронною адресою та паролем не знайдений"
+
+msgid "Status"
+msgstr ""
+
+msgid "Invoices filter"
+msgstr "Фільтр користувача"
+
+msgid "Try to load invoices from stripe"
+msgstr ""
+
+msgid "Payments filter"
+msgstr "Фільтр адміністратора"
+
+msgid "Try to load payments from stripe"
+msgstr ""
+
+#, python-format
+msgid "Instance \"%s\" tried to load from stripe"
+msgstr ""
+
+msgid "Load from stripe"
+msgstr "Завантажити тип холодильника"
+
+msgid "Products filter"
+msgstr "Фільтр користувача"
+
+msgid "Prices filter"
+msgstr "Фільтр користувача"
+
+msgid "External ID"
+msgstr ""
 
 msgid "User filter"
 msgstr "Фільтр користувача"
@@ -311,6 +349,15 @@ msgstr "Версії ліцензій"
 msgid "Set default"
 msgstr "Встановити за замовчуванням"
 
+msgid "Privacy policy"
+msgstr ""
+
+msgid "Download File"
+msgstr ""
+
+msgid "Terms of Use"
+msgstr ""
+
 msgid "Is default"
 msgstr "За замовчуванням"
 
@@ -326,6 +373,72 @@ msgstr "Увійдіть, щоб продовжити"
 msgid "SIGN IN"
 msgstr "УВІЙТИ"
 
+msgid "Invoices"
+msgstr ""
+
+msgid "Sync"
+msgstr ""
+
+msgid "Sync all"
+msgstr ""
+
+msgid "Stripe ID"
+msgstr ""
+
+msgid "Number"
+msgstr ""
+
+msgid "Collection method"
+msgstr ""
+
+msgid "Currency"
+msgstr ""
+
+msgid "User"
+msgstr "Користувачі"
+
+msgid "Total"
+msgstr ""
+
+msgid "Payments"
+msgstr ""
+
+msgid "No related invoice"
+msgstr ""
+
+msgid "Invoice ID"
+msgstr ""
+
+msgid "Invoice stripe ID"
+msgstr ""
+
+msgid "Prices"
+msgstr ""
+
+msgid "Set as default"
+msgstr "Встановити за замовчуванням"
+
+msgid "Price"
+msgstr ""
+
+msgid "Interval"
+msgstr ""
+
+msgid "Usage type"
+msgstr "Типи холодильників"
+
+msgid "Products"
+msgstr ""
+
+msgid "Sync price"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Stripe"
+msgstr ""
+
 msgid "Users"
 msgstr "Користувачі"
 
@@ -334,9 +447,6 @@ msgstr "Не вказано"
 
 msgid "Good Morning"
 msgstr "Доброго ранку"
-
-msgid "My Profile"
-msgstr "Мій профіль"
 
 msgid "Sign Out"
 msgstr "Вийти"
@@ -349,3 +459,6 @@ msgstr "Налаштування"
 
 msgid "Licence version"
 msgstr "Версія ліцензії"
+
+msgid "Stripe settings"
+msgstr "Налаштування"
