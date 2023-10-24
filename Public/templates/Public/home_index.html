@@ -118,10 +118,10 @@
             class="badge bg-light rounded-pill text-dark align-items-center d-flex flex-row-reverse justify-content-end mx-auto mx-md-0 ps-0 w-75 w-sm-50 w-md-75 w-xl-50 mb-3">#1 Editiors Choice App of 2020<img
             class="img-fluid float-start me-3"
             src="{% static 'public/applab/assets/img/illustrations/arrow-right.png' %}" alt=""/></span> -->
-          <h1 class="mb-4 display-3 fw-bold lh-sm">Get your groceries <br class="d-block d-lg-none d-xl-block"/>through
-            your device</h1>
-          <p class="mt-3 mb-4 fs-1">We will save you from unnecessary waste!</p><a
-            class="btn btn-lg btn-primary rounded-pill hover-top" href="{% url 'register' %}" role="button">Try for free</a>
+          <h1 class="mb-4 display-3 fw-bold lh-sm">{% trans 'Get your groceries' %} <br class="d-block d-lg-none d-xl-block"/></h1>{% trans 'through
+            your device' %}
+          <p class="mt-3 mb-4 fs-1">{% trans 'We will save you from unnecessary waste!' %}</p><a
+            class="btn btn-lg btn-primary rounded-pill hover-top" href="{% url 'register' %}" role="button">{% trans 'Try for free' %}</a>
           <!-- <a class="btn btn-link ps-md-4" href="#" role="button"> Watch demo video</a> -->
         </div>
       </div>
@@ -281,8 +281,8 @@
     <div class="container">
       <div class="row justify-content-center mb-6">
         <div class="col-lg-6 text-center mx-auto mb-3 mb-md-5 mt-4">
-          <h6 class="fw-bold fs-4 display-3 lh-sm">Why you should choose <br/>our app </h6>
-          <p class="mb-0">Empowering Your World with Mobile Innovation: Redefining Information Access, One App at a Time.</p>
+          <h6 class="fw-bold fs-4 display-3 lh-sm">{% trans 'Why you should choose ' %}<br/>{% trans 'our app' %} </h6>
+          <p class="mb-0">{% trans 'Empowering Your World with Mobile Innovation: Redefining Information Access, One App at a Time.' %}</p>
         </div>
       </div>
       <div class="row">
@@ -362,8 +362,8 @@
                   <div class="py-4"><img class="img-fluid"
                                          src="{% static 'public/applab/assets/img/illustrations/app.png' %}" width="90"
                                          alt=""/></div>
-                  <h5 class="fw-bold text-undefined">Simple management</h5>
-                  <p class="mt-2 mb-0">With our app, you can easily manage the list of products in your fridge, always having your food supply under control.</p>
+                  <h5 class="fw-bold text-undefined">{% trans 'Simple management' %}</h5>
+                  <p class="mt-2 mb-0">{% trans 'With our app, you can easily manage the list of products in your fridge, always having your food supply under control.' %}</p>
                 </div>
               </div>
               <div class="col-md-6">
@@ -371,8 +371,8 @@
                   <div class="py-4"><img class="img-fluid"
                                          src="{% static 'public/applab/assets/img/illustrations/ux.png' %}" width="90"
                                          alt=""/></div>
-                  <h5 class="fw-bold text-undefined">Due date notifications</h5>
-                  <p class="mt-2 mb-0">Receive timely and secure alerts when food is approaching its expiration date to avoid throwing it away.</p>
+                  <h5 class="fw-bold text-undefined">{% trans 'Due date notifications' %}</h5>
+                  <p class="mt-2 mb-0">{% trans 'Receive timely and secure alerts when food is approaching its expiration date to avoid throwing it away.' %}</p>
                 </div>
               </div>
               <div class="col-md-6">
@@ -380,8 +380,8 @@
                   <div class="py-4"><img class="img-fluid"
                                          src="{% static 'public/applab/assets/img/illustrations/cloud.png' %}"
                                          width="90" alt=""/></div>
-                  <h5 class="fw-bold text-undefined">Shopping lists</h5>
-                  <p class="mt-2 mb-0">With our app, you can easily create grocery lists to buy to plan your purchases efficiently and save time.</p>
+                  <h5 class="fw-bold text-undefined">{% trans 'Shopping lists' %}</h5>
+                  <p class="mt-2 mb-0">{% trans 'With our app, you can easily create grocery lists to buy to plan your purchases efficiently and save time.' %}</p>
                 </div>
               </div>
               <div class="col-md-6">
@@ -389,8 +389,8 @@
                   <div class="py-4"><img class="img-fluid"
                                          src="{% static 'public/applab/assets/img/illustrations/support.png' %}"
                                          width="90" alt=""/></div>
-                  <h5 class="fw-bold text-undefined">Quick addition</h5>
-                  <p class="mt-2 mb-0">Adding new food to your fridge is quick and easy, keeping your food stock up to date in real time.</p>
+                  <h5 class="fw-bold text-undefined">{% trans 'Quick addition' %}</h5>
+                  <p class="mt-2 mb-0">{% trans 'Adding new food to your fridge is quick and easy, keeping your food stock up to date in real time.' %}</p>
                 </div>
               </div>
             </div>
@@ -414,19 +414,19 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8 col-lg-6 col-xxl-5 text-center mb-3">
-            <h6 class="fw-bold fs-4 display-3 lh-sm mb-3">Get awesome features, without extra charges</h6>
-            <p class="mb-4">The rise of mobile devices transforms the way we consume information entirely and the
+            <h6 class="fw-bold fs-4 display-3 lh-sm mb-3">{% trans 'Get awesome features, without extra charges' %}</h6>
+            <p class="mb-4">{% trans 'The rise of mobile devices transforms the way we consume information entirely and the
               world's
-              most elevant channels such as Facebook.</p>
+              most elevant channels such as Facebook.' %}</p>
           </div>
         </div>
         <div class="row flex-center">
           <div class="col-12 mb-3">
             {#          <div class="d-flex justify-content-center">#}
-            {#            <label class="form-check-label me-2" for="customSwitch1">Monthly</label>#}
+            {#            <label class="form-check-label me-2" for="customSwitch1">{% trans 'Monthly' %}</label>#}
             {#            <div class="form-check form-switch">#}
             {#              <input class="form-check-input" id="customSwitch1" type="checkbox" checked="checked"/>#}
-            {#              <label class="form-check-label align-top" for="customSwitch1">Yearly</label>#}
+            {#              <label class="form-check-label align-top" for="customSwitch1">{% trans 'Yearly' %}</label>#}
             {#            </div>#}
             {#          </div>#}
           </div>
@@ -437,7 +437,7 @@
                   <div class="d-flex justify-content-center">
                     <h1 class="fw-bold">{{ price.price|floatformat }}{{ price.currency.code }}</h1><span class="d-flex align-items-center">/{{ price.get_interval_display }}</span>
                   </div>
-                  {#              <h5 class="fw-bold text-center">Pro Master</h5><span class="text-700 text-center d-block">For small teams or office</span>#}
+                  {#              <h5 class="fw-bold text-center">{% trans 'Pro Master' %}</h5><span class="text-700 text-center d-block">{% trans '' %}For small teams or office</span>#}
                 </div>
                 <div class="card-body mx-auto">
                   {#              <ul class="list-unstyled mb-4">#}
@@ -447,7 +447,7 @@
                   {#                <li class="text-700 py-2 text-secondary">eCommerce Store</li>#}
                   {#              </ul>#}
                   <div class="d-flex flex-column">
-                    <a class="btn btn-lg btn-primary rounded-pill mb-3" href="{% host_url 'register' host 'public' %}">Join today</a>
+                    <a class="btn btn-lg btn-primary rounded-pill mb-3" href="{% host_url 'register' host 'public' %}">{% trans 'Join today' %}</a>
                   </div>
                 </div>
               </div>
