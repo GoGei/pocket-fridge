@@ -7,6 +7,7 @@ from django.utils.http import is_safe_url
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import logout, login, authenticate
 
+from core.Finances.models import Price
 from core.User.models import User
 from .forms import UserRegistrationForm, UserLoginForm, UserForgotPasswordForm, UserResetPasswordForm
 from core.Licence.models import LicenceVersion, TermsOfUse, PrivacyPolicy
@@ -14,7 +15,8 @@ from core.Licence.models import LicenceVersion, TermsOfUse, PrivacyPolicy
 
 def home_index(request):
     # return redirect(reverse('login', host='public'))
-    return render(request, 'Public/home_index.html')
+    prices = Price.objects.active().integrated().order_by('price')
+    return render(request, 'Public/home_index.html', {'prices': prices})
 
 
 def register(request):
