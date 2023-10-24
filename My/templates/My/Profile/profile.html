@@ -41,13 +41,25 @@
 
         <div class="profile_buttons">
           <button class="profile_buttons-guide">
-            <a href="{{ user_guide_url }}" type="button" target="_blank" class="bold">{% trans 'User guide' %}</a>
+            {% if user_guide_url %}
+              <a href="{{ user_guide_url }}" type="button" target="_blank" class="bold">{% trans 'User guide' %}</a>
+            {% else %}
+              <a href="#" type="button" class="bold">{% trans 'User guide' %}</a>
+            {% endif %}
           </button>
           <button class="profile_buttons-privacy-policy">
-            <a href="{{ privacy_policy.template.url }}" download class="bold">{% trans 'Privacy policy' %}</a>
+            {% if privacy_policy.template.url %}
+              <a href="{{ privacy_policy.template.url }}" download class="bold">{% trans 'Privacy policy' %}</a>
+            {% else %}
+              <a href="#" class="bold">{% trans 'Privacy policy' %}</a>
+            {% endif %}
           </button>
           <button class="profile_buttons-terms-of-use">
-            <a href="{{ terms_of_use.template.url }}" download class="bold">{% trans 'Terms of use' %}</a>
+            {% if terms_of_use.template.url %}
+              <a href="{{ terms_of_use.template.url }}" download class="bold">{% trans 'Terms of use' %}</a>
+            {% else %}
+              <a href="#" class="bold">{% trans 'Terms of use' %}</a>
+            {% endif %}
           </button>
           {% if request.user.is_premium %}
             <button class="profile_buttons-dataexport">

@@ -323,11 +323,43 @@ class PaymentMethodHandler(StripeMixin):
         instance.save()
         return instance
 
+    def update_token_instance(self, data, user: User, instance: PaymentMethod = None):
+        try:
+            instance = PaymentMethod.objects.get(external_id=data['id'])
+        except PaymentMethod.DoesNotExist:
+            if instance:
+                instance.external_id = data['id']
+            else:
+                instance = PaymentMethod(external_id=data['id'])
+        instance.user = user
+
+        card_data = data['card']
+        instance.expire_date = PaymentMethod.form_expire_date_to_model(card_data)
+        instance.last_digits_of_card = card_data['last4']
+        instance.card_type = card_data['brand']
+
+        instance.save()
+        return instance
+
     @transaction.atomic
     def create(self, card_data, user, instance: PaymentMethod = None):
         try:
             response = self.model.create(type='card', card=card_data)
             instance = self.update_instance(response, user, instance)
+        except error.InvalidRequestError as e:
+            raise exceptions.StripePaymentMethodCreateException(e.user_message)
+        except error.CardError as e:
+            raise exceptions.StripePaymentMethodDataInvalidException(e.user_message)
+        except error.StripeError as e:
+            raise exceptions.StripeUnhandledException(e.user_message)
+
+        return instance
+
+    @transaction.atomic
+    def create_token(self, card_data, user, instance: PaymentMethod = None):
+        try:
+            response = stripe.Token.create(card=card_data)
+            instance = self.update_token_instance(response, user, instance)
         except error.InvalidRequestError as e:
             raise exceptions.StripePaymentMethodCreateException(e.user_message)
         except error.CardError as e:

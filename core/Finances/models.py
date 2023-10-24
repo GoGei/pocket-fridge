@@ -266,3 +266,10 @@ class PaymentMethod(FinanceIntegrationsMixin):
     def is_expired(self):
         this_month_start_date = timezone.now().date().replace(day=1)
         return this_month_start_date > self.expire_date
+
+    def set_default(self, user):
+        PaymentMethod.objects.select_related('user').filter(user=user).exclude(id=self.id).update(is_default=False)
+        self.is_default = True
+        self.user = user
+        self.save()
+        return self
