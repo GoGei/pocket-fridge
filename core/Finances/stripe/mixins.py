@@ -103,6 +103,25 @@ class StripeMixin:
         return response, created
 
     @transaction.atomic
+    def update_or_create(self, instance=None, external_id=None):
+        # if object can not be get from stripe -> create it in stripe
+        try:
+            if instance and not instance.external_id:
+                raise exceptions.StripeObjectIsNotIntegrated(_('Object is not integrated with stripe!'))
+
+            response = self.retrieve(external_id or instance.external_id)
+            response = self.update_instance(response, instance)
+            created = False
+        except (exceptions.StripeObjectNotFound, exceptions.StripeObjectIsNotIntegrated):
+            try:
+                response = self.create(instance)
+                created = True
+            except (exceptions.StripeObjectCreateException, exceptions.StripeObjectIsIntegrated) as e:
+                raise exceptions.StripeGetOrCreateException(e)
+
+        return response, created
+
+    @transaction.atomic
     def sync_from_stripe(self, instance=None, external_id=None, response=None, *args, **kwargs):
         try:
             if not (external_id or response):

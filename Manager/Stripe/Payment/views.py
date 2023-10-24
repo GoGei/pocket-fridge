@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils.translation import ugettext as _
 
 from core.Finances.models import Payment
-from core.Finances.stripe.tasks import load_payments
+from core.Finances.tasks import load_payments_task
 from core.Utils.Access.decorators import manager_required
 from .forms import PaymentFilterForm
 from .tables import PaymentTable
@@ -52,6 +52,6 @@ def payment_sync(request):
 
 @manager_required
 def payment_sync_all(request):
-    load_payments.apply_async()
+    load_payments_task.apply_async()
     messages.info(request, _('Try to load payments from stripe'))
     return redirect(reverse('manager-stripe-payment-list', host='manager'))
