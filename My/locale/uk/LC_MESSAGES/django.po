@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-30 14:30+0000\n"
+"POT-Creation-Date: 2023-10-24 04:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,6 +39,81 @@ msgstr "Дата виготовлення"
 msgid "Shelf life date"
 msgstr "Термін придатності"
 
+msgid "Photo"
+msgstr ""
+
+msgid "File fixture"
+msgstr ""
+
+msgid "File is not encoded with UTF-8"
+msgstr ""
+
+msgid "File is not valid JSON"
+msgstr ""
+
+#, python-format
+msgid "Unable to load file. Error: %s"
+msgstr ""
+
+msgid "Card number"
+msgstr ""
+
+msgid "**** **** **** ****"
+msgstr ""
+
+msgid "Expire date"
+msgstr ""
+
+msgid "CVC/CVV"
+msgstr ""
+
+msgid "***"
+msgstr ""
+
+msgid "Only digits allowed"
+msgstr ""
+
+msgid "Two- or four-digit number representing the card's expiration year."
+msgstr ""
+
+msgid "Expire date can not be in past"
+msgstr ""
+
+msgid "This user already has active subscription!"
+msgstr ""
+
+msgid "Customer is not created in stripe! Please, contact manager."
+msgstr ""
+
+msgid "Subscription is not created in stripe! Please, contact manager."
+msgstr ""
+
+msgid ""
+"Subscription is created in stripe, but not syncronized with our service! "
+"Please, contact manager."
+msgstr ""
+
+msgid "Card can not be created in stripe! Please, contact manager."
+msgstr ""
+
+msgid "Card data is invalid! Please, contact manager."
+msgstr ""
+
+msgid "Can not attach card to customer! Please, contact manager."
+msgstr ""
+
+msgid "Some error occurred! Please, contact manager."
+msgstr ""
+
+msgid "Get data from product?"
+msgstr "Отримати дані з продукту?"
+
+msgid "Select a product to load data"
+msgstr "Виберіть продукт"
+
+msgid "Product already in shopping list!"
+msgstr ""
+
 msgid "Product name"
 msgstr "Назва продукту"
 
@@ -48,17 +123,95 @@ msgstr "Кількість"
 msgid "Units"
 msgstr "Одиниці виміру"
 
-msgid "Get data from product?"
-msgstr "Отримати дані з продукту?"
-
-msgid "Select a product"
-msgstr "Виберіть продукт"
-
 msgid "Amount cannot be negative"
 msgstr "Кількість не може бути від'ємною"
 
-msgid "Shopping list"
-msgstr "Список покупок"
+msgid "product"
+msgstr "Додати новий продукт"
+
+msgid "amount"
+msgstr "Кількість"
+
+msgid "shelf life"
+msgstr "Термін придатності"
+
+msgid "is empty!"
+msgstr ""
+
+msgid "Add products"
+msgstr "Додати новий продукт"
+
+msgid "Storage"
+msgstr ""
+
+msgid "Photo not loaded"
+msgstr ""
+
+msgid "No photo"
+msgstr ""
+
+msgid "Date of manufacture"
+msgstr ""
+
+msgid "Shelf life"
+msgstr "Термін придатності"
+
+msgid "Product notes"
+msgstr "Назва продукту"
+
+msgid "Back to"
+msgstr ""
+
+msgid "Delete product"
+msgstr "Виберіть продукт"
+
+msgid "Name"
+msgstr "Ім'я"
+
+msgid "Email"
+msgstr "Електронна пошта"
+
+msgid "Date of registration"
+msgstr "Дата реєстрації"
+
+msgid "Premium"
+msgstr "Преміум"
+
+msgid "None"
+msgstr "Немає"
+
+msgid "Cancel premium"
+msgstr "Купити преміум"
+
+msgid "Buy premium"
+msgstr "Купити преміум"
+
+msgid "User guide"
+msgstr "Посібник користувача"
+
+msgid "Privacy policy"
+msgstr ""
+
+msgid "Terms of use"
+msgstr ""
+
+msgid "Data export"
+msgstr "Експорт даних"
+
+msgid "Data import"
+msgstr "Експорт даних"
+
+msgid "Report error"
+msgstr "Повідомити про помилку"
+
+msgid "Language"
+msgstr "Мова"
+
+msgid "Logout"
+msgstr "Вийти"
+
+msgid "change card"
+msgstr ""
 
 msgid "Add new product"
 msgstr "Додати новий продукт"
@@ -81,42 +234,14 @@ msgstr "Кишеньковий холодильник"
 msgid "Application is only available on mobile devices"
 msgstr "Додаток доступний лише на мобільних пристроях"
 
-msgid "Language"
-msgstr "Мова"
-
 msgid "Shopping"
 msgstr "Покупки"
 
-msgid "Name"
-msgstr "Ім'я"
+msgid "shelf life till"
+msgstr "Термін придатності"
 
-msgid "Email"
-msgstr "Електронна пошта"
+msgid "till"
+msgstr ""
 
-msgid "Date of registration"
-msgstr "Дата реєстрації"
-
-msgid "Premium"
-msgstr "Преміум"
-
-msgid "None"
-msgstr "Немає"
-
-msgid "Buy premium"
-msgstr "Купити преміум"
-
-msgid "User guide"
-msgstr "Посібник користувача"
-
-msgid "Licences"
-msgstr "Ліцензії"
-
-msgid "Data export"
-msgstr "Експорт даних"
-
-msgid "Report error"
-msgstr "Повідомити про помилку"
-
-msgid "Logout"
-msgstr "Вийти"
-
+msgid "No notifications"
+msgstr ""

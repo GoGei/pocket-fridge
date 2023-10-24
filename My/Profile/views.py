@@ -124,13 +124,13 @@ def profile_add_payment_method(request):
         try:
             form_body.save()
             return redirect(reverse('profile-subscribe', host='my'))
-        except exceptions.StripePaymentMethodCreateException as e:
+        except exceptions.StripePaymentMethodCreateException:
             form_body.add_error(None, _('Card can not be created in stripe! Please, contact manager.'))
-        except exceptions.StripePaymentMethodDataInvalidException as e:
+        except exceptions.StripePaymentMethodDataInvalidException:
             form_body.add_error(None, _('Card data is invalid! Please, contact manager.'))
-        except exceptions.StripePaymentMethodAttachError as e:
+        except exceptions.StripePaymentMethodAttachError:
             form_body.add_error(None, _('Can not attach card to customer! Please, contact manager.'))
-        except exceptions.StripeUnhandledException as e:
+        except exceptions.StripeUnhandledException:
             form_body.add_error(None, _('Some error occurred! Please, contact manager.'))
 
     form = {

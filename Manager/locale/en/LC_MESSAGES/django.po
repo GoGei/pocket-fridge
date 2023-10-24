@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-30 14:30+0000\n"
+"POT-Creation-Date: 2023-10-24 04:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -153,6 +153,12 @@ msgstr ""
 msgid "Fridge type default fixture was successfully loaded"
 msgstr ""
 
+msgid "Terms of use template"
+msgstr ""
+
+msgid "Privacy policy template"
+msgstr ""
+
 #, python-brace-format
 msgid "Licence version with \"{slug}\" already exists"
 msgstr ""
@@ -205,6 +211,37 @@ msgid "User is not active! Please, contact a manager"
 msgstr ""
 
 msgid "User with this email and password not found"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Invoices filter"
+msgstr ""
+
+msgid "Try to load invoices from stripe"
+msgstr ""
+
+msgid "Payments filter"
+msgstr ""
+
+msgid "Try to load payments from stripe"
+msgstr ""
+
+#, python-format
+msgid "Instance \"%s\" tried to load from stripe"
+msgstr ""
+
+msgid "Load from stripe"
+msgstr ""
+
+msgid "Products filter"
+msgstr ""
+
+msgid "Prices filter"
+msgstr ""
+
+msgid "External ID"
 msgstr ""
 
 msgid "User filter"
@@ -303,6 +340,15 @@ msgstr ""
 msgid "Set default"
 msgstr ""
 
+msgid "Privacy policy"
+msgstr ""
+
+msgid "Download File"
+msgstr ""
+
+msgid "Terms of Use"
+msgstr ""
+
 msgid "Is default"
 msgstr ""
 
@@ -318,6 +364,72 @@ msgstr ""
 msgid "SIGN IN"
 msgstr ""
 
+msgid "Invoices"
+msgstr ""
+
+msgid "Sync"
+msgstr ""
+
+msgid "Sync all"
+msgstr ""
+
+msgid "Stripe ID"
+msgstr ""
+
+msgid "Number"
+msgstr ""
+
+msgid "Collection method"
+msgstr ""
+
+msgid "Currency"
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "Total"
+msgstr ""
+
+msgid "Payments"
+msgstr ""
+
+msgid "No related invoice"
+msgstr ""
+
+msgid "Invoice ID"
+msgstr ""
+
+msgid "Invoice stripe ID"
+msgstr ""
+
+msgid "Prices"
+msgstr ""
+
+msgid "Set as default"
+msgstr ""
+
+msgid "Price"
+msgstr ""
+
+msgid "Interval"
+msgstr ""
+
+msgid "Usage type"
+msgstr ""
+
+msgid "Products"
+msgstr ""
+
+msgid "Sync price"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Stripe"
+msgstr ""
+
 msgid "Users"
 msgstr ""
 
@@ -325,9 +437,6 @@ msgid "Not provided"
 msgstr ""
 
 msgid "Good Morning"
-msgstr ""
-
-msgid "My Profile"
 msgstr ""
 
 msgid "Sign Out"
@@ -340,4 +449,7 @@ msgid "Settings"
 msgstr ""
 
 msgid "Licence version"
+msgstr ""
+
+msgid "Stripe settings"
 msgstr ""

@@ -2,7 +2,6 @@ from django.test import Client, TestCase
 from django_hosts.resolvers import reverse
 
 from core.User.factories import UserFactory
-from core.Fridge.factories import FridgeTypeFactory
 
 
 class HomeViewTest(TestCase):

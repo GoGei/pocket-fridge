@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-30 14:30+0000\n"
+"POT-Creation-Date: 2023-10-24 04:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,11 +151,29 @@ msgstr "Зробіть управління вашим холодильнико�
 msgid "I agree to"
 msgstr "Я погоджуюся з"
 
-msgid "privacy policy & terms"
-msgstr "Політикою конфіденційності та умовами"
+msgid "privacy policy"
+msgstr "Політика конфіденційності"
+
+msgid "terms of use"
+msgstr "Умови використання"
 
 msgid "Sign up"
 msgstr "Зареєструватися"
+
+msgid "Pocket Fridge"
+msgstr "Кишеньковий холодильник"
+
+msgid "Home"
+msgstr ""
+
+msgid "Key Features"
+msgstr ""
+
+msgid "Pricing"
+msgstr ""
+
+msgid "Testimonial"
+msgstr ""
 
 msgid "Go to fridge"
 msgstr "Перейти до холодильника"

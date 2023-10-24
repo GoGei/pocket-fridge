@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-30 14:30+0000\n"
+"POT-Creation-Date: 2023-10-24 04:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,6 +36,81 @@ msgstr ""
 msgid "Shelf life date"
 msgstr ""
 
+msgid "Photo"
+msgstr ""
+
+msgid "File fixture"
+msgstr ""
+
+msgid "File is not encoded with UTF-8"
+msgstr ""
+
+msgid "File is not valid JSON"
+msgstr ""
+
+#, python-format
+msgid "Unable to load file. Error: %s"
+msgstr ""
+
+msgid "Card number"
+msgstr ""
+
+msgid "**** **** **** ****"
+msgstr ""
+
+msgid "Expire date"
+msgstr ""
+
+msgid "CVC/CVV"
+msgstr ""
+
+msgid "***"
+msgstr ""
+
+msgid "Only digits allowed"
+msgstr ""
+
+msgid "Two- or four-digit number representing the card's expiration year."
+msgstr ""
+
+msgid "Expire date can not be in past"
+msgstr ""
+
+msgid "This user already has active subscription!"
+msgstr ""
+
+msgid "Customer is not created in stripe! Please, contact manager."
+msgstr ""
+
+msgid "Subscription is not created in stripe! Please, contact manager."
+msgstr ""
+
+msgid ""
+"Subscription is created in stripe, but not syncronized with our service! "
+"Please, contact manager."
+msgstr ""
+
+msgid "Card can not be created in stripe! Please, contact manager."
+msgstr ""
+
+msgid "Card data is invalid! Please, contact manager."
+msgstr ""
+
+msgid "Can not attach card to customer! Please, contact manager."
+msgstr ""
+
+msgid "Some error occurred! Please, contact manager."
+msgstr ""
+
+msgid "Get data from product?"
+msgstr ""
+
+msgid "Select a product to load data"
+msgstr ""
+
+msgid "Product already in shopping list!"
+msgstr ""
+
 msgid "Product name"
 msgstr ""
 
@@ -45,16 +120,94 @@ msgstr ""
 msgid "Units"
 msgstr ""
 
-msgid "Get data from product?"
-msgstr ""
-
-msgid "Select a product"
-msgstr ""
-
 msgid "Amount cannot be negative"
 msgstr ""
 
-msgid "Shopping list"
+msgid "product"
+msgstr ""
+
+msgid "amount"
+msgstr ""
+
+msgid "shelf life"
+msgstr ""
+
+msgid "is empty!"
+msgstr ""
+
+msgid "Add products"
+msgstr ""
+
+msgid "Storage"
+msgstr ""
+
+msgid "Photo not loaded"
+msgstr ""
+
+msgid "No photo"
+msgstr ""
+
+msgid "Date of manufacture"
+msgstr ""
+
+msgid "Shelf life"
+msgstr ""
+
+msgid "Product notes"
+msgstr ""
+
+msgid "Back to"
+msgstr ""
+
+msgid "Delete product"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Date of registration"
+msgstr ""
+
+msgid "Premium"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Cancel premium"
+msgstr ""
+
+msgid "Buy premium"
+msgstr ""
+
+msgid "User guide"
+msgstr ""
+
+msgid "Privacy policy"
+msgstr ""
+
+msgid "Terms of use"
+msgstr ""
+
+msgid "Data export"
+msgstr ""
+
+msgid "Data import"
+msgstr ""
+
+msgid "Report error"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Logout"
+msgstr ""
+
+msgid "change card"
 msgstr ""
 
 msgid "Add new product"
@@ -78,41 +231,14 @@ msgstr ""
 msgid "Application is only available on mobile devices"
 msgstr ""
 
-msgid "Language"
-msgstr ""
-
 msgid "Shopping"
 msgstr ""
 
-msgid "Name"
+msgid "shelf life till"
 msgstr ""
 
-msgid "Email"
+msgid "till"
 msgstr ""
 
-msgid "Date of registration"
-msgstr ""
-
-msgid "Premium"
-msgstr ""
-
-msgid "None"
-msgstr ""
-
-msgid "Buy premium"
-msgstr ""
-
-msgid "User guide"
-msgstr ""
-
-msgid "Licences"
-msgstr ""
-
-msgid "Data export"
-msgstr ""
-
-msgid "Report error"
-msgstr ""
-
-msgid "Logout"
+msgid "No notifications"
 msgstr ""

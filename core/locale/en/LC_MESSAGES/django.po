@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-30 14:30+0000\n"
+"POT-Creation-Date: 2023-10-24 04:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,6 +99,48 @@ msgstr ""
 msgid "Succeeded"
 msgstr ""
 
+msgid "American Express"
+msgstr ""
+
+msgid "Diners Club"
+msgstr ""
+
+msgid "Discover"
+msgstr ""
+
+msgid "JCB"
+msgstr ""
+
+msgid "MasterCard"
+msgstr ""
+
+msgid "UnionPay"
+msgstr ""
+
+msgid "Visa"
+msgstr ""
+
+msgid "Unknown"
+msgstr ""
+
+msgid "Product not found"
+msgstr ""
+
+msgid "Price not found"
+msgstr ""
+
+msgid "Customer not found"
+msgstr ""
+
+msgid "Invoice not found"
+msgstr ""
+
+msgid "Object already integrated with stripe!"
+msgstr ""
+
+msgid "Object is not integrated with stripe!"
+msgstr ""
+
 #, python-brace-format
 msgid "Fridges for user {user.email} already exists"
 msgstr ""
@@ -115,7 +157,7 @@ msgstr ""
 msgid "L"
 msgstr ""
 
-msgid "Items"
+msgid "Units"
 msgstr ""
 
 #, python-brace-format
@@ -162,25 +204,16 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
+msgid "Submit"
+msgstr ""
+
 msgid "Cancel"
 msgstr ""
 
 msgid "Close"
 msgstr ""
 
-msgid "Submit"
-msgstr ""
-
 msgid "Data with such filters not found!"
-msgstr ""
-
-msgid "Share"
-msgstr ""
-
-msgid "Print"
-msgstr ""
-
-msgid "Export"
 msgstr ""
 
 msgid "There is no data in the table"

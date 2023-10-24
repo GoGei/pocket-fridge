@@ -1,4 +1,3 @@
-from factory import fuzzy
 from django.test import Client, TestCase
 from django_hosts.resolvers import reverse
 
