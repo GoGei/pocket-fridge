@@ -44,6 +44,11 @@ strong{
     text-decoration: none;
 }
 
+section{
+    margin-bottom: 105px;
+}
+
+
 @media screen and (min-width: 500px) {
     /* Apply styles when the screen width is more than 500px */
     main {
@@ -117,6 +122,7 @@ footer{
     border-top: 2px solid #AAA;
     position: fixed;
     bottom: 0;
+    background: #eee;
 }
 
 footer > div{
@@ -348,7 +354,7 @@ padding: 5px;
 div.form-group:nth-child(8) textarea:focus,
 div.form-group:nth-child(8) textarea:active,div.form-group input,
 .select2-search__field,
-.container-shopping_list .input-group input{
+.container-shopping_list .input-group input, #id_price{
     outline: none;
 }
 
@@ -388,6 +394,11 @@ form > .form_buttons > input:last-child {
 
 form.product_edit > div:nth-child(9) > label{
 display: none;
+}
+
+.product-name{
+    text-align: left;
+    width: 100px;
 }
 
 /* Add product settings */
@@ -513,7 +524,7 @@ color: #000 !important;
     border: 3px solid #B6E0FF;
     background: #EEE;
     padding: 3px 15px;
-    text-align: center;
+    text-align: left;
     
     display: flex;
     justify-content: space-between;
@@ -524,7 +535,7 @@ color: #000 !important;
 .product_name span
 {
     text-decoration: none;
-
+    max-width: 120px;
     color: rgba(0, 0, 0, 0.40);
 font-family: Montserrat;
 font-size: 14px;
@@ -637,6 +648,9 @@ border-bottom: solid 1px #B6E0FF;
     letter-spacing: -0.408px;
     padding: 0 15px;
 }
+.list-hint > span:first-of-type{
+    margin-right: 35px;
+}
 .section-notification_view .list-hint{
     width: 90%;
 }
@@ -651,6 +665,7 @@ border-bottom: solid 1px #B6E0FF;
     width: 87%;
     text-decoration: none;
     margin-bottom: 10px;
+    align-items: center;
 }
 
 .section-notification_view .product {
@@ -711,6 +726,7 @@ border-bottom: solid 1px #B6E0FF;
 .product_view-title h3,
 .product_view-title a{
     padding-right: 10px;
+    max-width: 120px;
 }
 
 .product_view{
@@ -911,6 +927,86 @@ form.profile_import label {
   }
 
 /* Import files */
+
+/* profile_subscribe */
+
+.profile_subscribe .row {
+    width: 100%;
+}
+.card-info{
+    display: flex;
+    flex-direction: column;
+    width: calc(90% - 36px);
+    border: 3px solid #B6E0FF;
+    border-radius: 18px;
+    padding: 10px 15px;
+    background: #B6E0FF;
+    margin: 0 auto;
+}
+
+.card-info > span{
+    padding-bottom: 10px;
+    font-size: 16px;
+    line-height: 22px; /* 157.143% */
+    letter-spacing: -0.408px;
+}
+
+.card-info > a{
+    color: rgba(0, 0, 0, 0.40);
+    /* text-align: center; */
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 157.143% */
+    letter-spacing: -0.408px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.price-form{
+    margin-top: 20px;
+
+}
+
+form.profile_subscribe label{
+    font-weight: 600 !important ;
+}
+
+form.profile_subscribe > div{
+display: flex;
+justify-content: space-between;
+flex-direction: row;
+align-items: center;
+}
+
+form.profile_subscribe select{
+    border-radius: 8px;
+    background: #B6E0FF;
+    border: 3px solid #B6E0FF;
+}
+
+
+/* profile_subscribe */
+
+/* barcode */
+
+.barcode-form{
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 3px solid #B6E0FF;
+    border-radius: 8px;
+    background: #B6E0FF;
+    margin-bottom: -10px;
+}
+
+
+/* barcode */
+
 
 
  .photo{

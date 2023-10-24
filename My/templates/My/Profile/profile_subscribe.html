@@ -6,11 +6,22 @@
   <div class="row">
     <div class="container-subscription">
       <h3>Subscription</h3>
-      <div>
-        !{{ payment_method.last_digits_of_card }}! !{{ payment_method.card_type }}! !{{ payment_method.expire_date }}!
-        <a href="{% host_url 'profile-add-payment-method' host 'my' %}">{% trans 'Change card' %}</a>
+      <div class="card-info">
+
+        <span>{{ payment_method.card_type }}</span>
+        <span> **** **** **** {{ payment_method.last_digits_of_card }} </span>
+        <span>{{ payment_method.expire_date }}</span>
+        
+        
+        
+        
+        <a href="{% host_url 'profile-add-payment-method' host 'my' %}">{% trans 'change card' %}</a>
+
       </div>
-      {% include 'base_form.html' with form=form %}
+      <div class="price-form">
+        {% include 'base_form.html' with form=form %}
+      </div>
+      
     </div>
   </div>
 </section>

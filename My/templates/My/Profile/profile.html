@@ -53,7 +53,8 @@
           </div>
           
           {% if request.user.is_premium %}
-            <button class="profile_buttons-dataexport">
+          <div class="button-holder">  
+          <button class="profile_buttons-dataexport">
               <a href="{% host_url 'profile-export' host 'my' %}" type="button"
                  class="bold">{% trans 'Data export' %}</a>
             </button>
@@ -61,6 +62,7 @@
               <a href="{% host_url 'profile-import' host 'my' %}" type="button"
                  class="bold">{% trans 'Data import' %}</a>
             </button>
+          </div>
           {% endif %}
           <button class="profile_buttons-report">
             <a href="https://forms.gle/4Z7vC1pTPfit6RN76" type="button" target="_blank"
