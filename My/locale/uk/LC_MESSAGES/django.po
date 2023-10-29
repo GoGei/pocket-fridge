@@ -21,89 +21,68 @@ msgstr ""
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
-msgid "Fridge"
-msgstr "Холодильник"
-
-msgid "Select a fridge"
-msgstr "Виберіть холодильник"
-
-msgid "Notes"
-msgstr "Замітки"
-
-msgid "Leave your notes"
-msgstr "Залиште свої замітки"
-
-msgid "Manufacture date"
-msgstr "Дата виготовлення"
-
-msgid "Shelf life date"
-msgstr "Термін придатності"
-
 msgid "Photo"
-msgstr ""
+msgstr "Фото"
 
 msgid "File fixture"
-msgstr ""
+msgstr "Файл для встановлення"
 
 msgid "File is not encoded with UTF-8"
-msgstr ""
+msgstr "Файл не закодований в UTF-8"
 
 msgid "File is not valid JSON"
-msgstr ""
+msgstr "Файл не є коректним JSON"
 
-#, python-format
 msgid "Unable to load file. Error: %s"
-msgstr ""
+msgstr "Не вдається завантажити файл. Помилка: %s"
 
 msgid "Card number"
-msgstr ""
+msgstr "Номер картки"
 
 msgid "**** **** **** ****"
-msgstr ""
+msgstr "**** **** **** ****"
 
 msgid "Expire date"
-msgstr ""
+msgstr "Термін дії"
 
 msgid "CVC/CVV"
-msgstr ""
+msgstr "CVC/CVV"
 
 msgid "***"
-msgstr ""
+msgstr "***"
 
 msgid "Only digits allowed"
-msgstr ""
+msgstr "Допускаються лише цифри"
 
 msgid "Two- or four-digit number representing the card's expiration year."
-msgstr ""
+msgstr "Двоцифровий або чотирицифровий номер, що представляє рік закінчення терміну дії картки."
 
-msgid "Expire date can not be in past"
-msgstr ""
+msgid "Expire date can not be in the past"
+msgstr "Термін дії не може бути у минулому"
 
-msgid "This user already has active subscription!"
-msgstr ""
+msgid "This user already has an active subscription!"
+msgstr "У цього користувача вже є активна підписка!"
 
-msgid "Customer is not created in stripe! Please, contact manager."
-msgstr ""
+msgid "Customer is not created in stripe! Please, contact a manager."
+msgstr "Клієнт не створений в Stripe! Будь ласка, зв'яжіться з менеджером."
 
-msgid "Subscription is not created in stripe! Please, contact manager."
-msgstr ""
+msgid "Subscription is not created in stripe! Please, contact a manager."
+msgstr "Підписку не створено в Stripe! Будь ласка, зв'яжіться з менеджером."
 
-msgid ""
-"Subscription is created in stripe, but not syncronized with our service! "
-"Please, contact manager."
-msgstr ""
+msgid "Subscription is created in stripe, but not synchronized with our service! Please, contact a manager."
+msgstr "Підписка створена в Stripe, але не синхронізована з нашим сервісом! Будь ласка, зв'яжіться з менеджером."
 
-msgid "Card can not be created in stripe! Please, contact manager."
-msgstr ""
+msgid "Card cannot be created in stripe! Please, contact a manager."
+msgstr "Картку не вдається створити в Stripe! Будь ласка, зв'яжіться з менеджером."
 
-msgid "Card data is invalid! Please, contact manager."
-msgstr ""
+msgid "Card data is invalid! Please, contact a manager."
+msgstr "Дані картки недійсні! Будь ласка, зв'яжіться з менеджером."
 
-msgid "Can not attach card to customer! Please, contact manager."
-msgstr ""
+msgid "Cannot attach the card to the customer! Please, contact a manager."
+msgstr "Не вдається прикріпити картку до клієнта! Будь ласка, зв'яжіться з менеджером."
 
-msgid "Some error occurred! Please, contact manager."
-msgstr ""
+msgid "Some error occurred! Please, contact a manager."
+msgstr "Сталася помилка! Будь ласка, зв'яжіться з менеджером."
 
 msgid "Get data from product?"
 msgstr "Отримати дані з продукту?"
@@ -112,7 +91,7 @@ msgid "Select a product to load data"
 msgstr "Виберіть продукт"
 
 msgid "Product already in shopping list!"
-msgstr ""
+msgstr "Товар вже є у списку покупок!"
 
 msgid "Product name"
 msgstr "Назва продукту"
@@ -136,22 +115,22 @@ msgid "shelf life"
 msgstr "Термін придатності"
 
 msgid "is empty!"
-msgstr ""
+msgstr "пустий!"
 
 msgid "Add products"
 msgstr "Додати новий продукт"
 
 msgid "Storage"
-msgstr ""
+msgstr "Зберігання"
 
 msgid "Photo not loaded"
-msgstr ""
+msgstr "Фото не завантажено"
 
 msgid "No photo"
-msgstr ""
+msgstr "Фото відсутнє"
 
 msgid "Date of manufacture"
-msgstr ""
+msgstr "Дата виробництва"
 
 msgid "Shelf life"
 msgstr "Термін придатності"
@@ -160,7 +139,7 @@ msgid "Product notes"
 msgstr "Назва продукту"
 
 msgid "Back to"
-msgstr ""
+msgstr "Повернутися"
 
 msgid "Delete product"
 msgstr "Виберіть продукт"
@@ -187,10 +166,10 @@ msgid "Buy premium"
 msgstr "Купити преміум"
 
 msgid "Privacy policy"
-msgstr ""
+msgstr "Політика конфіденційності"
 
 msgid "Terms of use"
-msgstr ""
+msgstr "Умови використання"
 
 msgid "Data export"
 msgstr "Експорт даних"
@@ -214,7 +193,7 @@ msgid "Add new product"
 msgstr "Додати новий продукт"
 
 msgid "Search"
-msgstr ""
+msgstr "Шукати"
 
 msgid "Filter"
 msgstr "Фільтр"
@@ -238,10 +217,7 @@ msgid "shelf life till"
 msgstr "Термін придатності"
 
 msgid "till"
-msgstr ""
+msgstr "до"
 
 msgid "No notifications"
-msgstr ""
-
-#~ msgid "User guide"
-#~ msgstr "Посібник користувача"
+msgstr "Повідомлень немає"
