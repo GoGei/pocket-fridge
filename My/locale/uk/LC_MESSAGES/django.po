@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-29 13:34+0000\n"
+"POT-Creation-Date: 2023-10-29 13:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,24 @@ msgstr ""
 "11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+msgid "Fridge"
+msgstr "Холодильник"
+
+msgid "Select a fridge"
+msgstr "Виберіть холодильник"
+
+msgid "Notes"
+msgstr "Замітки"
+
+msgid "Leave your notes"
+msgstr "Залиште свої замітки"
+
+msgid "Manufacture date"
+msgstr "Дата виготовлення"
+
+msgid "Shelf life date"
+msgstr "Термін придатності"
 
 msgid "Photo"
 msgstr "Фото"
@@ -33,6 +51,7 @@ msgstr "Файл не закодований в UTF-8"
 msgid "File is not valid JSON"
 msgstr "Файл не є коректним JSON"
 
+#, python-format
 msgid "Unable to load file. Error: %s"
 msgstr "Не вдається завантажити файл. Помилка: %s"
 
@@ -55,33 +74,62 @@ msgid "Only digits allowed"
 msgstr "Допускаються лише цифри"
 
 msgid "Two- or four-digit number representing the card's expiration year."
-msgstr "Двоцифровий або чотирицифровий номер, що представляє рік закінчення терміну дії картки."
+msgstr ""
+"Двоцифровий або чотирицифровий номер, що представляє рік закінчення терміну "
+"дії картки."
 
-msgid "Expire date can not be in the past"
+#, fuzzy
+#| msgid "Expire date can not be in the past"
+msgid "Expire date can not be in past"
 msgstr "Термін дії не може бути у минулому"
 
-msgid "This user already has an active subscription!"
+#, fuzzy
+#| msgid "This user already has an active subscription!"
+msgid "This user already has active subscription!"
 msgstr "У цього користувача вже є активна підписка!"
 
-msgid "Customer is not created in stripe! Please, contact a manager."
+#, fuzzy
+#| msgid "Customer is not created in stripe! Please, contact a manager."
+msgid "Customer is not created in stripe! Please, contact manager."
 msgstr "Клієнт не створений в Stripe! Будь ласка, зв'яжіться з менеджером."
 
-msgid "Subscription is not created in stripe! Please, contact a manager."
+#, fuzzy
+#| msgid "Subscription is not created in stripe! Please, contact a manager."
+msgid "Subscription is not created in stripe! Please, contact manager."
 msgstr "Підписку не створено в Stripe! Будь ласка, зв'яжіться з менеджером."
 
-msgid "Subscription is created in stripe, but not synchronized with our service! Please, contact a manager."
-msgstr "Підписка створена в Stripe, але не синхронізована з нашим сервісом! Будь ласка, зв'яжіться з менеджером."
+#, fuzzy
+#| msgid ""
+#| "Subscription is created in stripe, but not synchronized with our service! "
+#| "Please, contact a manager."
+msgid ""
+"Subscription is created in stripe, but not syncronized with our service! "
+"Please, contact manager."
+msgstr ""
+"Підписка створена в Stripe, але не синхронізована з нашим сервісом! Будь "
+"ласка, зв'яжіться з менеджером."
 
-msgid "Card cannot be created in stripe! Please, contact a manager."
-msgstr "Картку не вдається створити в Stripe! Будь ласка, зв'яжіться з менеджером."
+#, fuzzy
+#| msgid "Card cannot be created in stripe! Please, contact a manager."
+msgid "Card can not be created in stripe! Please, contact manager."
+msgstr ""
+"Картку не вдається створити в Stripe! Будь ласка, зв'яжіться з менеджером."
 
-msgid "Card data is invalid! Please, contact a manager."
+#, fuzzy
+#| msgid "Card data is invalid! Please, contact a manager."
+msgid "Card data is invalid! Please, contact manager."
 msgstr "Дані картки недійсні! Будь ласка, зв'яжіться з менеджером."
 
-msgid "Cannot attach the card to the customer! Please, contact a manager."
-msgstr "Не вдається прикріпити картку до клієнта! Будь ласка, зв'яжіться з менеджером."
+#, fuzzy
+#| msgid "Cannot attach the card to the customer! Please, contact a manager."
+msgid "Can not attach card to customer! Please, contact manager."
+msgstr ""
+"Не вдається прикріпити картку до клієнта! Будь ласка, зв'яжіться з "
+"менеджером."
 
-msgid "Some error occurred! Please, contact a manager."
+#, fuzzy
+#| msgid "Some error occurred! Please, contact a manager."
+msgid "Some error occurred! Please, contact manager."
 msgstr "Сталася помилка! Будь ласка, зв'яжіться з менеджером."
 
 msgid "Get data from product?"
