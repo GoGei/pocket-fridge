@@ -13,8 +13,10 @@
 {% block action-area %}
   <a type="button" class="btn btn-success btn-md"
      href="{% url 'manager-stripe-product-list' %}">{% trans 'Back to list' %}</a>
+  {% if request.user.is_superuser %}
   <a type="button" class="btn btn-success btn-md"
      href="{% url 'manager-stripe-product-price-sync' product.id %}">{% trans 'Sync price' %}</a>
+  {% endif %}
 {% endblock %}
 
 {% block content %}

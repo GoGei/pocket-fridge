@@ -40,13 +40,13 @@
         </div>
 
         <div class="profile_buttons">
-          <button class="profile_buttons-guide">
+          {% comment %}<button class="profile_buttons-guide">
             {% if user_guide_url %}
               <a href="{{ user_guide_url }}" type="button" target="_blank" class="bold">{% trans 'User guide' %}</a>
             {% else %}
               <a href="#" type="button" class="bold">{% trans 'User guide' %}</a>
             {% endif %}
-          </button>
+          </button>{% endcomment %}
           <div class="button-holder">
             <button class="profile_buttons-privacy-policy">
               {% if privacy_policy.template.url %}

@@ -22,7 +22,10 @@
 
           {% for product in products %}
             <div class="product-item">
-            <a href="{% host_url 'product-view' product.fridge_id product.id host 'my' %}" class="product-data {% if product.expire_priority == 1 %}
+            <a href="{% host_url 'product-view' product.fridge_id product.id host 'my' %}" class="product-data
+            {% if product.expire_priority == 0 %}
+            class-0
+            {% elif product.expire_priority == 1 %}
             class-1
             {% elif product.expire_priority == 2 %}
             class-2
@@ -33,7 +36,7 @@
             {% endif %}">
               <span class="product-name
                           ">
-                {{ product.name }}
+                {{ product.name }} {{ product.expire_priority }}
               </span>
               <span class="product-amount">
                 {{ product.amount}} {{ product.get_units_display }}

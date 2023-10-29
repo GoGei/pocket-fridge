@@ -4,20 +4,20 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils.translation import ugettext_lazy as _
 
 from core.Finances.models import Price
-from core.Utils.Access.decorators import manager_required
+from core.Utils.Access.decorators import superuser_required
 import logging
 
 logger = logging.getLogger(__name__)
 
 
-@manager_required
+@superuser_required
 def price_view(request, price_id):
     price = get_object_or_404(Price, pk=price_id)
     return render(request, 'Manager/Stripe/Product/Price/price_view.html',
                   {'price': price, 'product_id': price.product.id})
 
 
-@manager_required
+@superuser_required
 def price_set_as_default(request, price_id):
     price = get_object_or_404(Price, pk=price_id)
     msg = _(f'Product price {price.label} was successfully set as default')
@@ -26,7 +26,7 @@ def price_set_as_default(request, price_id):
     return redirect(reverse('manager-stripe-product-view', args=[price.product.id], host='manager'))
 
 
-@manager_required
+@superuser_required
 def price_archive(request, price_id):
     price = get_object_or_404(Price, pk=price_id)
     msg = _(f'Product price {price.label} was successfully archived')
@@ -35,14 +35,14 @@ def price_archive(request, price_id):
     return redirect(reverse('manager-stripe-product-view', args=[price.product.id], host='manager'))
 
 
-@manager_required
+@superuser_required
 def price_sync(request, product_id):
     from core.Finances.stripe import exceptions
     from core.Finances.stripe.handlers import PriceHandler
     from Manager.Stripe.stripe_integrations.forms import StripeSyncForm
 
     if '_cancel' in request.POST:
-        return redirect(reverse('manager-stripe-product-list', args=[product_id], host='manager'))
+        return redirect(reverse('manager-stripe-product-view', args=[product_id], host='manager'))
 
     form_body = StripeSyncForm(request.POST or None, handler=PriceHandler)
 
@@ -57,7 +57,7 @@ def price_sync(request, product_id):
             msg = str(e)
             messages.error(request, msg)
             logger.info(msg)
-            return redirect(reverse('manager-stripe-product-list', args=[product_id], host='manager'))
+            return redirect(reverse('manager-stripe-product-view', args=[product_id], host='manager'))
 
     form = {'body': form_body,
             'title': _('Load from stripe'),

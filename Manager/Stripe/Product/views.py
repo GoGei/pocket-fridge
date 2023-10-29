@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils.translation import ugettext as _
 
 from core.Finances.models import Product, Price
-from core.Utils.Access.decorators import manager_required
+from core.Utils.Access.decorators import superuser_required
 from .forms import ProductFilterForm
 from .tables import ProductTable
 from .Price.forms import PriceFilterForm
@@ -14,7 +14,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-@manager_required
+@superuser_required
 def product_list(request):
     qs = Product.objects.all().order_by('-is_default', '-name')
 
@@ -37,7 +37,7 @@ def product_list(request):
                   {'table': table})
 
 
-@manager_required
+@superuser_required
 def product_view(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
@@ -63,7 +63,7 @@ def product_view(request, product_id):
                   {'product': product, 'table': table})
 
 
-@manager_required
+@superuser_required
 def product_set_as_default(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     msg = _(f'Product {product.label} was successfully set as default')
@@ -72,7 +72,7 @@ def product_set_as_default(request, product_id):
     return redirect(reverse('manager-stripe-product-list', host='manager'))
 
 
-@manager_required
+@superuser_required
 def product_archive(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     msg = _(f'Product {product.label} was successfully archived')
@@ -81,7 +81,7 @@ def product_archive(request, product_id):
     return redirect(reverse('manager-stripe-product-list', host='manager'))
 
 
-@manager_required
+@superuser_required
 def product_sync(request):
     from ..stripe_integrations.views import stripe_instance_sync
     from core.Finances.stripe.handlers import ProductHandler

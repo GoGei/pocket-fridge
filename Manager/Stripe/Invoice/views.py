@@ -6,14 +6,15 @@ from django.utils.translation import ugettext as _
 
 from core.Finances.models import Invoice
 from core.Finances.tasks import load_invoices_task
-from core.Utils.Access.decorators import manager_required
+from core.Utils.Access.decorators import superuser_required
 from .forms import InvoiceFilterForm
 from .tables import InvoiceTable
 import logging
 
 logger = logging.getLogger(__name__)
 
-@manager_required
+
+@superuser_required
 def invoice_list(request):
     qs = Invoice.objects.all().order_by('number')
 
@@ -36,13 +37,13 @@ def invoice_list(request):
                   {'table': table})
 
 
-@manager_required
+@superuser_required
 def invoice_view(request, invoice_id):
     invoice = get_object_or_404(Invoice, pk=invoice_id)
     return render(request, 'Manager/Stripe/Invoice/invoice_view.html', {'invoice': invoice})
 
 
-@manager_required
+@superuser_required
 def invoice_sync(request):
     from ..stripe_integrations.views import stripe_instance_sync
     from core.Finances.stripe.handlers import InvoiceHandler
@@ -52,7 +53,7 @@ def invoice_sync(request):
                                 InvoiceHandler)
 
 
-@manager_required
+@superuser_required
 def invoice_sync_all(request):
     load_invoices_task.apply_async()
     msg = _('Try to load invoices from stripe')

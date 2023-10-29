@@ -35,7 +35,8 @@ def fridge_view(request, fridge_id):
     fridge_qs = utils.get_fridge_qs(request.user)
     fridge = get_object_or_404(fridge_qs, id=fridge_id)
     products = utils.get_fridge_products(request.user, fridge_id)
-    products = products.annotate_expire_priority().order_by('shelf_life_date', 'name')
+    # products = products.annotate_expire_priority().order_by('shelf_life_date', 'name')
+    products = products.annotate_expire_priority().order_by('expire_priority', 'shelf_life_date', 'name')
     return render(request, 'My/Fridge/fridge_view.html',
                   {'fridge_qs': fridge_qs, 'products': products, 'fridge': fridge})
 

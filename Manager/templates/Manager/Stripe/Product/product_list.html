@@ -2,7 +2,9 @@
 {% load i18n %}
 
 {% block action-area %}
+  {% if request.user.is_superuser %}
   <a type="button" class="btn btn-success btn-md" href="{% url 'manager-stripe-product-sync' %}">{% trans 'Sync' %}</a>
+  {% endif %}
 {% endblock %}
 
 {% block content %}

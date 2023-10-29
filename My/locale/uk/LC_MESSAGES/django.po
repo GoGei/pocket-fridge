@@ -181,7 +181,7 @@ msgid "None"
 msgstr "Немає"
 
 msgid "Cancel premium"
-msgstr "Купити преміум"
+msgstr "Скасовати преміум"
 
 msgid "Buy premium"
 msgstr "Купити преміум"

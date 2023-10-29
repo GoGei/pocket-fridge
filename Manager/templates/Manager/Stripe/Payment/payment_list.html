@@ -2,8 +2,10 @@
 {% load i18n %}
 
 {% block action-area %}
+  {% if request.user.is_superuser %}
   <a type="button" class="btn btn-success btn-md" href="{% url 'manager-stripe-payment-sync' %}">{% trans 'Sync' %}</a>
   <a type="button" class="btn btn-success btn-md" href="{% url 'manager-stripe-payment-sync-all' %}">{% trans 'Sync all' %}</a>
+  {% endif %}
 {% endblock %}
 
 {% block content %}

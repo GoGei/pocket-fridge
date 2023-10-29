@@ -7,8 +7,10 @@
 
 {% block action-area %}
   <a type="button" class="btn btn-success btn-md" href="{% url 'manager-fridge-type-add' %}">{% trans 'Add' %}</a>
+  {% if request.user.is_superuser %}
   <a type="button" class="btn btn-info btn-md"
      href="{% url 'manager-fridge-type-view-fixture' %}">{% trans 'View fixture' %}</a>
+  {% endif %}
 {% endblock %}
 
 {% block content %}

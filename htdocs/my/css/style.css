@@ -199,12 +199,12 @@ footer > div{
 }
 
 .language-selector.active {
-    background-color: #80caff;  
+    background-color: #80caff;
 }
 
 .dropdown-menu{
     margin-top: 35px;
-    display: none;  
+    display: none;
 }
 
 .profile_buttons-language:hover  .dropdown-menu{
@@ -525,13 +525,13 @@ color: #000 !important;
     background: #EEE;
     padding: 3px 15px;
     text-align: left;
-    
+
     display: flex;
     justify-content: space-between;
     width: 80%;
     margin-bottom: 10px;
 }
-.product_name a, 
+.product_name a,
 .product_name span
 {
     text-decoration: none;
@@ -580,7 +580,7 @@ input.form-check-input[type="checkbox"]:checked{
     margin-top: 10px;
 }
 
-.section-fridge_view .fridges-list{ 
+.section-fridge_view .fridges-list{
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -637,7 +637,7 @@ border-bottom: solid 1px #B6E0FF;
     align-items: center;
     width: 90%;
 }
-.list-hint > span { 
+.list-hint > span {
     color: rgba(0, 0, 0, 0.60);
     text-align: center;
     font-family: Montserrat;
@@ -684,14 +684,14 @@ border-bottom: solid 1px #B6E0FF;
     width: 87%;
     text-decoration: none;
     margin-bottom: 10px;
-    
+
 }
 
 .section-notification_view .product-item > span{
     text-align: center;
     font-size: 14px;
     font-weight: 600;
-    line-height: 22px; 
+    line-height: 22px;
     letter-spacing: -0.408px;
     color: #595959 !important;
 }
@@ -706,7 +706,7 @@ border-bottom: solid 1px #B6E0FF;
     color: #000 !important;
 }
 
-.select2-selection__clear { 
+.select2-selection__clear {
     display: none;
 }
 
@@ -798,7 +798,7 @@ background: #d9d9d9;
 }
 .product_edit  div:nth-child(8){
     margin-bottom: 0;
-} 
+}
 /* Fridge settings */
 
 
@@ -1015,7 +1015,7 @@ form.profile_subscribe select{
     right: 0;
     padding: 0;
  }
- 
+
  .photo img,
  .no-photo  {
     width: 130px;
@@ -1041,7 +1041,7 @@ font-style: normal;
 font-weight: 400;
 line-height: 22px; /* 157.143% */
 letter-spacing: -0.408px;
-} 
+}
 
  .amount{
     padding-bottom: 30px;
@@ -1101,10 +1101,14 @@ letter-spacing: -0.408px;
     color: #2B4A9D;
 }
 
+
+.class-0 {
+    background: #808080 !important;
+    border: 3px solid #808080 !important;
+}
 .class-1 {
     background: #f92b2b !important;
     border: 3px solid #f92b2b !important;
-
 }
 .class-2 {
     background: #e7d837 !important;

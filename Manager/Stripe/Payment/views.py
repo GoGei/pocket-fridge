@@ -6,7 +6,7 @@ from django.utils.translation import ugettext as _
 
 from core.Finances.models import Payment
 from core.Finances.tasks import load_payments_task
-from core.Utils.Access.decorators import manager_required
+from core.Utils.Access.decorators import superuser_required
 from .forms import PaymentFilterForm
 from .tables import PaymentTable
 import logging
@@ -14,7 +14,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-@manager_required
+@superuser_required
 def payment_list(request):
     qs = Payment.objects.all().order_by('-created_stamp')
 
@@ -37,13 +37,13 @@ def payment_list(request):
                   {'table': table})
 
 
-@manager_required
+@superuser_required
 def payment_view(request, payment_id):
     payment = get_object_or_404(Payment, pk=payment_id)
     return render(request, 'Manager/Stripe/Payment/payment_view.html', {'payment': payment})
 
 
-@manager_required
+@superuser_required
 def payment_sync(request):
     from ..stripe_integrations.views import stripe_instance_sync
     from core.Finances.stripe.handlers import PaymentHandler
@@ -53,7 +53,7 @@ def payment_sync(request):
                                 PaymentHandler)
 
 
-@manager_required
+@superuser_required
 def payment_sync_all(request):
     load_payments_task.apply_async()
     msg = _('Try to load payments from stripe')

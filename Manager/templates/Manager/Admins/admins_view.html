@@ -11,9 +11,11 @@
 {% endblock %}
 
 {% block action-area %}
-  <a type="button" class="btn btn-primary btn-md"
+  {% if request.user.is_superuser %}
+    <a type="button" class="btn btn-primary btn-md"
      href="{% url 'manager-admins-set-password' admin.id %}">{% trans 'Set password' %}</a>
-  <a type="button" class="btn btn-primary btn-md" href="{% url 'manager-admins-edit' admin.id %}">{% trans 'Edit' %}</a>
+    <a type="button" class="btn btn-primary btn-md" href="{% url 'manager-admins-edit' admin.id %}">{% trans 'Edit' %}</a>
+  {% endif %}
   <a type="button" class="btn btn-success btn-md" href="{% url 'manager-admins-list' %}">{% trans 'Back to list' %}</a>
 {% endblock %}
 

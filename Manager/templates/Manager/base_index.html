@@ -55,6 +55,22 @@
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">
+        <div class="language-changer">
+          <form id="select-language" action="{% url 'set-language' %}" method="POST">
+            {% csrf_token %}
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+              {% if language.code != LANGUAGE_CODE %}
+                <a class="bold language-selector"
+                   data-action="lang" data-lang="{{ language.code }}">
+                  {{ language.name }}
+                </a>
+              {% endif %}
+            {% endfor %}
+          </form>
+
         <li class="nav-item dropdown d-none d-lg-block user-dropdown">
           <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
             <img class="img-xs rounded-circle"
@@ -134,6 +150,7 @@
             </ul>
           </div>
         </li>
+        {% if request.user.is_superuser %}
         <li class="nav-item {% block stripe-settings-sidebar-menu %}{% endblock %}">
           <a class="nav-link" data-bs-toggle="collapse" href="#stripeSettings" aria-expanded="false"
              aria-controls="form-elements">
@@ -161,6 +178,7 @@
             </ul>
           </div>
         </li>
+        {% endif %}
       </ul>
     </nav>
     <!-- End sidebar -->

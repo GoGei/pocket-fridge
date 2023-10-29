@@ -11,8 +11,10 @@
 {% endblock %}
 
 {% block action-area %}
+  {% if request.user.is_superuser %}
   <a type="button" class="btn btn-success btn-md"
      href="{% url 'manager-stripe-invoice-list' %}">{% trans 'Back to list' %}</a>
+  {% endif %}
 {% endblock %}
 
 {% block content %}
