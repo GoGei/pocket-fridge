@@ -192,3 +192,154 @@ msgstr "Поки не надано"
 
 msgid "Terms of use"
 msgstr "Умови використання"
+
+msgid "Get your groceries"
+msgstr ""
+
+msgid "through your device"
+msgstr ""
+
+msgid "We will save you from unnecessary waste!"
+msgstr ""
+
+msgid "Try for free"
+msgstr ""
+
+msgid "Awesome apps"
+msgstr ""
+
+msgid "features"
+msgstr ""
+
+msgid "Increase productivity with a simple to-do app. app for "
+msgstr "managing your personal budgets."
+
+msgid "Smart Notifications"
+msgstr ""
+
+msgid "There will no longer be a problem with"
+msgstr ""
+
+msgid "forgotten food in the fridge."
+msgstr ""
+
+msgid "efficient notifications and use products on time"
+msgstr ""
+
+msgid "Easy to add"
+msgstr ""
+
+msgid "Easily add new products and the app "
+msgstr ""
+
+msgid "be ready from the first minute you use"
+msgstr ""
+
+msgid "ECO-friendly"
+msgstr ""
+
+msgid "The regulation of food consumption"
+msgstr ""
+
+msgid "leads to a decrease in universal"
+msgstr ""
+
+msgid "consumption"
+msgstr ""
+
+msgid "Manage the food in your fridge anytime &amp; anywhere"
+msgstr ""
+
+msgid "Manage your food, cook, add and use to the fullest. Take your food consumption to the next level with less waste and easy cooking."
+msgstr ""
+
+msgid "Why you should choose "
+msgstr ""
+
+msgid "our app"
+msgstr ""
+
+msgid "Empowering Your World with Mobile Innovation: Redefining Information Access, One App at a Time."
+msgstr ""
+
+msgid "Innovations on every plate"
+msgstr ""
+
+msgid "Use our app to make your own meals and save time."
+msgstr ""
+
+msgid "Forget about expired products"
+msgstr ""
+
+msgid "We make your lunches safe and delicious."
+msgstr ""
+
+msgid "Minimize waste, maximize budget"
+msgstr ""
+
+msgid "Our app is for those who care about the planet and their wallet."
+msgstr ""
+
+msgid "Delicious food is always at hand"
+msgstr ""
+
+msgid "We make cooking easier and tastier."
+msgstr ""
+
+msgid "Entrust your health and culinary skills to us"
+msgstr ""
+
+msgid "We are proud to celebrate our achievements and our dream of better nutrition."
+msgstr ""
+
+msgid "The results are in your hands."
+msgstr "Our work will make your life easier and more efficient."
+
+msgid "Ultimate features "
+msgstr ""
+
+msgid "that we built"
+msgstr ""
+
+msgid "The rise of technology - the better result."
+msgstr ""
+
+msgid "Simple management"
+msgstr ""
+
+msgid "With our app, you can easily manage the list of products in your fridge, always having your food supply under control."
+msgstr ""
+
+msgid "Due date notifications"
+msgstr ""
+
+msgid "Receive timely and secure alerts when food is approaching its expiration date to avoid throwing it away."
+msgstr ""
+
+msgid "Shopping lists"
+msgstr ""
+
+
+msgid "With our app, you can easily create grocery lists to buy to plan your purchases efficiently and save time."
+msgstr ""
+
+
+msgid "Quick addition"
+msgstr ""
+
+msgid "Adding new food to your fridge is quick and easy, keeping your food stock up to date in real time."
+msgstr ""
+
+msgid "Get awesome features, without extra charges"
+msgstr ""
+
+msgid "The rise of mobile devices transforms the way we consume information entirely and the
+              world's
+              most elevant channels such as Facebook."
+msgstr ""
+
+msgid ""
+msgstr ""
+
+msgid ""
+msgstr ""
