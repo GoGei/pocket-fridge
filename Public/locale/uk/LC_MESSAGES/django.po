@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-24 04:24+0000\n"
+"POT-Creation-Date: 2023-10-29 13:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,25 +25,25 @@ msgid "Email"
 msgstr "Електронна пошта"
 
 msgid "Enter your email"
-msgstr "Введіть свою електронну пошту"
+msgstr "Введіть вашу електронну пошту"
 
 msgid "First name"
 msgstr "Ім'я"
 
 msgid "Enter your first name"
-msgstr "Введіть своє ім'я"
+msgstr "Введіть ваше ім'я"
 
 msgid "Last name"
 msgstr "Прізвище"
 
 msgid "Enter your last name"
-msgstr "Введіть своє прізвище"
+msgstr "Введіть ваше прізвище"
 
 msgid "Password"
 msgstr "Пароль"
 
 msgid "Confirm password"
-msgstr "Підтвердіть пароль"
+msgstr "Підтвердити пароль"
 
 msgid "Passwords do not match"
 msgstr "Паролі не співпадають"
@@ -55,19 +55,19 @@ msgid "Remember me"
 msgstr "Запам'ятати мене"
 
 msgid "User with this email not found"
-msgstr "Користувача з цією адресою електронної пошти не знайдено"
+msgstr "Користувача з цією електронною поштою не знайдено"
 
 msgid "For this key user not found"
-msgstr "Користувача з цим ключем не знайдено"
+msgstr "За цим ключем користувача не знайдено"
 
 msgid "User is not active! Please, contact a manager"
 msgstr "Користувач не активний! Будь ласка, зв'яжіться з менеджером"
 
 msgid "User with this email and password not found"
-msgstr "Користувача з цією адресою електронної пошти та паролем не знайдено"
+msgstr "Користувача з цією електронною поштою і паролем не знайдено"
 
 msgid "Pocket fridge"
-msgstr "Кишеньковий холодильник"
+msgstr "Міні-холодильник"
 
 msgid "Back to home"
 msgstr "Повернутися на головну"
@@ -79,14 +79,14 @@ msgid "Forgot password success"
 msgstr "Успішно забули пароль"
 
 msgid "keep in touch with us!"
-msgstr "Залишайтесь з нами на зв'язку!"
+msgstr "Залишайтесь на зв'язку з нами!"
 
 msgid ""
 "Activation link was send to your email. Please, follow this letter to reset "
 "password of your account"
 msgstr ""
-"Посилання на активацію було надіслано на вашу електронну пошту. Будь ласка, "
-"слідуйте за цим листом, щоб скинути пароль вашого облікового запису"
+"Ланка активації була надіслана на вашу електронну пошту. Будь ласка, "
+"слідуйте цьому листу для скидання паролю вашого облікового запису"
 
 msgid "Forgot password"
 msgstr "Забули пароль"
@@ -96,23 +96,23 @@ msgstr "Забули пароль?"
 
 msgid "Enter your email and we'll send you instructions to reset your password"
 msgstr ""
-"Введіть свою електронну пошту, і ми надішлемо вам інструкції щодо скидання "
+"Введіть вашу електронну пошту, і ми надішлемо вам інструкції щодо скидання "
 "пароля"
 
 msgid "Send Reset Link"
-msgstr "Надіслати посилання на скидання"
+msgstr "Надіслати посилання для скидання"
 
 msgid "Already have an account?"
-msgstr "Вже є обліковий запис?"
+msgstr "Вже маєте обліковий запис?"
 
 msgid "Sign in instead"
-msgstr "Увійти замість цього"
+msgstr "Увійдіть замість цього"
 
 msgid "Login"
 msgstr "Увійти"
 
 msgid "Welcome to Pocket fridge!"
-msgstr "Ласкаво просимо до Кишенькового холодильника!"
+msgstr "Ласкаво просимо до міні-холодильника!"
 
 msgid "Please sign-in to your account and start the adventure"
 msgstr "Будь ласка, увійдіть до свого облікового запису та розпочніть пригоду"
@@ -121,7 +121,7 @@ msgid "Sign in"
 msgstr "Увійти"
 
 msgid "New on our platform?"
-msgstr "Новий на нашій платформі?"
+msgstr "Новачок на нашій платформі?"
 
 msgid "Create an account"
 msgstr "Створити обліковий запис"
@@ -136,8 +136,8 @@ msgid ""
 "Activation link was send to your email. Please, follow this letter to "
 "activate your account"
 msgstr ""
-"Посилання на активацію було надіслано на вашу електронну пошту. Будь ласка, "
-"слідуйте за цим листом, щоб активувати свій обліковий запис"
+"Ланка активації була надіслана на вашу електронну пошту. Будь ласка, "
+"слідуйте цьому листу для активації вашого облікового запису"
 
 msgid "Registration"
 msgstr "Реєстрація"
@@ -146,40 +146,292 @@ msgid "Adventure starts here"
 msgstr "Пригода починається тут"
 
 msgid "Make your fridge management easy and fun!"
-msgstr "Зробіть управління вашим холодильником легким і веселим!"
+msgstr "Зробіть управління вашим холодильником простим та веселим!"
 
 msgid "I agree to"
 msgstr "Я погоджуюся з"
 
 msgid "privacy policy"
-msgstr "Політика конфіденційності"
+msgstr "політикою конфіденційності"
 
 msgid "terms of use"
-msgstr "Умови використання"
+msgstr "умовами використання"
 
 msgid "Sign up"
 msgstr "Зареєструватися"
 
 msgid "Pocket Fridge"
-msgstr "Кишеньковий холодильник"
+msgstr "Міні-холодильник"
+
+msgid "Pocket"
+msgstr "Міні"
+
+msgid "Fridge"
+msgstr "Холодильник"
 
 msgid "Home"
-msgstr ""
+msgstr "Головна"
 
 msgid "Key Features"
-msgstr ""
+msgstr "Основні функції"
 
 msgid "Pricing"
-msgstr ""
+msgstr "Ціни"
 
 msgid "Testimonial"
-msgstr ""
+msgstr "Відгуки"
+
+msgid "FAQ"
+msgstr "Питання і відповіді"
 
 msgid "Go to fridge"
 msgstr "Перейти до холодильника"
 
 msgid "Register"
 msgstr "Зареєструватися"
+
+msgid "Get your groceries"
+msgstr "Закупіть продукти"
+
+msgid "through your device"
+msgstr "через свій пристрій"
+
+msgid "We will save you from unnecessary waste!"
+msgstr "Ми вас врятуємо від непотрібних втрат!"
+
+msgid "Try for free"
+msgstr "Спробувати безкоштовно"
+
+msgid "Awesome apps"
+msgstr "Чудові додатки"
+
+msgid "features"
+msgstr "функції"
+
+msgid "Increase productivity with a simple to-do app. app for "
+msgstr "Збільшуйте продуктивність за допомогою простого додатку для задач."
+
+msgid "managing your personal budgets."
+msgstr "управління вашими особистими бюджетами."
+
+msgid "Smart Notifications"
+msgstr "Розумні сповіщення"
+
+msgid "There will no longer be a problem with"
+msgstr "Більше не буде проблем з"
+
+msgid " forgotten food in the fridge."
+msgstr "забутою їжею в холодильнику."
+
+msgid "Receive"
+msgstr "Отримуйте"
+
+msgid "efficient notifications and use products on time"
+msgstr "ефективні сповіщення та вчасно використовуйте продукти"
+
+msgid "Easy to add"
+msgstr "Легко додавати"
+
+msgid "Easily add new products and the app "
+msgstr "Легко додавайте нові продукти, і додаток"
+
+msgid "be ready from the first minute you use"
+msgstr "буде готовий з першої хвилини використання"
+
+msgid "ECO-friendly"
+msgstr "ЕКО-дружній"
+
+msgid "The regulation of food consumption "
+msgstr "Регулювання споживання їжі"
+
+msgid "leads to a decrease in universal"
+msgstr "призводить до зменшення загального"
+
+msgid "consumption"
+msgstr "споживання"
+
+msgid "Manage the food in your fridge anytime &amp; anywhere"
+msgstr "Керуйте їжею в холодильнику в будь-який час та в будь-якому місці"
+
+msgid ""
+"Manage your food, cook, add and use to the fullest. Take your food "
+"consumption to the next level with less waste and easy cooking."
+msgstr ""
+"Керуйте їжею, готуйте, додавайте та використовуйте її на повну. Підніміть "
+"свій споживчий рівень їжі з меншими втратами та простим приготуванням."
+
+msgid "Why you should choose "
+msgstr "Чому вам варто вибрати "
+
+msgid "our app"
+msgstr "наш додаток"
+
+msgid ""
+"Empowering Your World with Mobile Innovation: Redefining Information Access, "
+"One App at a Time."
+msgstr ""
+"Заохочуючи ваш світ інноваціями в мобільних технологіях: переосмислюючи "
+"доступ до інформації, один додаток за раз."
+
+msgid "Innovations on every plate"
+msgstr "Інновації на кожному столі"
+
+msgid "Use our app to make your own meals and save time."
+msgstr "Використовуйте наш додаток, щоб готувати свої страви та економити час."
+
+msgid "Forget about expired products"
+msgstr "Забудьте про прострочені продукти"
+
+msgid "We make your lunches safe and delicious."
+msgstr "Ми робимо ваші обіди безпечними та смачними."
+
+msgid "Minimize waste, maximize budget"
+msgstr "Мінімізуйте втрати, максимізуйте бюджет"
+
+msgid "Our app is for those who care about the planet and their wallet."
+msgstr "Наш додаток для тих, хто дбає про планету та свій гаманець."
+
+msgid "Delicious food is always at hand"
+msgstr "Смачну їжу завжди під рукою"
+
+msgid "We make cooking easier and tastier."
+msgstr "Ми робимо приготування їжі простішим та смачнішим."
+
+msgid "Entrust your health and culinary skills to us"
+msgstr "Довірте своє здоров'я та кулінарні навички нам"
+
+msgid ""
+"We are proud to celebrate our achievements and our dream of better nutrition."
+msgstr "Ми пишаємося своїми досягненнями та нашою мрією про краще харчування."
+
+msgid "The results are in your hands."
+msgstr "Результати у ваших руках."
+
+msgid "Our work will make your life easier and more efficient."
+msgstr "Наша робота зробить ваше життя простішим та ефективнішим."
+
+msgid "Ultimate features "
+msgstr "Вершинні функції"
+
+msgid "that we built "
+msgstr "які ми створили"
+
+msgid "The rise of technology - the better result. "
+msgstr "Підйом технологій - кращий результат."
+
+msgid "Simple management"
+msgstr "Просте управління"
+
+msgid ""
+"With our app, you can easily manage the list of products in your fridge, "
+"always having your food supply under control."
+msgstr ""
+"За допомогою нашого додатку ви легко можете управляти списком продуктів у "
+"холодильнику, завжди тримаючи під контролем запас їжі."
+
+msgid "Due date notifications"
+msgstr "Сповіщення про дату споживання"
+
+msgid ""
+"Receive timely and secure alerts when food is approaching its expiration "
+"date to avoid throwing it away."
+msgstr ""
+"Отримуйте вчасні та безпечні сповіщення, коли їжа наближається до дати "
+"закінчення терміну придатності, щоб уникнути викидання."
+
+msgid "Shopping lists"
+msgstr "Списки покупок"
+
+msgid ""
+"With our app, you can easily create grocery lists to buy to plan your "
+"purchases efficiently and save time."
+msgstr ""
+"За допомогою нашого додатку ви легко можете створювати списки покупок, щоб "
+"планувати свої покупки ефективно та економити час."
+
+msgid "Quick addition"
+msgstr "Швидке додавання"
+
+msgid ""
+"Adding new food to your fridge is quick and easy, keeping your food stock up "
+"to date in real time."
+msgstr ""
+"Додавання нової їжі до вашого холодильника швидке та просте, що дозволяє в "
+"реальному часі оновлювати запаси їжі."
+
+msgid "Get awesome features, without extra charges"
+msgstr "Отримуйте чудові функції без додаткових витрат"
+
+msgid ""
+"The rise of mobile devices transforms the way we consume information "
+"entirely and the world's most elevant channels such as Facebook."
+msgstr ""
+"Підйом мобільних пристроїв повністю змінює спосіб споживання інформації і "
+"найбільш актуальні канали світу, такі як Facebook."
+
+msgid "Join today"
+msgstr "Приєднуйтеся сьогодні"
+
+msgid "Frequently asked questions"
+msgstr "Часто задавані питання"
+
+msgid "How exactly will this app help me manage my fridge and groceries?"
+msgstr "Як саме цей додаток допоможе мені керувати моїм холодильником та продуктами?"
+
+msgid ""
+"Our app allows you to conveniently keep track of all your food in the "
+"fridge. You can add new products, update and delete them, and create "
+"categories for easier sorting. It provides you with comprehensive "
+"information about each product, including expiration date, quantity, and "
+"other characteristics."
+msgstr "Наш додаток дозволяє вам зручно відстежувати всі ваші продукти в холодильнику. Ви можете додавати нові продукти, оновлювати та видаляти їх, а також створювати категорії для полегшення сортування. Він надає вам вичерпну інформацію про кожен продукт, включаючи дату закінчення терміну придатності, кількість та інші характеристики."
+
+msgid "Is this app safe to store my personal data and grocery lists?"
+msgstr ""
+"Чи безпечний цей додаток для зберігання моїх особистих даних та списків "
+"покупок?"
+
+msgid ""
+"We take great care to keep your data confidential. All your personal data "
+"and product lists are encrypted and stored in a secure environment. We do "
+"not share your data with third parties and always comply with the "
+"requirements for protecting user privacy."
+msgstr "Ми ретельно дбаємо про збереження конфіденційності ваших даних. Всі ваші особисті дані та списки продуктів зашифровані і зберігаються в безпечному середовищі. Ми не передаємо ваші дані третім сторонам і завжди дотримуємося вимог щодо захисту конфіденційності користувача."
+
+msgid ""
+"What are the main notifications and expiration date reminders that this app "
+"includes?"
+msgstr ""
+"Які основні сповіщення та нагадування про термін придатності включає цей "
+"додаток?"
+
+msgid ""
+"Our app automatically reminds you when foods are approaching their "
+"expiration date so you can consume them safely and fresh. You can receive "
+"these reminders via email or notifications on your mobile device. This helps "
+"you avoid throwing food away and saves money."
+msgstr "Наш додаток автоматично нагадує вам, коли їжа наближається до дати закінчення терміну придатності, щоб ви могли безпечно та свіжо її споживати. Ви можете отримувати ці нагадування по електронній пошті або через сповіщення на вашому мобільному пристрої. Це допомагає уникнути викидання їжі та економить гроші."
+
+msgid "How quickly can I add new products to my fridge using the app?"
+msgstr "Легко додавайте нові продукти, і додаток"
+
+msgid ""
+"With our app, adding new products is quick and easy. You can use the search "
+"function or scan product barcodes to instantly add them to your list. All "
+"this helps to save you time and make food management easy and efficient."
+msgstr "З нашим додатком додавання нових продуктів швидке та просте. Ви можете використовувати функцію пошуку або сканувати штрих-коди продуктів, щоб миттєво додавати їх до списку. Усе це допомагає зекономити ваш час і робить управління їжею простим та ефективним."
+
+msgid ""
+"How do I get customer support or contact the development team to solve "
+"problems or get answers to questions?"
+msgstr "Як я можу звернутися за підтримкою клієнтів або зв'язатися з командою розробників, щоб вирішити проблеми чи отримати відповіді на питання?"
+
+msgid ""
+"We are always ready to help you. You can contact our customer support team "
+"via email, chat, or phone. Our development team is also ready to accept your "
+"requests and suggestions on how to improve the app. We are always here to "
+"provide you with the help you need and answer your questions."
+msgstr "Ми завжди готові допомогти вам. Ви можете зв'язатися з нашою службою підтримки клієнтів за допомогою електронної пошти, чату або телефону. Наша команда розробників також готова приймати ваші запити та пропозиції щодо покращення додатка. Ми завжди тут, щоб надати вам необхідну допомогу та відповісти на ваші питання."
 
 msgid "Privacy policy & Terms"
 msgstr "Політика конфіденційності та Умови використання"
@@ -188,158 +440,7 @@ msgid "Privacy policy"
 msgstr "Політика конфіденційності"
 
 msgid "Not provided yet"
-msgstr "Поки не надано"
+msgstr "Поки що не надано"
 
 msgid "Terms of use"
 msgstr "Умови використання"
-
-msgid "Get your groceries"
-msgstr ""
-
-msgid "through your device"
-msgstr ""
-
-msgid "We will save you from unnecessary waste!"
-msgstr ""
-
-msgid "Try for free"
-msgstr ""
-
-msgid "Awesome apps"
-msgstr ""
-
-msgid "features"
-msgstr ""
-
-msgid "Increase productivity with a simple to-do app. app for "
-msgstr "managing your personal budgets."
-
-msgid "Smart Notifications"
-msgstr ""
-
-msgid "There will no longer be a problem with"
-msgstr ""
-
-msgid "forgotten food in the fridge."
-msgstr ""
-
-msgid "efficient notifications and use products on time"
-msgstr ""
-
-msgid "Easy to add"
-msgstr ""
-
-msgid "Easily add new products and the app "
-msgstr ""
-
-msgid "be ready from the first minute you use"
-msgstr ""
-
-msgid "ECO-friendly"
-msgstr ""
-
-msgid "The regulation of food consumption"
-msgstr ""
-
-msgid "leads to a decrease in universal"
-msgstr ""
-
-msgid "consumption"
-msgstr ""
-
-msgid "Manage the food in your fridge anytime &amp; anywhere"
-msgstr ""
-
-msgid "Manage your food, cook, add and use to the fullest. Take your food consumption to the next level with less waste and easy cooking."
-msgstr ""
-
-msgid "Why you should choose "
-msgstr ""
-
-msgid "our app"
-msgstr ""
-
-msgid "Empowering Your World with Mobile Innovation: Redefining Information Access, One App at a Time."
-msgstr ""
-
-msgid "Innovations on every plate"
-msgstr ""
-
-msgid "Use our app to make your own meals and save time."
-msgstr ""
-
-msgid "Forget about expired products"
-msgstr ""
-
-msgid "We make your lunches safe and delicious."
-msgstr ""
-
-msgid "Minimize waste, maximize budget"
-msgstr ""
-
-msgid "Our app is for those who care about the planet and their wallet."
-msgstr ""
-
-msgid "Delicious food is always at hand"
-msgstr ""
-
-msgid "We make cooking easier and tastier."
-msgstr ""
-
-msgid "Entrust your health and culinary skills to us"
-msgstr ""
-
-msgid "We are proud to celebrate our achievements and our dream of better nutrition."
-msgstr ""
-
-msgid "The results are in your hands."
-msgstr "Our work will make your life easier and more efficient."
-
-msgid "Ultimate features "
-msgstr ""
-
-msgid "that we built"
-msgstr ""
-
-msgid "The rise of technology - the better result."
-msgstr ""
-
-msgid "Simple management"
-msgstr ""
-
-msgid "With our app, you can easily manage the list of products in your fridge, always having your food supply under control."
-msgstr ""
-
-msgid "Due date notifications"
-msgstr ""
-
-msgid "Receive timely and secure alerts when food is approaching its expiration date to avoid throwing it away."
-msgstr ""
-
-msgid "Shopping lists"
-msgstr ""
-
-
-msgid "With our app, you can easily create grocery lists to buy to plan your purchases efficiently and save time."
-msgstr ""
-
-
-msgid "Quick addition"
-msgstr ""
-
-msgid "Adding new food to your fridge is quick and easy, keeping your food stock up to date in real time."
-msgstr ""
-
-msgid "Get awesome features, without extra charges"
-msgstr ""
-
-msgid "The rise of mobile devices transforms the way we consume information entirely and the
-              world's
-              most elevant channels such as Facebook."
-msgstr ""
-
-msgid ""
-msgstr ""
-
-msgid ""
-msgstr ""

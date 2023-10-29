@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-24 04:24+0000\n"
+"POT-Creation-Date: 2023-10-29 13:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -154,6 +154,12 @@ msgstr ""
 msgid "Pocket Fridge"
 msgstr ""
 
+msgid "Pocket"
+msgstr ""
+
+msgid "Fridge"
+msgstr ""
+
 msgid "Home"
 msgstr ""
 
@@ -166,10 +172,238 @@ msgstr ""
 msgid "Testimonial"
 msgstr ""
 
+msgid "FAQ"
+msgstr ""
+
 msgid "Go to fridge"
 msgstr ""
 
 msgid "Register"
+msgstr ""
+
+msgid "Get your groceries"
+msgstr ""
+
+msgid "through your device"
+msgstr ""
+
+msgid "We will save you from unnecessary waste!"
+msgstr ""
+
+msgid "Try for free"
+msgstr ""
+
+msgid "Awesome apps"
+msgstr ""
+
+msgid "features"
+msgstr ""
+
+msgid "Increase productivity with a simple to-do app. app for "
+msgstr ""
+
+msgid "managing your personal budgets."
+msgstr ""
+
+msgid "Smart Notifications"
+msgstr ""
+
+msgid "There will no longer be a problem with"
+msgstr ""
+
+msgid " forgotten food in the fridge."
+msgstr ""
+
+msgid "Receive"
+msgstr ""
+
+msgid "efficient notifications and use products on time"
+msgstr ""
+
+msgid "Easy to add"
+msgstr ""
+
+msgid "Easily add new products and the app "
+msgstr ""
+
+msgid "be ready from the first minute you use"
+msgstr ""
+
+msgid "ECO-friendly"
+msgstr ""
+
+msgid "The regulation of food consumption "
+msgstr ""
+
+msgid "leads to a decrease in universal"
+msgstr ""
+
+msgid "consumption"
+msgstr ""
+
+msgid "Manage the food in your fridge anytime &amp; anywhere"
+msgstr ""
+
+msgid ""
+"Manage your food, cook, add and use to the fullest. Take your food "
+"consumption to the next level with less waste and easy cooking."
+msgstr ""
+
+msgid "Why you should choose "
+msgstr ""
+
+msgid "our app"
+msgstr ""
+
+msgid ""
+"Empowering Your World with Mobile Innovation: Redefining Information Access, "
+"One App at a Time."
+msgstr ""
+
+msgid "Innovations on every plate"
+msgstr ""
+
+msgid "Use our app to make your own meals and save time."
+msgstr ""
+
+msgid "Forget about expired products"
+msgstr ""
+
+msgid "We make your lunches safe and delicious."
+msgstr ""
+
+msgid "Minimize waste, maximize budget"
+msgstr ""
+
+msgid "Our app is for those who care about the planet and their wallet."
+msgstr ""
+
+msgid "Delicious food is always at hand"
+msgstr ""
+
+msgid "We make cooking easier and tastier."
+msgstr ""
+
+msgid "Entrust your health and culinary skills to us"
+msgstr ""
+
+msgid ""
+"We are proud to celebrate our achievements and our dream of better nutrition."
+msgstr ""
+
+msgid "The results are in your hands."
+msgstr ""
+
+msgid "Our work will make your life easier and more efficient."
+msgstr ""
+
+msgid "Ultimate features "
+msgstr ""
+
+msgid "that we built "
+msgstr ""
+
+msgid "The rise of technology - the better result. "
+msgstr ""
+
+msgid "Simple management"
+msgstr ""
+
+msgid ""
+"With our app, you can easily manage the list of products in your fridge, "
+"always having your food supply under control."
+msgstr ""
+
+msgid "Due date notifications"
+msgstr ""
+
+msgid ""
+"Receive timely and secure alerts when food is approaching its expiration "
+"date to avoid throwing it away."
+msgstr ""
+
+msgid "Shopping lists"
+msgstr ""
+
+msgid ""
+"With our app, you can easily create grocery lists to buy to plan your "
+"purchases efficiently and save time."
+msgstr ""
+
+msgid "Quick addition"
+msgstr ""
+
+msgid ""
+"Adding new food to your fridge is quick and easy, keeping your food stock up "
+"to date in real time."
+msgstr ""
+
+msgid "Get awesome features, without extra charges"
+msgstr ""
+
+msgid ""
+"The rise of mobile devices transforms the way we consume information "
+"entirely and the world's most elevant channels such as Facebook."
+msgstr ""
+
+msgid "Join today"
+msgstr ""
+
+msgid "Frequently asked questions"
+msgstr ""
+
+msgid "How exactly will this app help me manage my fridge and groceries?"
+msgstr ""
+
+msgid ""
+"Our app allows you to conveniently keep track of all your food in the "
+"fridge. You can add new products, update and delete them, and create "
+"categories for easier sorting. It provides you with comprehensive "
+"information about each product, including expiration date, quantity, and "
+"other characteristics."
+msgstr ""
+
+msgid "Is this app safe to store my personal data and grocery lists?"
+msgstr ""
+
+msgid ""
+"We take great care to keep your data confidential. All your personal data "
+"and product lists are encrypted and stored in a secure environment. We do "
+"not share your data with third parties and always comply with the "
+"requirements for protecting user privacy."
+msgstr ""
+
+msgid ""
+"What are the main notifications and expiration date reminders that this app "
+"includes?"
+msgstr ""
+
+msgid ""
+"Our app automatically reminds you when foods are approaching their "
+"expiration date so you can consume them safely and fresh. You can receive "
+"these reminders via email or notifications on your mobile device. This helps "
+"you avoid throwing food away and saves money."
+msgstr ""
+
+msgid "How quickly can I add new products to my fridge using the app?"
+msgstr ""
+
+msgid ""
+"With our app, adding new products is quick and easy. You can use the search "
+"function or scan product barcodes to instantly add them to your list. All "
+"this helps to save you time and make food management easy and efficient."
+msgstr ""
+
+msgid ""
+"How do I get customer support or contact the development team to solve "
+"problems or get answers to questions?"
+msgstr ""
+
+msgid ""
+"We are always ready to help you. You can contact our customer support team "
+"via email, chat, or phone. Our development team is also ready to accept your "
+"requests and suggestions on how to improve the app. We are always here to "
+"provide you with the help you need and answer your questions."
 msgstr ""
 
 msgid "Privacy policy & Terms"

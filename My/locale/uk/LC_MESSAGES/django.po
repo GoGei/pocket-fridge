@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-24 04:24+0000\n"
+"POT-Creation-Date: 2023-10-29 13:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -186,9 +186,6 @@ msgstr "Скасовати преміум"
 msgid "Buy premium"
 msgstr "Купити преміум"
 
-msgid "User guide"
-msgstr "Посібник користувача"
-
 msgid "Privacy policy"
 msgstr ""
 
@@ -245,3 +242,6 @@ msgstr ""
 
 msgid "No notifications"
 msgstr ""
+
+#~ msgid "User guide"
+#~ msgstr "Посібник користувача"
