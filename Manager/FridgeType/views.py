@@ -133,14 +133,14 @@ def fridge_type_restore(request, fridge_type_id):
     return redirect(reverse('manager-fridge-type-list', host='manager'))
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def fridge_type_view_fixture(request):
     with open(FRIDGE_TYPE_DEFAULT_FIXTURE_PATH, 'r') as f:
         data = json.load(f)
     return render(request, 'Manager/FridgeType/fridge_type_view_fixture.html', {'data': data})
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def fridge_type_load_fixture(request):
     form_body = FridgeTypeImportForm(request.POST or None,
                                      request.FILES or None)
@@ -184,7 +184,7 @@ def fridge_type_export_to_fixture(request):
     return response
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def fridge_type_load_default_fixture(request):
     call_command('load_fridge_type_fixture')
     msg = _('Fridge type default fixture was successfully loaded')

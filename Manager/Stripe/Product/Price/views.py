@@ -10,14 +10,14 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def price_view(request, price_id):
     price = get_object_or_404(Price, pk=price_id)
     return render(request, 'Manager/Stripe/Product/Price/price_view.html',
                   {'price': price, 'product_id': price.product.id})
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def price_set_as_default(request, price_id):
     price = get_object_or_404(Price, pk=price_id)
     msg = _(f'Product price {price.label} was successfully set as default')
@@ -26,7 +26,7 @@ def price_set_as_default(request, price_id):
     return redirect(reverse('manager-stripe-product-view', args=[price.product.id], host='manager'))
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def price_archive(request, price_id):
     price = get_object_or_404(Price, pk=price_id)
     msg = _(f'Product price {price.label} was successfully archived')
@@ -35,7 +35,7 @@ def price_archive(request, price_id):
     return redirect(reverse('manager-stripe-product-view', args=[price.product.id], host='manager'))
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def price_sync(request, product_id):
     from core.Finances.stripe import exceptions
     from core.Finances.stripe.handlers import PriceHandler

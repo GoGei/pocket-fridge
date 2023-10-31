@@ -14,7 +14,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def invoice_list(request):
     qs = Invoice.objects.all().order_by('number')
 
@@ -37,13 +37,13 @@ def invoice_list(request):
                   {'table': table})
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def invoice_view(request, invoice_id):
     invoice = get_object_or_404(Invoice, pk=invoice_id)
     return render(request, 'Manager/Stripe/Invoice/invoice_view.html', {'invoice': invoice})
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def invoice_sync(request):
     from ..stripe_integrations.views import stripe_instance_sync
     from core.Finances.stripe.handlers import InvoiceHandler
@@ -53,7 +53,7 @@ def invoice_sync(request):
                                 InvoiceHandler)
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def invoice_sync_all(request):
     load_invoices_task.apply_async()
     msg = _('Try to load invoices from stripe')

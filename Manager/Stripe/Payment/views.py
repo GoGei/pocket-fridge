@@ -14,7 +14,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def payment_list(request):
     qs = Payment.objects.all().order_by('-created_stamp')
 
@@ -37,13 +37,13 @@ def payment_list(request):
                   {'table': table})
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def payment_view(request, payment_id):
     payment = get_object_or_404(Payment, pk=payment_id)
     return render(request, 'Manager/Stripe/Payment/payment_view.html', {'payment': payment})
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def payment_sync(request):
     from ..stripe_integrations.views import stripe_instance_sync
     from core.Finances.stripe.handlers import PaymentHandler
@@ -53,7 +53,7 @@ def payment_sync(request):
                                 PaymentHandler)
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def payment_sync_all(request):
     load_payments_task.apply_async()
     msg = _('Try to load payments from stripe')

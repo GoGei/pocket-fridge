@@ -14,7 +14,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def product_list(request):
     qs = Product.objects.all().order_by('-is_default', '-name')
 
@@ -37,7 +37,7 @@ def product_list(request):
                   {'table': table})
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def product_view(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
@@ -63,7 +63,7 @@ def product_view(request, product_id):
                   {'product': product, 'table': table})
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def product_set_as_default(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     msg = _(f'Product {product.label} was successfully set as default')
@@ -72,7 +72,7 @@ def product_set_as_default(request, product_id):
     return redirect(reverse('manager-stripe-product-list', host='manager'))
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def product_archive(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     msg = _(f'Product {product.label} was successfully archived')
@@ -81,7 +81,7 @@ def product_archive(request, product_id):
     return redirect(reverse('manager-stripe-product-list', host='manager'))
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def product_sync(request):
     from ..stripe_integrations.views import stripe_instance_sync
     from core.Finances.stripe.handlers import ProductHandler

@@ -44,7 +44,7 @@ def admins_view(request, admin_id):
     return render(request, 'Manager/Admins/admins_view.html', {'admin': admin})
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def admins_add(request):
     form_body = AdminFormAdd(request.POST or None)
 
@@ -92,7 +92,7 @@ def admins_reset_password(request):
                                                                          'admin': admin})
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def admins_edit(request, admin_id):
     admin = get_object_or_404(User.objects.admins(), pk=admin_id)
 
@@ -120,7 +120,7 @@ def admins_edit(request, admin_id):
                                                                'admin': admin})
 
 
-@superuser_required
+@superuser_required(login_url='/')
 def admins_set_password(request, admin_id):
     admin = get_object_or_404(User.objects.admins(), pk=admin_id)
     form_body = AdminSetPasswordForm(request.POST or None, admin=admin)
